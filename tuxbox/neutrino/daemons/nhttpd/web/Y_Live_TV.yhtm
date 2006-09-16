@@ -1,0 +1,234 @@
+{=var-set:mrl={=if-equal:{=mode=}~tv~http://{=func:get_header_data Host=}:31339/0,{=func:get_video_pids {=if-empty:{=audiopid=}~00000~{=audiopid=}=}=}~http://{=func:get_header_data Host=}:31338/{=func:get_audio_pid=}=}=}
+{=include-block:Y_Blocks.txt;head_no_charset=}
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+var g_vlc_audio_channel=0;
+/*0=normal, 1=record/transcode*/
+function setControls(state)
+{
+	switch(state)
+	{
+		case 1:
+			parent.panel.enablePanel(0);
+			document.v.PlayOrPause.disabled=true;
+			document.v.audiopid.disabled=true;
+			document.v.stop.disabled=true;
+			document.v.snapshot.disabled=true;
+		{=if-equal:{=browser=}~ie~
+			{=if-equal:{=typ=}~popup~~
+			{=if-equal:{=typ=}~transcode~~
+			/*document.v.expert_mode.disabled=true;*/
+			document.v.record_mode.disabled=true;
+			=}
+			=}
+		=}
+			break;
+	
+		default:
+			if(parent.panel.enablePanel)/*not loaded yet?*/
+				parent.panel.enablePanel(1);
+			document.v.PlayOrPause.disabled=false;
+			document.v.audiopid.disabled=false;
+			document.v.stop.disabled=false;
+			document.v.snapshot.disabled=false;
+		{=if-equal:{=browser=}~ie~
+			{=if-equal:{=typ=}~popup~~
+			{=if-equal:{=typ=}~transcode~~
+			/*document.v.expert_mode.disabled=false;*/
+			document.v.record_mode.disabled=false;
+			=}
+			=}
+		=}
+			break;
+	}
+}
+function do_stop()
+{
+	document.v.PlayOrPause.value = " Play ";
+	document.vlc.stop()
+}
+function do_play_state(_state, _options)
+{
+	do_stop();
+	setControls(_state);
+	{=if-equal:{=browser=}~ie~
+	document.vlc.addTarget("{=var-get:mrl=}", _options, 4+8, -666);
+	=}
+	document.v.PlayOrPause.value = "Pause";
+	document.vlc.play();
+	window.setTimeout("do_change_vlc_audio_channel()",500);
+}
+function do_change_vlc_audio_channel()
+{
+	for(i=0;i<g_vlc_audio_channel;i++)
+		doChangeAudioChannel();
+}
+function do_play()
+{
+	var options = new Array();
+	{=if-equal:{=ini-get:/var/tuxbox/config/Y-Web.conf;deinterlace;true=}~true~
+	options.push(":vout-filter=deinterlace");
+	options.push(":deinterlace-mode=bob");
+	=}
+	options.push(":http-caching={=ini-get:/var/tuxbox/config/Y-Web.conf;http_caching;1000=}");
+	do_play_state(0, options);
+}
+function do_play_or_pause()
+{
+	if( document.vlc.{=if-equal:{=browser=}~ie~playing~isplaying()=} )
+	{
+		document.v.PlayOrPause.value = " Play ";
+		document.vlc.pause()
+	} else 
+	{
+		document.v.PlayOrPause.value = "Pause";
+		do_play();
+	}
+}
+function do_lock_toggle()
+{
+	if( document.v.lock.value == "Lock" )
+	{
+		document.v.lock.value = "Unlock";
+		live_lock();
+	} else 
+	{
+		document.v.lock.value = "Lock";
+		live_unlock();
+	}
+}
+function view_streaminfo()
+{
+	window.open("/fb/info.dbox2","streaminfo","width=400,height=400");
+}
+function doChangeAudioPid()
+{
+	document.v.submit()
+}
+function vlc_set_volumen_delta(_delta)
+{
+	{=if-equal:{=browser=}~ie~
+	document.vlc.volume = document.vlc.volume + _delta;
+	~
+	document.vlc.set_volume(document.vlc.get_volume() + _delta)
+	=}
+}
+function vlc_toggle_mute()
+{
+	{=if-equal:{=browser=}~ie~
+	document.vlc.toggleMute();
+	~
+	document.vlc.mute();
+	=}
+}
+function vlcPressKey(key)
+{
+	{=if-equal:{=browser=}~ie~
+		keyvalue = document.vlc.getVariable(key);
+		document.vlc.setVariable("key-pressed", keyvalue);
+	~
+		keyvalue = document.vlc.get_int_variable(key);
+		document.vlc.set_int_variable("key-pressed", keyvalue);
+	=}
+}
+function doSnapshot()
+{
+	vlcPressKey("key-snapshot");
+}
+function doChangeAudioChannel()
+{
+	vlcPressKey("key-audio-track");
+}
+function doRecord2()
+{
+	vlcPressKey("key-record");
+}
+function view_expert_mode()
+{
+	parent.parent.col2.location.href = "/Y_Live_Expert.yhtm?browser={=browser=}&mode={=mode=}&typ={=typ=}";
+}
+function view_record_mode()
+{
+	parent.parent.col2.location.href = "/Y_Live_Record.yhtm?browser={=browser=}&mode={=mode=}&typ={=typ=}";
+}
+//]]>
+</script>
+</head>
+<body>
+<table class="y_live_table" cellspacing="0">
+<tr><td>
+{=if-equal:{=browser=}~ie~
+	<object classid="clsid:E23FE9C6-778E-49D4-B537-38FCDE4887D8" 
+	        width="384" height="288" id="vlc" name="vlc" events="True">
+			<param name="Src" value="" />
+			<param name="ShowDisplay" value="True" />
+			<param name="Loop" value="False" />
+			<param name="AutoPlay" value="False" />
+		The VideoLan Client ActiveX is not installed.<br/>
+		You need <a href="http://www.videolan.org" target="_blank">VideoLan Client</a> V0.8.2 or higher.<br/>
+		Install with Option "ActiveX".
+	</object>
+~
+	<embed type="application/x-vlc-plugin"
+		name="vlc"  id="vlc"
+		autoplay="yes" loop="yes" width="384" height="288"
+		target="{=var-get:mrl=}" >
+	</embed>
+=}
+</td></tr>
+<tr><td>
+	<form name="v" action="/Y_Live_Wait.yhtm" method="get">
+		<input class="y_live_button" type="button" value="Pause" title="play or pause streaming" 
+			name="PlayOrPause" onclick="do_play_or_pause()" style="width:40px"/>
+		<input class="y_live_button" type="button" value="Stop" title="stop streaming" name="stop" onclick="do_stop()"/>
+		<input class="y_live_button" type="button" value="Mute" title="mute / unmute volume" onclick="vlc_toggle_mute()"/>
+		<input class="y_live_button" type="button" value="-" title="lower volume" onclick="vlc_set_volumen_delta(-10);" style="width:15px"/>
+		<input class="y_live_button" type="button" value="+" title="higher volume" onclick="vlc_set_volumen_delta(+10);" style="width:15px"/>
+		<input class="y_live_button" type="button" value="F" 
+			title="switch to fullscreen-mode - or use double-click" onclick="document.vlc.fullscreen()" style="width:15px"/>
+		<input class="y_live_button" type="button" value="Lock" title="lock / unlock TV (record mode, rc, lcd)" name="lock" onclick="do_lock_toggle()"/>
+		<input class="y_live_button" type="button" value="S" title="create snapshot picture" name="snapshot" onclick="doSnapshot()"/>
+		<select size="1" class="y_live_audio_pids" name="audiopid" onChange="doChangeAudioPid()">
+		{=func:get_audio_pids_as_dropdown=}
+		</select>
+		{=if-equal:{=typ=}~popup~~
+		{=if-equal:{=typ=}~transcode~~
+		{=if-equal:{=browser=}~ie~
+		<input class="y_live_button" type="button" value="Rec" title="record mode" name="record_mode" onclick="view_record_mode()"/>
+		=}
+		<!--<input class="y_live_button" type="button" value="E+" title="expert mode" name="expert_mode" onclick="view_expert_mode()"/>-->
+		=}
+		=}
+		<input type="hidden" name="browser" value="{=browser=}"/>
+		<input type="hidden" name="typ" value="{=typ=}"/>
+		<input type="hidden" name="mode" value="tv"/>
+	</form>
+</td></tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+	{=if-equal:{=typ=}~popup~
+	var res_w=parseInt("{=ini-get:/var/tuxbox/config/Y-Web.conf;live_resolution_w;384=}",10);
+	var res_h=parseInt("{=ini-get:/var/tuxbox/config/Y-Web.conf;live_resolution_h;288=}",10);
+	if(isNaN(res_w)) res_w=384;
+	if(isNaN(res_h)) res_h=288;
+	~
+	var res_w=384;
+	var res_h=288;
+	=}
+	document.vlc.width=res_w;
+	document.vlc.height=res_h;
+	for (i = 0; i < document.v.audiopid.length; i++)
+		if (document.v.audiopid.options[i].value == "{=if-empty:{=audiopid=}~00000~{=audiopid=}=}")
+		{
+			document.v.audiopid.options[i].selected = true;
+			g_vlc_audio_channel=i;
+		}
+	do_play();
+//]]>
+</script>
+
+</body>
+</html>

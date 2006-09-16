@@ -1,0 +1,60 @@
+{=include-block:Y_Blocks.txt;head=}
+<script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+function do_snapshot()
+{
+	show_waitbox(true);
+	window.setTimeout("do_snapshot2()", 500);
+}
+function do_snapshot2()
+{
+	var _shot = document.getElementById("shot");
+	dbox_exec_command("{=if-file-exists:/var/bin/fbshot~/var/bin/fbshot~fbshot=} -q /tmp/a.png");
+	show_waitbox(false);
+	show_obj("shot", true);
+	_shot.src = "/tmp/a.png?"+Math.random();
+}
+function do_dboxshot()
+{
+	show_waitbox(true);
+	window.setTimeout("do_dboxshot2()", 500);
+}
+function do_dboxshot2()
+{
+	var _shot = document.getElementById("shot");
+	dbox_exec_command("{=if-file-exists:/var/bin/dboxshot~/var/bin/dboxshot~dboxshot=} -o /tmp/a.bmp");
+	show_waitbox(false);
+	show_obj("shot", true);
+	_shot.src = "/tmp/a.bmp?"+Math.random();
+}
+function do_clearshot()
+{
+	window.setTimeout("do_clearshot2()", 500);
+}
+function do_clearshot2()
+{
+	var _shot = document.getElementById("shot");
+	dbox_exec_command("rm /tmp/a.*");
+}
+//]]>
+</script>
+</head>
+<body>
+{=var-set:wait_text=Schnappschuss wird erstellt (take snapshot)=}{=include-block:Y_Blocks.txt;snip_wait=}
+<div class="work_box">
+	<div class="work_box_head"><div class="work_box_head_h2">
+	{=var-set:help_url=Neutrino:yWeb:BoxControl#OSD_Screenshot=}{=var-set:menu=OSD Screenshot=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	<div class="work_box_body">
+		<button name="snapshot" onclick="do_snapshot()">Snapshot</button>
+		{=var-set:dboxshot={=if-file-exists:/bin/dboxshot~true~{=if-file-exists:/var/bin/dboxshot~true~false=}=}=}
+		{=if-equal:{=var-get:dboxshot=}~true~
+		<button name="dboxshot" onclick="do_dboxshot()">dboxshot</button>
+		=}
+		<button name="clearshot" onclick="do_clearshot()">Delete Screenshots</button>
+		<br/>
+		<img id="shot" src="" style="visibility:hidden;"/>
+	</div>
+</div>
+</body>
+</html>

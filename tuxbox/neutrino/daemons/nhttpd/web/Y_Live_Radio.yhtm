@@ -1,0 +1,23 @@
+{=include-block:Y_Blocks.txt;head=}
+<script language="JavaScript" type="text/javascript">
+function do_stop()
+{
+}
+</script>
+</head>
+{=script:Y_Live prepare_radio {=func:get_host_data Host=}=}
+<body>
+<br/>
+	<blockquote>
+		<div class="y_head">Radio</div>
+		<div class="y_work_box">
+			m3u: <a type="audio/mpegurl" href="/tmp/y.m3u"><u>Play m3u</u></a>
+			<br>
+			pls: <a href="/tmp/y.pls"><u>Play pls</u></a>
+			<br/><br/>
+			Achtung:<br/>Vor Umschalten den externen Player auf Stop.<br/><br/>
+			(Es k&ouml;nnen zwei externe Player assoziiert werden:<br/> einen auf die Endung m3u und einen auf pls.)
+		</div>
+	</blockquote>
+</body>
+</html>

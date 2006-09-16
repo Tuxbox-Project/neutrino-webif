@@ -1,0 +1,362 @@
+# ------- Timer iFrame
+start-block~timer
+{=include-block:Y_Blocks.txt;head=}
+</head>
+<body>
+<div class="work_box">
+	<div class="work_box_head"><div class="work_box_head_h2">
+	{=var-set:help_url=Neutrino:yWeb:Live_Timer#Timer=}{=var-set:menu=Timer=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	<div class="work_box_body">
+	<iframe src="/fb/timer.dbox2" scrolling="auto" marginheight="1" marginwidth="1" frameborder="0" name="bouquets" style="height : 600px;width:90%;"></iframe>
+
+	</div>
+</div>
+</body>
+end-block~timer
+
+# ------- yWeb save Settings
+start-block~yWeb_save_settings
+{=ini-set:/var/tuxbox/config/Y-Web.conf;slavebox;{=slavebox=}~open=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;management_ip;{=managementIP=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;management_ip2;{=managementIP2=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;wol_mac_1;{=wol_mac_1=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;wol_mac_2;{=wol_mac_2=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;wol_mac_3;{=wol_mac_3=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;yweb_box_name;{=yweb_box_name=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;yweb_box_color;{=yweb_box_color=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;vlc_record_path;{=vlc_record_path=}~save=}
+end-block~yWeb_save_settings
+
+# ------- Live save Settings
+start-block~Live_save_settings
+{=ini-set:/var/tuxbox/config/Y-Web.conf;live_resolution_w;{=liveResolution_w=}~open=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;live_resolution_h;{=liveResolution_h=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;deinterlace;{=deinterlace=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;deinterlace_filter;{=v=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;http_caching;{=http_caching=}~save=}
+end-block~Live_save_settings
+
+# ------- nhttpd save Settings
+start-block~nhttpd_save_settings
+{=ini-set:/var/tuxbox/config/nhttpd.conf;AuthUser;{=authuser=}~open=}
+{=ini-set:/var/tuxbox/config/nhttpd.conf;AuthPassword;{=authpassword=}~cache=}
+{=ini-set:/var/tuxbox/config/nhttpd.conf;NoAuthClient;{=noauthclient=}~cache=}
+{=ini-set:/var/tuxbox/config/nhttpd.conf;Authenticate;{=authenticate=}~cache=}
+{=ini-set:/var/tuxbox/config/nhttpd.conf;Port;{=port=}~cache=}
+{=ini-set:/var/tuxbox/config/nhttpd.conf;HostedDocRoot;{=hosteddocumentroot=}~cache=}
+{=ini-set:/var/tuxbox/config/nhttpd.conf;ExtrasDocRoot;{=ExtrasDocRoot=}~cache=}
+{=ini-set:/var/tuxbox/config/nhttpd.conf;ExtrasDocURL;{=ExtrasDocURL=}~save=}
+{=func:do_reload_nhttpd_config=}
+end-block~nhttpd_save_settings
+
+# ------- VNC save Settings
+start-block~vnc_save_settings
+{=ini-set:/var/tuxbox/config/vnc.conf;server;{=server=}~open=}
+{=ini-set:/var/tuxbox/config/vnc.conf;port;{=port=}~cache=}
+{=ini-set:/var/tuxbox/config/vnc.conf;passwd;{=password=}~cache=}
+{=ini-set:/var/tuxbox/config/vnc.conf;scale;{=scale=}~save=}
+end-block~vnc_save_settings
+
+# ------- Timer save Settings
+start-block~timer_save_settings
+{=ini-set:/var/tuxbox/config/Y-Web.conf;tvinfo_username;{=tvinfo_username=}=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;tvinfo_password;{=tvinfo_password=}=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;klack_url;{=klack_url=}=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;live_resolution_w;{=ini-get:/var/tuxbox/config/Y-Web.conf;live_resolution_w;384=}=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;live_resolution_h;{=ini-get:/var/tuxbox/config/Y-Web.conf;live_resolution_h;288=}=}
+{=file-action:/var/tuxbox/config/channels.txt;add;{=channels=}=}
+end-block~timer_save_settings
+
+
+# ------- No Managemant Error
+start-block~no_management
+{=include-block:Y_Blocks.txt;head=}
+</head>
+<body>
+<br/>
+<div class="y_head">Error</div>
+<div class="y_work_box" title="This page could be used for management proposes only">
+	Der Aufruf dieser Seite ist nur fr Management Zwecke erlaubt.
+</div>
+</body>
+</html>
+end-block~no_management
+
+# ------- Managemant Check : insert at Top of Page
+start-block~management_check_top
+{=var-set:management={=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip;{=func:get_request_data client_addr=}=}~1~=}{=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip2=}~1~=}=}
+{=if-empty:{=var-get:management=}
+~
+	{=include-block:Y_Blocks.txt;no_management=}
+~
+end-block~management_check_top
+
+# ------- Managemant Check : insert at End of Page
+start-block~management_check_bottom
+=}
+end-block~management_check_bottom
+
+# ------- Snip: Wait Message Layer-div
+start-block~snip_wait
+<div class="y_wait_box" id="wait">
+	<div class="y_wait_box_head"><h2>{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</h2></div>
+	<div class="y_wait_box_body">
+		<p align="center">
+		<span class="y_wait_box_Main">
+		{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</span><br/>
+		<img border="0" src="/images/wait.gif" width="20" height="20" alt="wait"/><br/><br/>
+		Bitte warten<br/>
+		Please wait
+		</p>
+	</div>
+</div>
+end-block~snip_wait
+
+# ------- Wiki Help display
+#<img src="/images/help.gif" align="bottom">
+start-block~wiki_help
+<a href="http://wiki.tuxbox.org/{=var-get:help_url=}" target="_blank" title="get help from wiki.tuxbox.org">?</a>
+end-block~wiki_help
+
+# ------- work menu
+start-block~work_menu
+<div class="work_box_help">{=include-block:Y_Blocks.txt;wiki_help=}</div><div style="margin-right:4em;">{=var-get:menu=}</div>
+end-block~work_menu
+
+
+# ============= LAYOUT
+# ------- Lay-HEAD
+start-block~head
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<title>yWeb</title>
+<link rel="STYLESHEET" type="text/css" href="/Y_Main.css"/>
+end-block~head
+
+# ------- Lay-HEAD without charset
+start-block~head_no_charset
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>yWeb</title>
+<link rel="STYLESHEET" type="text/css" href="/Y_Main.css"/>
+end-block~head_no_charset
+
+# ------- Lay-Frame HEAD
+start-block~frame_head
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="STYLESHEET" type="text/css" href="/Y_Main.css"/>
+<title>yWeb</title>
+end-block~frame_head
+
+# ------- Lay-Frame HEAD
+start-block~frame_iso_head
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<link rel="STYLESHEET" type="text/css" href="/Y_Main.css"/>
+<title>yWeb</title>
+end-block~frame_iso_head
+
+# ------- Lay-Frame MAIN
+start-block~frame_main
+{=include-block:Y_Blocks.txt;frame_head=}
+<title>dbox yWeb</title>
+</head>
+<frameset rows="60,*">
+	<frame name="prim_menu" src="Y_Menue.yhtm" scrolling="no" frameborder="0" noresize="noresize" />
+	<frame name="base" src="Y_Dyn_Pages.yhtm?page=frame_boxcontrol" frameborder="0" style="height:100%"/>
+	<noframes>
+		<body>
+		<p>Your Browser does not support Frames.</p>
+		</body>
+	</noframes>
+</frameset>
+</html>
+end-block~frame_main
+
+# ------- Lay-Frame MAIN
+start-block~page_frame_rest
+{=include-block:Y_Blocks.txt;head=}
+</head>
+<body style="background : #F0F0F0;">
+</body>
+</html>
+end-block~page_frame_rest
+
+# ------- Lay-Frame Secondary-Menu
+start-block~frame_secondary
+{=include-block:Y_Blocks.txt;frame_iso_head=}
+</head>
+<frameset cols="157,*">
+	<frame name="sec_menu" src="{=var-get:sec_menu=}" scrolling="no" noresize="noresize" frameborder="0"/>
+	<frame name="work" src="{=var-get:work=}" scrolling="auto" frameborder="0" style="height:100%"/>
+	<noframes>
+		<body>
+		<p>Your Browser does not support Frames.</p>
+		</body>
+	</noframes>
+</frameset>
+</html>
+end-block~frame_secondary
+
+# ------- Lay-Frame Boxcontrol-Menu
+start-block~frame_boxcontrol
+{=var-set:sec_menu=Y_Boxcontrol_Menue.yhtm=}
+{=var-set:work=Y_Boxcontrol_Bouquets.yhtm=}
+{=include-block:Y_Blocks.txt;frame_secondary=}
+end-block~frame_boxcontrol
+
+# ------- Lay-Frame Live-Menu
+start-block~frame_live
+{=var-set:sec_menu=Y_Live_Menue.yhtm=}
+{=var-set:work=Y_blank.htm=}
+{=include-block:Y_Blocks.txt;frame_secondary=}
+end-block~frame_live
+
+# ------- Lay-Frame Timer-Menu
+start-block~frame_timer
+{=var-set:sec_menu=Y_Timer_Menue.yhtm=}
+{=var-set:work=Y_blank.htm=}
+{=include-block:Y_Blocks.txt;frame_secondary=}
+end-block~frame_timer
+
+# ------- Lay-Frame Tools-Menu
+start-block~frame_tools
+{=var-set:sec_menu=Y_Tools_Menue.yhtm=}
+{=var-set:work=Y_blank.htm=}
+{=include-block:Y_Blocks.txt;frame_secondary=}
+end-block~frame_tools
+
+# ------- Lay-Frame Settings-Menu
+start-block~frame_settings
+{=var-set:sec_menu=Y_Settings_Menue.yhtm=}
+{=var-set:work=Y_blank.htm=}
+{=include-block:Y_Blocks.txt;frame_secondary=}
+end-block~frame_settings
+
+# ------- Lay-Frame Info-Menu
+start-block~frame_info
+{=var-set:sec_menu=Y_Info_Menue.yhtm=}
+{=var-set:work=Y_blank.htm=}
+{=include-block:Y_Blocks.txt;frame_secondary=}
+end-block~frame_info
+
+# ------- Lay-Frame Tools-Info-Menu
+start-block~frame_tools-info
+{=include-block:Y_Blocks.txt;frame_head=}
+</head>
+<frameset rows="270,*">
+	<frame name="oben" src="Y_Tools_Info_Menue.yhtm" scrolling="auto" frameborder="0"/>
+	<frame name="unten" src="Y_blank.htm" scrolling="auto" frameborder="0"/>
+	<noframes>
+		<body>
+		<p>Your Browser does not support Frames.</p>
+		</body>
+	</noframes>
+</frameset>
+</html>
+end-block~frame_tools-info
+
+# ==== LIVE
+# ------- Lay-Frame Live-EPG Frameset
+start-block~frame_live_epg
+{=include-block:Y_Blocks.txt;frame_head=}
+</head>
+<frameset rows="100,*">
+	<frame name="epg_info" src="Y_Live_EPG_Info.yhtm" scrolling="auto" frameborder="0"/>
+	<frame name="epg_list" src="Y_Live_EPG.yhtm?channel={=channel=}" scrolling="auto" frameborder="0" style="height:100%"/>
+	<noframes>
+		<body>
+		<p>Your Browser does not support Frames.</p>
+		</body>
+	</noframes>
+</frameset>
+</html>
+end-block~frame_live_epg
+
+# ------- Remote
+start-block~remote
+{=if-equal:Sagem~{=func:get_boxtype=}~{=include-block:Y_Blocks.txt;remote_sagem=}~{=include-block:Y_Blocks.txt;remote_standard=}=}
+end-block~remote
+
+# ------- Remote
+start-block~remote_standard
+<img src="images/rc.gif" usemap="#rc"/>
+<map name="rc">
+  <area shape="rect" href="javascript:rcsim('KEY_SETUP')" coords="7,92,45,106" />
+  <area shape="circle" href="javascript:rcsim('KEY_7')" coords="59,100,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_4')" coords="59,76,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_9')" coords="100,90,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_8')" coords="80,93,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_6')" coords="100,69,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_5')" coords="79,71,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_3')" coords="100,47,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_2')" coords="80,49,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_1')" coords="59,53,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_0')" coords="58,121,11" />
+  <area shape="poly" href="javascript:rcsim('KEY_LEFT')" coords="34,260,50,248,44,234,49,218,38,206,26,235" />
+  <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="96,260,86,250,90,236,84,218,97,205,107,235" />
+  <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="82,212,94,202,68,191,40,202,52,216,68,210" />
+  <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="94,267,84,251,70,258,50,252,40,264,67,279" />
+  <area shape="rect" href="javascript:rcsim('KEY_HOME')" coords="7,69,45,83" />
+  <area shape="circle" href="javascript:rcsim('KEY_MUTE')" coords="60,316,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_OK')" coords="65,233,18" />
+  <area shape="circle" href="javascript:rcsim('KEY_BLUE')" coords="99,137,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_YELLOW')" coords="58,149,11" />
+  <area shape="circle" href="javascript:rcsim('KEY_GREEN')" coords="37,168,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_RED')" coords="21,190,11" />
+  <area shape="circle" href="javascript:rcsim('KEY_HELP')" coords="100,329,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEUP')" coords="18,267,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEDOWN')" coords="29,289,9" />
+  <area shape="rect" href="javascript:rcsim('KEY_POWER')" coords="7,45,46,60" />
+</map>
+end-block~remote_standard
+
+# ------- Remote Sagem
+start-block~remote_sagem
+<img src="images/rc_sagem.jpg" usemap="#rc" alt="remote"/>
+<map name="rc">
+  <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="98,121,97,184,62,150,94,117" />
+  <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="37,182,98,186,64,154" />
+  <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="90,118,35,122,60,148" />
+  <area shape="poly" href="javascript:rcsim('KEY_LEFT')" coords="63,152,34,124,34,185" />
+  <area shape="circle" href="javascript:rcsim('KEY_SETUP')" coords="103,107,15" />
+  <area shape="circle" href="javascript:rcsim('KEY_HELP')" coords="28,106,16" />
+  <area shape="circle" href="javascript:rcsim('KEY_POWER')" coords="104,37,17" />
+  <area shape="circle" href="javascript:rcsim('KEY_MUTE')" coords="64,263,13" />
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEUP')" coords="87,232,20" />
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEDOWN')" coords="42,234,20" />
+  <area shape="circle" href="javascript:rcsim('KEY_OK')" coords="32,202,13" />
+  <area shape="circle" href="javascript:rcsim('KEY_HOME')" coords="97,203,11" />
+  <area shape="circle" href="javascript:rcsim('KEY_BLUE')" coords="103,77,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_RED')" coords="28,77,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_GREEN')" coords="50,62,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_YELLOW')" coords="80,62,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_0')" coords="64,367,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_9')" coords="97,340,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_8')" coords="64,340,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_7')" coords="33,341,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_6')" coords="97,315,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_5')" coords="65,315,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_4')" coords="32,315,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_3')" coords="96,290,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_2')" coords="65,289,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_1')" coords="33,289,12" />
+</map>
+end-block~remote_sagem
+
+
+

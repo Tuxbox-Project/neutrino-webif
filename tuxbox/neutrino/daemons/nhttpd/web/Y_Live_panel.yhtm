@@ -1,0 +1,92 @@
+{=var-set:must_management={=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip=}~1~=}{=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip2=}~1~=}=}
+{=include-block:Y_Blocks.txt;head_no_charset=}
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+function enablePanel(state)
+{
+	if(state == 1)
+	{
+		document.x.bouquets.disabled=false;
+		document.x.channels.disabled=false;
+		document.x.go.disabled=false;
+		{=if-equal:{=typ=}~live~
+		document.x.epg.disabled=false;
+		=}
+	}
+	else
+	{
+		document.x.bouquets.disabled=true;
+		document.x.channels.disabled=true;
+		document.x.go.disabled=true;
+		{=if-equal:{=typ=}~live~
+		document.x.epg.disabled=true;
+		=}
+	}
+}
+function changeChannel()
+{
+	enablePanel(0);
+	var sel=document.x.channels.selectedIndex;
+	if(sel != -1)
+	{
+		channel = document.x.channels[sel].value;
+		parent.live.do_stop();
+		parent.live.location.href="Y_Live_Wait.yhtm?mode={=func:get_mode=}&typ={=typ=}&channel="+channel;
+	}
+	enablePanel(1);
+	{=if-equal:{=typ=}~live~
+//		view_epg();
+	=}
+}
+function view_epg()
+{
+	var sel=document.x.channels.selectedIndex;
+	if(sel != -1)
+	{
+		channel = document.x.channels[sel].value;
+		{=if-equal:{=typ=}~live~
+		var f = parent.parent.col2;
+		f.location.href = "Y_Dyn_Pages.yhtm?page=frame_live_epg&channel="+channel;
+		~
+		window.open("Y_Dyn_Pages.yhtm?page=frame_live_epg&channel="+channel, "epg");
+		=}
+	}
+}
+//]]>
+</script>
+</head>
+<body>
+<div>
+<form name="x" action="/Y_Live_panel.yhtm" method="get">
+	<table class="y_live_table" cellspacing="0" cellpadding="0" style="margin:0">
+		<tr><td>
+			<select size="1" class="y_live_bouquets" name="bouquets" onchange="document.x.submit()" title="select bouquet - channels will be updated">
+			{=func:get_bouquets_as_dropdown {=if-empty:{=bouquets=}~{=func:get_actual_bouquet_number=}~{=bouquets=}=} {=if-empty:{=var-get:must_management=}~~true=}=}
+			</select>
+			<td>&nbsp;</td>
+		</td></tr>
+		<tr><td>
+			<select size="1" class="y_live_channels" name="channels" title="select channel - use go to zap">
+			{=func:get_channels_as_dropdown {=if-empty:{=bouquets=}~{=func:get_actual_bouquet_number=}~{=bouquets=}=} {=if-empty:{=channels=}~{=func:get_actual_channel_id=}~{=channels=}=}=}
+			</select>
+			<td><button name="go" class="y_live_button" type="button" title="change channel" onclick="changeChannel()">Go</button>
+			<button name="epg" class="y_live_button" type="button" title="view epg for selected channel" onclick="view_epg()">EPG</button>
+			</td>
+		</td></tr>
+	</table>
+	<input type="hidden" name="typ" value="{=typ=}"/>
+	<input type="hidden" name="mode" value="{=mode=}"/>
+</form>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+	{=if-equal:{=typ=}~live~
+//		window.setTimeout("view_epg()",1000);
+	=}
+//]]>
+</script>
+
+</body>
+</html>

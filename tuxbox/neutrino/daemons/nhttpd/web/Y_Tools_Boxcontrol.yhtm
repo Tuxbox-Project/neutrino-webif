@@ -1,0 +1,92 @@
+{=include-block:Y_Blocks.txt;head=}
+<script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+function goConfirmUrl(_meld, _url) 
+{
+	if (confirm(_meld)==true) goUrl(_url);
+}
+function goUrl(_url)
+{
+	out.location.href = _url;
+}
+//]]>
+</script>
+</head>
+<body>
+<div class="work_box">
+	<div class="work_box_head"><div class="work_box_head_h2">
+	{=var-set:help_url=Neutrino:yWeb:BoxControl#Control=}{=var-set:menu=Control=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	<div class="work_box_body">
+	<form action="">
+		<table class="y_invisible_table" cellpadding="5">
+		<tr><td class="y_form_header">dbox</td><td class="y_form_header">Standby Modus</td></tr>
+		<tr>
+			<td>
+			<input type="button" value="Neu starten" title="reboot" onclick='goConfirmUrl("dbox wirklich neu starten?","/control/reboot");'/>
+			<input type="button" value="Ausschalten" title="shutdown" onclick='goConfirmUrl("dbox wirklich ausschalten?","/control/shutdown");'/>
+			</td>
+			<td>
+			<input type="button" value="An" onclick='goUrl("/control/standby?on");'/>
+			<input type="button" value="Aus" onclick='goUrl("/control/standby?off");'/>
+			<input type="button" value="Status" onclick='goUrl("/control/exec?Y_Tools&amp;standby_status");'/>
+			</td>
+		</tr>
+		<tr><td class="y_form_header">Playback</td><td class="y_form_header">Sectionsd</td></tr>
+		<tr>
+			<td>
+			<input type="button" value="An" onclick='goUrl("/control/zapto?startplayback");'/>
+			<input type="button" value="Aus" onclick='goUrl("/control/zapto?stopplayback");'/>
+			<input type="button" value="Status" onclick='goUrl("/control/zapto?statusplayback");'/>
+			</td>
+			<td>
+			<input type="button" value="An" onclick='goUrl("/control/zapto?startsectionsd");'/>
+			<input type="button" value="Aus" onclick='goUrl("/control/zapto?stopsectionsd");'/>
+			<input type="button" value="Status" onclick='goUrl("/control/zapto?statussectionsd");'/>
+			<input type="button" value="Restart" onclick='goUrl("/control/exec?Y_Tools&amp;restart_sectionsd");'/>
+			</td>
+		</tr>
+		<tr><td class="y_form_header">Aufnahme-Modus</td><td class="y_form_header">SPTS</td></tr>
+		<tr>
+			<td>
+			<input type="button" value="An" onclick='goUrl("/control/setmode?record=start");'/>
+			<input type="button" value="Aus" onclick='goUrl("/control/setmode?record=stop");'/>
+			<input type="button" value="Status" onclick='goUrl("/control/setmode?status");'/>
+			</td>
+			<td>
+			<input type="button" value="An" onclick='goUrl("/control/system?setAViAExtPlayBack=spts");'/>
+			<input type="button" value="Aus" onclick='goUrl("/control/system?setAViAExtPlayBack=pes");'/>
+			<input type="button" value="Status" onclick='goUrl("/control/system?getAViAExtPlayBack");'/>
+			</td>
+		</tr>
+		<tr><td class="y_form_header">Fernbedienung</td><td class="y_form_header">Live Lock</td></tr>
+		<tr>
+			<td>
+			<input type="button" value="An" onclick='goUrl("/control/rc?unlock");'/>
+			<input type="button" value="Aus" onclick='goUrl("/control/rc?lock");'/>
+			<input type="button" value="LCD Unlock" onclick='goUrl("/control/exec?Y_Live&amp;live_LCD_off");'/>
+			</td>
+			<td>
+			<input type="button" value="Lock" onclick='live_lock();'/>
+			<input type="button" value="Unlock" onclick='live_unlock();'/>
+			</td>
+		</tr>
+		<tr><td class="y_form_header">Optischer Ausgang</td><td class="y_form_header">&nbsp;</td></tr>
+		<tr>
+			<td>
+			<input type="button" value="An" onclick='goUrl("/control/system?setAViAExtIec=on");'/>
+			<input type="button" value="Aus" onclick='goUrl("/control/system?setAViAExtIec=off");'/>
+			<input type="button" value="Status" onclick='goUrl("/control/system?getAViAExtIec");'/>
+			</td>
+			<td>
+			&nbsp;
+			</td>
+		</tr>	
+		</table>
+	</form>
+	</div>
+</div>
+<iframe name="out" id="out" width="100%" height="200" align="left" frameborder="0">Your Browser does not support IFrames.</iframe>
+
+</body>
+</html>
