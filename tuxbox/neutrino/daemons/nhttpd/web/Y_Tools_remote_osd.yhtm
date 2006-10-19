@@ -1,3 +1,4 @@
+{=var-set:cancache=yPInstall=}
 {=var-set:dboxshot={=if-file-exists:/bin/dboxshot~/bin/dboxshot~{=if-file-exists:/var/bin/dboxshot~/var/bin/dboxshot~/var/bin/dboxshot=}=}=}
 {=include-block:Y_Blocks.txt;head=}
 <script type="text/javascript" src="/Y_Baselib.js"></script>

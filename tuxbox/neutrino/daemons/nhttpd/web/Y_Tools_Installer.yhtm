@@ -1,3 +1,4 @@
+{=var-set:cancache=yPConf=}
 {=include-block:Y_Blocks.txt;management_check_top=}
 {=include-block:Y_Blocks.txt;head=}
 <script type="text/javascript" src="/Y_Baselib.js"></script>
@@ -9,9 +10,12 @@ function do_submit()
 	{
 		out.location.href = "Y_Wait.yhtm";
 		document.f.su.disabled=true;
+		yhttpd_cache_clear("yPInstall");
 		window.setTimeout("document.f.submit()",1000);
 		document.f.su.disabled=false;
 	}
+	else
+		alert("No file given!");
 }
 //]]>div
 </script>

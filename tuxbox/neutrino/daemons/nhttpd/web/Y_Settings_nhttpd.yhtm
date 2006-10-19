@@ -5,7 +5,7 @@
 //<![CDATA[
 function form_init() 
 {
-	var val = "{=ini-get:/var/tuxbox/config/nhttpd.conf;Authenticate;false=}";
+	var val = "{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.authenticate;false=}";
 	if(val == "true")
 		document.f.authenticate[1].checked = true
 	else
@@ -21,6 +21,7 @@ function do_submit()
 	else
 	{
 		show_waitbox(true);
+		yhttpd_cache_clear("yPConf");
 		document.f.submit();
 	}
 }
@@ -38,15 +39,15 @@ function do_submit()
 			<tr><td colspan="2" class="y_form_header">Authentifikation</td></tr>
 			<tr>
 				<td>Benutzer</td>
-				<td><input type="text" name="authuser" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;AuthUser;root~open=}" title="username"/></td>
+				<td><input type="text" name="authuser" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.username;root~open=}" title="username"/></td>
 			</tr>
 			<tr>
 				<td>Passwort</td>
-				<td><input type="password" name="authpassword" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;AuthPassword;dbox2~cache=}" title="password"/></td>
+				<td><input type="password" name="authpassword" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.password;dbox2~cache=}" title="password"/></td>
 			</tr>
 			<tr>
 				<td>Client ohne Authentifikation</td>
-				<td><input type="text" name="noauthclient" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;NoAuthClient~cache=}" title="Client with no authentication check. Enter IP."/></td>
+				<td><input type="text" name="noauthclient" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.no_auth_clien~cache=}" title="Client with no authentication check. Enter IP."/></td>
 			</tr>
 			<tr>
 				<td>Authentifikation</td>
@@ -58,13 +59,13 @@ function do_submit()
 			<tr><td colspan="2" class="y_form_header">Allgemeines</td></tr>
 			<tr>
 				<td>Port</td>
-				<td><input type="text" name="port" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;Port;80~cache=}" title="port"/>
+				<td><input type="text" name="port" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.port;80~cache=}" title="port"/>
 				<br/>&Auml;nderung des Ports wird erst nach einem Neustart wirksam.
 				</td>
 			</tr>
 			<tr>
 				<td>Hosted Web (Mount)</td>
-				<td><input type="text" name="hosteddocumentroot" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;HostedDocRoot~cache=}" title="Root of hosted Web. Enter mount directory."/></td>
+				<td><input type="text" name="hosteddocumentroot" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;Tuxbox.HostedDocumentRoot~cache=}" title="Root of hosted Web. Enter mount directory."/></td>
 			</tr>
 			<tr><td colspan="2" class="y_form_header">Logos &amp; Extras</td></tr>
 			<tr>
@@ -74,6 +75,20 @@ function do_submit()
 			<tr>
 				<td>URL</td>
 				<td><input type="text" name="ExtrasDocURL" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;ExtrasDocURL~cache=}" title="URL Root of hosted Extra Web. Enter URL (/hosted/extras)."/></td>
+			</tr>
+			<tr><td colspan="2" class="y_form_header">Server</td></tr>
+			<tr>
+				<td>IPs mit No keep-alive<br/>(z.B. JtG Server, trennen mit Komma) </td>
+				<td><input type="text" name="no_keep_alive_ips" size="30" maxsize="254" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;server.no_keep-alive_ips;~cache=}" title="IPs not to HTTP1.1 keep alive like JtG. Comma seperated."/>
+				</td>
+			</tr>
+			<tr>
+				<td>Cache</td>
+				<td><a href="/y/cache-info" target="_blank"><u>Cache info</u>&nbsp;</a><input type="button" name="clearcache" value="clear cache" title="clear cache" onclick="javascript:yhttpd_cache_clear('');"/></td>
+			</tr>
+			<tr>
+				<td>Server Configuration</td>
+				<td><a href="/y/server-config" target="_blank"><u>Server Config</u></a></td>
 			</tr>
 		</table>
 		<br/>

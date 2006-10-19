@@ -1,6 +1,6 @@
 /*	yWeb Baselib by yjogol
-	$Date: 2006/09/16 14:52:19 $
-	$Revision: 1.1 $
+	$Date: 2006/10/19 19:02:51 $
+	$Revision: 1.2 $
 */
 var agt=navigator.userAgent.toLowerCase();
 var is_ie     = ((agt.indexOf("msie") != -1) && (agt.indexOf("opera") == -1));
@@ -113,7 +113,7 @@ function loadXMLDoc(_url, _processReqChange)
 		if(g_req.overrideMimeType)
 		{	g_req.overrideMimeType('text/xml');}
 		g_req.open("GET", _url, true);
-//		g_req.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2000 00:00:00 GMT");
+		g_req.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2000 00:00:00 GMT");
 		g_req.send(null);
 	} 
 	else if (window.ActiveXObject)
@@ -137,7 +137,7 @@ function loadSyncURL(_url)
 	{
 		_req = new XMLHttpRequest();
 		_req.open("GET", _url, false);
-//		_req.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2000 00:00:00 GMT");
+		_req.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2000 00:00:00 GMT");
 		_req.send(null);
 	} 
 	else if (window.ActiveXObject)
@@ -164,7 +164,7 @@ function loadSyncURLxml(_url)
 	{
 		_req = new XMLHttpRequest();
 		_req.open("GET", _url, false);
-//		_req.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2000 00:00:00 GMT");
+		_req.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2000 00:00:00 GMT");
 		_req.send(null);
 	} 
 	else if (window.ActiveXObject)
@@ -342,4 +342,11 @@ function live_unlock()
 	loadSyncURL("/control/lcd?lock=0");
 	loadSyncURL("/control/rc?unlock");
 	loadSyncURL("/control/zapto?startplayback");
+}
+function yhttpd_cache_clear(category)
+{
+	if(category == "")
+		loadSyncURL("/y/cache-clear");
+	else
+		loadSyncURL("/y/cache-clear?category="+category);
 }
