@@ -47,7 +47,7 @@ function do_check()
 	sLog_addRow(sLog_body, "ok", "yWeb Version is: {=ini-get:Y_Version.txt;version=} {=ini-get:Y_Version.txt;date=}", "ok");
 	
 	/*webserver*/
-	var needed_nhttpd_version = "3.0.5";
+	var needed_nhttpd_version = "3.0.6";
 	var nhttpd_version = loadSyncURL("/control/info?nhttpd_version");
 	if(nhttpd_version.search(/error/)!=-1)
 		nhttpd_version = "0.0.0-unknown";
@@ -118,11 +118,6 @@ function do_check()
 		sLog_addRow(sLog_body, "green", "Ucodes: avia600.ux found", "ok");
 	~
 		sLog_addRow(sLog_body, "yellow", "Ucodes: avia600.ux not found. "+wiki_url("Ucodes"), "notice");
-	=}
-	{=if-file-exists:/var/tuxbox/ucodes/ucode.bin~
-		sLog_addRow(sLog_body, "green", "Ucodes: ucode.bin found", "ok");
-	~
-		sLog_addRow(sLog_body, "yellow", "Ucodes: ucode.bin not found. Internal ucodes used? "+wiki_url("Ucodes"), "notice");
 	=}
 	{=if-file-exists:/var/tuxbox/ucodes/cam-alpha.bin~
 		sLog_addRow(sLog_body, "green", "Ucodes: cam-alpha found", "ok");
