@@ -103,6 +103,28 @@ start-block~neutrino_form-data_record
 					<input type="radio" name="in_spts_mode" value="true" title="SPTS mode: on"/>AN
 				</td>
 			</tr>
+			<tr>
+				<td style="border-top: 1px solid #6D96A9;">Standard Tonspur aufnehmen</td>
+				<td style="border-top: 1px solid #6D96A9;">
+					<input type="radio" name="audio_std" value="0" title="record standard audio channel: off"/>AUS&nbsp;
+					<input type="radio" name="audio_std" value="1" title="record standard audio channel: on"/>AN
+				</td>
+			</tr>
+			<tr>
+				<td>Alternative Tonspur aufnehmen</td>
+				<td>
+					<input type="radio" name="audio_alt" value="0" title="record alternate audio channel: off"/>AUS&nbsp;
+					<input type="radio" name="audio_alt" value="1" title="record alternate audio channel: on"/>AN
+				</td>
+			</tr>
+			<tr>
+				<td>AC3 Tonspuren aufnehmen</td>
+				<td>
+					<input type="radio" name="audio_ac3" value="0" title="record ac3 audio channels: off"/>AUS&nbsp;
+					<input type="radio" name="audio_ac3" value="1" title="record ac3 audio channels: on"/>AN
+				</td>
+			</tr>
+			<input type="hidden" name="recording_audio_pids_default" value=""/>
 		</table>
 		<br/>
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
@@ -144,6 +166,20 @@ function form_init()
 		document.f.in_spts_mode[1].checked = true;
 	else
 		document.f.in_spts_mode[0].checked = true;
+	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;recording_audio_pids_default;true=}";
+	val = parseInt(val);
+	if(val & 1)
+		document.f.audio_std[1].checked = true;
+	else
+		document.f.audio_std[0].checked = true;
+	if(val & 2)
+		document.f.audio_alt[1].checked = true;
+	else
+		document.f.audio_alt[0].checked = true;
+	if(val & 4)
+		document.f.audio_ac3[1].checked = true;
+	else
+		document.f.audio_ac3[0].checked = true;
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;recording_type;0=}";
 	document.f.rec_type.selectedIndex = val;
 		
@@ -200,6 +236,10 @@ function change_rec_type()
 function do_submit()
 {
 	show_waitbox(true);
+	var val = (document.f.audio_std[1].checked == true)?1:0;
+	val +=(document.f.audio_alt[1].checked == true)?2:0;
+	val +=(document.f.audio_ac3[1].checked == true)?4:0;
+	document.f.recording_audio_pids_default.value = val;
 	document.f.submit();
 }
 form_init();
@@ -217,6 +257,7 @@ start-block~neutrino_record_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_stopplayback;{=stopplayback=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_stopsectionsd;{=stopsectionsd=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_vcr_no_scart;{=vcr_no_scart=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_audio_pids_default;{=recording_audio_pids_default=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_in_spts_mode;{=in_spts_mode=}~save=}
 {=ini-set:/var/tuxbox/config/timerd.conf;EXTRA_TIME_START;{=EXTRA_TIME_START=}=}
 {=ini-set:/var/tuxbox/config/timerd.conf;EXTRA_TIME_END;{=EXTRA_TIME_END=}=}
@@ -306,11 +347,28 @@ start-block~neutrino_form-data_movieplayer
 					<input type="radio" name="streaming_force_avi_rawaudio" value="1" title="force AC3: on"/>AN
 				</td>
 			</tr>
-			
 			<tr>
 				<td style="border-top: 1px solid #6D96A9;">Startverzeichnis</td>
 				<td style="border-top: 1px solid #6D96A9;"><input type="text" name="network_nfs_moviedir" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;network_nfs_moviedir~cache=}" title="movie start directory"/></td>
 			</tr>	
+			<tr>
+				<td style="border-top: 1px solid #6D96A9;">Verwende Buffer (WabberQueue)</td>
+				<td style="border-top: 1px solid #6D96A9;">
+					<input type="radio" name="streaming_use_buffer" value="0" title="WabberQueue: off"/>AUS&nbsp;
+					<input type="radio" name="streaming_use_buffer" value="1" title="WabberQueue: on"/>AN
+				</td>
+			</tr>	
+			<tr>
+				<td>Anzahl Buffersegmente</td>
+				<td><input type="text" name="streaming_buffer_segment_size" size="2" value="{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_buffer_segment_size~cache=}" title="VLC directory on server"/></td>
+			</tr>
+			<tr>
+				<td>TV Bild im Browser</td>
+				<td>
+					<input type="radio" name="streaming_show_tv_in_browser" value="0" title="show tv in browser: off"/>AUS&nbsp;
+					<input type="radio" name="streaming_show_tv_in_browser" value="1" title="show tv in browser: on"/>AN
+				</td>
+			</tr>
 		</table>
 		<br/>
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
@@ -352,6 +410,17 @@ function form_init()
 		document.f.streaming_resolution.selectedIndex = val;
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_transcode_video_codec;0~cache=}";
 		document.f.streaming_transcode_video_codec.selectedIndex = val;
+
+	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_use_buffer;0~cache=}";
+	if(val == "1")
+		document.f.streaming_use_buffer[1].checked = true;
+	else
+		document.f.streaming_use_buffer[0].checked = true;
+	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_show_tv_in_browser;0~cache=}";
+	if(val == "1")
+		document.f.streaming_show_tv_in_browser[1].checked = true;
+	else
+		document.f.streaming_show_tv_in_browser[0].checked = true;
 		
 	change_streaming_type();
 }
@@ -398,6 +467,9 @@ start-block~neutrino_movieplayer_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;streaming_audiorate;{=streaming_audiorate=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;streaming_transcode_audio;{=streaming_transcode_audio=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;streaming_force_avi_rawaudio;{=streaming_force_avi_rawaudio=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;streaming_use_buffer;{=streaming_use_buffer=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;streaming_buffer_segment_size;{=streaming_buffer_segment_size=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;streaming_show_tv_in_browser;{=streaming_show_tv_in_browser=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;network_nfs_moviedir;{=network_nfs_moviedir=}~save=}
 end-block~neutrino_movieplayer_save_settings
 
@@ -546,6 +618,10 @@ start-block~neutrino_form-data_diverse
 				<td>Max. Events</td>
 				<td><input type="text" name="epg_max_events" size="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;epg_max_events~cache=}" title=""/></td>
 				</td>
+			</tr>
+			<tr>
+				<td>EPG Verzeichnis</td>
+				<td><input type="text" name="epg_dir" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;epg_dir~cache=}" title="epg dircetory"/></td>
 			</tr>
 			<tr>
 				<td style="border-top: 1px solid #6D96A9;"><strong>Fernbedienung</strong></td>
@@ -699,6 +775,7 @@ start-block~neutrino_diverse_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;epg_cache_time;{=epg_cache_time=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;epg_old_events;{=epg_old_events=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;epg_max_events;{=epg_max_events=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;epg_dir;{=epg_dir=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;repeat_blocker;{=repeat_blocker=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;repeat_genericblocker;{=repeat_genericblocker=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;shutdown_real_rcdelay;{=shutdown_real_rcdelay=}~cache=}
@@ -1070,7 +1147,7 @@ start-block~neutrino_form-data_direct_recording
 		<table cellspacing="0" border="0" cellpadding="2">
 			<tr>
 				<td>Aufnahmeverzeichnis</td>
-				<td><input type="text" name="network_nfs_recordingdir" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;network_nfs_recordingdir;/mnt/filme~open=}" title="recording directory"/></td>
+				<td><input type="text" name="network_nfs_recordingdir" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;network_nfs_recordingdir;/mnt/filme~open=}" title="recording directory"/></td>
 			</tr>
 			<tr>
 				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
@@ -1130,7 +1207,47 @@ start-block~neutrino_form-data_direct_recording
 				<td>Verzeichnisrechte</td>
 				<td><input type="text" name="recording_dir_permissions_0" size="3" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_permissions_0;755~cache=}" title="directory permissions (UNIX octals)"/></td>
 			</tr>
-			
+			<tr>
+				<td style="border-top: 1px solid #6D96A9;">Aufnahmeverzeichnis 0</td>
+				<td style="border-top: 1px solid #6D96A9;"><input type="text" name="recording_dir_0" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_0;/mnt/filme~cache=}" title="recording directory"/></td>
+			</tr>
+			<tr>
+				<td>Aufnahmeverzeichnis 1</td>
+				<td><input type="text" name="recording_dir_1" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_1;~cache=}" title="recording directory"/></td>
+			</tr>
+			<tr>
+				<td>Aufnahmeverzeichnis 2</td>
+				<td><input type="text" name="recording_dir_2" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_2;~cache=}" title="recording directory"/></td>
+			</tr>
+			<tr>
+				<td>Aufnahmeverzeichnis 3</td>
+				<td><input type="text" name="recording_dir_3" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_3;~cache=}" title="recording directory"/></td>
+			</tr>
+			<tr>
+				<td>Aufnahmeverzeichnis 4</td>
+				<td><input type="text" name="recording_dir_4" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_4;~cache=}" title="recording directory"/></td>
+			</tr>
+			<tr>
+				<td>Aufnahmeverzeichnis 5</td>
+				<td><input type="text" name="recording_dir_5" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_5;~cache=}" title="recording directory"/></td>
+			</tr>
+			<tr>
+				<td>Aufnahmeverzeichnis 6</td>
+				<td><input type="text" name="recording_dir_6" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_6;~cache=}" title="recording directory"/></td>
+			</tr
+			<tr>
+				<td>Aufnahmeverzeichnis 7</td>
+				<td><input type="text" name="recording_dir_7" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_7;~cache=}" title="recording directory"/></td>
+			</tr>
+			<tr>
+				<td>Aufnahmeverzeichnis 8</td>
+				<td><input type="text" name="recording_dir_8" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_8;~cache=}" title="recording directory"/></td>
+			</tr>
+			<tr>
+				<td>Aufnahmeverzeichnis 9</td>
+				<td><input type="text" name="recording_dir_9" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_9;~cache=}" title="recording directory"/></td>
+			</tr>
+
 		</table>
 		<br/>
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
@@ -1203,6 +1320,16 @@ start-block~neutrino_direct_recording_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_choose_direct_rec_dir;{=recording_choose_direct_rec_dir=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_epg_for_filename;{=recording_epg_for_filename=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_0;{=recording_filename_template_0=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_0;{=recording_dir_0=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_1;{=recording_dir_1=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_2;{=recording_dir_2=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_3;{=recording_dir_3=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_4;{=recording_dir_4=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_5;{=recording_dir_5=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_6;{=recording_dir_6=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_7;{=recording_dir_7=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_8;{=recording_dir_8=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_9;{=recording_dir_9=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_permissions_0;{=recording_dir_permissions_0=}~save=}
 end-block~neutrino_direct_recording_save_settings
 

@@ -11,10 +11,11 @@ function do_snapshot()
 function do_snapshot2()
 {
 	var _shot = document.getElementById("shot");
-	dbox_exec_command("{=if-file-exists:/var/bin/fbshot~/var/bin/fbshot~fbshot=} -q /tmp/a.png");
+	var filename = id("file").value;
+	dbox_exec_command("{=if-file-exists:/var/bin/fbshot~/var/bin/fbshot~fbshot=} -q /tmp/"+filename+".png");
 	show_waitbox(false);
 	show_obj("shot", true);
-	_shot.src = "/tmp/a.png?"+Math.random();
+	_shot.src = "/tmp/"+filename+".png?"+Math.random();
 }
 function do_dboxshot()
 {
@@ -24,10 +25,13 @@ function do_dboxshot()
 function do_dboxshot2()
 {
 	var _shot = document.getElementById("shot");
-	dbox_exec_command("{=if-file-exists:/var/bin/dboxshot~/var/bin/dboxshot~dboxshot=} -o /tmp/a.bmp");
+	var filename = id("file").value;
+	var res = dbox_exec_command("{=if-file-exists:/var/bin/dboxshot~/var/bin/dboxshot~dboxshot=} -r -o /tmp/"+filename+".bmp");
+	if(res != "")
+		dbox_exec_command("{=if-file-exists:/var/bin/dboxshot~/var/bin/dboxshot~dboxshot=} -o /tmp/"+filename+".bmp");
 	show_waitbox(false);
 	show_obj("shot", true);
-	_shot.src = "/tmp/a.bmp?"+Math.random();
+	_shot.src = "/tmp/"+filename+".bmp?"+Math.random();
 }
 function do_clearshot()
 {
@@ -36,7 +40,8 @@ function do_clearshot()
 function do_clearshot2()
 {
 	var _shot = document.getElementById("shot");
-	dbox_exec_command("rm /tmp/a.*");
+	dbox_exec_command("rm /tmp/*.png");
+	dbox_exec_command("rm /tmp/*.bmp");
 }
 //]]>
 </script>
@@ -53,6 +58,7 @@ function do_clearshot2()
 		<button name="dboxshot" onclick="do_dboxshot()">dboxshot</button>
 		=}
 		<button name="clearshot" onclick="do_clearshot()">Delete Screenshots</button>
+		&nbsp;Filename:<input type="text" value="a" id="file" size="16"/>
 		<br/>
 		<img id="shot" src="" style="visibility:hidden;"/>
 	</div>

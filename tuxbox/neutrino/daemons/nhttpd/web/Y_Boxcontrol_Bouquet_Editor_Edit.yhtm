@@ -28,7 +28,6 @@ function movechannels(source, destination)
 		}
 	}
 }
-
 function poschannel(box, direction)
 {
 	if (direction==0) {
@@ -86,8 +85,9 @@ function poschannel(box, direction)
 		</tr>
 		</table>
 		<input type="hidden" name="redirect" value="/Y_Boxcontrol_Bouquet_Editor_Main.yhtm"/>
-		<p><input type="button" value="speichern" onclick="do_submit();" />
+		<p><input type="button" value="&uuml;bernehmen" onclick="do_submit();" />
 		<input type="button" value="abbrechen" onclick="do_abort();" /></p>
+		Alle &Auml;nderungen m&uuml;ssen noch gespeichert werden!
 		</form>
 	</div>
 </div>

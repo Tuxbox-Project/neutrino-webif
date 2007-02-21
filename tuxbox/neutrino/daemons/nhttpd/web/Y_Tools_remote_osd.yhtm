@@ -13,7 +13,9 @@ function do_dboxshot()
 {
 	{=if-empty:{=var-get:dboxshot=}~~
 	var _shot = document.getElementById("shot");
-	dbox_exec_command("{=var-get:dboxshot=} -o /tmp/a.bmp");
+	var res = dbox_exec_command("{=var-get:dboxshot=} -r -o /tmp/a.bmp");
+	if(res != "")
+		dbox_exec_command("{=var-get:dboxshot=} -o /tmp/a.bmp");
 	_shot.src = "/tmp/a.bmp?"+Math.random();
 	=}
 }

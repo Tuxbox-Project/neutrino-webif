@@ -76,7 +76,7 @@ function on_transon_change()
 }
 function doRecord()
 {
-	var _live = parent.live.live;
+	var _live = parent.live;
 	if(document.v.record.value == "Record")
 	{
 		var transcode = "";

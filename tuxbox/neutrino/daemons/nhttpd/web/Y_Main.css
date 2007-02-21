@@ -308,7 +308,17 @@ tr {
 	left : 100px;
 	top : 100px;
 	visibility : hidden;
-	z-index : 5;
+	z-index : 500;
+}
+.y_wait_box_visible {
+	margin: 0;
+	background: url(/images/body-trans-r.gif) no-repeat bottom right;
+	font-size: 100%;
+	position : absolute;
+	left : 100px;
+	top : 100px;
+	visibility : visible;
+	z-index : 500;
 }
 .y_wait_box_head {
 	background: url(/images/head-orange-r.gif) no-repeat top right;
@@ -350,8 +360,8 @@ tr {
 }
 .y_live_button
 {
-	font-size: 8pt;
-	height: 20px;
+/*	font-size: 8pt;
+	height: 22px;*/
 	padding: 0;
 	color: #555555;
 	margin:0;
@@ -664,5 +674,5 @@ a.timer
 .blist
 {
 	white-space: nowrap;
-	height: 20;
+	height: 20px;
 }

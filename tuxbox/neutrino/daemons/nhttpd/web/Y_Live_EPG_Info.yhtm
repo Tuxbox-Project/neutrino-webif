@@ -11,6 +11,7 @@ function show_info(_desc, _info1, _info2)
 //]]>
 </script>
 </head>
+<a href="javascript:window.history.back()"><u>Zur&uuml;ck</u></a>
 <body>
 	<div class="y_epg_info">
 		<div id="description">&nbsp;</div>

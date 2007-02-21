@@ -38,13 +38,11 @@ function volumen_set(_volumen)
 function toggle_mute()
 {
 	var __button = document.getElementById("btMute");
-	if(__button.firstChild.nodeValue == "Mute")
-	{
+	if(__button.firstChild.nodeValue == "Mute"){
 		loadSyncURL("/control/volume?mute");
 		__button.firstChild.nodeValue = "Unmute";
 	}
-	else
-	{
+	else{
 		loadSyncURL("/control/volume?unmute");
 		__button.firstChild.nodeValue = "Mute";
 	}
@@ -67,7 +65,7 @@ function set_mode(_mode)
 	<div class="y_menu_sec_box_body">
 		<div class="y_menu_sec">
 			<ul>
-				<li><a target="work" title="Switch channels; edit Bouquets" href="Y_Boxcontrol_Bouquets.yhtm">Bouquets</a></li>
+				<li><a target="work" title="Switch channels" href="Y_Boxcontrol_Bouquets.yhtm">Bouquets</a></li>
 				<li><a target="work" title="control box functions (reboot, remote control, SPTS, ...)" href="Y_Tools_Boxcontrol.yhtm">Control</a></li>
 				<li><a target="work" title="send Messages to box" href="Y_Boxcontrol_Messages.yhtm">Messages</a></li>
 				<li><a target="work" title="Web-based Remote Control" href="Y_Tools_Rcsim.yhtm">Remote</a></li>

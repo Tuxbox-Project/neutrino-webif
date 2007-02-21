@@ -13,14 +13,12 @@
 				<li class="disabled" title="settings for yWeb itselfs (restricted by ManagementIP)">yWeb</li>
 				<li class="disabled" title="settings for Web Server daemon (restricted by ManagementIP)">WebServer</li>
 				<li class="disabled" title="download or upload ucodes (restricted by ManagementIP)">Ucodes</li>
-				<li class="disabled" title="settings for Live (restricted by ManagementIP)">Live</li>
 				<li class="disabled" title="download or upload Bouquetlist, Channellist, ... (restricted by ManagementIP)">Zapit</li>
 				<li class="disabled" title="backup or upload boot logos (restricted by ManagementIP)">Boot Logo</li>
 				<li class="disabled" title="SyncTimer Settings (restricted by ManagementIP)">Timer Settings</a></li>
 			~
 				<li><a title="settings for yWeb itselfs" target="work" href="Y_Settings_yWeb.yhtm">yWeb</a></li>
 				<li><a title="settings for Web Server daemon" target="work" href="Y_Settings_nhttpd.yhtm">WebServer</a></li>
-				<li><a title="settings for Live" target="work" href="Y_Settings_Live.yhtm">Live</a></li>
 				<li><a title="download or upload ucodes" target="work" href="Y_Settings_ucodes.yhtm">Ucodes</a></li>
 				<li><a title="download or upload Bouquetlist, Channellist, ..." target="work" href="Y_Settings_zapit.yhtm">Zapit</a></li>
 				<li><a title="backup or upload boot logos" target="work" href="Y_Tools_Bootlogo.yhtm">Boot Logo</a></li>

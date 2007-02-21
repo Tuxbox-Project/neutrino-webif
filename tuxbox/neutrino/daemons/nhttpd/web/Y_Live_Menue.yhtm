@@ -2,30 +2,30 @@
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
 //<![CDATA[
+var live_window;
 function go_live()
 {
+/*	try{
+		live_window.close();
+	}catch(e){}*/
 	var _url = (is_ie) ? "Y_Tools_NetStream.yhtm?browser=ie" : "Y_Tools_NetStream.yhtm?browser=moz";
 	parent.frames[1].location.href = _url;
 }
 function go_live_popup(_url)
 {
-	var res_w=parseInt("{=ini-get:/var/tuxbox/config/Y-Web.conf;live_resolution_w;384=}",10);
-	var res_h=parseInt("{=ini-get:/var/tuxbox/config/Y-Web.conf;live_resolution_h;288=}",10);
-	if(isNaN(res_w)) res_w=384;
-	if(isNaN(res_h)) res_h=288;
-	res_w = res_w;
-	res_h = res_h + 80;
-	var par = "width="+res_w+",height="+res_h;
+	res_w=384;
+	res_h=288+90;
+	var par = "width="+res_w+",height="+res_h+",resizable=yes";
 	tv = window.open(_url,'tv',par);
 	parent.frames[1].location.href = "Y_Live_Msg.yhtm";
 }
 function go_live_popup_tv()
 {
-	go_live_popup("Y_Live_View.yhtm?typ=popup&mode=tv");
+	live_window = go_live_popup("/Y_Live.yhtm?typ=popup&mode=tv");
 }
 function go_live_popup_radio()
 {
-	go_live_popup("Y_Live_View.yhtm?typ=popup&mode=radio");
+	live_window = go_live_popup("/Y_Live.yhtm?typ=popup&mode=radio");
 }
 //]]>
 </script>
@@ -50,6 +50,7 @@ function go_live_popup_radio()
 						<td align="right"><a title="LiveRadio (popup)" href="javascript:go_live_popup_radio()">Popup</a></td>
 					</tr></table>
 				</li>
+				<li><a title="LiveView" href="Y_Live.yhtm?browser=ie&type=live&mode=tv" target="work">LiveView</a></li>
 				<li id="transcode" style="display:none">
 				<a target="work" title="transcode box-stream" href="Y_LiveViewFull.yhtm?mode=tv&amp;typ=transcode">Transcoder</a></li>
 				<li><a title="test vlc plugin" href="javascript:go_live()">NetStream</a></li>
@@ -75,6 +76,9 @@ function go_live_popup_radio()
 		var _obj = document.getElementById("transcode");
 		_obj.style.display = "block";
 	}
+	{=if-empty:{=start=}~~
+		go_live_popup_tv();
+	=}
 //]]>
 </script>
 </body>

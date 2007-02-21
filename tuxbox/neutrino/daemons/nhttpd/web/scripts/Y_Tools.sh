@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Tools (yjogol)
-# $Date: 2006/09/16 14:52:23 $
-# $Revision: 1.1 $
+# $Date: 2007/02/21 17:41:04 $
+# $Revision: 1.2 $
 # -----------------------------------------------------------
 . ./_Y_Globals.sh
 . ./_Y_Library.sh
@@ -297,22 +297,13 @@ do_automount_setline()
 	mountset=`echo "$*"|sed -e "s;---;#;g" -e "s;,,;=;g"`
 	cp $filename "$filename.old"
 	chmod ou+rwss $filename
-#echo "--------------------------------" >> "/tmp/debug.txt"
-#echo "am name:$mountname val:$mountset" >> "/tmp/debug.txt"
-#echo "file vorher:" >> "/tmp/debug.txt"
-#cat $filename  >> "/tmp/debug.txt"
 	ex=`cat $filename|sed -n "/^$mountname[^a-zA-Z0-9].*$/p"`
 	if [ "$ex" = "" ]; then
 		echo "$mountset" >>$filename
 	else
 		tmp=`cat "$filename"|sed -e "s;^$mountname[^a-zA-Z0-9].*$;$mountset;g"`
-#	echo "a:$a" >> "/tmp/debug.txt"
 	echo "$tmp" >$filename
-#		cat "$filename"|sed -e "s;^$mountname[^a-zA-Z0-9]+.*$;$mountset;g">$filename
-#		sed -e "s;^$mountname[^a-zA-Z0-9].*$;$mountset;g" $filename >> "/tmp/debug.txt"
 	fi
-#echo "file nachher:"c
-#cat $filename  >> "/tmp/debug.txt"
 
 	kill -HUP `cat /var/run/automount.pid`
 }
@@ -396,6 +387,29 @@ do_installer()
 	fi
 }
 # -----------------------------------------------------------
+# extention Installer $1=URL
+# -----------------------------------------------------------
+do_ext_installer()
+{
+	rm $y_upload_file
+	wgetlog=`wget -O $y_upload_file $1 2>/tmp/err.log`
+	if [ -s "$y_upload_file" ];then
+		cd $y_path_tmp
+		tar -xf "$y_upload_file"
+		rm $y_upload_file
+		if [ -s "$y_install" ] #look for install.sh
+		then		
+			chmod 755 $y_install
+			o=`$y_install` # execute
+			rm -f $y_install # clean up
+			echo "ok: wget=$wgetlog"
+		fi
+	else
+		e=`cat /tmp/err.log`
+		echo "error: $y_install not found. wget=$wgetlog $e"
+	fi
+}
+# -----------------------------------------------------------
 # view /proc/$1 Informations
 # -----------------------------------------------------------
 proc()
@@ -414,7 +428,6 @@ wol()
 	y_format_message_html
 }
 # -----------------------------------------------------------
-# wake up $1=MAC
 # -----------------------------------------------------------
 dofbshot()
 {
@@ -424,6 +437,7 @@ dofbshot()
 	msg="$msg <script language='JavaScript' type='text/javascript'>document.fb.src='/tmp/a.png?hash=' + Math.random();window.setTimeout('parent.do_ready()',1000)</script>"
 	y_format_message_html_plain
 }
+
 # -----------------------------------------------------------
 # Settings Backup/Restore
 # -----------------------------------------------------------
@@ -489,6 +503,7 @@ case "$1" in
 	dounmount)		shift 1; do_unmount $* ;;
 	cmd)			shift 1; do_cmd $* ;;
 	installer)		shift 1; do_installer $* ;;
+	ext_installer)	shift 1; do_ext_installer $* ;;
 	proc)			shift 1; proc $* ;;
 	wol)			shift 1; wol $* ;;
 	dofbshot)		dofbshot ;;
@@ -529,6 +544,26 @@ case "$1" in
 		else
 			cat $y_path_httpd/channels.txt 
 		fi
+		;;
+
+	get_extension_list)
+		if [ -e "$y_path_config/extentions.txt" ]
+		then
+			cat $y_path_config/extentions.txt
+		else
+			cat $y_path_httpd/extentions.txt
+		fi
+		;;
+
+	write_extension_list)
+		shift 1
+		echo  "$*" >$y_path_config/extentions.txt
+		;;
+	
+	url_get)
+		shift 1
+		res=`wget -O /tmp/$2 "$1" >/tmp/url.log`
+		cat /tmp/$2
 		;;
 
 	standby_status)

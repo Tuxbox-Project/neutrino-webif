@@ -4,7 +4,7 @@
 //<![CDATA[
 function doTranscode()
 {
-	var _live = parent.live.live;
+	var _live = parent.live;
 	if(document.v.transcode.value == "Transcode")
 	{
 		var transcode = "transcode{"+

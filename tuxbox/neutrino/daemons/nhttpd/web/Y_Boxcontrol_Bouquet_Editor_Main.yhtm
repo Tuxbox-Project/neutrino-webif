@@ -14,7 +14,6 @@ function hide_forms()
 }
 function do_reload()
 {
-//alert("href:"+document.location.href+" gurl:"+gurl+" path+s+h:"+document.location.pathname+document.location.search+document.location.hash);
 	if((document.location.pathname+document.location.search+document.location.hash) == gurl)
 		document.location.reload();
 	else
@@ -33,6 +32,11 @@ function do_save()
 	loadSyncURL("/control/savebouquet");
 	alert("Bouquet-Liste gespeichert");
 }
+function do_update()
+{
+	hide_forms();
+	loadSyncURL("/control/updatebouquet");
+}
 function do_move(bouquetnr, action)
 {
 	var sel = parseInt(String(bouquetnr));
@@ -45,8 +49,7 @@ function do_move(bouquetnr, action)
 }
 function do_delete(bouquetnr, bouquet_name)
 {
-	if (confirm("Bouquet \""+bouquet_name+"\" wirklich loeschen?")==true)
-	{
+	if (confirm("Bouquet \""+bouquet_name+"\" wirklich loeschen?")==true){
 		loadSyncURL("/control/deletebouquet?selected="+bouquetnr);
 		gurl = "/Y_Boxcontrol_Bouquet_Editor_Main.yhtm?selected=" + bouquetnr+ "#akt";
 		window.setTimeout('do_reload()',50);
@@ -63,14 +66,13 @@ function do_add_abort()
 }
 function do_add()
 {
-	if(document.add.bouquet_name.value != "")
-	{
+	if(document.add.bouquet_name.value != ""){
 		if(loadSyncURL("/control/addbouquet?name="+document.add.bouquet_name.value) != "Ok\r\n")
 			alert("Bouquet-Name existiert schon!");
 		else
 			gurl = "/Y_Boxcontrol_Bouquet_Editor_Main.yhtm#akt";
-			show_obj("add",false);
-			window.setTimeout('do_reload()',50);
+		show_obj("add",false);
+		window.setTimeout('do_reload()',50);
 	}
 	else
 		alert("Es wurde kein Bouquet-Name angegeben!");
@@ -89,12 +91,10 @@ function do_rename_abort()
 
 function do_rename()
 {
-	if(document.rename.bouquet_name.value != "")
-	{
+	if(document.rename.bouquet_name.value != ""){
 		if(loadSyncURL("/control/renamebouquet?selected="+document.rename.bouquetnr.value+"&nameto="+document.rename.bouquet_name.value) != "Ok\r\n")
 			alert("Bouquet-Name existiert schon!");
-		else
-		{
+		else{
 			gurl = "/Y_Boxcontrol_Bouquet_Editor_Main.yhtm?selected=" + bouquetnr+ "#akt";
 			show_obj("rename",false);
 //			display_obj("rename",false);
@@ -126,10 +126,6 @@ function do_rename()
 	<div class="work_box_head"><div class="work_box_head_h2">
 	{=var-set:help_url=Neutrino:yWeb:BoxControl#Bouquet-Editor=}{=var-set:menu=Bouquet-Editor=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-		<p>
-			<a href="javascript:do_add_start()">[add Bouquet]</a>
-			<a href="javascript:do_save()">[save]</a>
-		</p>
 		<div id="add" class="fly_form">
 			<form name="add" accept-charset="UTF-8" action="">
 				<p><b>Bouquet hinzuf&uuml;gen</b><br/>
@@ -183,6 +179,10 @@ function do_rename()
 =}
 {=func:bouquet_editor_main {=var-get:row=}=}
 		</table>
+		<p>
+			<input type="button" value="Bouquet hinzuf&uuml;gen" onclick="javascript:do_add_start()"/>
+			<input type="button" value="Alle &Auml;nderungen speichern" onclick="javascript:do_save()"/>
+		</p>
 	</div>
 </div>
 </body>

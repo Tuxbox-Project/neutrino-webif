@@ -79,13 +79,20 @@ function i_stop()
 						title="Mounts, WOL, Expert Tools">Tools</a></li>
 					<li><a class="y_menu_prim_item" target="base" href="Y_Dyn_Pages.yhtm?page=frame_settings" 
 						title="Settings for Box, Web, Plugins ...">Settings</a></li>
+					<li><a class="y_menu_prim_item" target="base" href="Y_Dyn_Pages.yhtm?page=frame_ext" 
+						title="User Extentions ...">Extensions</a></li>
 					<li><a class="y_menu_prim_item" target="base" href="Y_Dyn_Pages.yhtm?page=frame_info" 
 						title="Information about yWeb, Updates">Info</a></li>
 				</ul>
 			</td>
+			<td>
+				<a target="base" href="Y_Dyn_Pages.yhtm?page=frame_live_directtv" title="LiveTV"><img src="/images/live.gif"></a>&nbsp;
+				<a target="base" href="Y_Dyn_Pages.yhtm?page=frame_live&dostart=live_tv_popup" title="LiveTV Popup"><img src="/images/live_popup.gif"></a>&nbsp;
+				<a href="/control/build_live_url?vlc_link=true" title="Stream to VLC Client"><img src="/images/vlc.gif"></a>
+			</td>
 			<td align="right">
 				<span id="state" style="color : red;font-family: Courier New, Courier, monospace;">&nbsp;</span>
-				<span id="box_name" style="color : #{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_color=};">
+				<span id="box_name" {=if-empty:{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_color=}~~style="color : #{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_color=};"=}>
 					<b>{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_name=}</b></span>
 				<span id="clock">00:00</span>
 			</td>

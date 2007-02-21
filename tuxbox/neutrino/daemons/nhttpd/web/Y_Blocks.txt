@@ -14,6 +14,11 @@ start-block~timer
 </body>
 end-block~timer
 
+# ------- build live url
+start-block~build_live_url
+{=var-set:mrl={=if-equal:{=mode=}~tv~http://{=func:get_header_data Host=}:31339/0,{=func:get_video_pids {=if-empty:{=audiopid=}~00000~{=audiopid=}=}=}~http://{=func:get_header_data Host=}:31338/{=func:get_audio_pid=}=}=}
+end-block~build_live_url
+
 # ------- yWeb save Settings
 start-block~yWeb_save_settings
 {=ini-set:/var/tuxbox/config/Y-Web.conf;slavebox;{=slavebox=}~open=}
@@ -29,10 +34,9 @@ end-block~yWeb_save_settings
 
 # ------- Live save Settings
 start-block~Live_save_settings
-{=ini-set:/var/tuxbox/config/Y-Web.conf;live_resolution_w;{=liveResolution_w=}~open=}
-{=ini-set:/var/tuxbox/config/Y-Web.conf;live_resolution_h;{=liveResolution_h=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;deinterlace;{=deinterlace=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;deinterlace_filter;{=v=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;udp;{=udp=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;http_caching;{=http_caching=}~save=}
 end-block~Live_save_settings
 
@@ -40,9 +44,10 @@ end-block~Live_save_settings
 start-block~nhttpd_save_settings
 {=ini-set:/var/tuxbox/config/nhttpd.conf;mod_auth.username;{=authuser=}~open=}
 {=ini-set:/var/tuxbox/config/nhttpd.conf;mod_auth.password;{=authpassword=}~cache=}
-{=ini-set:/var/tuxbox/config/nhttpd.conf;mod_auth.no_auth_client;{==noauthclient}~cache=}
+{=ini-set:/var/tuxbox/config/nhttpd.conf;mod_auth.no_auth_client;{=noauthclient=}~cache=}
 {=ini-set:/var/tuxbox/config/nhttpd.conf;mod_auth.authenticate;{=authenticate=}~cache=}
 {=ini-set:/var/tuxbox/config/nhttpd.conf;WebsiteMain.port;{=port=}~cache=} 
+{=ini-set:/var/tuxbox/config/nhttpd.conf;webserver.threading;{=threading=}~cache=} 
 {=ini-set:/var/tuxbox/config/nhttpd.conf;server.no_keep-alive_ips;{=no_keep_alive_ips=}~cache=}
 {=ini-set:/var/tuxbox/config/nhttpd.conf;Tuxbox.HostedDocumentRoot;{=HostedDocRoot=}~cache=}
 {=ini-set:/var/tuxbox/config/nhttpd.conf;ExtrasDocRoot;{=ExtrasDocRoot=}~cache=}
@@ -68,6 +73,10 @@ start-block~timer_save_settings
 {=file-action:/var/tuxbox/config/channels.txt;add;{=channels=}=}
 end-block~timer_save_settings
 
+# ------- Ext save Settings
+start-block~ext_save_settings
+{=file-action:/var/tuxbox/config/extentions.txt;add;{=extentions=}=}
+end-block~ext_save_settings
 
 # ------- No Managemant Error
 start-block~no_management
@@ -97,7 +106,7 @@ start-block~management_check_bottom
 =}
 end-block~management_check_bottom
 
-# ------- Snip: Wait Message Layer-div
+# ------- Snip: Wait Message Layer-div hidden
 start-block~snip_wait
 <div class="y_wait_box" id="wait">
 	<div class="y_wait_box_head"><h2>{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</h2></div>
@@ -113,10 +122,26 @@ start-block~snip_wait
 </div>
 end-block~snip_wait
 
+# ------- Snip: Wait Message Layer-div shown
+start-block~snip_show_wait
+<div class="y_wait_box_visible" id="wait">
+	<div class="y_wait_box_head"><h2>{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</h2></div>
+	<div class="y_wait_box_body">
+		<p align="center">
+		<span class="y_wait_box_Main">
+		{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</span><br/>
+		<img border="0" src="/images/wait.gif" width="20" height="20" alt="wait"/><br/><br/>
+		Bitte warten<br/>
+		Please wait
+		</p>
+	</div>
+</div>
+end-block~snip_show_wait
+
 # ------- Wiki Help display
 #<img src="/images/help.gif" align="bottom">
 start-block~wiki_help
-<a href="http://wiki.tuxbox.org/{=var-get:help_url=}" target="_blank" title="get help from wiki.tuxbox.org">?</a>
+<a href="http://wiki.godofgta.de/{=var-get:help_url=}" target="_blank" title="get help from wiki.godofgta.de">?</a>
 end-block~wiki_help
 
 # ------- work menu
@@ -214,7 +239,7 @@ start-block~frame_secondary
 </head>
 <frameset cols="157,*">
 	<frame name="sec_menu" src="{=var-get:sec_menu=}" scrolling="no" noresize="noresize" frameborder="0"/>
-	<frame name="work" src="{=var-get:work=}" scrolling="auto" frameborder="0" style="height:100%"/>
+	<frame name="work" src="{=var-get:work=}" scrolling="auto" frameborder="0"/>
 	<noframes>
 		<body>
 		<p>Your Browser does not support Frames.</p>
@@ -233,10 +258,17 @@ end-block~frame_boxcontrol
 
 # ------- Lay-Frame Live-Menu
 start-block~frame_live
-{=var-set:sec_menu=Y_Live_Menue.yhtm=}
+{=var-set:sec_menu=Y_Live_Menue.yhtm?start={=dostart=}=}
 {=var-set:work=Y_blank.htm=}
 {=include-block:Y_Blocks.txt;frame_secondary=}
 end-block~frame_live
+
+# ------- Lay-Frame Live-Menu
+start-block~frame_live_directtv
+{=var-set:sec_menu=Y_Live_Menue.yhtm=}
+{=var-set:work=Y_LiveViewFull.yhtm?mode=tv&amp;typ=live=}
+{=include-block:Y_Blocks.txt;frame_secondary=}
+end-block~frame_live_directtv
 
 # ------- Lay-Frame Timer-Menu
 start-block~frame_timer
@@ -258,6 +290,13 @@ start-block~frame_settings
 {=var-set:work=Y_blank.htm=}
 {=include-block:Y_Blocks.txt;frame_secondary=}
 end-block~frame_settings
+
+# ------- Lay-Frame Extentions-Menu
+start-block~frame_ext
+{=var-set:sec_menu=Y_Ext_Menue.yhtm=}
+{=var-set:work=Y_blank.htm=}
+{=include-block:Y_Blocks.txt;frame_secondary=}
+end-block~frame_ext
 
 # ------- Lay-Frame Info-Menu
 start-block~frame_info
@@ -308,32 +347,32 @@ end-block~remote
 start-block~remote_standard
 <img src="images/rc.gif" usemap="#rc"/>
 <map name="rc">
-  <area shape="rect" href="javascript:rcsim('KEY_SETUP')" coords="7,92,45,106" />
-  <area shape="circle" href="javascript:rcsim('KEY_7')" coords="59,100,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_4')" coords="59,76,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_9')" coords="100,90,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_8')" coords="80,93,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_6')" coords="100,69,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_5')" coords="79,71,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_3')" coords="100,47,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_2')" coords="80,49,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_1')" coords="59,53,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_0')" coords="58,121,11" />
-  <area shape="poly" href="javascript:rcsim('KEY_LEFT')" coords="34,260,50,248,44,234,49,218,38,206,26,235" />
-  <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="96,260,86,250,90,236,84,218,97,205,107,235" />
-  <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="82,212,94,202,68,191,40,202,52,216,68,210" />
-  <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="94,267,84,251,70,258,50,252,40,264,67,279" />
-  <area shape="rect" href="javascript:rcsim('KEY_HOME')" coords="7,69,45,83" />
-  <area shape="circle" href="javascript:rcsim('KEY_MUTE')" coords="60,316,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_OK')" coords="65,233,18" />
-  <area shape="circle" href="javascript:rcsim('KEY_BLUE')" coords="99,137,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_YELLOW')" coords="58,149,11" />
-  <area shape="circle" href="javascript:rcsim('KEY_GREEN')" coords="37,168,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_RED')" coords="21,190,11" />
-  <area shape="circle" href="javascript:rcsim('KEY_HELP')" coords="100,329,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEUP')" coords="18,267,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEDOWN')" coords="29,289,9" />
-  <area shape="rect" href="javascript:rcsim('KEY_POWER')" coords="7,45,46,60" />
+  <area shape="rect" href="javascript:rcsim('KEY_SETUP')" coords="7,95,45,109" />
+  <area shape="circle" href="javascript:rcsim('KEY_7')" coords="60,102,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_4')" coords="60,78,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_9')" coords="102,92,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_8')" coords="82,95,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_6')" coords="102,71,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_5')" coords="80,73,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_3')" coords="102,49,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_2')" coords="82,51,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_1')" coords="60,55,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_0')" coords="59,126,11" />
+  <area shape="poly" href="javascript:rcsim('KEY_LEFT')" coords="35,264,51,252,45,238,50,222,39,210,27,239" />
+  <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="97,265,87,255,91,241,85,223,98,210,108,240" />
+  <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="83,216,95,206,69,195,41,206,53,220,69,214" />
+  <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="95,271,85,255,71,262,51,256,41,268,68,283" />
+  <area shape="rect" href="javascript:rcsim('KEY_HOME')" coords="7,72,45,86" />
+  <area shape="circle" href="javascript:rcsim('KEY_MUTE')" coords="61,321,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_OK')" coords="66,237,18" />
+  <area shape="circle" href="javascript:rcsim('KEY_BLUE')" coords="100,139,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_YELLOW')" coords="60,153,11" />
+  <area shape="circle" href="javascript:rcsim('KEY_GREEN')" coords="37,171,12" />
+  <area shape="circle" href="javascript:rcsim('KEY_RED')" coords="21,196,11" />
+  <area shape="circle" href="javascript:rcsim('KEY_HELP')" coords="101,333,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEUP')" coords="17,270,10" />
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEDOWN')" coords="30,293,9" />
+  <area shape="rect" href="javascript:rcsim('KEY_POWER')" coords="7,49,46,64" />
 </map>
 end-block~remote_standard
 

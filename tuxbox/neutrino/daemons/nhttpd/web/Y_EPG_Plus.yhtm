@@ -41,22 +41,18 @@ function show_epg_item(_index)
 	document.getElementById("d_start").text = epg_data[_index][3];
 	document.getElementById("d_stop").text = epg_data[_index][5];
 	document.getElementById("d_channel_id").text = epg_data[_index][6];
-
 }
 function build_epg_bouquet(__bdiv, __channel_id, _starttime, _stoptime)
 {
 	var xml = loadSyncURLxml("/control/epg?xml=true&channelid="+__channel_id+"}&details=true&stoptime="+_stoptime);
-	if(xml)
-	{
+	if(xml){
 		var prog_list = xml.getElementsByTagName('prog');
-		for(var i=0;i<prog_list.length;i++)
-		{
+		for(var i=0;i<prog_list.length;i++){
 			var prog = prog_list[i];
 			
 			var _stop = getXMLNodeItemValue(prog, "stop_sec");
 			_stop = parseInt(_stop);
-			if(_stop > _starttime)
-			{
+			if(_stop > _starttime){
 				var _start_t	= getXMLNodeItemValue(prog, "start_t");
 				var _start	= getXMLNodeItemValue(prog, "start_sec");
 				_start = parseInt(_start);
@@ -80,8 +76,7 @@ function build_epg_time_bar(_tdiv, _starttime, _stoptime)
 	var __w_step = Math.round(g_width_px * g_bar_delta_min / g_width_min);
 	var __steps = Math.round(g_width_px  / __w_step)+1;
 	var _start = _starttime;
-	for(var i=0;i<__steps;i++)
-	{
+	for(var i=0;i<__steps;i++){
 		var __item = obj_createAt(_tdiv, "div", "ep_time_bar_item");
 		__item.innerHTML = format_time(new Date(_start*1000));
 		var _stop = _start + (g_bar_delta_min * 60);
@@ -97,11 +92,9 @@ function build_epg_plus(_bouquet, _starttime)
 	epg_data = new Array();
 	epg_data_index=0;
 	var _bouquets_xml = loadSyncURLxml("/control/getbouquet?bouquet="+_bouquet+"&xml=true");
-	if(_bouquets_xml)
-	{
+	if(_bouquets_xml){
 		g_bouquet_list = _bouquets_xml.getElementsByTagName("channel");
 		var ep = document.getElementById("epg_plus");
-			
 		var _stoptime = _starttime + g_width_min * 60;
 		var __tdiv = obj_createAt(ep, "div", "ep_time_bar");
 		var __tname_div = obj_createAt(__tdiv, "div", "ep_bouquet_name");
@@ -113,8 +106,7 @@ function build_epg_plus(_bouquet, _starttime)
 }
 function build_epg_plus_loop(_starttime, _stoptime)
 {
-	if(g_i<g_bouquet_list.length)
-	{
+	if(g_i<g_bouquet_list.length){
 		var _bouquet = g_bouquet_list[g_i];
 		var __channel_name = getXMLNodeItemValue(_bouquet, "name");
 		var __channel_id = getXMLNodeItemValue(_bouquet, "id");
@@ -127,8 +119,7 @@ function build_epg_plus_loop(_starttime, _stoptime)
 		window.setTimeout("build_epg_plus_loop("+_starttime+","+_stoptime+")",100);
 		g_i++;
 	}
-	else
-	{
+	else{
 		show_waitbox(false);
 		obj_disable("btGet", false);
 	}
@@ -164,8 +155,7 @@ function build_time_list(_delta)
 	var _secs = now/1000;
 	var _hour = now.getHours();
 	var et = document.getElementById("epg_time");
-	for(i=0;i<24;i++)
-	{
+	for(i=0;i<24;i++){
 		var _time = (_hour + i) % 24;
 		if(_time < 10)
 			_time = "0"+_time;

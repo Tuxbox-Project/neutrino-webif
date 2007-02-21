@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Live (yjogol)
-# $Date: 2006/09/16 14:52:23 $
-# $Revision: 1.1 $
+# $Date: 2007/02/21 17:41:04 $
+# $Revision: 1.2 $
 # -----------------------------------------------------------
 
 . ./_Y_Globals.sh
@@ -38,8 +38,9 @@ prepare_radio()
 # -----------------------------------
 # Main
 # -----------------------------------
+echo "$1" >/tmp/debug.txt
+echo "$*"
 case "$1" in
-
 	zapto)
 		if [ "$2" != "" ]
 		then
@@ -83,6 +84,30 @@ case "$1" in
 
 	prepare_tv)
 		prepare_tv
+		;;
+		
+	udp_stream)
+echo "udp stream"
+		if [ "$2" = "start" ]
+		then
+			shift 2
+echo "kill all streams"
+			killall streamts
+			killall streampes
+			killall udpstreamts
+echo "start udpstream"
+			if [ -e /var/bin/udpstreamts ]
+			then
+				/var/bin/udpstreamts $* &
+			else
+				udpstreamts $* &
+			fi
+			pidof udpstreamts >/tmp/udpstreamts.pid
+		fi
+		if [ "$2" = "stop" ]
+		then
+			killall udpstreamts
+		fi
 		;;
 
 	*)

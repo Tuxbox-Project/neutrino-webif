@@ -14,19 +14,19 @@ function sLog_init()
 }
 function sLog_clear()
 {
-	while(sLog_body.childNodes.length > 0)
-	{
+	while(sLog_body.childNodes.length > 0){
 		aChild=sLog_body.firstChild;
 		sLog_body.removeChild(aChild);
 	}
 	sLog_line_number =  0;
 }
-function sLog_addRow(_body, _rec, _start, _end, _title)
+function sLog_addRow(_body, _rec, _zapit, _start, _end, _title)
 {
 	sLog_line_number++;
 	var mycurrent_row = y_add_row_to_table(_body, ((sLog_line_number % 2) ==0)?"a":"b" );
 	
 	y_add_html_cell_to_row(mycurrent_row, "rec", _rec);
+	y_add_html_cell_to_row(mycurrent_row, "zap", _zapit);
 	y_add_html_cell_to_row(mycurrent_row, "starttime", _start);
 	y_add_html_cell_to_row(mycurrent_row, "endtime", _end);
 	y_add_html_cell_to_row(mycurrent_row, "epgtitle", _title);
@@ -35,6 +35,13 @@ function set_timer(_channel_id, _start, _stop)
 {
 	var rec = "/control/timer?action=new&type=5&alarm="+_start+"&stop="+_stop+"&announce="+_start+"&channel_id="+_channel_id+"&rs=1";
 	var res = loadSyncURL(rec);
+	alert("Record gesetzt");
+}
+function set_zapit(_channel_id, _start)
+{
+	var rec = "/control/timer?action=new&type=3&alarm="+_start+"&channel_id="+_channel_id;
+	var res = loadSyncURL(rec);
+	alert("Zapping gesetzt");
 }
 function show_info(_index)
 {
@@ -59,17 +66,14 @@ function show_epg()
 
 	var now = new Date();
 	var _starttime = Math.round(now/1000);
-	var epg_xml = loadSyncURLxml("/control/epg?xml=true&channelid={=channel=}&details=true&max=20");
-	if(epg_xml)
-	{
+	var epg_xml = loadSyncURLxml("/control/epg?xml=true&channelid={=channel=}&details=true");
+	if(epg_xml){
 		var prog_list = epg_xml.getElementsByTagName('prog');
-		for(i=0;i<prog_list.length;i++)
-		{
+		for(i=0;i<prog_list.length;i++){
 			var prog = prog_list[i];
 			
 			var _stop	= getXMLNodeItemValue(prog, "stop_sec");
-			if(_stop > _starttime)
-			{
+			if(_stop > _starttime){
 				var _start_t	= getXMLNodeItemValue(prog, "start_t");
 				var _start	= getXMLNodeItemValue(prog, "start_sec");
 				var _stop_t	= getXMLNodeItemValue(prog, "stop_t");
@@ -80,22 +84,25 @@ function show_epg()
 				var epg_obj= new Array(_desc, _info1, _info2, _start, _start_t, _stop.toString(), "{=channel=}");
 				epg_data.push(epg_obj);
 				
-				var _rec 	= "<a title=\"set timer\" href=\"javascript:set_timer('{=channel=}',"+_start+","+_stop+");\">REC</a>";
+				var _rec 	= "<a title=\"record\" href=\"javascript:set_timer('{=channel=}',"+_start+","+_stop+");\">Rec</a>";
+				var _zapit 	= "<a title=\"zapping\" href=\"javascript:set_zapit('{=channel=}',"+_start+");\">Zap</a>";
 				var _tit 	= "<span onmouseover=\"show_info('"+epg_data_index+"')\">"+_desc+"</span>";
-				sLog_addRow(sLog_body, _rec, _start_t, _stop_t, _tit);
+				sLog_addRow(sLog_body, _rec, _zapit, _start_t, _stop_t, _tit);
 				epg_data_index++;
 			}
 		}
 	}
+	show_waitbox(false);
 }
 //]]>
 </script>
 </head>
-<body>
-	<table class="y_invisible_table" cellpadding="4">
+{=var-set:wait_text=EPG wird geladen.=}{=include-block:Y_Blocks.txt;snip_show_wait=}
+<body onload="show_epg()">
+	<table class="y_invisible_table" cellpadding="4" width="100%">
 	<thead align="left">
 	<tr>
-		<th><img id="logo" src="{=ini-get:/var/tuxbox/config/nhttpd.conf;ExtrasDocURL=}/logos/{=channel=}.gif" style="visibility:hidden">&nbsp;</th>
+		<th colspan="2"><img id="logo" src="{=ini-get:/var/tuxbox/config/nhttpd.conf;ExtrasDocURL=}/logos/{=channel=}.gif" style="visibility:hidden">&nbsp;</th>
 		<th>Von</th><th>bis</th><th>Sendung</th>
 	</tr>
 	</thead>
@@ -106,7 +113,8 @@ function show_epg()
 	<br />
 <script type="text/javascript">
 //<![CDATA[
-	show_epg();
+//	show_waitbox(true);
+//	window.setTimeout("show_epg()",500);
 //]]>
 </script>
 

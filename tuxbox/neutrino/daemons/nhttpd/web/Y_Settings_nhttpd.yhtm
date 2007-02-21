@@ -10,6 +10,11 @@ function form_init()
 		document.f.authenticate[1].checked = true
 	else
 		document.f.authenticate[0].checked = true;
+	var val = "{=ini-get:/var/tuxbox/config/nhttpd.conf;webserver.threading;false=}";
+	if(val == "true")
+		document.f.threading[1].checked = true
+	else
+		document.f.threading[0].checked = true;
 }
 function do_submit()
 {
@@ -47,7 +52,7 @@ function do_submit()
 			</tr>
 			<tr>
 				<td>Client ohne Authentifikation</td>
-				<td><input type="text" name="noauthclient" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.no_auth_clien~cache=}" title="Client with no authentication check. Enter IP."/></td>
+				<td><input type="text" name="noauthclient" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.no_auth_client~cache=}" title="Client with no authentication check. Enter IP."/></td>
 			</tr>
 			<tr>
 				<td>Authentifikation</td>
@@ -63,6 +68,12 @@ function do_submit()
 				<br/>&Auml;nderung des Ports wird erst nach einem Neustart wirksam.
 				</td>
 			</tr>
+				<td>Threading</td>
+				<td>
+					<input type="radio" name="threading" value="false" title="threading: off"/>AUS&nbsp;
+					<input type="radio" name="threading" value="true" title="threading: on"/>AN
+				<br/>&Auml;nderung erst nach einem Neustart wirksam.
+				</td>
 			<tr>
 				<td>Hosted Web (Mount)</td>
 				<td><input type="text" name="hosteddocumentroot" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;Tuxbox.HostedDocumentRoot~cache=}" title="Root of hosted Web. Enter mount directory."/></td>

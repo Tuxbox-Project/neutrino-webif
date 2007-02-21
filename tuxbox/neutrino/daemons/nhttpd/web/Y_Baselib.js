@@ -1,11 +1,39 @@
 /*	yWeb Baselib by yjogol
-	$Date: 2006/10/19 19:02:51 $
-	$Revision: 1.2 $
+	$Date: 2007/02/21 17:38:48 $
+	$Revision: 1.3 $
 */
 var agt=navigator.userAgent.toLowerCase();
 var is_ie     = ((agt.indexOf("msie") != -1) && (agt.indexOf("opera") == -1));
 
 /*DHTML-Basics*/
+function id(obj_id)
+{
+	return document.getElementById(obj_id);
+}
+function obj_update(obj_id, html)
+{
+	var obj = id(obj_id);
+	if(obj)
+		obj.innerHTML = html;
+}
+function yClientHeight()
+{
+	if(window.innerHeight)
+		return window.innerHeight;
+	else if (document.documentElement && document.documentElement.clientHeight)
+		return document.documentElement.clientHeight;
+	else if (document.body)
+		return document.body.clientHeight;
+}
+function yClientWidth()
+{
+	if(window.innerWidth)
+		return window.innerWidth;
+	else if (document.documentElement && document.documentElement.clientWidth)
+		return document.documentElement.clientWidth;
+	else if (document.body)
+		return document.body.clientWidth;
+}
 function obj_create(_typ, _class)
 {
 	var __obj 	= document.createElement(_typ);
@@ -128,7 +156,7 @@ function loadXMLDoc(_url, _processReqChange)
 		}
 	} 
 	else
-		alert("Kein Browser-Support für XMLHttpRequest");
+		alert("Kein Browser-Support fr XMLHttpRequest");
 }
 function loadSyncURL(_url) 
 {
@@ -151,7 +179,7 @@ function loadSyncURL(_url)
 		}
 	} 
 	else
-		alert("Kein Browser-Support für XMLHttpRequest");
+		alert("Kein Browser-Support fr XMLHttpRequest");
 	if (_req.readyState == 4 && _req.status == 200) 
 		return _req.responseText;
 	else
@@ -178,7 +206,7 @@ function loadSyncURLxml(_url)
 		}
 	} 
 	else
-		alert("Kein Browser-Support für XMLHttpRequest");
+		alert("Kein Browser-Support fr XMLHttpRequest");
 	if (_req.readyState == 4 && _req.status == 200) 
 		return _req.responseXML;
 	else
@@ -189,6 +217,10 @@ function obj_disable(_obj_name, _disable)
 {
 	var __obj = document.getElementById(_obj_name);
 	__obj.disabled = _disable;
+}
+function obj_enable(_obj_name, _disable)
+{
+	obj_disable(_obj_name, !_disable);
 }
 function show_obj(_obj_name, _show)
 {

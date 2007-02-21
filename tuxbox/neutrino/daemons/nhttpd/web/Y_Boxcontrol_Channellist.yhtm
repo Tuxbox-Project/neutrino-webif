@@ -10,7 +10,8 @@ function do_zap(channelid)
 }
 function do_epg(channelid)
 {
-	window.open("Y_Dyn_Pages.yhtm?page=frame_live_epg&channel="+channelid, "epg", "width=400");
+	window.location.href="Y_Dyn_Pages.yhtm?page=frame_live_epg&channel="+channelid;
+//	window.open("Y_Dyn_Pages.yhtm?page=frame_live_epg&channel="+channelid, "epg", "width=400");
 }
 function do_streaminfo()
 {

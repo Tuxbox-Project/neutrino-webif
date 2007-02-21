@@ -6,7 +6,7 @@
 function do_submit()
 {
 	show_waitbox(true);
-	yhttpd_cache_clear("yPConf");
+	yhttpd_cache_clear("");
 	document.f.submit();
 }
 //]]>
