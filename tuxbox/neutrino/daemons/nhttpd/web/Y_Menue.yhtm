@@ -63,7 +63,7 @@ function i_stop()
 	<div class="y_menu_prim_box_body">
 		<table border="0" width="100%">
 		<tr>
-			<td width="50" align="center" valign="middle"><a href="http://wiki.tuxbox.org/Neutrino:yWeb" target="_blank"><img src="images/tux.gif" title="Tuxbox Wiki" alt="Tuxbox Wiki"/></a></td>
+			<td width="50" align="center" valign="middle"><a href="http://wiki.godofgta.de/Neutrino:yWeb" target="_blank"><img src="images/tux.gif" title="Tuxbox Wiki" alt="Tuxbox Wiki"/></a></td>
 			<td width="100">
 				<span style="font-weight: bold;font-size: 10pt;">yWeb</span>
 				<br/>
