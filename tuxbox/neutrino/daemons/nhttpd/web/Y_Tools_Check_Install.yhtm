@@ -38,7 +38,7 @@ function sLog_addRow(_body, state, action_text, state_text)
 /*check*/
 function wiki_url(_page)
 {
-	return "<a href=\"http://wiki.tuxbox.org/"+_page+"\" target='_blank'><b>[Help]<\/b><\/a>"
+	return "<a href=\"http://wiki.godofgta.de/"+_page+"\" target='_blank'><b>[Help]<\/b><\/a>"
 }
 function do_check()
 {
@@ -109,7 +109,7 @@ function do_check()
 	=}
 	{=var-set:udpstreamts={=if-file-exists:/sbin/udpstreamts~/sbin/udpstreamts~{=if-file-exists:/var/bin/udpstreamts~/var/bin/udpstreamts~false=}=}=}
 	{=if-equal:{=var-get:udpstreamts=}~false~
-		sLog_addRow(sLog_body, "red", "Programs: udpstreamts is not installed. udp-streaming is disabled. "+wiki_url("Neutrino:yWeb:Live:Timer#UDP_Streaming"), "failed");
+		sLog_addRow(sLog_body, "red", "Programs: udpstreamts is not installed. udp-streaming is disabled. "+wiki_url("Neutrino:yWeb:Live_Timer#UDP_Streaming"), "failed");
 	~
 		sLog_addRow(sLog_body, "green", "Programs: udpstreamts is installed at: {=var-get:udpstreamts=}. udp-streaming is enabled.", "ok");
 	=}
