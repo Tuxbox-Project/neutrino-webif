@@ -9,7 +9,8 @@ function goConfirmUrl(_meld, _url)
 }
 function goUrl(_url)
 {
-	out.location.href = _url;
+	var res = loadSyncURL(_url);
+	id("out").innerHTML = res;
 }
 //]]>
 </script>
@@ -87,7 +88,12 @@ function goUrl(_url)
 	</form>
 	</div>
 </div>
-<iframe name="out" id="out" width="100%" height="200" align="left" frameborder="0">Your Browser does not support IFrames.</iframe>
-
+<div class="work_box">
+	<div class="work_box_head"><div class="work_box_head_h2">
+	{=var-set:help_url=Neutrino:yWeb:BoxControl#Control=}{=var-set:menu=Antwort=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	<div class="work_box_body">
+		<div id="out"></div>
+	</div>
+</div>
 </body>
 </html>
