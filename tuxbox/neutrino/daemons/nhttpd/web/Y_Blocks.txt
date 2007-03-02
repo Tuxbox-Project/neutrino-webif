@@ -305,22 +305,6 @@ start-block~frame_info
 {=include-block:Y_Blocks.txt;frame_secondary=}
 end-block~frame_info
 
-# ------- Lay-Frame Tools-Info-Menu
-start-block~frame_tools-info
-{=include-block:Y_Blocks.txt;frame_head=}
-</head>
-<frameset rows="270,*">
-	<frame name="oben" src="Y_Tools_Info_Menue.yhtm" scrolling="auto" frameborder="0"/>
-	<frame name="unten" src="Y_blank.htm" scrolling="auto" frameborder="0"/>
-	<noframes>
-		<body>
-		<p>Your Browser does not support Frames.</p>
-		</body>
-	</noframes>
-</frameset>
-</html>
-end-block~frame_tools-info
-
 # ==== LIVE
 # ------- Lay-Frame Live-EPG Frameset
 start-block~frame_live_epg

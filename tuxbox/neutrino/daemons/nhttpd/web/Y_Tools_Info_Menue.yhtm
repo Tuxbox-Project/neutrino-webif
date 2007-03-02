@@ -1,10 +1,11 @@
-{=var-set:cancache=yPyes=}
 {=include-block:Y_Blocks.txt;head=}
+<script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 function goUrl(_url)
 {
-	parent.frames[1].location.href = _url;
+	var res = loadSyncURL(_url);
+	id("out").innerHTML = res;
 }
 //]]>
 </script>
@@ -42,6 +43,7 @@ function goUrl(_url)
 	</form>
 	</div>
 </div>
+<div id="out"></div>
 </body>
 
 </html>
