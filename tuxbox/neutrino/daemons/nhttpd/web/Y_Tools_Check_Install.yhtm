@@ -45,9 +45,9 @@ function do_check()
 	sLog_init();
 	sLog_clear();
 	sLog_addRow(sLog_body, "ok", "yWeb Version is: {=ini-get:Y_Version.txt;version=} {=ini-get:Y_Version.txt;date=}", "ok");
-	
+
 	/*webserver*/
-	var needed_nhttpd_version = "3.1.2";
+	var needed_nhttpd_version = "3.1.3";
 	var nhttpd_version = loadSyncURL("/control/info?nhttpd_version");
 	if(nhttpd_version.search(/error/)!=-1)
 		nhttpd_version = "0.0.0-unknown";
@@ -56,26 +56,26 @@ function do_check()
 			" <a href='http://www.yjogol.de/yFAQ.htm#diy' target='_blank'><b>[Help]<\/b><\/a>", "fail");
 	else
 		sLog_addRow(sLog_body, "green", "WebServer: version is "+nhttpd_version, "ok");
-	
+
 	{=if-equal:{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.authenticate;false=}~false~~
 		sLog_addRow(sLog_body, "yellow", "WebServer: Authentication is on. "+wiki_url("Neutrino:yWeb:Settings#Webserver"), "notice");
 	=}
 	{=if-equal:{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.port;80=}~80~~
-		sLog_addRow(sLog_body, "yellow", 
+		sLog_addRow(sLog_body, "yellow",
 		"WebServer: not set to Standard-Port. Actual: {=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.port;80=} "+wiki_url("Neutrino:yWeb#Webserver"), "notice");
 	=}
-	/*settings*/	
+	/*settings*/
 	{=if-empty:{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip=}~~
-		sLog_addRow(sLog_body, "yellow", 
+		sLog_addRow(sLog_body, "yellow",
 		"Settings: Management IP(1) is set to {=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip=} ! Your IP is {=func:get_request_data client_addr=}. "
 		+wiki_url("Neutrino:yWeb:Settings#yWeb"), "notice");
 	=}
 	{=if-empty:{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip2=}~~
-		sLog_addRow(sLog_body, "yellow", 
+		sLog_addRow(sLog_body, "yellow",
 		"Settings: Management IP(2) is set to {=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip2=} ! Your IP is {=func:get_request_data client_addr=}. "
 		+wiki_url("Neutrino:yWeb#yWeb"), "notice");
 	=}
-	
+
 	/*programs*/
 	{=var-set:fbshot={=if-file-exists:/bin/fbshot~/bin/fbshot~{=if-file-exists:/var/bin/fbshot~/var/bin/fbshot~false=}=}=}
 	{=if-equal:{=var-get:fbshot=}~false~
@@ -143,7 +143,7 @@ function do_check()
 		<form method="post" name="f" action="">
 			<input type="button" value="check" title="check" name="check" onclick="do_check()"/>&nbsp;
 		</form>
-	
+
 		<form method="post" name="log" action="">
 			<b>Check Results</b><br/>
 			<table class="y_work_table" cellpadding="4">
