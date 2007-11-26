@@ -41,7 +41,7 @@ function do_refresh_liveview()
 	</form>
 <script type="text/javascript">
 //<![CDATA[
-function form_init() 
+function form_init()
 {
 	val = "{=ini-get:/var/tuxbox/config/Y-Web.conf;deinterlace;false=}";
 	if(val == "true")

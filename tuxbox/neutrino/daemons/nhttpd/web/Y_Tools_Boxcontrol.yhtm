@@ -3,7 +3,7 @@
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-function goConfirmUrl(_meld, _url) 
+function goConfirmUrl(_meld, _url)
 {
 	if (confirm(_meld)==true) goUrl(_url);
 }
@@ -21,7 +21,7 @@ function goUrl(_url)
 	{=var-set:help_url=Neutrino:yWeb:BoxControl#Control=}{=var-set:menu=Control=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form action="">
-		<table class="y_invisible_table" cellpadding="5">
+		<table class="y_invisible_table" cellpadding="5" width="100%">
 		<tr><td class="y_form_header">dbox</td><td class="y_form_header">Standby Modus</td></tr>
 		<tr>
 			<td>
@@ -66,7 +66,7 @@ function goUrl(_url)
 			<td>
 			<input type="button" value="An" onclick='goUrl("/control/rc?unlock");'/>
 			<input type="button" value="Aus" onclick='goUrl("/control/rc?lock");'/>
-			<input type="button" value="LCD Unlock" onclick='goUrl("/control/exec?Y_Live&amp;live_LCD_off");'/>
+			<input type="button" value="LCD Unlock" onclick='goUrl("/control/exec?Y_Live&amp;live_unlock");'/>
 			</td>
 			<td>
 			<input type="button" value="Lock" onclick='live_lock();'/>
@@ -83,7 +83,7 @@ function goUrl(_url)
 			<td>
 			&nbsp;
 			</td>
-		</tr>	
+		</tr>
 		</table>
 	</form>
 	</div>

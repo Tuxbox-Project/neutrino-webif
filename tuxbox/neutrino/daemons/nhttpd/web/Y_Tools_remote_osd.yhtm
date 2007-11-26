@@ -1,5 +1,3 @@
-{=var-set:cancache=yPInstall=}
-{=var-set:dboxshot={=if-file-exists:/bin/dboxshot~/bin/dboxshot~{=if-file-exists:/var/bin/dboxshot~/var/bin/dboxshot~/var/bin/dboxshot=}=}=}
 {=include-block:Y_Blocks.txt;head=}
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
@@ -11,13 +9,11 @@ function rcsim(_key)
 }
 function do_dboxshot()
 {
-	{=if-empty:{=var-get:dboxshot=}~~
-	var _shot = document.getElementById("shot");
-	var res = dbox_exec_command("{=var-get:dboxshot=} -r -o /tmp/a.bmp");
+	var res = dbox_exec_tools("fbshot -r -o /tmp/a.bmp");
 	if(res != "")
-		dbox_exec_command("{=var-get:dboxshot=} -o /tmp/a.bmp");
+		dbox_exec_tools("fbshot -o /tmp/a.bmp");
+	var _shot = document.getElementById("shot");
 	_shot.src = "/tmp/a.bmp?"+Math.random();
-	=}
 }
 function do_clearshot()
 {
@@ -25,8 +21,7 @@ function do_clearshot()
 }
 function do_clearshot2()
 {
-	var _shot = document.getElementById("shot");
-	dbox_exec_command("rm /tmp/a.*");
+	dbox_exec_tools("fbshot_clear");
 	show_waitbox(false);
 }
 //]]>
@@ -45,10 +40,11 @@ function do_clearshot2()
 		<table cellpadding="0">
 		<tr>
 			<td>{=include-block:Y_Blocks.txt;remote=}</td>
-			<td><img id="shot" src="" style="width:600px"/></td>
+			<!--{=full=}-->
+			<td><img id="shot" src="" {=if-empty:{=full=}~style="width:600px"~=}/></td>
 		</tr>
 		</table>
-		
+
 	</div>
 </div>
 <script type="text/javascript">

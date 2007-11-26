@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Tools (yjogol)
-# $Date: 2007/02/21 17:41:04 $
-# $Revision: 1.2 $
+# $Date: 2007/11/26 20:54:55 $
+# $Revision: 1.3 $
 # -----------------------------------------------------------
 . ./_Y_Globals.sh
 . ./_Y_Library.sh
@@ -103,6 +103,7 @@ flash_mtd()
 		msg_nmsg "Image%20wird%20geflasht!"
 		if [ "$simulate" = "false" ]
 		then
+			umount /hdd #yet: fixed setting
 			fcp -v "$y_upload_file" /dev/mtd/$1 >/tmp/e.txt
 		else #simulation/DEMO
 			i="0"
@@ -112,7 +113,7 @@ flash_mtd()
 				b=`expr $i \* 63`
 				b=`expr $b / 10`
 				echo -e "\rDEMO: Erasing blocks: $b/63 ($p%)" >>/tmp/e.txt
-				i=`expr $i + 1`	
+				i=`expr $i + 1`
 				sleep 1
 			done
 			i="0"
@@ -122,7 +123,7 @@ flash_mtd()
 				b=`expr $i \* 8064`
 				b=`expr $b / 20`
 				echo -e "\rDEMO: Writing data: $b k/8064k ($p%)" >>/tmp/e.txt
-				i=`expr $i + 1`	
+				i=`expr $i + 1`
 				sleep 2
 			done
 			i="0"
@@ -132,7 +133,7 @@ flash_mtd()
 				b=`expr $i \* 8064`
 				b=`expr $b / 5`
 				echo -e "\rDEMO: Verifying data: $b k/8064k ($p%)" >>/tmp/e.txt
-				i=`expr $i + 1`	
+				i=`expr $i + 1`
 				sleep 1
 			done
 		fi
@@ -140,7 +141,7 @@ flash_mtd()
 		msg="geflasht ... bitte jetzt box neu starten ..."
 		msg="$msg <script language='JavaScript' type='text/javascript'>window.setTimeout('parent.do_image_flash_ready()',1000)</script>"
 		y_format_message_html
-		
+
 		if [ "$simulate" = "false" ]
 		then
 			busybox reboot -d10
@@ -271,7 +272,7 @@ do_automount_list()
 {
 	i="1"
 	sel="checked='checked'"
-	cat $1|sed -n /-fstype/p|\
+	cat $1|sed /#/d|sed -n /-fstype/p|\
 	while read mountname options share
 	do
 		mountvalue=`echo "$mountname"|sed -e "s/#/---/g"`
@@ -360,12 +361,12 @@ do_installer()
 		tar -xf "$y_upload_file"
 		rm $y_upload_file
 		if [ -s "$y_install" ] #look for install.sh
-		then		
+		then
 			chmod 755 $y_install
 			o=`$y_install` # execute
 			rm -f $y_install # clean up
 			if [ -s "$y_out_html" ] #html - output?
-			then	
+			then
 				echo '<html><head><link rel="stylesheet" type="text/css" href="/Y_Main.css">'
 				echo "<meta http-equiv='refresh' content='0; $y_out_html'></head>"
 				echo "<body><a href='$y_out_html'>Falls automatische Weiterleitung nicht geht.</a>"
@@ -398,7 +399,7 @@ do_ext_installer()
 		tar -xf "$y_upload_file"
 		rm $y_upload_file
 		if [ -s "$y_install" ] #look for install.sh
-		then		
+		then
 			chmod 755 $y_install
 			o=`$y_install` # execute
 			rm -f $y_install # clean up
@@ -428,14 +429,34 @@ wol()
 	y_format_message_html
 }
 # -----------------------------------------------------------
+# osd shot
+# $1= fb | dbox bzw. leer
 # -----------------------------------------------------------
-dofbshot()
+do_fbshot()
 {
-	rm -r /tmp/a.png
-	fbshot -q /tmp/a.png >/dev/null
-	msg="<img src='' name="fb" id="fb">"
-	msg="$msg <script language='JavaScript' type='text/javascript'>document.fb.src='/tmp/a.png?hash=' + Math.random();window.setTimeout('parent.do_ready()',1000)</script>"
-	y_format_message_html_plain
+	if [ "$1" = "fb" ]; then
+		shift 1
+		if [ -e "/var/bin/fbshot" ]; then
+			/var/bin/fbshot $*
+		else
+			fbshot $*
+		fi
+	else
+		shift 1
+		if [ -e "/var/bin/dboxshot" ]; then
+			/var/bin/dboxshot $*
+		else
+			dboxshot $*
+		fi
+	fi
+}
+# -----------------------------------------------------------
+# delete fbshot created graphics
+# -----------------------------------------------------------
+do_fbshot_clear()
+{
+	rm /tmp/*.bmp
+	rm /tmp/*.png
 }
 
 # -----------------------------------------------------------
@@ -475,6 +496,21 @@ do_settings_backup_restore()
 		;;
 	esac
 }
+restart_neutrino()
+{
+	sl=`find /var/tuxbox/plugins -name '*.sh'`
+	call_webserver "control/rcem?KEY_HOME"	
+	call_webserver "control/rcem?KEY_HOME"	
+	call_webserver "control/rcem?KEY_HOME"	
+	call_webserver "control/rcem?KEY_HOME"	
+	call_webserver "control/rcem?KEY_SETUP"	
+	if [ "$sl" != "" ]; then
+		call_webserver "control/rcem?KEY_6"	
+	else
+		call_webserver "control/rcem?KEY_6"	
+	fi
+	call_webserver "control/rcem?KEY_3"
+}
 # -----------------------------------------------------------
 # Main
 # -----------------------------------------------------------
@@ -506,17 +542,20 @@ case "$1" in
 	ext_installer)	shift 1; do_ext_installer $* ;;
 	proc)			shift 1; proc $* ;;
 	wol)			shift 1; wol $* ;;
-	dofbshot)		dofbshot ;;
+	fbshot)			shift 1; do_fbshot $* ;;
+	fbshot_clear)		do_fbshot_clear ;;
 	get_update_version)	wget -O /tmp/version.txt "http://www.yjogol.de/download/Y_Version.txt" ;;
 	settings_backup_restore)	shift 1; do_settings_backup_restore $* ;;
 	exec_cmd)		shift 1; $* ;;
 	automount_list)		shift 1; do_automount_list $* ;;
 	automount_getline)	shift 1; do_automount_getline $* ;;
 	automount_setline)	shift 1; do_automount_setline $* ;;
-		
+	restart_neutrino)	restart_neutrino ;;
+	have_plugin_scripts) find /var/tuxbox/plugins -name '*.sh' ;;
 	timer_get_tvinfo)
 		shift 1
-		res=`wget -O /tmp/tvinfo.xml "http://www.tvinfo.de/share/vidac/rec_info.php?username=$1&password=$2"`
+		rm -r /tmp/tvinfo.xml
+		res=`wget -O /tmp/tvinfo.xml "http://www.tvinfo.de/share/vidac/rec_info.php?username=$1&password=$2" 2>&1`
 		if  ! [ -s /tmp/tvinfo.xml ]
 		then
 			res="$res File empty!"
@@ -540,9 +579,9 @@ case "$1" in
 	get_synctimer_channels)
 		if [ -e "$y_path_config/channels.txt" ]
 		then
-			cat $y_path_config/channels.txt 
+			cat $y_path_config/channels.txt
 		else
-			cat $y_path_httpd/channels.txt 
+			cat $y_path_httpd/channels.txt
 		fi
 		;;
 
@@ -559,10 +598,10 @@ case "$1" in
 		shift 1
 		echo  "$*" >$y_path_config/extentions.txt
 		;;
-	
+
 	url_get)
 		shift 1
-		res=`wget -O /tmp/$2 "$1" >/tmp/url.log`
+		res=`wget -O /tmp/$2 "$1" >/tmp/url.log 2>&1`
 		cat /tmp/$2
 		;;
 

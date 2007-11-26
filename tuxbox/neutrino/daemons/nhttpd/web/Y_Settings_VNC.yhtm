@@ -2,7 +2,7 @@
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-function form_init() 
+function form_init()
 {
 	var val = {=ini-get:/var/tuxbox/config/vnc.conf;scale;1=};
 	document.f.scale[val-1].selected = true;

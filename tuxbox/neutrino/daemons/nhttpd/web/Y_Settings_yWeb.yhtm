@@ -55,12 +55,12 @@ function do_submit()
 -->
 			<tr>
 				<td>Box-Bezeichnung</td>
-				<td><input type="text" name="yweb_box_name" size="8" value="{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_name=}" 
+				<td><input type="text" name="yweb_box_name" size="8" value="{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_name=}"
 					title="Box Name in Top-Menue."/></td>
 			</tr>
 			<tr>
 				<td>Box-Bezeichnung Farbe</td>
-				<td><input type="text" name="yweb_box_color" size="8" value="{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_color=}" 
+				<td><input type="text" name="yweb_box_color" size="8" value="{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_color=}"
 					title="Box Name color in Top-Menue. e.g. enter 2188e0 without #"/></td>
 			</tr>
 		</table>

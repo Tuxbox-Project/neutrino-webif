@@ -2,7 +2,7 @@
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-function do_submit() 
+function do_submit()
 {
 	show_waitbox(true);
 	document.f.su.disabled=true;

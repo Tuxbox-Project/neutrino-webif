@@ -23,7 +23,7 @@ function do_submit()
 	<div class="work_box_head"><div class="work_box_head_h2">
 	{=var-set:help_url=Neutrino:yWeb:Settings#zapit=}{=var-set:menu=zapit=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-	<table border="0" cellpadding="5">
+	<table border="0" cellpadding="5" width="100%">
 		<tr><td class="y_form_header">Upload</td></tr>
 		<tr>
 			<td>

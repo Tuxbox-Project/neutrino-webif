@@ -72,10 +72,10 @@ function poschannel(box, direction)
 				</select>
 			</td>
 			<td align="center">
-				<input type="button" value="up" onclick="poschannel(document.getElementById('channels').bchannels, 0);" /><br /><br />
-				<input type="button" value="down" onclick="poschannel(document.getElementById('channels').bchannels, 1);" /><br /><br />
-				<input type="button" value="&gt;&gt;&gt;" onclick="movechannels(document.getElementById('channels').bchannels, document.getElementById('channels').achannels);" /><br /><br />
-				<input type="button" value="&lt;&lt;&lt;" onclick="movechannels(document.getElementById('channels').achannels, document.getElementById('channels').bchannels);" /><br /><br />
+				<button type="button" title="move up" onclick="poschannel(document.getElementById('channels').bchannels, 0);">&nbsp;<img src="/images/arrowup.png">&nbsp;</button><br /><br />
+				<button type="button" title="move down" onclick="poschannel(document.getElementById('channels').bchannels, 1);">&nbsp;<img src="/images/arrowdown.png">&nbsp;</button><br /><br />
+				<button type="button" title="remove" onclick="movechannels(document.getElementById('channels').bchannels, document.getElementById('channels').achannels);">&nbsp;<img src="/images/arrowright.png">&nbsp;</button><br /><br />
+				<button type="button" title="add" onclick="movechannels(document.getElementById('channels').achannels, document.getElementById('channels').bchannels);">&nbsp;<img src="/images/arrowleft.png">&nbsp;</button><br /><br />
 			</td>
 			<td>
 				<select multiple="multiple" size="20" name="achannels">
@@ -85,8 +85,8 @@ function poschannel(box, direction)
 		</tr>
 		</table>
 		<input type="hidden" name="redirect" value="/Y_Boxcontrol_Bouquet_Editor_Main.yhtm"/>
-		<p><input type="button" value="&uuml;bernehmen" onclick="do_submit();" />
-		<input type="button" value="abbrechen" onclick="do_abort();" /></p>
+		<p><button onclick="do_submit();"><img src="/images/save.png">&nbsp;&uuml;bernehmen</button>
+		<button onclick="do_abort();"><img src="/images/cross.png">&nbsp;abbrechen</button></p>
 		Alle &Auml;nderungen m&uuml;ssen noch gespeichert werden!
 		</form>
 	</div>

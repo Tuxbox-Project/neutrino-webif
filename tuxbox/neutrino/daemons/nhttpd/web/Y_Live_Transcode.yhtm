@@ -25,7 +25,7 @@ function doTranscode()
 			"}";
 		if(document.v.tdisplay.checked)
 			stream = stream+",dst=display";
-		
+
 		var __vlc_cmd = ":sout=#"+transcode+"duplicate{"+stream+"}";
 		var options = new Array(__vlc_cmd,":input-repeat=1");
 		document.v.transcode.value = "Stop Transcode";

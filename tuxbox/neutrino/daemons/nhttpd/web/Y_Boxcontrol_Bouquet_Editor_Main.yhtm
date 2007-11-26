@@ -22,7 +22,7 @@ function do_reload()
 
 function do_set(bouquetnr, action)
 {
-	loadSyncURL("/control/setbouquet?selected="+bouquetnr+"&action="+action+"#akt");
+	loadSyncURL("/control/setbouquet?selected="+bouquetnr+"&action="+action);
 	gurl = "/Y_Boxcontrol_Bouquet_Editor_Main.yhtm?selected=" + bouquetnr+ "#akt";
 	window.setTimeout('do_reload()',50);
 }
@@ -40,10 +40,10 @@ function do_update()
 function do_move(bouquetnr, action)
 {
 	var sel = parseInt(String(bouquetnr));
-	loadSyncURL("/control/movebouquet?selected="+bouquetnr+"&action="+action+"#akt");
+	loadSyncURL("/control/movebouquet?selected="+bouquetnr+"&action="+action);
 	if(action=="up")	sel--;
 	else			sel++;
-		
+
 	gurl = "/Y_Boxcontrol_Bouquet_Editor_Main.yhtm?selected=" + sel+ "#akt";
 	window.setTimeout('do_reload()',50);
 }
@@ -59,6 +59,7 @@ function do_add_start()
 {
 	hide_forms();
 	show_obj("add",true);
+	document.add.bouquet_name.focus();
 }
 function do_add_abort()
 {
@@ -67,12 +68,14 @@ function do_add_abort()
 function do_add()
 {
 	if(document.add.bouquet_name.value != ""){
-		if(loadSyncURL("/control/addbouquet?name="+document.add.bouquet_name.value) != "Ok\r\n")
+		res=loadSyncURL("/control/addbouquet?name="+document.add.bouquet_name.value);
+		/*if(res != "Ok\r\n")
 			alert("Bouquet-Name existiert schon!");
-		else
+		else*/
 			gurl = "/Y_Boxcontrol_Bouquet_Editor_Main.yhtm#akt";
+//		gurl = "/Y_Boxcontrol_Bouquet_Editor_Main.yhtm?selected=" + bouquetnr+ "#akt";
 		show_obj("add",false);
-		window.setTimeout('do_reload()',50);
+		window.setTimeout('do_reload()',200);
 	}
 	else
 		alert("Es wurde kein Bouquet-Name angegeben!");
@@ -83,6 +86,7 @@ function do_rename_start(bouquetnr, bouquet_name)
 	document.rename.bouquetnr.value = bouquetnr;
 	document.rename.bouquet_name.value = bouquet_name;
 	show_obj("rename",true);
+	document.rename.bouquet_name.focus();
 }
 function do_rename_abort()
 {
@@ -92,14 +96,15 @@ function do_rename_abort()
 function do_rename()
 {
 	if(document.rename.bouquet_name.value != ""){
-		if(loadSyncURL("/control/renamebouquet?selected="+document.rename.bouquetnr.value+"&nameto="+document.rename.bouquet_name.value) != "Ok\r\n")
+		res=loadSyncURL("/control/renamebouquet?selected="+document.rename.bouquetnr.value+"&nameto="+document.rename.bouquet_name.value);
+/*		if(res != "Ok\r\n")
 			alert("Bouquet-Name existiert schon!");
 		else{
-			gurl = "/Y_Boxcontrol_Bouquet_Editor_Main.yhtm?selected=" + bouquetnr+ "#akt";
+*/
+			gurl = "/Y_Boxcontrol_Bouquet_Editor_Main.yhtm?selected=" + document.rename.bouquetnr.value+ "#akt";
 			show_obj("rename",false);
-//			display_obj("rename",false);
-			window.setTimeout('do_reload()',500);
-		}
+			window.setTimeout('do_reload()',200);
+//		}
 	}
 	else
 		alert("Es wurde kein Bouquet-Name angegeben!");
@@ -150,38 +155,38 @@ function do_rename()
 				</p>
 			</form>
 		</div>
-		<table width="90%">
+		<table width="100%" cellspacing="0" id="bouqueteditorlist">
 <!-- line template -->
 {=var-set:row=
 <tr class="%c">
-<td align="center">
+<td align="center" width="30px">
 	%s
 	<a href="javascript:do_set('%d','%s');">
-	<img src="/images/%s.gif" alt="%s" style="border: 0px" /></a>
+	<img src="/images/%s.png" alt="%s" style="border: 0px" /></a>
 </td>
-<td align="center">
+<td align="center" width="30px">
 	<a href="javascript:do_set('%d','%s');">
-	<img src="/images/%s.gif" alt="%s" style="border: 0px" />
+	<img src="/images/%s.png" alt="%s" style="border: 0px" />
 	</a>
 </td>
 <td><a href="/Y_Boxcontrol_Bouquet_Editor_Edit.yhtm?selected=%d&amp;name=%s">%s</a></td>
-<td width="100" style="white-space: nowrap;">
+<td width="100" style="white-space: nowrap; font-weight:normal;">
 	<a href="javascript:do_rename_start('%d','%s');">
 	<img src="/images/modify.png" alt="umbenennen" style="border: 0px" /></a>&nbsp;
 	<a href="javascript:do_delete('%d','%s');">
 	<img src="/images/remove.png" alt="l&ouml;schen" style="border: 0px" /></a>&nbsp;
 	<span  style="visibility:%s;"><a href="javascript:do_move('%d','down');">
-	<img src="/images/arrowdown.gif" alt="nach unten" style="border: 0px" /></a>&nbsp;</span>
+	<img src="/images/arrowdown.png" alt="nach unten" style="border: 0px" /></a>&nbsp;</span>
 	<span  style="visibility:%s;"><a href="javascript:do_move('%d','up');">
-	<img src="/images/arrowup.gif" alt="nach oben" style="border: 0px" /></a>&nbsp;</span>
+	<img src="/images/arrowup.png" alt="nach oben" style="border: 0px" /></a>&nbsp;</span>
 </td>
 </tr>
 =}
 {=func:bouquet_editor_main {=var-get:row=}=}
 		</table>
 		<p>
-			<input type="button" value="Bouquet hinzuf&uuml;gen" onclick="javascript:do_add_start()"/>
-			<input type="button" value="Alle &Auml;nderungen speichern" onclick="javascript:do_save()"/>
+			<button type="button" onclick="javascript:do_add_start()"><img src="/images/new.png">&nbsp;Bouquet hinzuf&uuml;gen</button>
+			<button type="button" onclick="javascript:do_save()"><img src="/images/saveall.png">&nbsp;Alle &Auml;nderungen speichern</button>
 		</p>
 	</div>
 </div>

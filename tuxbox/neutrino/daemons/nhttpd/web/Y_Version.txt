@@ -1,6 +1,6 @@
-version=2.5.1
-date=08.04.2007
-type=Release
+version=2.6.0
+date=26.11.2007
+type=Major Release
 info=
 
 

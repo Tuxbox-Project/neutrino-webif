@@ -1,6 +1,6 @@
 /*	VLC abstraction by yjogol@online.de
-	$Date: 2007/02/21 17:38:48 $
-	$Revision: 1.1 $
+	$Date: 2007/11/26 20:59:35 $
+	$Revision: 1.2 $
 */
 /*ie1=ActiveC, moz1=Mozilla<0.8.5.1, moz2>= 0.8.5.1*/
 var CyVLC = function(_id, masterid, width, height) {
@@ -170,7 +170,7 @@ CyVLC.prototype = {
 	},
 	toggle_mute : function() {
 		switch(this.plugin) {
-			case "ie1":	this.vlc.toggleMute();reak;
+			case "ie1":	this.vlc.toggleMute();break;
 			case "moz2":	this.vlc.audio.toggleMute();break;
 			default:	this.vlc.mute();break;
 		}

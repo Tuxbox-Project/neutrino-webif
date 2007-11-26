@@ -3,18 +3,11 @@
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-function form_init() 
+function form_init()
 {
-	var val = "{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.authenticate;false=}";
-	if(val == "true")
-		document.f.authenticate[1].checked = true
-	else
-		document.f.authenticate[0].checked = true;
-	var val = "{=ini-get:/var/tuxbox/config/nhttpd.conf;webserver.threading;false=}";
-	if(val == "true")
-		document.f.threading[1].checked = true
-	else
-		document.f.threading[0].checked = true;
+	obj_set_radio_value('authenticate', "{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.authenticate;false=}");
+	obj_set_radio_value('threading', "{=ini-get:/var/tuxbox/config/nhttpd.conf;webserver.threading;false=}");
+	obj_set_radio_value('mod_sendfile_sendAll', "{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_sendfile.sendAll;false=}");
 }
 function do_submit()
 {
@@ -23,8 +16,7 @@ function do_submit()
 	else
 	if(document.f.port.value == "")
 		alert("Port muss angegeben werden");
-	else
-	{
+	else{
 		show_waitbox(true);
 		yhttpd_cache_clear("yPConf");
 		document.f.submit();
@@ -64,19 +56,29 @@ function do_submit()
 			<tr><td colspan="2" class="y_form_header">Allgemeines</td></tr>
 			<tr>
 				<td>Port</td>
-				<td><input type="text" name="port" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.port;80~cache=}" title="port"/>
-				<br/>&Auml;nderung des Ports wird erst nach einem Neustart wirksam.
+				<td><input type="text" name="port" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.port;80~cache=}" title="port"/>&nbsp;Wirkt erst nach dem booten
 				</td>
 			</tr>
 				<td>Threading</td>
 				<td>
 					<input type="radio" name="threading" value="false" title="threading: off"/>AUS&nbsp;
 					<input type="radio" name="threading" value="true" title="threading: on"/>AN
-				<br/>&Auml;nderung erst nach einem Neustart wirksam.
 				</td>
 			<tr>
-				<td>Hosted Web (Mount)</td>
-				<td><input type="text" name="hosteddocumentroot" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;Tuxbox.HostedDocumentRoot~cache=}" title="Root of hosted Web. Enter mount directory."/></td>
+				<td>Alternatives Web-Verzeichnis</td>
+				<td><input type="text" name="override_directory" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.override_directory~cache=}" title="Alternate web directory."/>&nbsp;Wirkt erst nach dem booten
+					<input type="hidden" name="HostedDocRoot" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;Tuxbox.HostedDocumentRoot~cache=}" title="Root of hosted Web. Enter mount directory."/></td>
+			</tr>
+			<tr>
+				<td>Erlaubte Dateiendungen / MIME</td>
+				<td><input type="text" name="mod_sendfile_mime_types" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_sendfile.mime_types~cache=}" title="allowed file extensions"/></td>
+			</tr>
+			<tr>
+				<td>Alle Dateiendungen erlauben</td>
+				<td>
+					<input type="radio" name="mod_sendfile_sendAll" value="false" title="allow all: off"/>AUS&nbsp;
+					<input type="radio" name="mod_sendfile_sendAll" value="true" title="allow all: on"/>AN
+				</td>
 			</tr>
 			<tr><td colspan="2" class="y_form_header">Logos &amp; Extras</td></tr>
 			<tr>

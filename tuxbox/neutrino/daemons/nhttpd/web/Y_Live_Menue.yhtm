@@ -14,7 +14,7 @@ function go_live()
 function go_live_popup(_url)
 {
 	res_w=384;
-	res_h=288+90;
+	res_h=288+120;
 	var par = "width="+res_w+",height="+res_h+",resizable=yes";
 	tv = window.open(_url,'tv',par);
 	parent.frames[1].location.href = "Y_Live_Msg.yhtm";
@@ -50,10 +50,6 @@ function go_live_popup_radio()
 						<td align="right"><a title="LiveRadio (popup)" href="javascript:go_live_popup_radio()">Popup</a></td>
 					</tr></table>
 				</li>
-				<li><a title="LiveView" href="Y_Live.yhtm?browser=ie&type=live&mode=tv" target="work">LiveView</a></li>
-				<li id="transcode" style="display:none">
-				<a target="work" title="transcode box-stream" href="Y_LiveViewFull.yhtm?mode=tv&amp;typ=transcode">Transcoder</a></li>
-				<li><a title="test vlc plugin" href="javascript:go_live()">NetStream</a></li>
 				<li><a target="work" title="use LiveView with 2 boxes" href="Y_Live_DoubleView.yhtm">DoubleView</a></li>
 			</ul>
 		</div>
@@ -71,11 +67,6 @@ function go_live_popup_radio()
 </div>
 <script type="text/javascript">
 //<![CDATA[
-	if(is_ie)
-	{
-		var _obj = document.getElementById("transcode");
-		_obj.style.display = "block";
-	}
 	{=if-empty:{=start=}~~
 		go_live_popup_tv();
 	=}

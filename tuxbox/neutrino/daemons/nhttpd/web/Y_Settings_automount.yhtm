@@ -31,13 +31,13 @@ function automount_edit()
 			{
 				var _sub_ops = _ops_list[i].split("=");
 				if(_sub_ops.length > 1)
-					
+
 					switch (_sub_ops[0])
 					{
 						case "user":
 						document.f.username.value = _sub_ops[1];
 						break;
-						
+
 						case "password":
 						document.f.password.value = _sub_ops[1];
 						break;
@@ -47,7 +47,7 @@ function automount_edit()
 					if(_options != "")
 						_options += ",";
 					_options += _ops_list[i];
-				}	
+				}
 			}
 			document.f.opt1.value = _options;
 			var Ausdruck = /\/\/(.*)\/(.*).*/;
@@ -61,7 +61,7 @@ function automount_edit()
 			break;
 	}
 }
-function form_init() 
+function form_init()
 {
 	obj_set_radio_value("type", "nfs");
 	{=if-equal:{=cmd=}~edit~
@@ -107,7 +107,7 @@ function do_save2()
 	}
 	show_waitbox(false);
 	mstr = mstr.replace(/=/gi,",,");
-	
+
 	var _url ="/control/exec?Y_Tools&automount_setline&/var/etc/auto.net&"+mountname+"&"+mstr;
 	var res = loadSyncURL(_url);
 	window.document.location.href="/Y_Settings_automount_liste.yhtm";
@@ -141,7 +141,7 @@ function change_type()
 			<tr>
 				<td>Mountname</td>
 				<td><input type="text" name="mountname" size="20" value=""  {=if-equal:{=cmd=}~add~~disabled="disabled"=}/></td>
-			</tr>			
+			</tr>
 			<tr>
 				<td>Typ</td>
 				<td>

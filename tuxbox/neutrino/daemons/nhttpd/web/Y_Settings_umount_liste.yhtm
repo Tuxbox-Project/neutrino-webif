@@ -2,7 +2,7 @@
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-function do_unmount() 
+function do_unmount()
 {
 	var local_dir="";
 	for(i=0; i<document.f.length;i++)

@@ -56,7 +56,11 @@ function check_logo()
 	=}
 		show_obj("logo",true);
 }
-function show_epg()
+function show_epg() {
+	show_waitbox(true);
+	window.setTimeout("_show_epg()",100);
+}
+function _show_epg()
 {
 	check_logo();
 	sLog_init();
@@ -86,8 +90,8 @@ function show_epg()
 				var epg_obj= new Array(_desc, _info1, _info2, _start, _start_t, _stop.toString(), "{=channel=}");
 				epg_data.push(epg_obj);
 
-				var _rec 	= "<a title=\"record\" href=\"javascript:set_timer('{=channel=}',"+_start+","+_stop+");\">Rec</a>";
-				var _zapit 	= "<a title=\"zapping\" href=\"javascript:set_zapit('{=channel=}',"+_start+");\">Zap</a>";
+				var _rec 	= "<a title=\"record\" href=\"javascript:set_timer('{=channel=}',"+_start+","+_stop+");\"><img src=\"images/record.png\"/></a>";
+				var _zapit 	= "<a title=\"zapping\" href=\"javascript:set_zapit('{=channel=}',"+_start+");\"><img src=\"images/zap.png\"/></a>";
 				var _tit 	= "<span onmouseover=\"show_info('"+epg_data_index+"')\">"+_desc+"</span>";
 				sLog_addRow(sLog_body, _date, _rec, _zapit, _start_t, _stop_t, _tit);
 				epg_data_index++;
@@ -101,7 +105,7 @@ function show_epg()
 </head>
 {=var-set:wait_text=EPG wird geladen.=}{=include-block:Y_Blocks.txt;snip_show_wait=}
 <body onload="show_epg()">
-	<table class="y_invisible_table" cellpadding="4" width="100%">
+	<table id="epglist" class="y_invisible_table" cellpadding="4" cellspacing="0" width="100%">
 	<thead align="left">
 	<tr>
 		<th colspan="2"><img id="logo" src="{=ini-get:/var/tuxbox/config/nhttpd.conf;ExtrasDocURL=}/logos/{=channel=}.gif" style="visibility:hidden">&nbsp;</th>
@@ -109,16 +113,8 @@ function show_epg()
 	</tr>
 	</thead>
 	<tbody id="slog_list">
-	<tr><td></td></tr>
 	</tbody>
 	</table>
 	<br />
-<script type="text/javascript">
-//<![CDATA[
-//	show_waitbox(true);
-//	window.setTimeout("show_epg()",500);
-//]]>
-</script>
-
 </body>
 </html>

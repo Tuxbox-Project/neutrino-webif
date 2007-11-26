@@ -4,10 +4,10 @@
 <script type="text/javascript">
 //<![CDATA[
 var g_wol = new Array(
-	"{=ini-get:/var/tuxbox/config/Y-Web.conf;wol_mac_1=}", 
-	"{=ini-get:/var/tuxbox/config/Y-Web.conf;wol_mac_2=}", 
+	"{=ini-get:/var/tuxbox/config/Y-Web.conf;wol_mac_1=}",
+	"{=ini-get:/var/tuxbox/config/Y-Web.conf;wol_mac_2=}",
 	"{=ini-get:/var/tuxbox/config/Y-Web.conf;wol_mac_3=}");
-function do_wol(_nr) 
+function do_wol(_nr)
 {
 	var nhttpd_version = loadSyncURL("/control/exec?Y_Tools&wol&"+g_wol[_nr-1]);
 }

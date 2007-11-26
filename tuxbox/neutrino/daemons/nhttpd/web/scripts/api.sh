@@ -2,8 +2,8 @@
 # -----------------------------------------------------------
 # API Script (yjogol)
 # for yWeb independent shell calls
-# $Date: 2007/04/19 05:23:05 $
-# $Revision: 1.2 $
+# $Date: 2007/11/26 20:54:55 $
+# $Revision: 1.3 $
 # -----------------------------------------------------------
 API_VERSION_MAJOR="1"
 API_VERSION_MINOR="0"

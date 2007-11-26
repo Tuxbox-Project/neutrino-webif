@@ -1,20 +1,21 @@
 {=var-set:cancache=yPInstall=}
 {=include-block:Y_Blocks.txt;head=}
+<script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 var g_volumen = 100;
 function volumen_set_audiobar(_volumen)
 {
-	var l = document.getElementById("audiobar_left");
-	var r = document.getElementById("audiobar_right");
+	var l = $("audiobar_left");
+	var r = $("audiobar_right");
 	/*IE: width=0 -> =""*/
 	if(_volumen > 0)
 		l.width = _volumen.toString()+"%";
 	else
-		l.width = ""; 
+		l.width = "";
 	if(_volumen >= 100)
-		r.width = ""; 
+		r.width = "";
 	else
 		r.width = (100-_volumen).toString()+"%";
 }
@@ -35,17 +36,21 @@ function volumen_set(_volumen)
 	volumen_set_audiobar(_volumen);
 	g_volumen = _volumen;
 }
+function set_mute_button()
+{
+	var status = loadSyncURL("/control/volume?status");
+	$('btMute').update( (status==1)? "&nbsp;<img src=\"/images/volumeunmute.png\">&nbsp;": "&nbsp;<img src=\"/images/volumemute.png\">&nbsp;");
+	return status;	
+}
 function toggle_mute()
 {
-	var __button = document.getElementById("btMute");
-	if(__button.firstChild.nodeValue == "Mute"){
+	
+	var status = loadSyncURL("/control/volume?status");
+	if(status==0)//aus
 		loadSyncURL("/control/volume?mute");
-		__button.firstChild.nodeValue = "Unmute";
-	}
-	else{
+	else
 		loadSyncURL("/control/volume?unmute");
-		__button.firstChild.nodeValue = "Mute";
-	}
+	set_mute_button();
 }
 function set_mode(_mode)
 {
@@ -94,21 +99,22 @@ function set_mode(_mode)
 			</tr>
 			</table>
 			<br/>
-			<span class="y_text_boxcontrol_button" title="decrease volumen">
-				<a href="javascript:volumen_set(g_volumen-10);">&nbsp;<strong>-</strong>&nbsp;</a></span>
-			<span class="y_text_boxcontrol_button" title="increase volumen">
-				<a href="javascript:volumen_set(g_volumen+10);">&nbsp;<strong>+</strong>&nbsp;</a></span>
-			<span class="y_text_boxcontrol_button" title="mute volumen">
-				<a id="btMute" href="javascript:toggle_mute();">Mute</a></span>
-			<br/><br/>
-			<span class="y_text_boxcontrol_button" title="switch to TV"><a href="javascript:set_mode('tv');">TV</a></span>
-			<span class="y_text_boxcontrol_button" title="switch to Radio"><a href="javascript:set_mode('radio');">Radio</a></span>
+			<span title="decrease volumen">
+				<a href="javascript:volumen_set(g_volumen-10);"><img src="/images/volumedown.png">&nbsp;</a></span>
+			<span title="increase volumen">
+				<a href="javascript:volumen_set(g_volumen+10);"><img src="/images/volumeup.png"></a></span>
+			<span title="mute volumen">
+				<a id="btMute" href="javascript:toggle_mute();">&nbsp;<img src="/images/volumemute.png">&nbsp;</a></span>
+<!--			<br/><br/>-->
+			<span title="switch to TV"><a href="javascript:set_mode('tv');"><img src="/images/live.gif">&nbsp;</a></span>
+			<span title="switch to Radio"><a href="javascript:set_mode('radio');">&nbsp;<img src="/images/radio.png"></a></span>
 		</center>
 	</div>
 </div>
 <script type="text/javascript">
 //<![CDATA[
 	volumen_set_audiobar(volumen_get());
+	set_mute_button();
 //]]>
 </script>
 </body>

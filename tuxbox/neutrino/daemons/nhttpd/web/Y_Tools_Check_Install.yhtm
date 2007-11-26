@@ -1,7 +1,17 @@
 {=include-block:Y_Blocks.txt;head=}
 <script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript">
 //<![CDATA[
+function do_start()
+{
+	$('statusline').show();
+	do_check();
+}
+function do_stop()
+{
+	$('statusline').hide();
+}
 /*sLog*/
 var sLog_body;
 var sLog_line_number;
@@ -47,7 +57,7 @@ function do_check()
 	sLog_addRow(sLog_body, "ok", "yWeb Version is: {=ini-get:Y_Version.txt;version=} {=ini-get:Y_Version.txt;date=}", "ok");
 
 	/*webserver*/
-	var needed_nhttpd_version = "3.1.3";
+	var needed_nhttpd_version = "3.1.4";
 	var nhttpd_version = loadSyncURL("/control/info?nhttpd_version");
 	if(nhttpd_version.search(/error/)!=-1)
 		nhttpd_version = "0.0.0-unknown";
@@ -129,6 +139,7 @@ function do_check()
 	~
 		sLog_addRow(sLog_body, "red", "Ucodes: cam-alpha not found. "+wiki_url("Ucodes"), "failed");
 	=}
+	do_stop();
 }
 //]]>
 </script>
@@ -140,16 +151,13 @@ function do_check()
 		{=var-set:help_url=Neutrino:yWeb:Tools#Check_Install=}{=var-set:menu=Check Install=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<br />
-		<form method="post" name="f" action="">
-			<input type="button" value="check" title="check" name="check" onclick="do_check()"/>&nbsp;
-		</form>
-
+		<div id="statusline"><img border="0" src="/images/wait.gif" width="20" height="20" alt="wait"/>
+			<span id="status">collecting information</span></div>
 		<form method="post" name="log" action="">
-			<b>Check Results</b><br/>
-			<table class="y_work_table" cellpadding="4">
+			<table border="0" cellspacing="0" cellpadding="4" width="100%">
 			<thead align="left">
 			<tr>
-				<th>&nbsp;</th><th>Aktion</th><th>Status</th>
+				<th class="y_form_header">&nbsp;</th><th class="y_form_header">Aktion</th><th class="y_form_header">Status</th>
 			</tr>
 			</thead>
 			<tbody id="slog_list">
@@ -160,5 +168,10 @@ function do_check()
 		</form>
 	</div>
 </div>
+<script type="text/javascript">
+//<![CDATA[
+	window.setTimeout("do_start();",500);
+//]]>
+</script>
 </body>
 </html>

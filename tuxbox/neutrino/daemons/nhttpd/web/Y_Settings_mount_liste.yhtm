@@ -2,7 +2,7 @@
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-function do_mount() 
+function do_mount()
 {
 	show_waitbox(true);
 	var nr = 0;

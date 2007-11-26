@@ -2,11 +2,11 @@
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-function form_init() 
+function form_init()
 {
 	var check = {=ini-get:/var/tuxbox/config/neutrino.conf;network_nfs_type_{=R1=}=};
 	document.f.type[check].checked = true;
-	
+
 	check = {=ini-get:/var/tuxbox/config/neutrino.conf;network_nfs_automount_{=R1=}=};
 	document.f.automount[check].checked = true;
 }
