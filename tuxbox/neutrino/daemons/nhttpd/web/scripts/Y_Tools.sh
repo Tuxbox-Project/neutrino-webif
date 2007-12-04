@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Tools (yjogol)
-# $Date: 2007/11/26 20:54:55 $
-# $Revision: 1.3 $
+# $Date: 2007/12/04 15:48:14 $
+# $Revision: 1.4 $
 # -----------------------------------------------------------
 . ./_Y_Globals.sh
 . ./_Y_Library.sh
@@ -100,7 +100,7 @@ flash_mtd()
 	if [ -s "$y_upload_file" ]
 	then
 		echo "" >/tmp/e.txt
-		msg_nmsg "Image%20wird%20geflasht!"
+#		msg_nmsg "Image%20wird%20geflasht!"
 		if [ "$simulate" = "false" ]
 		then
 			umount /hdd #yet: fixed setting
@@ -137,7 +137,7 @@ flash_mtd()
 				sleep 1
 			done
 		fi
-		msg_nmsg "flashen%20fertig.%20Reboot..."
+#		msg_nmsg "flashen%20fertig.%20Reboot..."
 		msg="geflasht ... bitte jetzt box neu starten ..."
 		msg="$msg <script language='JavaScript' type='text/javascript'>window.setTimeout('parent.do_image_flash_ready()',1000)</script>"
 		y_format_message_html

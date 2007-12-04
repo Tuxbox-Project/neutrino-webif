@@ -1,6 +1,6 @@
 /*	yWeb Flash by yjogol
-	$Date: 2007/11/26 20:59:35 $
-	$Revision: 1.1 $
+	$Date: 2007/12/04 15:48:14 $
+	$Revision: 1.2 $
 */
 function do_image_upload_dialog()
 {
@@ -110,7 +110,7 @@ function do_image_upload_ready_error()
 function do_image_flash_ready()
 {
 	window.clearInterval(aktiv);
-	flash_diag.hide();
+	$('flash_diag').hide();
 	loadSyncURL("/control/lcd?lock=0");
 	alert("Image geflasht. Nach Reboot OK druecken");
 	top.location.href="/";

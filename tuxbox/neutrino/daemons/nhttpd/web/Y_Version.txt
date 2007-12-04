@@ -1,6 +1,6 @@
-version=2.6.0
-date=26.11.2007
+version=2.6.0p2
+date=04.12.2007
 type=Major Release
-info=
+info=Postfix 2
 
 
