@@ -33,9 +33,7 @@ function do_clearshot2()
 	<div class="work_box_head"><div class="work_box_head_h2">
 	{=var-set:help_url=Neutrino:yWeb:BoxControl#Remote_OSD=}{=var-set:menu=Remote &amp; OSD=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-		{=if-empty:{=var-get:dboxshot=}~~
-		<button name="dboxshot" onclick="do_dboxshot()">shot</button>
-		=}
+		<button name="dboxshot" onclick="do_dboxshot()">Shot</button>&nbsp;
 		<button name="clearshot" onclick="do_clearshot()">Delete shots</button>
 		<table cellpadding="0">
 		<tr>

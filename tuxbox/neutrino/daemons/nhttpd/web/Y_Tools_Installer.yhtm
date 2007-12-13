@@ -18,10 +18,24 @@ function do_submit()
 	else
 		alert("No file given!");
 }
+function init(){
+	var res=dbox_exec_tools("var_space");
+	var Ausdruck = /([^ ]*)[ ]*([^ ]*)[ ]*([^ ]*)[ ]*([^ ]*)[ ]*([^ ]*)[ ]*([^ ]*).*$/;
+	Ausdruck.exec(res);
+	var total = RegExp.$2;
+	var used = RegExp.$3;
+	var avaiable = RegExp.$4;
+	var percentage = RegExp.$5;
+	if(total != "")
+		str="Platz in /var Gesamt: "+total+"k Benutzt: "+used+"k Frei: "+avaiable+"k Anteil benutzt: "+percentage;
+	else
+		str="Kann freien Speicherplatz nicht ermitteln /var ist keine Partition! JFFS2 oder YADD?";
+	id("free").innerHTML=str;
+}
 //]]>div
 </script>
 </head>
-<body>
+<body onload="init()">
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
 		{=var-set:help_url=Neutrino:yWeb:Tools#yInstaller=}{=var-set:menu=yInstaller=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
@@ -31,6 +45,7 @@ function do_submit()
 			<input type="button" name="su" value="installieren" title="upload and install" onclick="do_submit()"/>
 			<br/><br/>
 		</form>
+		<div id="free"></div>
 		<div style="height:290px;width:740px;">
 		<iframe height="250" width="750" scrolling="auto" align="left" frameborder="0" name="out" id="out">Your Browser does not support IFrames.</iframe>
 		</div>

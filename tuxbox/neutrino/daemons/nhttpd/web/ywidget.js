@@ -45,7 +45,7 @@ Y.Base.Overlay = {
 		$(e).hide();
 	}
 };
-Event.observe(window, 'load', function(e){Y.Base.Overlay.init();}, false);
+//Event.observe(window, 'load', function(e){Y.Base.Overlay.init();}, false);
 /* END - Y.Base */
 
 /* Y.Dialog */
@@ -148,8 +148,8 @@ Object.extend(Y.ContextMenu.prototype, {
 	}
 });
 /* init Context Menus*/
-Event.observe(window, 'load', function(e){Y.ContextMenu.init();}, false);
-Event.observe(window, 'unload', Event.unloadCache, false);
+//Event.observe(window, 'load', function(e){Y.ContextMenu.init();}, false);
+//Event.observe(window, 'unload', Event.unloadCache, false);
 
 /* END - Context Menu */
 

@@ -18,7 +18,6 @@
 
 		</td>
 		<td>
-		<input type="checkbox" name="debug" value="1"/>Debugging
 		<!--
 			<input type="radio" name="planer" value="slave" disabled="disabled"/>Slave box<br/>
 			<input type="radio" name="planer" value="slave" disabled="disabled"/>Test<br/> -->
@@ -36,7 +35,7 @@
 				<option value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_9;/mnt/filme~cache=}">{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_9;/mnt/filme~cache=}</option>
 				</select>
 
-			<br/>Einstellungen unter Settings-Timer</td>
+			<br/><a href="javascript:top.top_main.prim_menu.nav('settings', 'Y_Settings_Timer.yhtm');" class="inlink">Einstellungen</a>&nbsp;<input type="checkbox" name="debug" value="1"/>Debugging</td>
 		</tr>
 		</table>
 		<input type="button" value="get selected" title="get selected" name="get_selected" onclick="do_get_selected()"/>&nbsp;

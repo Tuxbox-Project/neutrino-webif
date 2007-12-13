@@ -34,7 +34,16 @@ tr {
 	color: #555555;
 	font-size:10pt;
 }
-
+.exlink{
+	background:transparent url(/images/exlink.gif) no-repeat scroll right center;
+	text-decoration: underline;
+	padding-right: 20px;
+}
+.inlink{
+	background:transparent url(/images/inlink.gif) no-repeat scroll right center;
+	text-decoration: underline;
+	padding-right: 20px;
+}
 /* primary Navigation */
 .y_menu_prim_box {
 	margin: 0;

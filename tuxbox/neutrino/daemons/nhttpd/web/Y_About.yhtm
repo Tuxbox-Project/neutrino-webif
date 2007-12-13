@@ -11,7 +11,7 @@
 			<td width="144" valign="top"><a href="http://www.yjogol.de" target="_blank"><img border="0" src="images/y.png" alt="y-logo"/></a></td>
 			<td valign="top">
 				<b>dbox yWeb</b>
-				<br/><a href="http://www.yjogol.de" target="_blank">www.yjogol.de</a>
+				<br/><a href="http://www.yjogol.de" class="exlink" target="_blank">www.yjogol.de</a>
 				<p>
 				{=ini-get:Y_Version.txt;version=}<br/>
 				{=ini-get:Y_Version.txt;date=}<br/>

@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Tools (yjogol)
-# $Date: 2007/12/04 15:48:14 $
-# $Revision: 1.4 $
+# $Date: 2007/12/13 16:45:59 $
+# $Revision: 1.5 $
 # -----------------------------------------------------------
 . ./_Y_Globals.sh
 . ./_Y_Library.sh
@@ -614,7 +614,9 @@ case "$1" in
 			echo "on"
 		fi
 		;;
-
+	var_space)
+		df|grep /var
+		;;
 	*)
 		echo "[Y_Tools.sh] Parameter falsch: $*" ;;
 esac
