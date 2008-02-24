@@ -6,7 +6,7 @@
 {=var-set:wait_text=Timer holen (get timer).=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Live_Timer#Timer_Sync=}{=var-set:menu=Timer Sync=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Live_Timer-Timer_Sync=}{=var-set:menu=Timer Sync=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form method="post" name="f" action="">
 		<div  class="y_form_header">Timer Source</div>
@@ -38,8 +38,9 @@
 			<br/><a href="javascript:top.top_main.prim_menu.nav('settings', 'Y_Settings_Timer.yhtm');" class="inlink">Einstellungen</a>&nbsp;<input type="checkbox" name="debug" value="1"/>Debugging</td>
 		</tr>
 		</table>
-		<input type="button" value="get selected" title="get selected" name="get_selected" onclick="do_get_selected()"/>&nbsp;
-		<input type="button" value="clear all" title="clear all" name="clear_all" onclick="do_clear_all()"/>
+		<button type="button" ytype="download" itle="get selected" name="get_selected" onclick="do_get_selected()">get selected</button>
+		&nbsp;
+		<button type="button" ytype="clear" title="clear all" name="clear_all" onclick="do_clear_all()">clear all</button>
 	</form>
 	<br/>
 	<form method="post" name="timer" action="">
@@ -56,8 +57,10 @@
 		<tr><td></td></tr>
 		</tbody>
 		</table>
-		<input type="button" value="set timer" title="" name="set_timers" onclick="do_set_timer()"/>&nbsp;
-		<input type="button" value="clear log" title="" name="clear_log" onclick="sLog_clear()"/>
+		<div style="padding-top:2px">
+		<button type="button" ytype="timeadd" title="" name="set_timers" onclick="do_set_timer()">set timer</button>&nbsp;
+		<button type="button" ytype="clear" title="" name="clear_log" onclick="sLog_clear()">clear log</button>
+		</div>
 	</form>
 	<br/>
 	<form method="post" name="log" action="">

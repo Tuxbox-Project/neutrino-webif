@@ -120,7 +120,7 @@ function view_transcode_mode()
 		{=if-equal:{=mode=}~tv~
 		<span id="have_udp" style="visibility:hidden"><input type="checkbox" id="udp" title="UDP Streaming"/>UDP</span>
 		<button class="y_live_button" type="button" value="set" title="LiveView settings" id="settings" onclick="view_settings_mode()">
-			<img src="/images/properties.gif"></button>
+			<img src="/images/properties.png"></button>
 		<button class="y_live_button" type="button" value="S" title="create snapshot picture" id="snapshot" onclick="V2.snapshot()"  style="visibility:hidden">
 			<img src="/images/snapshot.png"></button>
 		=}

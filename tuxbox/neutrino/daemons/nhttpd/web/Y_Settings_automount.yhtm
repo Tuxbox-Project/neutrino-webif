@@ -133,7 +133,7 @@ function change_type()
 {=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head">
-		<div class="work_box_head_h2">{=var-set:help_url=Neutrino:yWeb:Tools#AutoMount=}{=var-set:menu=AutoMount=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+		<div class="work_box_head_h2">{=var-set:help_url=Help-Tools-AutoMount=}{=var-set:menu=AutoMount=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" action="/y/cgi">
 		<input type="hidden" name="nr" value="{=R1=}"/>
@@ -173,8 +173,8 @@ function change_type()
 			</tr>
 		</table>
 		<br/>
-		<input type="button" value="Speichern ..." title="submit and save values" onClick="do_save()"/>
-		<input type="button" value="Abbrechen" title="cancel" name="abort" onClick='window.document.location.href="/Y_Settings_automount_liste.yhtm"'/>
+		<button type="button" ytype="save" title="submit and save values" onClick="do_save()">Speichern</button>
+		<button type="button" ytype="cancel" title="cancel" name="abort" onClick='window.document.location.href="/Y_Settings_automount_liste.yhtm"'>Abbrechen</button>
 	</form>
 	</div>
 </div>

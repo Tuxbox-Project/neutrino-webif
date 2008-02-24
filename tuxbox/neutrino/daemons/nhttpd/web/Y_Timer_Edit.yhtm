@@ -76,10 +76,10 @@ function init()
 {=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Live#Timer=}{=var-set:menu=Timer=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Live_Timer-Timer=}{=var-set:menu=Timer=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 
-	<form method="get" name="f" action="/fb/timer.dbox2">
+	<form method="get" class="y_form" name="f" action="/fb/timer.dbox2">
 	<input type="hidden" name="action" value="{=typ=}"/>
 	<input name="id" type="hidden" value="{=timerId=}"/>
 		<table border="0" width="100%">
@@ -181,8 +181,9 @@ function init()
 		</table>
 		<br/>
 
-		<input type="button" value="speichern" title="submit and save values" onclick="do_submit()"/>
-		<input type="button" value="abbrechen" onclick='window.document.location.href="/Y_Timer_List.yhtm"'/>
+<!--		<input type="button" value="speichern" title="submit and save values" onclick="do_submit()"/>-->
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">speichern</button>
+		<button type="button" ytype="cancel" title="cancel" onclick='window.document.location.href="/Y_Timer_List.yhtm"'>abbrechen</button>
 	</form>
 	</div>
 </div>

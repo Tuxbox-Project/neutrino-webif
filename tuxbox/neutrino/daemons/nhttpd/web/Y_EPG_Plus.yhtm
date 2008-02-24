@@ -1,14 +1,20 @@
 {=include-block:Y_Blocks.txt;head_no_charset=}
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript" src="/Y_EPG.js"></script>
+<script type="text/javascript">
+function epg_imdb(){
+	
+}
 </script>
+
 </head>
 <body>
 {=var-set:wait_text=EPG holen (get EPG).=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Live_Timer#EPG_Plus=}{=var-set:menu=EPG Plus=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Live_Timer-EPG_Plus=}{=var-set:menu=EPG Plus=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<form name="e">
 			<select size="1" class="y_live_bouquets" name="bouquets" title="select bouquet - channels will be updated">
@@ -16,29 +22,47 @@
 			</select>
 			<select id="epg_time" size="1" name="epg_time">
 			</select>
-			<input id="btGet" type="button" value="Aktualisieren" title="get or refresh EPG" onclick="build_epg_plus_main()">
-			<input id="btPast" type="button" value="-2" title="past hours" onclick="build_epg_plus_delta(-2)">
-			<input id="btNext" type="button" value="+2" title="next hours" onclick="build_epg_plus_delta(2)">
+			<button id="btGet" type="button" ytype="refresh" title="get or refresh EPG" onclick="build_epg_plus_main()">Aktualisieren</button>
+			<button id="btPast" type="button" ytype="timedown" title="past hours" onclick="build_epg_plus_delta(-2)">-2</button>
+			<button id="btNext" type="button" ytype="timeup"" title="next hours" onclick="build_epg_plus_delta(2)">+2</button>
 		</form>
 
 		<div id="epg_plus">&nbsp;</div>
-		<div id="epg_info">
-			<strong>Details</strong>
-			<button title="set timer for recording" onclick="epg_set_timer()"><img src="images/record.png">&nbsp;Aufnehmen</button>
-			<button title="switch to channel" onclick="epg_zapto()"><img src="images/zap.png">&nbsp;Umschalten</button>
-			<div id="d_desc" class="ep_info_desc">&nbsp;</div>
-			<div id="d_info1" class="ep_info_info1">&nbsp;</div>
-			<div id="d_info2" class="ep_info_info2">&nbsp;</div>
-			<div id="d_start" style="display:none"></div>
-			<div id="d_stop" style="display:none"></div>
-			<div id="d_channel_id" style="display:none"><div>
 
-		</div>
 	</div>
+</div>
+<div id="epg_info" style="visible:hidden;">
+	<table cellpadding="2" cellspacing="2">
+		<tr valign="top">
+			<td width="50" valign="middle"><div id="d_logo"></div></td>
+			<td>
+				<div id="d_desc" class="ep_info_desc">&nbsp;</div>
+				<div id="d_info1" class="ep_info_info1">&nbsp;</div>
+			</td>
+			<td width="20"><a href="javascript:show_obj('epg_info',false);"><img src="/images/cross.png"></a></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div id="d_info2" class="ep_info_info2">&nbsp;</div>
+				<div id="d_start" style="display:none"></div>
+				<div id="d_stop" style="display:none"></div>
+				<div id="d_channel_id" style="display:none"><div>
+				<br/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<button ytype="record" title="set timer for recording" onclick="epg_set_timer()">Aufnehmen</button>
+				<button ytype="zap" title="switch to channel" onclick="epg_zapto()">Umschalten</button>
+				Nachschlagen:
+				<span id="d_lookup"></span>
+			</td>
+		</tr>
+	</table>
 </div>
 <script type="text/javascript">
 //<![CDATA[
-	build_time_list(0);
+	epg_plus_init("{=ini-get:/var/tuxbox/config/nhttpd.conf;Tuxbox.LogosURL=}");
 //]]>
 </script>
 

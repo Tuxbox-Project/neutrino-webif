@@ -1,16 +1,19 @@
 {=var-set:cancache=yPyes=}
 {=include-block:Y_Blocks.txt;head=}
 <script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-function goConfirmUrl(_meld, _url)
-{
+function goConfirmUrl(_meld, _url){
 	if (confirm(_meld)==true) goUrl(_url);
 }
-function goUrl(_url)
-{
-	var res = loadSyncURL(_url);
-	id("out").innerHTML = res;
+function goUrl(_url){
+	var res = trim(loadSyncURL(_url));
+	switch(res){
+		case "1": res="on"; break;
+		case "0": res="off"; break;
+	}
+	$("out").update(res);
 }
 //]]>
 </script>
@@ -18,7 +21,7 @@ function goUrl(_url)
 <body>
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:BoxControl#Control=}{=var-set:menu=Control=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-BoxControl-Control=}{=var-set:menu=Control=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form action="">
 		<table class="y_invisible_table" cellpadding="5" width="100%">
@@ -90,7 +93,7 @@ function goUrl(_url)
 </div>
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:BoxControl#Control=}{=var-set:menu=Antwort=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-BoxControl-Control=}{=var-set:menu=Antwort=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<div id="out"></div>
 	</div>

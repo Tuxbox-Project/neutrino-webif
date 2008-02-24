@@ -51,13 +51,13 @@ function sLog_addRow(_body, state, action_text, state_text)
 {
 	sLog_line_number++;
 	var mycurrent_row = y_add_row_to_table(_body, ((sLog_line_number % 2) ==0)?"a":"b" );
-	var __img ="/images/ok.gif";
+	var __img ="/images/info.png";
 	switch (state)
 	{
-		case "green":	__img = "/images/check_green.gif"; break;
-		case "yellow":	__img = "/images/excl_yellow.gif"; break;
-		case "ok":	__img = "/images/ok.gif"; break;
-		case "red":	__img = "/images/x_red.gif"; break;
+		case "green":	__img = "/images/accept.png"; break;
+		case "yellow":	__img = "/images/alert.gif"; break;
+		case "ok":	__img = "/images/info.png"; break;
+		case "red":	__img = "/images/remove.png"; break;
 	}
 	y_add_html_cell_to_row(mycurrent_row, "icon", "<img src='"+__img+"'>");
 	y_add_html_cell_to_row(mycurrent_row, "action_text", action_text);
@@ -203,6 +203,7 @@ function do_get_klack()
 	sLog_addRow(sLog_body, "ok", "Klack: Sync Timer", "started");
 	var _url = "/control/exec?Y_Tools&timer_get_klack";
 	var res = loadSyncURL(_url);
+alert(res);
 	if(res.search(/Connecting/)!=-1)
 		sLog_addRow(sLog_body, "green", "Klack: connecting: "+res, "ok");
 	else

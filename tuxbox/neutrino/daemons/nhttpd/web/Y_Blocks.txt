@@ -21,19 +21,23 @@ end-block~build_live_url
 
 # ------- yWeb save Settings
 start-block~yWeb_save_settings
-{=ini-set:/var/tuxbox/config/Y-Web.conf;slavebox;{=slavebox=}~open=}
-{=ini-set:/var/tuxbox/config/Y-Web.conf;management_ip;{=managementIP=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;management_ip;{=managementIP=}~open=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;management_ip2;{=managementIP2=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;wol_mac_1;{=wol_mac_1=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;wol_mac_2;{=wol_mac_2=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;wol_mac_3;{=wol_mac_3=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;wol_desc_1;{=wol_desc_1=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;wol_desc_2;{=wol_desc_2=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;wol_desc_3;{=wol_desc_3=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;fb;{=fb=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;yweb_box_name;{=yweb_box_name=}~cache=}
-{=ini-set:/var/tuxbox/config/Y-Web.conf;yweb_box_color;{=yweb_box_color=}~cache=}
-{=ini-set:/var/tuxbox/config/Y-Web.conf;vlc_record_path;{=vlc_record_path=}~save=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;yweb_box_color;{=yweb_box_color=}~save=}
 end-block~yWeb_save_settings
 
 # ------- Live save Settings
 start-block~Live_save_settings
+{=ini-set:/var/tuxbox/config/Y-Web.conf;slavebox;{=slavebox=}~open=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;vlc_record_path;{=vlc_record_path=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;deinterlace;{=deinterlace=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;deinterlace_filter;{=v=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;udp;{=udp=}~cache=}
@@ -53,8 +57,7 @@ start-block~nhttpd_save_settings
 {=ini-set:/var/tuxbox/config/nhttpd.conf;WebsiteMain.override_directory;{=override_directory=}~cache=}
 {=ini-set:/var/tuxbox/config/nhttpd.conf;mod_sendfile.mime_types;{=mod_sendfile_mime_types=}~cache=}
 {=ini-set:/var/tuxbox/config/nhttpd.conf;mod_sendfile.sendAll;{=mod_sendfile_sendAll=}~cache=}
-{=ini-set:/var/tuxbox/config/nhttpd.conf;ExtrasDocRoot;{=ExtrasDocRoot=}~cache=}
-{=ini-set:/var/tuxbox/config/nhttpd.conf;ExtrasDocURL;{=ExtrasDocURL=}~save=}
+{=ini-set:/var/tuxbox/config/nhttpd.conf;Tuxbox.LogosURL;{=Tuxbox_LogosURL=}~save=}
 {=func:do_reload_httpd_config=}
 end-block~nhttpd_save_settings
 
@@ -144,7 +147,7 @@ end-block~snip_show_wait
 # ------- Wiki Help display
 #<img src="/images/help.gif" align="bottom">
 start-block~wiki_help
-<a href="http://wiki.godofgta.de/{=var-get:help_url=}" target="_blank" title="get help from wiki.godofgta.de">?</a>
+<a href="http://www.yjogol.com/{=var-get:help_url=}" target="_blank" title="get help from www.yjogol.com">?</a>
 end-block~wiki_help
 
 # ------- work menu
@@ -215,9 +218,9 @@ start-block~frame_main
 {=include-block:Y_Blocks.txt;frame_head=}
 <title>dbox yWeb</title>
 </head>
-<frameset rows="60,*">
-	<frame name="prim_menu" src="Y_Menue.yhtm" scrolling="no" frameborder="0" noresize="noresize" />
-	<frame name="base" src="Y_Dyn_Pages.yhtm?page=frame_boxcontrol" frameborder="0" style="height:100%"/>
+<frameset rows="60,*" frameborder="0" framespacing="0">
+	<frame name="prim_menu" src="Y_Menue.yhtm" scrolling="no"  marginwidth="0" marginheight="0" frameborder="0" border="0" noresize="noresize" />
+	<frame name="base" src="Y_Dyn_Pages.yhtm?page=frame_boxcontrol"  marginwidth="0" marginheight="0" frameborder="0" border="0" style="height:100%"/>
 	<noframes>
 		<body>
 		<p>Your Browser does not support Frames.</p>
@@ -231,7 +234,7 @@ end-block~frame_main
 start-block~page_frame_rest
 {=include-block:Y_Blocks.txt;head=}
 </head>
-<body style="background : #F0F0F0;">
+<body style="background : white;">
 </body>
 </html>
 end-block~page_frame_rest
@@ -240,7 +243,7 @@ end-block~page_frame_rest
 start-block~frame_secondary
 {=include-block:Y_Blocks.txt;frame_iso_head=}
 </head>
-<frameset cols="157,*">
+<frameset cols="157,*" frameborder="0" framespacing="0">
 	<frame name="sec_menu" src="{=var-get:sec_menu=}" scrolling="no" noresize="noresize" frameborder="0"/>
 	<frame name="work" src="{=var-get:work=}" scrolling="auto" frameborder="0"/>
 	<noframes>
@@ -313,7 +316,7 @@ end-block~frame_info
 start-block~frame_live_epg
 {=include-block:Y_Blocks.txt;frame_head=}
 </head>
-<frameset rows="100,*">
+<frameset rows="100,*" frameborder="0" framespacing="0">
 	<frame name="epg_info" src="Y_Live_EPG_Info.yhtm" scrolling="auto" frameborder="0"/>
 	<frame name="epg_list" src="Y_Live_EPG.yhtm?channel={=channel=}" scrolling="auto" frameborder="0" style="height:100%"/>
 	<noframes>
@@ -327,7 +330,7 @@ end-block~frame_live_epg
 
 # ------- Remote
 start-block~remote
-{=if-equal:Nokia~{=func:get_boxtype=}~{=include-block:Y_Blocks.txt;remote_standard=}~{=include-block:Y_Blocks.txt;remote_sagem=}=}
+{=if-equal:Nokia~{=if-equal:{=ini-get:/var/tuxbox/config/Y-Web.conf;fb;default=}~default~{=func:get_boxtype=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;fb;default=}=}~{=include-block:Y_Blocks.txt;remote_standard=}~{=include-block:Y_Blocks.txt;remote_sagem=}=}
 end-block~remote
 
 # ------- Remote
@@ -365,34 +368,34 @@ end-block~remote_standard
 
 # ------- Remote Sagem
 start-block~remote_sagem
-<img src="images/rc_sagem.jpg" usemap="#rc" alt="remote"/>
-<map name="rc">
-  <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="98,121,97,184,62,150,94,117" />
-  <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="37,182,98,186,64,154" />
-  <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="90,118,35,122,60,148" />
-  <area shape="poly" href="javascript:rcsim('KEY_LEFT')" coords="63,152,34,124,34,185" />
-  <area shape="circle" href="javascript:rcsim('KEY_SETUP')" coords="103,107,15" />
-  <area shape="circle" href="javascript:rcsim('KEY_HELP')" coords="28,106,16" />
-  <area shape="circle" href="javascript:rcsim('KEY_POWER')" coords="104,37,17" />
-  <area shape="circle" href="javascript:rcsim('KEY_MUTE')" coords="64,263,13" />
-  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEUP')" coords="87,232,20" />
-  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEDOWN')" coords="42,234,20" />
-  <area shape="circle" href="javascript:rcsim('KEY_OK')" coords="32,202,13" />
-  <area shape="circle" href="javascript:rcsim('KEY_HOME')" coords="97,203,11" />
-  <area shape="circle" href="javascript:rcsim('KEY_BLUE')" coords="103,77,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_RED')" coords="28,77,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_GREEN')" coords="50,62,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_YELLOW')" coords="80,62,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_0')" coords="64,367,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_9')" coords="97,340,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_8')" coords="64,340,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_7')" coords="33,341,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_6')" coords="97,315,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_5')" coords="65,315,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_4')" coords="32,315,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_3')" coords="96,290,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_2')" coords="65,289,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_1')" coords="33,289,12" />
+<img src="images/rc_sagem.jpg" usemap="#rc" alt="remote"/> 
+<map name="rc"> 
+  <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="100,117,100,180,67,146,100,116" /> 
+  <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="36,181,101,180,66,146" /> 
+  <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="101,116,36,116,66,146" /> 
+  <area shape="poly" href="javascript:rcsim('KEY_LEFT')" coords="66,147,36,117,35,182" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_SETUP')" coords="105,100,15" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_HELP')" coords="32,100,16" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_POWER')" coords="108,33,15" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_MUTE')" coords="69,255,13" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEUP')" coords="92,225,17" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEDOWN')" coords="47,225,17" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_OK')" coords="37,196,11" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_HOME')" coords="103,195,11" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_BLUE')" coords="108,72,11" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_RED')" coords="30,72,11" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_GREEN')" coords="54,57,11" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_YELLOW')" coords="85,57,11" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_0')" coords="69,363,12" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_9')" coords="102,336,12" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_8')" coords="69,337,12" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_7')" coords="37,336,12" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_6')" coords="102,310,12" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_5')" coords="69,310,12" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_4')" coords="37,310,12" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_3')" coords="102,284,12" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_2')" coords="69,284,12" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_1')" coords="37,284,12" /> 
 </map>
 end-block~remote_sagem
 

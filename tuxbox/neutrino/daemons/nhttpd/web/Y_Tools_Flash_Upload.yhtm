@@ -71,7 +71,7 @@ function do_image_upload_ready()
 </div>
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-		{=var-set:help_url=Neutrino:yWeb:Tools#Image=}{=var-set:menu=Image flashen=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+		{=var-set:help_url=Help-Tools-Image=}{=var-set:menu=Image flashen=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<b><font size="2">Partition mtd {=mtd=}</font><br/>{=mtd_text=}</b>
 	{=if-equal:{=var-get:fcp=}~true~
@@ -79,8 +79,7 @@ function do_image_upload_ready()
 			<p>
 			<input type="file" name="file" size="40"/><br/>
 			<span style="margin:0; padding:0;" title="Switch on Demo-Modus. Flashing will be simulated."><input type="checkbox" name="demo"/> Demomodus&nbsp;</span>
-			<input type="button" value="Image flashen" title="upload and flash" name="su" onclick="do_submit()"/><br/>
-
+			<button type="button" ytype="flash" title="upload and flash" name="su" onclick="do_submit()">Image flashen</button><br/>
 			</p>
 		</form>
 	~

@@ -60,7 +60,7 @@ function poschannel(box, direction)
 {=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:BoxControl#Bouquet-Editor=}{=var-set:menu=Bouquet &quot;{=name=}&quot; bearbeiten=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-BoxControl-Bouquet-Editor=}{=var-set:menu=Bouquet &quot;{=name=}&quot; bearbeiten=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<form action="/control/changebouquet" method="post" id="channels" enctype="x-www-form-urlencoded">
 		<p><input type="hidden" name="selected" value="{=selected=}" /></p>
@@ -85,8 +85,8 @@ function poschannel(box, direction)
 		</tr>
 		</table>
 		<input type="hidden" name="redirect" value="/Y_Boxcontrol_Bouquet_Editor_Main.yhtm"/>
-		<p><button onclick="do_submit();"><img src="/images/save.png">&nbsp;&uuml;bernehmen</button>
-		<button onclick="do_abort();"><img src="/images/cross.png">&nbsp;abbrechen</button></p>
+		<p><button type="button" ytype="save" onclick="do_submit();">&uuml;bernehmen</button>
+		<button type="button" ytype="cancel" onclick="do_abort();">abbrechen</button></p>
 		Alle &Auml;nderungen m&uuml;ssen noch gespeichert werden!
 		</form>
 	</div>

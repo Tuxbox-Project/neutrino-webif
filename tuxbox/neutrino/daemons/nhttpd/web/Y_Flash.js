@@ -1,6 +1,6 @@
 /*	yWeb Flash by yjogol
-	$Date: 2007/12/04 15:48:14 $
-	$Revision: 1.2 $
+	$Date: 2008/02/24 08:23:12 $
+	$Revision: 1.3 $
 */
 function do_image_upload_dialog()
 {

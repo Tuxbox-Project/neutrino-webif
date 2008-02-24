@@ -1,47 +1,79 @@
 /*	yWeb EPG by yjogol
-	$Date: 2007/11/26 20:59:35 $
-	$Revision: 1.1 $
+	$Date: 2008/02/24 08:23:12 $
+	$Revision: 1.2 $
 */
 /*EPG+*/
-var g_width_px=650;
-var g_width_min=135;
-var g_delta_min=5;
-var g_bar_delta_min=15;
-var _delta = Math.round(g_width_px * g_delta_min / g_width_min);
-var epg_data;
+var g_width_px=0; /*display width*/
+//var g_cols_to_display=0; /*minutes to display*/
+var g_number_of_cols=0; /*nr of cols*/
+var g_width_all_items=0; /*width without bouquet*/
+var c_width_px_per_min=3;	/* px per minute */
+var c_min_per_col=15;/*minutes per col*/
+var c_width_px_bouquet=103; /* width of bouquet*/
+var c_slider_width=20;
+var epg_data; /* all EPG Data in 2-dim Array*/
 var epg_data_index=0;
+var g_timer_eventids = new Array();
+var g_selected=0;
+//var epg_diag= new Y.Dialog('epg_info');
 
-function epg_zapto()
-{
-	dbox_zapto(document.getElementById("d_channel_id").text);
+/* calc the dimension px and mins to display */
+function epg_plus_calc_dimensions(){
+	var show_dim=$('epg_plus').getDimensions();
+	var usable_width_px = show_dim.width-c_slider_width; /*get display width*/
+	var max_minutes_to_display = Math.round((usable_width_px-c_width_px_bouquet)/c_width_px_per_min); /* calc display minutes*/
+	g_number_of_cols = Math.round(max_minutes_to_display/c_min_per_col);
+	g_width_px = g_number_of_cols * c_width_px_per_min * c_min_per_col + c_width_px_bouquet;
+	g_width_all_items=g_width_px-c_width_px_bouquet;
+	$('epg_plus').style.cssText = "width:"+g_width_px;
 }
-function epg_set_timer()
-{
-	dbox_set_timer(document.getElementById("d_channel_id").text, document.getElementById("d_start").text, document.getElementById("d_stop").text);
+function epg_zapto(){
+	dbox_zapto($('d_channel_id').innerHTML);
 }
-function build_epg_clear()
-{
-	var ep = document.getElementById("epg_plus");
+function epg_set_timer(){
+	dbox_set_timer($("d_channel_id").innerHTML, $("d_start").innerHTML, $("d_stop").innerHTML);
+}
+function build_epg_clear(){
+	var ep = $("epg_plus");
 	obj_clear_all_childs(ep);
 }
-function build_epg_setbox(_item, _starttime, _stoptime, _start, _stop)
-{
+/*set a layout box and content*/
+function build_epg_setbox(_item, _starttime, _stoptime, _start, _stop){
 	var d_start = Math.max(_start, _starttime);
 	var d_stop = Math.min(_stop, _stoptime);
-	var d_left = 103+ Math.round((d_start-_starttime) * _delta / 60 / g_delta_min);
-	var d_width = Math.max(0,Math.round((d_stop-d_start) * _delta / 60 / g_delta_min)-3);
-	_item.style.cssText = "position:absolute; top:0px; left:"+d_left+"px; width:"+d_width+"px;";
+	var d_left = c_width_px_bouquet+ Math.round((d_start-_starttime) * c_width_px_per_min / 60);
+	var d_width = Math.max(0,Math.round((d_stop-d_start) * c_width_px_per_min / 60)-3);
+	d_width= Math.min(d_width,g_width_px-d_left);
+	if(d_start<_stoptime)
+		_item.style.cssText = "position:absolute; top:0px; left:"+d_left+"px; width:"+d_width+"px;";
 }
-function show_epg_item(_index)
-{
+/*show epg details*/
+function show_epg_item(_index){
+	g_selected=_index;
+//epg_diag.show();
+	$("d_desc").update(epg_data[_index][4]+" "+epg_data[_index][0]);
+	$("d_info1").update(epg_data[_index][1]);
+	$("d_info2").update(epg_data[_index][2]);
+	$("d_start").update(epg_data[_index][3]);
+	$("d_stop").update(epg_data[_index][5]);
+	$("d_channel_id").update(epg_data[_index][6]);
+	$('d_logo').update( (g_logosURL!="")?"<img class=\"channel_logos\" src=\""+g_logosURL+"/"+epg_data[_index][6]+".gif\">":"" );
+	var imdb_link = '<a target="_blank" class="exlink" href="http://german.imdb.com/find?s=all&q='+(epg_data[_index][0]).gsub(" ","+")+'">IMDb</a>';
+	var klack_link = '<a target="_blank" class="exlink" href="http://klack.de/ProgramFinder2.php3?ZWTITLE='+(epg_data[_index][0]).gsub(" ","+")+'">klack.de</a>';
+	var tvinfo_link = '<a target="_blank" class="exlink" href="http://www.tvinfo.de/exe.php3?quicksearch=1&volltext='+(epg_data[_index][0]).gsub(" ","+")+'&tpk=&showall=&genretipp=&target=list.inc">tvinfo.de</a>';
+	$('d_lookup').update(imdb_link+" "+klack_link+" "+tvinfo_link);
+	
+	var off=$('epg_plus').cumulativeScrollOffset();
+//	alert(off.inspect());
+	$('epg_info').setStyle({
+		'left':off.left+50+'px',
+		'top':off.top+50+'px',
+		'position': 'absolute'
+//		'background-color': 'white'
+	});
 	show_obj("epg_info",true);
-	document.getElementById("d_desc").innerHTML = epg_data[_index][4]+" "+epg_data[_index][0];
-	document.getElementById("d_info1").innerHTML = epg_data[_index][1];
-	document.getElementById("d_info2").innerHTML = epg_data[_index][2];
-	document.getElementById("d_start").text = epg_data[_index][3];
-	document.getElementById("d_stop").text = epg_data[_index][5];
-	document.getElementById("d_channel_id").text = epg_data[_index][6];
 }
+/* build one channel row*/
 function build_epg_bouquet(__bdiv, __channel_id, _starttime, _stoptime)
 {
 	var xml = loadSyncURLxml("/control/epg?xml=true&channelid="+__channel_id+"}&details=true&stoptime="+_stoptime);
@@ -64,28 +96,72 @@ function build_epg_bouquet(__bdiv, __channel_id, _starttime, _stoptime)
 
 				var epg_obj= new Array(_desc, _info1, _info2, _start, _start_t, _stop.toString(), __channel_id);
 				epg_data.push(epg_obj);
-				__item.innerHTML = "<span onclick=\"show_epg_item('"+epg_data_index+"');\" title=\""+_start_t+" "+_desc+"\">"+_desc+"</span>";
+				__item.innerHTML = "<span onclick=\"show_epg_item('"+epg_data_index+"');\" title=\""+_start_t+" "+_desc+" (click for details)\">"+_desc+"</span>";
 				build_epg_setbox(__item, _starttime, _stoptime, _start, _stop);
 				epg_data_index++;
 			}
 		}
+		/* look for   Timers*/
+		var fou= g_timer_eventids.findAll(function(e){
+			return e.get('channelid')==__channel_id; 
+		});
+		if(fou){
+			fou.each(function(e){
+				var stTime="0";
+				var tclass="";
+				if (e.get('eventType') == 3) {
+					stTime=e.get('alarmTime');
+					stTime = parseInt(stTime, 10) + 200;
+					stTime = stTime.toString();
+					tclass="ep_bouquet_zap";
+				}
+				else if (e.get('eventType') == 5) {/*record*/
+					stTime=e.get('stopTime');
+					tclass="ep_bouquet_rec";
+				}
+				var __item = obj_createAt(__bdiv, "div", tclass);
+				build_epg_setbox(__item, _starttime, _stoptime, e.get('alarmTime'), stTime);
+			});
+		}
 	}
 }
-function build_epg_time_bar(_tdiv, _starttime, _stoptime)
-{
-	var __w_step = Math.round(g_width_px * g_bar_delta_min / g_width_min);
-	var __steps = Math.round(g_width_px  / __w_step)+1;
+/* build time row*/
+function build_epg_time_bar(_tdiv, _starttime, _stoptime){
 	var _start = _starttime;
-	for(var i=0;i<__steps;i++){
+	for(var i=0;i<g_number_of_cols;i++){
 		var __item = obj_createAt(_tdiv, "div", "ep_time_bar_item");
 		__item.innerHTML = format_time(new Date(_start*1000));
-		var _stop = _start + (g_bar_delta_min * 60);
+		var _stop = _start + (c_min_per_col * 60);
 		build_epg_setbox(__item, _starttime, _stoptime, _start, _stop);
 		_start = _stop;
 	}
 }
+function get_timer(){
+	g_timer_eventids = new Array();
+	var timer = loadSyncURL("/control/timer?format=id");
+	var lines=timer.split("\n");
+	lines.each(function(e){
+		var vals=e.split(" ");
+		if(vals.length>=8 && (vals[1]==3||vals[5])){ /*record and zap*/
+			var aTimer=$H({
+				'eventID': vals[0],
+				'eventType': vals[1],
+				'eventRepeat': vals[2], 
+				'repcount': vals[3],
+				'announceTime': vals[4],
+				'alarmTime': vals[5],
+				'stopTime': vals[6],
+				'channelid': vals[7]
+			});
+			g_timer_eventids.push(aTimer);
+		}
+	},this);
+}
+
+/* main */
 var g_i = 0;
 var g_bouquet_list;
+var g_logosURL="";
 function build_epg_plus(_bouquet, _starttime)
 {
 	build_epg_clear();
@@ -94,10 +170,10 @@ function build_epg_plus(_bouquet, _starttime)
 	var _bouquets_xml = loadSyncURLxml("/control/getbouquet?bouquet="+_bouquet+"&xml=true");
 	if(_bouquets_xml){
 		g_bouquet_list = _bouquets_xml.getElementsByTagName("channel");
-		var ep = document.getElementById("epg_plus");
-		var _stoptime = _starttime + g_width_min * 60;
+		var ep = $("epg_plus");
+		var _stoptime = _starttime + c_min_per_col * 60 * g_number_of_cols;
 		var __tdiv = obj_createAt(ep, "div", "ep_time_bar");
-		var __tname_div = obj_createAt(__tdiv, "div", "ep_bouquet_name");
+		var __tname_div = obj_createAt(__tdiv, "div", "ep_time_bar_item");
 		__tname_div.innerHTML = "Uhrzeit";
 		build_epg_time_bar(__tdiv, _starttime, _stoptime);
 		g_i=0;
@@ -110,11 +186,11 @@ function build_epg_plus_loop(_starttime, _stoptime)
 		var _bouquet = g_bouquet_list[g_i];
 		var __channel_name = getXMLNodeItemValue(_bouquet, "name");
 		var __channel_id = getXMLNodeItemValue(_bouquet, "id");
-		var ep = document.getElementById("epg_plus");
+		var ep = $("epg_plus");
 		var __bdiv = obj_createAt(ep, "div", "ep_bouquet");
 		var __bname_div = obj_createAt(__bdiv, "div", "ep_bouquet_name");
-
-		__bname_div.innerHTML = __channel_name;
+		var ch_name_with_logo= (g_logosURL!="")?"<img class=\"channel_logos\" src=\""+g_logosURL+"/"+__channel_id+".gif\" alt=\""+__channel_name+"\" >":__channel_name;
+		$(__bname_div).update("<a href=\"javascript:do_zap('"+__channel_id+"');\">"+ch_name_with_logo+"</a>");
 		build_epg_bouquet(__bdiv, __channel_id, _starttime, _stoptime);
 		window.setTimeout("build_epg_plus_loop("+_starttime+","+_stoptime+")",100);
 		g_i++;
@@ -124,8 +200,10 @@ function build_epg_plus_loop(_starttime, _stoptime)
 		obj_disable("btGet", false);
 	}
 }
-function build_epg_plus_main()
-{
+/* main: build epg+ */
+function build_epg_plus_main(){
+	epg_plus_calc_dimensions();
+	get_timer();
 	show_obj("epg_info",false);
 	show_waitbox(true);
 	obj_disable("btGet", true);
@@ -139,14 +217,14 @@ function build_epg_plus_main()
 	build_epg_plus(bou, _secs);
 	/*document.getElementById("epg_plus").width = g_width_px;*/
 }
-function build_epg_plus_delta(_delta)
-{
+/* change time offset and build epg+*/
+function build_epg_plus_delta(_delta){
 	if(document.e.epg_time.selectedIndex + _delta < document.e.epg_time.length && document.e.epg_time.selectedIndex + _delta >= 0)
 		document.e.epg_time.selectedIndex += _delta;
 	build_epg_plus_main();
 }
-function build_time_list(_delta)
-{
+/* time delta dropdown-list*/
+function build_time_list(_delta){
 	var now = new Date();
 	now.setMinutes(0);
 	now.setSeconds(0);
@@ -165,4 +243,14 @@ function build_time_list(_delta)
 		__item.text = _time;
 		__item.value = _time_t;
 	}
+}
+/*init call*/
+function epg_plus_init(_logosURL){
+	g_logosURL = _logosURL;
+	window.onresize=epg_plus_calc_dimensions;
+	build_time_list(0);
+}
+/* ---*/
+function do_zap(channelid){
+	dbox_zapto(channelid);
 }

@@ -1,5 +1,7 @@
 {=include-block:Y_Blocks.txt;head=}
+<script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript" src="/Y_yweb.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 /*Indicator*/
@@ -48,6 +50,16 @@ function i_start()
 	g_i_counter = 0;
 	i_clock();
 	g_i_active = window.setInterval('i_interval()', 1000);
+	var mainmenu=ext.select_menu('main');
+	mainmenu.each(function(e){
+		var el=new Element('li').update(
+			new Element('a', {'class':'y_menu_prim_item', 'target':'base',
+				'title': e.get('desc'),
+				'href': e.get('file')
+			}).update(e.get('menuitem'))
+		);
+		$('menu_prim').insert({'bottom':el}); 
+	});
 }
 function i_stop()
 {
@@ -69,35 +81,41 @@ function nav(_prim, _work){
 	nav_prim(_prim);
 	window.setTimeout("_nav_work()",300);
 }
-
+function vlc() {
+	var vlc_url = loadSyncURL("/control/build_live_url?vlc_link=true");
+	window.open("/tmp/vlc.m3u?"+Math.random(),"_blank");
+}
 //]]>
 </script>
+<style>
+#prim{
+	background: url(/images/tux-yweb.gif) no-repeat left top;
+	height:38px;
+}
+</style>
 </head>
 <body>
 <div class="y_menu_prim_box">
-	<div class="y_menu_prim_box_head"><h2>&nbsp;</h2></div>
+	<div class="y_menu_prim_box_head"><div class="y_menu_prim_box_head_h2"></div></div>
 	<div class="y_menu_prim_box_body">
 		<table border="0" width="100%">
 		<tr>
-			<td width="50" align="center" valign="middle"><a href="http://wiki.godofgta.de/Neutrino:yWeb" target="_blank"><img src="images/tux.gif" title="Tuxbox Wiki" alt="Tuxbox Wiki"/></a></td>
-			<td width="100">
-				<span style="font-weight: bold;font-size: 10pt;">yWeb</span>
-				<br/>
-				<span style="font-size: 8pt;">Version {=ini-get:Y_Version.txt;version=}</span>
+			<td width="150" id="prim">
+				<span style="font-size: 8pt;position:relative;left:45px;top:10px;">Version {=ini-get:Y_Version.txt;version=}</span>
 			</td>
 			<td>
 				<ul id="menu_prim" class="y_menu_prim">
-					<li><a class="y_menu_prim_item" target="base" href="Y_Dyn_Pages.yhtm?page=frame_boxcontrol"
+					<li><a target="base" href="Y_Dyn_Pages.yhtm?page=frame_boxcontrol"
 						title="Boxcontrol &#038; Bouquets">Boxcontrol</a></li>
-					<li><a class="y_menu_prim_item" target="base" href="Y_Dyn_Pages.yhtm?page=frame_live"
-						title="LiveView, Timer Sync &amp; Settings">Live/Timer</a></li>
-					<li><a class="y_menu_prim_item" target="base" href="Y_Dyn_Pages.yhtm?page=frame_tools"
+					<li><a target="base" href="Y_Dyn_Pages.yhtm?page=frame_live"
+						title="LiveView, Timer Sync &amp; Settings">Live</a></li>
+					<li><a target="base" href="Y_Dyn_Pages.yhtm?page=frame_tools"
 						title="Mounts, WOL, Expert Tools">Tools</a></li>
-					<li><a class="y_menu_prim_item" target="base" href="Y_Dyn_Pages.yhtm?page=frame_settings"
+					<li><a target="base" href="Y_Dyn_Pages.yhtm?page=frame_settings"
 						title="Settings for Box, Web, Plugins ...">Settings</a></li>
-					<li><a class="y_menu_prim_item" target="base" href="Y_Dyn_Pages.yhtm?page=frame_ext"
+					<li><a target="base" href="Y_Dyn_Pages.yhtm?page=frame_ext"
 						title="User Extentions ...">Extensions</a></li>
-					<li><a class="y_menu_prim_item" target="base" href="Y_Dyn_Pages.yhtm?page=frame_info"
+					<li><a target="base" href="Y_Dyn_Pages.yhtm?page=frame_info"
 						title="Information about yWeb, Updates">Info</a></li>
 				</ul>
 			</td>
@@ -105,12 +123,12 @@ function nav(_prim, _work){
 				<a target="base" href="Y_Dyn_Pages.yhtm?page=frame_live_directtv" title="LiveTV"><img src="/images/live.gif"></a>&nbsp;
 				<a target="base" href="Y_Dyn_Pages.yhtm?page=frame_live&dostart=live_tv_popup" title="LiveTV Popup"><img src="/images/live_popup.gif"></a>&nbsp;
 				<a target="base" href="Y_Tools_remote_osd.yhtm?full=1" title="Remote & OSD full"><img src="/images/fb.png"></a>&nbsp;
-				<a href="/control/build_live_url?vlc_link=true" title="Stream to VLC Client"><img src="/images/vlc.gif"></a>
+				<a href="javascript:vlc()" title="Stream to VLC Client"><img src="/images/vlc.gif"></a>
 			</td>
 			<td align="right">
 				<span id="state" style="color : red;font-family: Courier New, Courier, monospace;">&nbsp;</span>
 				<span id="box_name" {=if-empty:{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_color=}~~style="color : #{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_color=};"=}>
-					<b>{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_name=}</b></span>
+					{=ini-get:/var/tuxbox/config/Y-Web.conf;yweb_box_name=}</span>
 				<span id="clock">00:00</span>
 			</td>
 		</tr>

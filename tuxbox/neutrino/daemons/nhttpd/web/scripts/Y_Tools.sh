@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Tools (yjogol)
-# $Date: 2007/12/13 16:45:59 $
-# $Revision: 1.5 $
+# $Date: 2008/02/24 08:23:18 $
+# $Revision: 1.6 $
 # -----------------------------------------------------------
 . ./_Y_Globals.sh
 . ./_Y_Library.sh
@@ -387,13 +387,16 @@ do_installer()
 		y_format_message_html
 	fi
 }
+
 # -----------------------------------------------------------
 # extention Installer $1=URL
 # -----------------------------------------------------------
 do_ext_installer()
 {
-	rm $y_upload_file
-	wgetlog=`wget -O $y_upload_file $1 2>/tmp/err.log`
+	if [ -e $y_upload_file ]; then
+		rm $y_upload_file
+	fi
+	wgetlog=`wget -O $y_upload_file $1 2>&1`
 	if [ -s "$y_upload_file" ];then
 		cd $y_path_tmp
 		tar -xf "$y_upload_file"
@@ -409,6 +412,14 @@ do_ext_installer()
 		e=`cat /tmp/err.log`
 		echo "error: $y_install not found. wget=$wgetlog $e"
 	fi
+}
+do_ext_uninstaller()
+{
+	uinst="/var/tuxbox/config/ext/uninstall.sh"
+	if [ -e "$uinst"  ]; then
+		chmod 755 "$uinst"
+		`$uinst $1_uninstall.inc`
+	fi 
 }
 # -----------------------------------------------------------
 # view /proc/$1 Informations
@@ -498,18 +509,7 @@ do_settings_backup_restore()
 }
 restart_neutrino()
 {
-	sl=`find /var/tuxbox/plugins -name '*.sh'`
-	call_webserver "control/rcem?KEY_HOME"	
-	call_webserver "control/rcem?KEY_HOME"	
-	call_webserver "control/rcem?KEY_HOME"	
-	call_webserver "control/rcem?KEY_HOME"	
-	call_webserver "control/rcem?KEY_SETUP"	
-	if [ "$sl" != "" ]; then
-		call_webserver "control/rcem?KEY_6"	
-	else
-		call_webserver "control/rcem?KEY_6"	
-	fi
-	call_webserver "control/rcem?KEY_3"
+	kill -HUP `pidof neutrino`
 }
 # -----------------------------------------------------------
 # Main
@@ -538,13 +538,14 @@ case "$1" in
 	domount)		shift 1; do_mount $* ;;
 	dounmount)		shift 1; do_unmount $* ;;
 	cmd)			shift 1; do_cmd $* ;;
-	installer)		shift 1; do_installer $* ;;
-	ext_installer)	shift 1; do_ext_installer $* ;;
+	installer)		shift 1; do_installer $* 2>&1 ;;
+	ext_uninstaller)	shift 1; do_ext_uninstaller $* 2>&1 ;;
+	ext_installer)	shift 1; do_ext_installer $* 2>&1 ;;
 	proc)			shift 1; proc $* ;;
 	wol)			shift 1; wol $* ;;
 	fbshot)			shift 1; do_fbshot $* ;;
 	fbshot_clear)		do_fbshot_clear ;;
-	get_update_version)	wget -O /tmp/version.txt "http://www.yjogol.de/download/Y_Version.txt" ;;
+	get_update_version)	wget -O /tmp/version.txt "http://www.yjogol.com/download/Y_Version.txt" ;;
 	settings_backup_restore)	shift 1; do_settings_backup_restore $* ;;
 	exec_cmd)		shift 1; $* ;;
 	automount_list)		shift 1; do_automount_list $* ;;
@@ -567,7 +568,7 @@ case "$1" in
 		config_open $y_config_Y_Web
 		url=`config_get_value "klack_url"`
 		klack_url=`echo "$url"|sed -e 's/;/\&/g'`
-		wget -O /tmp/klack.xml "$klack_url" ;;
+		wget -O /tmp/klack.xml "$klack_url" 2>&1 ;;
 
 	restart_sectionsd)
 		killall sectionsd
@@ -615,7 +616,10 @@ case "$1" in
 		fi
 		;;
 	var_space)
-		df|grep /var
+		df /var|grep /var
+		;;
+	tmp_space)
+		df /tmp|grep /tmp
 		;;
 	*)
 		echo "[Y_Tools.sh] Parameter falsch: $*" ;;

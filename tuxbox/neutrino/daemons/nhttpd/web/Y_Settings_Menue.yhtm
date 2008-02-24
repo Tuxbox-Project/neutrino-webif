@@ -1,14 +1,51 @@
 {=var-set:cancache=yPConf=}
 {=include-block:Y_Blocks.txt;head=}
+<script type="text/javascript" src="/prototype.js"></script>
+<script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript" src="/Y_yweb.js"></script>
+<script type="text/javascript">
+function init(){
+	var menu=ext.select_menu('settings_general');
+	menu.each(function(e){
+		var el=new Element('li').update(
+			new Element('a', {'target':'work',
+				'title': e.get('desc'),
+				'href': e.get('file')
+			}).update("-"+e.get('menuitem'))
+		);
+		$('secmenu_general').insert({'bottom':el}); 
+	});
+	var menu=ext.select_menu('settings_neutrino');
+	menu.each(function(e){
+		var el=new Element('li').update(
+			new Element('a', {'target':'work',
+				'title': e.get('desc'),
+				'href': e.get('file')
+			}).update("-"+e.get('menuitem'))
+		);
+		$('secmenu_neutrino').insert({'bottom':el}); 
+	});
+	var menu=ext.select_menu('settings_plugins');
+	menu.each(function(e){
+		var el=new Element('li').update(
+			new Element('a', {'target':'work',
+				'title': e.get('desc'),
+				'href': e.get('file')
+			}).update("-"+e.get('menuitem'))
+		);
+		$('secmenu_plugins').insert({'bottom':el}); 
+	});
+}
+</script>
 </head>
-<body>
+<body onload="init()">
 {=var-set:management={=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip;{=func:get_request_data client_addr=}=}~1~=}{=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip2=}~1~=}=}
 <div class="y_menu_sec_box">
 	<div class="y_menu_sec_box_head"><h2>Settings</h2></div>
 	<div class="y_menu_sec_box_body">
 		<div class="y_menu_sec_section">General</div>
 		<div class="y_menu_sec">
-			<ul>
+			<ul id="secmenu_general">
 			{=if-empty:{=var-get:management=}~
 				<li class="disabled" title="settings for yWeb itselfs (restricted by ManagementIP)">yWeb</li>
 				<li class="disabled" title="settings for Web Server daemon (restricted by ManagementIP)">WebServer</li>
@@ -30,7 +67,7 @@
 		</div>
 		<div class="y_menu_sec_section">Neutrino</div>
 		<div class="y_menu_sec">
-			<ul>
+			<ul id="secmenu_neutrino">
 			{=if-empty:{=var-get:management=}~
 				<li class="disabled" title="Bouquet Editor (restricted by ManagementIP)">Bouquet Editor</a></li>
 				<li class="disabled" title="Parental settings (restricted by ManagementIP)">Jugendschutz</a></li>
@@ -56,7 +93,7 @@
 		</div>
 		<div class="y_menu_sec_section">Plugins</div>
 		<div class="y_menu_sec">
-			<ul>
+			<ul id="secmenu_plugins">
 			{=if-empty:{=var-get:management=}~
 				<li class="disabled" title="configure VNC-Plugin (restricted by ManagementIP)">VNC</li>
 			~

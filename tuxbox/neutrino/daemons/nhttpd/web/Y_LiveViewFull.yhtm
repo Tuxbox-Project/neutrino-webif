@@ -18,7 +18,7 @@ function setTranscode()
 <body>
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Live_Timer#LiveView=}{=var-set:menu={=typ=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Live_Timer-LiveView=}{=var-set:menu={=typ=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<table cellpadding="0" cellspacing="0" border="0">
 	<tr><td valign="top">

@@ -13,7 +13,6 @@ start-block~neutrino_form
 <body>
 {=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
 {=include-block:Y_neutrino_Blocks.txt;{=var-get:neutrino=}=}
-{=include-block:Y_neutrino_Blocks.txt;neutrino_form_helpbox=}
 </body>
 </html>
 {=include-block:Y_Blocks.txt;management_check_bottom=}
@@ -24,12 +23,16 @@ start-block~neutrino_form_helpbox
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">Zur Synchronisation mit Neutrino</div></div>
 <div class="work_box_body">
-	Nach dem Setzen von Einstellungen im yWeb: <br/>
+	<table><tr>
+	<td width="50%" valign="top">
+	<b>Nach dem Setzen von Einstellungen im yWeb:</b><br/>
     Am TV &quot;Hauptmen&uuml;-&gt;Service-&gt;Neutrino neu starten&quot; w&auml;hlen, um die Einstellungen nach Neutrino zu &uuml;bernehmen oder
-    <button onclick="dbox_reload_neutrino()">reload Neutrino</button>
-    <br/><br/>
-	Nach dem Setzen von Einstellungen in Neutrino: <br/>
+    <br/><button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
+    </td><td valign="top">
+	<b>Nach dem Setzen von Einstellungen in Neutrino:</b><br/>
     Am TV &quot;Hauptmen&uuml;-&gt;Einstellungen-&gt;Einstellungen jetzt speichern&quot; w&auml;hlen, um die &Auml;nderung zu speichern und dann diese Seiten neu laden.
+    </td>
+    </tr></table>
   </div>
 </div>
 end-block~neutrino_form_helpbox
@@ -38,10 +41,11 @@ end-block~neutrino_form_helpbox
 start-block~neutrino_form-data_record
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Settings#Aufnahme=}{=var-set:menu=Aufnahme=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-Aufnahme=}{=var-set:menu=Aufnahme=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-	<form name="f" action="/y/cgi">
+	<form name="f" class="y_form" action="/y/cgi">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
+			<tr><td colspan="2" class="y_form_header">Aufnahmeziel</td></tr>
 			<tr>
 				<td width="35%">Aufnahmeger&auml;t</td>
 				<td>
@@ -54,8 +58,8 @@ start-block~neutrino_form-data_record
 				</td>
 			</tr>
 			<tr>
-				<td class="line">IP</td>
-				<td class="line"><input type="text" id="ip" name="ip" size="20" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_server_ip~open=}" title="server ip (xxx.xxx.xxx.xxx)"/></td>
+				<td>IP</td>
+				<td><input type="text" id="ip" name="ip" size="20" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_server_ip~open=}" title="server ip (xxx.xxx.xxx.xxx)"/></td>
 			</tr>
 			<tr>
 				<td>Port</td>
@@ -72,9 +76,10 @@ start-block~neutrino_form-data_record
 				<td>MAC</td>
 				<td><input type="text" id="mac" name="mac" size="20" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_server_mac=}" title="MAC"/></td>
 			</tr>
+			<tr><td colspan="2" class="y_form_header">Aufnahmeverhalten</td></tr>
 			<tr title="stopplayback: off/on">
-				<td class="line">Playback anhalten</td>
-				<td class="line">
+				<td>Playback anhalten</td>
+				<td>
 					<input type="radio" id="sp0" name="stopplayback" value="false"/>AUS&nbsp;
 					<input type="radio" id="sp1" name="stopplayback" value="true""/>AN
 				</td>
@@ -87,30 +92,31 @@ start-block~neutrino_form-data_record
 				</td>
 			</tr>
 			<tr title="vcr_no_scart: off/on">
-				<td class="line">Unterdr&uuml;cke Scart-Umschaltung</td>
-				<td class="line">
+				<td>Unterdr&uuml;cke Scart-Umschaltung</td>
+				<td>
 					<input type="radio" id="vcr0" name="vcr_no_scart" value="0"/>AUS&nbsp;
 					<input type="radio" id="vcr1" name="vcr_no_scart" value="1"/>AN
 				</td>
 			</tr>
 			<tr>
-				<td class="line">Aufnahmestart-Korrektur (sec)</td>
-				<td class="line"><input type="text" name="EXTRA_TIME_START" size="5" value="{=ini-get:/var/tuxbox/config/timerd.conf;EXTRA_TIME_START;0=}" title="start timer delay"/>&nbsp;Reboot n&ouml;tig</td>
+				<td>Aufnahmestart-Korrektur (sec)</td>
+				<td><input type="text" name="EXTRA_TIME_START" size="5" value="{=ini-get:/var/tuxbox/config/timerd.conf;EXTRA_TIME_START;0=}" title="start timer delay"/>&nbsp;Reboot n&ouml;tig</td>
 			</tr>
 			<tr>
 				<td>Aufnahmeende-Korrektur (sec)</td>
 				<td><input type="text" name="EXTRA_TIME_END" size="5" value="{=ini-get:/var/tuxbox/config/timerd.conf;EXTRA_TIME_END;0=}" title="end timer delay"/>&nbsp;Reboot n&ouml;tig</td>
 			</tr>
 			<tr title="SPTS mode: off/on">
-				<td class="line">Im SPTS-Modus aufnehmen</td>
-				<td class="line">
+				<td>Im SPTS-Modus aufnehmen</td>
+				<td>
 					<input type="radio" id="spts0" name="in_spts_mode" value="false"/>AUS&nbsp;
 					<input type="radio" id="spts1" name="in_spts_mode" value="true"/>AN
 				</td>
 			</tr>
+			<tr><td colspan="2" class="y_form_header">Tonspuren</td></tr>
 			<tr title="record standard audio channel: off/on">
-				<td class="line">Standard Tonspur aufnehmen</td>
-				<td class="line">
+				<td>Standard Tonspur aufnehmen</td>
+				<td>
 					<input class="audio" type="radio" name="audio_std" value="0"/>AUS&nbsp;
 					<input class="audio" type="radio" name="audio_std" value="1"/>AN
 				</td>
@@ -135,7 +141,9 @@ start-block~neutrino_form-data_record
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_record_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onclick="do_submit()"/>
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
+		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
+		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
 	</form>
 	</div>
 </div>
@@ -173,10 +181,10 @@ function change_rec_type()
 		$('ip','port', 'mac', 'wol0', 'wol1').invoke('disable');
 	else
 		$('ip','port', 'mac', 'wol0', 'wol1').invoke('enable');
-	if(document.f.rec_type.selectedIndex != 2)
+/*	if(document.f.rec_type.selectedIndex != 2)
 		$('vcr0','vcr1').invoke('disable');
 	else
-		$('vcr0','vcr1').invoke('enable');
+		$('vcr0','vcr1').invoke('enable')*/
 	if((document.f.rec_type.selectedIndex != 1 && (document.f.rec_type.selectedIndex != 3))){
 		$('spts0','spts1', 'sp0', 'sp1', 'ss0', 'ss1').invoke('disable');
 		$$('.audio').invoke('disable');
@@ -221,10 +229,11 @@ end-block~neutrino_record_save_settings
 start-block~neutrino_form-data_movieplayer
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Settings#Movieplayer=}{=var-set:menu=Movieplayer=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-Movieplayer=}{=var-set:menu=Movieplayer=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-	<form name="f" action="/y/cgi">
+	<form name="f" class="y_form" action="/y/cgi">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
+			<tr><td colspan="2" class="y_form_header">Quellen</td></tr>
 			<tr class="s" title="Streamingserver: off/on">
 				<td width="35%">Streamingserver</td>
 				<td>
@@ -233,8 +242,8 @@ start-block~neutrino_form-data_movieplayer
 				</td>
 			</tr>
 			<tr>
-				<td class="line">Streamingserver IP</td>
-				<td class="line"><input type="text" name="streaming_server_ip" size="20" value="{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_server_ip~open=}" title="server ip (xxx.xxx.xxx.xxx)"/></td>
+				<td>Streamingserver IP</td>
+				<td><input type="text" name="streaming_server_ip" size="20" value="{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_server_ip~open=}" title="server ip (xxx.xxx.xxx.xxx)"/></td>
 			</tr>
 			<tr>
 				<td>Streamingserver Port</td>
@@ -248,9 +257,10 @@ start-block~neutrino_form-data_movieplayer
 				<td>Verzeichnis (VLC)</td>
 				<td><input type="text" name="streaming_server_startdir" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_server_startdir~cache=}" title="VLC directory on server"/></td>
 			</tr>
+			<tr><td colspan="2" class="y_form_header">Transcoding</td></tr>
 			<tr>
-				<td class="line">Datenrate Video</td>
-				<td class="line"><input type="text" name="streaming_videorate" size="6" value="{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_videorate;1000~cache=}" title="video data rate"/></td>
+				<td>Datenrate Video</td>
+				<td><input type="text" name="streaming_videorate" size="6" value="{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_videorate;1000~cache=}" title="video data rate"/></td>
 			</tr>
 			<tr title="Transcode: off/on">
 				<td>Transcode</td>
@@ -283,8 +293,8 @@ start-block~neutrino_form-data_movieplayer
 				</td>
 			</tr>
 			<tr>
-				<td class="line">Datenrate Audio</td>
-				<td class="line"><input type="text" name="streaming_audiorate" size="6" value="{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_audiorate;192~cache=}" title="audio data rate"/></td>
+				<td>Datenrate Audio</td>
+				<td><input type="text" name="streaming_audiorate" size="6" value="{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_audiorate;192~cache=}" title="audio data rate"/></td>
 			</tr>
 			<tr title="Transcode: off/on">
 				<td>Transcode Audio (dvd/vcd/mpg)</td>
@@ -300,13 +310,14 @@ start-block~neutrino_form-data_movieplayer
 					<input type="radio" name="streaming_force_avi_rawaudio" value="1"/>AN
 				</td>
 			</tr>
+			<tr><td colspan="2" class="y_form_header">Player</td></tr>
 			<tr>
-				<td class="line">Startverzeichnis</td>
-				<td class="line"><input type="text" name="network_nfs_moviedir" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;network_nfs_moviedir~cache=}" title="movie start directory"/></td>
+				<td>Startverzeichnis</td>
+				<td><input type="text" name="network_nfs_moviedir" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;network_nfs_moviedir~cache=}" title="movie start directory"/></td>
 			</tr>
 			<tr>
-				<td class="line">Verwende Buffer (WabberQueue)</td>
-				<td class="line">
+				<td>Verwende Buffer (WabberQueue)</td>
+				<td>
 					<input type="radio" name="streaming_use_buffer" value="0" title="WabberQueue: off"/>AUS&nbsp;
 					<input type="radio" name="streaming_use_buffer" value="1" title="WabberQueue: on"/>AN
 				</td>
@@ -327,7 +338,9 @@ start-block~neutrino_form-data_movieplayer
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_movieplayer_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onclick="do_submit()"/>
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
+		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
+		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
 	</form>
 	</div>
 </div>
@@ -404,7 +417,7 @@ end-block~neutrino_movieplayer_save_settings
 start-block~neutrino_form-data_parental
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Settings#Jugendschutz=}{=var-set:menu=Jugendschutz=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-Jugendschutz=}{=var-set:menu=Jugendschutz=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" action="/y/cgi">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
@@ -437,7 +450,9 @@ start-block~neutrino_form-data_parental
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_parental_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onclick="do_submit()"/>
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
+		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
+		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
 	</form>
 	</div>
 </div>
@@ -476,9 +491,9 @@ end-block~neutrino_parental_save_settings
 start-block~neutrino_form-data_diverse
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Settings#Diverse=}{=var-set:menu=Diverse Einstellungen=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-Diverse=}{=var-set:menu=Diverse Einstellungen=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-	<form name="f" action="/y/cgi">
+	<form name="f" action="/y/cgi" class="y_form">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
 			<tr>
 				<td colspan="2" width="35%" class="y_form_header">Allgemein</td>
@@ -612,7 +627,9 @@ start-block~neutrino_form-data_diverse
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_diverse_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onclick="do_submit()"/>
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
+		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
+		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
 	</form>
 	</div>
 </div>
@@ -681,7 +698,7 @@ end-block~neutrino_diverse_save_settings
 start-block~neutrino_form-data_bootoptions
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Settings#Bootoptionen=}{=var-set:menu=Treiber- und Bootoptionen=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-Bootoptionen=}{=var-set:menu=Treiber- und Bootoptionen=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" action="/y/cgi">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
@@ -739,7 +756,9 @@ start-block~neutrino_form-data_bootoptions
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_bootoptions_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onclick="do_submit()"/>
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
+		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
+		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
 	</form>
 	</div>
 </div>
@@ -783,7 +802,7 @@ end-block~neutrino_bootoptions_save_settings
 start-block~neutrino_form-data_pictureviewer
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Settings#Bildbetrachter=}{=var-set:menu=Bildbetrachter=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-Bildbetrachter=}{=var-set:menu=Bildbetrachter=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" action="/y/cgi">
 		<table cellspacing="0" border="0" cellpadding="2">
@@ -818,7 +837,9 @@ start-block~neutrino_form-data_pictureviewer
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_pictureviewer_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onclick="do_submit()"/>
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
+		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
+		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
 	</form>
 	</div>
 </div>
@@ -855,7 +876,7 @@ end-block~neutrino_pictureviewer_save_settings
 start-block~neutrino_form-data_audioplayer
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Settings#Audioplayer=}{=var-set:menu=Audioplayer=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-Audioplayer=}{=var-set:menu=Audioplayer=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" action="/y/cgi">
 		<table cellspacing="0" border="0" cellpadding="2">
@@ -923,7 +944,9 @@ start-block~neutrino_form-data_audioplayer
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_audioplayer_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onclick="do_submit()"/>
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
+		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
+		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
 	</form>
 	</div>
 </div>
@@ -970,10 +993,13 @@ end-block~neutrino_audioplayer_save_settings
 start-block~neutrino_form-data_direct_recording
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Settings#Direktaufnahme=}{=var-set:menu=Direktaufnahme=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-Direktaufnahme=}{=var-set:menu=Direktaufnahme=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-	<form name="f" action="/y/cgi">
+	<form name="f" class="y_form" action="/y/cgi">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
+			<tr>
+				<td colspan="2" class="y_form_header">Aufnahmeeinstellungen</td>
+			</tr>
 			<tr>
 				<td width="35%">Max. Dateigr&ouml;&szlig;e (MB)</td>
 				<td><input type="text" name="recording_splitsize" size="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize;9999~open=}" title="Max filesize/splitsize"/></td>
@@ -1033,8 +1059,11 @@ start-block~neutrino_form-data_direct_recording
 				<td><input type="text" name="recording_dir_permissions_0" size="3" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_permissions_0;755~cache=}" title="directory permissions (UNIX octals)"/></td>
 			</tr>
 			<tr>
-				<td class="line">Aufnahmeverzeichnis 0</td>
-				<td class="line"><input type="text" name="recording_dir_0" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_0;/mnt/filme~cache=}" title="recording directory"/></td>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnisse</td>
+			</tr>
+			<tr>
+				<td>Aufnahmeverzeichnis 0</td>
+				<td><input type="text" name="recording_dir_0" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_0;/mnt/filme~cache=}" title="recording directory"/></td>
 			</tr>
 			<tr>
 				<td>Aufnahmeverzeichnis 1</td>
@@ -1078,7 +1107,9 @@ start-block~neutrino_form-data_direct_recording
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_direct_recording_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onclick="do_submit()"/>
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
+		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
+		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
 	</form>
 	</div>
 </div>

@@ -8,7 +8,7 @@
 {=var-set:wait_text=Image wird erstellt (create image).=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head">
-		<div class="work_box_head_h2">{=var-set:help_url=Neutrino:yWeb:Tools#Image=}{=var-set:menu=Image=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+		<div class="work_box_head_h2">{=var-set:help_url=Help-Tools-Image=}{=var-set:menu=Image=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<b><font size="2">Partition</font></b><br/>
 		<form action="/y/cgi" name="f" id="f">
@@ -17,8 +17,8 @@
 			<input type="hidden" name="execute" value=""/>
 			<input type="hidden" name="mtd_text" value=""/>
 			<input type="hidden" name="mtd" value=""/>
-			<input type="button" name="download" value="Download" title="Generate Image for download" onclick="do_image_download()"/>
-			<input type="button" name="upload" value="Flash ..." title="go to Upload Dialog" onclick="do_image_upload_dialog()"/>
+			<button type="button" ytype="download" name="download" title="Generate Image for download" onclick="do_image_download()">Download</button>
+			<button type="button" ytype="flash" name="upload" title="go to Upload Dialog" onclick="do_image_upload_dialog()">Flash ...</button>
 		</form>
 	</div>
 </div>
@@ -28,7 +28,7 @@
 	<div class="work_box_body" title="You should reboot the box before flashing">
 
 	Es ist sinnvoll die Box vor dem flashen frisch zu booten.<br/>
-	<input type=button value="Neu starten" title="reboot" onclick='goConfirmUrl("dbox wirklich neu starten?","/control/reboot");'/>
+	<button type=button ytype="reboot" title="reboot" onclick='goConfirmUrl("dbox wirklich neu starten?","/control/reboot");'>Neu starten</button>
 	</div>
 </div>
 <div style="clear:both">&nbsp;</div>

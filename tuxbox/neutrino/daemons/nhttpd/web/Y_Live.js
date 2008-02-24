@@ -1,6 +1,6 @@
 /*	yWeb Live by yjogol
-	$Date: 2007/11/26 20:59:35 $
-	$Revision: 1.1 $
+	$Date: 2008/02/24 08:23:12 $
+	$Revision: 1.2 $
 */
 /*globals*/
 var V2 = null;

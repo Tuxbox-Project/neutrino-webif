@@ -1,6 +1,6 @@
 /*	VLC abstraction by yjogol@online.de
-	$Date: 2007/11/26 20:59:35 $
-	$Revision: 1.2 $
+	$Date: 2008/02/24 08:23:12 $
+	$Revision: 1.3 $
 */
 /*ie1=ActiveC, moz1=Mozilla<0.8.5.1, moz2>= 0.8.5.1*/
 var CyVLC = function(_id, masterid, width, height) {

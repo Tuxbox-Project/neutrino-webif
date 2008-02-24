@@ -29,10 +29,10 @@ function do_submit()
 {=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Settings#WebServer=}{=var-set:menu=WebServer (nhttpd)=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-WebServer=}{=var-set:menu=WebServer (nhttpd)=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-	<form name="f" action="/y/cgi">
-		<table border="0">
+	<form name="f" class="y_form" action="/y/cgi">
+		<table border="0" width="100%">
 			<tr><td colspan="2" class="y_form_header">Authentifikation</td></tr>
 			<tr>
 				<td>Benutzer</td>
@@ -80,14 +80,10 @@ function do_submit()
 					<input type="radio" name="mod_sendfile_sendAll" value="true" title="allow all: on"/>AN
 				</td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Logos &amp; Extras</td></tr>
-			<tr>
-				<td>Verzeichnis ("web"=nur URL)</td>
-				<td><input type="text" name="ExtrasDocRoot" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;ExtrasDocRoot~cache=}" title="Enter mount directory (/mnt/hosted/extras or web)."/></td>
-			</tr>
+			<tr><td colspan="2" class="y_form_header">Logos</td></tr>
 			<tr>
 				<td>URL</td>
-				<td><input type="text" name="ExtrasDocURL" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;ExtrasDocURL~cache=}" title="URL Root of hosted Extra Web. Enter URL (/hosted/extras)."/></td>
+				<td><input type="text" name="Tuxbox_LogosURL" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;Tuxbox.LogosURL~cache=}" title="Enter URL of Logos"/></td>
 			</tr>
 			<tr><td colspan="2" class="y_form_header">Server</td></tr>
 			<tr>
@@ -97,7 +93,7 @@ function do_submit()
 			</tr>
 			<tr>
 				<td>Cache</td>
-				<td><a href="/y/cache-info" target="_blank"><u>Cache info</u>&nbsp;</a><input type="button" name="clearcache" value="clear cache" title="clear cache" onclick="javascript:yhttpd_cache_clear('');"/></td>
+				<td><a href="/y/cache-info" target="_blank"><u>Cache info</u>&nbsp;</a><button type="button" ytype="clear" name="clearcache" title="clear cache" onclick="javascript:yhttpd_cache_clear('');">clear cache</button></td>
 			</tr>
 			<tr>
 				<td>Server Configuration</td>
@@ -107,7 +103,7 @@ function do_submit()
 		<br/>
 		<input type="hidden" name="tmpl" value="Y_Settings_nhttpd.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_Blocks.txt;nhttpd_save_settings;nix"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onclick="do_submit()"/>
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
 	</form>
 	</div>
 </div>

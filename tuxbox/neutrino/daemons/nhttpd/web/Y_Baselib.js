@@ -1,10 +1,10 @@
 /*	yWeb Baselib by yjogol
-	$Date: 2007/11/26 20:59:35 $
-	$Revision: 1.4 $
+	$Date: 2008/02/24 08:23:12 $
+	$Revision: 1.5 $
 */
+var baselib_version="2.0.0";
 var agt=navigator.userAgent.toLowerCase();
 var is_ie     = ((agt.indexOf("msie") != -1) && (agt.indexOf("opera") == -1));
-
 /*DHTML-Basics*/
 function $yN(_obj_name)
 {
@@ -111,6 +111,15 @@ function y_add_html_cell_to_row(_row, _name, _value)
 	var __cell=y_add_plain_cell_to_row(_row, _name);
 	__cell.innerHTML = _value;
 	return __cell;
+}
+function y_add_li_to_ul(_ul, _class, _value){
+	var __li=document.createElement("li");
+	var __class = document.createAttribute("class");
+	__class.nodeValue = _class;
+	_ul.setAttributeNode(__class);
+	_ul.appendChild(__li);
+	__li.innerHTML=_value;
+	return __li;
 }
 function getXMLNodeItemValue(node, itemname)
 {
@@ -268,7 +277,7 @@ function split_one(_str, _delimiter)
 {
 	var __p = _str.indexOf(_delimiter);
 	var __left = _str.substring(0, __p);
-	var __right = _str.substring(__p+1);
+	var __right = _str.substring(__p+_delimiter.length);
 	return new Array(__left, __right);
 }
 function split_left(_str, _delimiter)
@@ -292,6 +301,50 @@ function epg_de_qout(_str)
 	_str = de_qout(_str);
 	_str = _str.replace(/\x8A/g,"<br/>");
 	return _str;
+}
+function split_version(vstring,v){
+	var l=vstring.split(".");
+	v.set('major', (l.length>0)?l[0]:"0");
+	v.set('minor', (l.length>1)?l[1]:"0");
+	v.set('patch', (l.length>2)?l[2]:"0");
+	v.set('pre', (l.length>3)?l[3]:"0");
+}
+function version_less(l, r) /* l<= r?*/{
+	return 	(l.get('major') < r.get('major'))||
+		((l.get('major') == r.get('major')) && (l.get('minor') < r.get('minor'))) ||
+		((l.get('major') == r.get('major')) && (l.get('minor') == r.get('minor')) && (l.get('patch') < r.get('patch'))) ||
+		((l.get('major') == r.get('major')) && (l.get('minor') == r.get('minor')) && (l.get('patch') == r.get('patch')) && (l.get('pre') < r.get('pre')));
+}
+function version_le(l, r) /* l<= r?*/{
+	return 	(l.get('major') < r.get('major'))||
+		((l.get('major') == r.get('major')) && (l.get('minor') < r.get('minor'))) ||
+		((l.get('major') == r.get('major')) && (l.get('minor') == r.get('minor')) && (l.get('patch') < r.get('patch'))) ||
+		((l.get('major') == r.get('major')) && (l.get('minor') == r.get('minor')) && (l.get('patch') == r.get('patch')) && (l.get('pre') <= r.get('pre')));
+}
+function version_str_less(l, r) /* l<= r?*/{
+	var lh=$H(); 
+	split_version(l,lh);
+	var rh=$H();
+	split_version(r,rh);
+	return version_less(lh,rh);
+}
+function str_to_hash(str){
+	var h=new Hash();
+	var items=str.split(",");
+	items.each(function(e){
+		pair=split_one(e,":");
+		if(pair.length==2)
+			h.set((pair[0]).gsub("\"","").gsub("'","").strip(),(pair[1]).strip().gsub("\"","").gsub("'",""));
+	});
+	return h;
+}
+function hash_to_str(h){
+	var str="";
+	h.each(function(e){
+		if(str!="")str+=",";
+		str+=e.key+":"+e.value;
+	});
+	return str;
 }
 /*etc*/
 function format_time(_t)
@@ -324,16 +377,7 @@ function dbox_rcsim(_key){
 	loadSyncURL("/control/rcem?" + _key);
 }
 function dbox_reload_neutrino(){
-	var sc=dbox_exec_tools("have_plugin_scripts");
-	dbox_rcsim('KEY_HOME');	
-	dbox_rcsim('KEY_HOME');	
-	dbox_rcsim('KEY_HOME');	
-	dbox_rcsim('KEY_SETUP');	
-	if(sc!="")
-		dbox_rcsim('KEY_6');
-	else	
-		dbox_rcsim('KEY_5');	
-	dbox_rcsim('KEY_3');	
+	var sc=dbox_exec_tools("restart_neutrino");
 }
 function dbox_exec_command(_cmd)
 {

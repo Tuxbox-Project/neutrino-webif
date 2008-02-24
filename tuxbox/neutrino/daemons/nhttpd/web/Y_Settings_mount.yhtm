@@ -22,7 +22,7 @@ function do_submit()
 {=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head">
-		<div class="work_box_head_h2">{=var-set:help_url=Neutrino:yWeb:Tools#Mounts=}{=var-set:menu=Mount {=R1=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+		<div class="work_box_head_h2">{=var-set:help_url=Help-Tools-Mounts=}{=var-set:menu=Mount {=R1=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" action="/y/cgi">
 		<input type="hidden" name="nr" value="{=R1=}"/>
@@ -78,8 +78,8 @@ function do_submit()
 		<br/>
 		<input type="hidden" name="tmpl" value="Y_Settings_mount_liste.yhtm"/>
 		<input type="hidden" name="execute" value="func:mount-set-values"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onClick="do_submit()"/>
-		<input type="button" value="Abbrechen" title="cancel" name="abort" onClick='window.document.location.href="/Y_Settings_mount_liste.yhtm"'/>
+		<button type="button" ytype="save" title="submit and save values" onClick="do_submit()">Speichern</button>
+		<button type="button" ytype="cancel" title="cancel" name="abort" onClick='window.document.location.href="/Y_Settings_mount_liste.yhtm"'>Abbrechen</button>
 	</form>
 	</div>
 </div>

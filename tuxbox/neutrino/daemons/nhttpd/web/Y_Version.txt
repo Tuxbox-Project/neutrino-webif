@@ -1,5 +1,5 @@
-version=2.6.1
-date=13.12.2007
+version=2.7.0.4
+date=24.02.2008
 type=Release
 info=
 

@@ -1,4 +1,23 @@
 {=include-block:Y_Blocks.txt;head_no_charset=}
+<style>
+.y_work_box {
+	border-spacing: 1px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	float:left;
+	width: auto;
+	color: #555555;
+	display:block;
+}
+.y_head {
+	font-weight: bold;
+	color: #555555;
+	font-size: 14pt;
+	clear:both;
+}
+</style>
 </head>
 <body>
 <BR>

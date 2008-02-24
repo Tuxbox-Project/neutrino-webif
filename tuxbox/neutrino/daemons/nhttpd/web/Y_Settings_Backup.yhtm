@@ -36,7 +36,7 @@ function do_backup2()
 {=var-set:wait_text=Settings=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-		{=var-set:help_url=Neutrino:yWeb:Settings#Backup_.26_Restore=}{=var-set:menu=Backup &amp; Restore=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+		{=var-set:help_url=Help-Settings-Backup_Restore=}{=var-set:menu=Backup &amp; Restore=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<p><div style="border: 1px solid #cccccc;margin-top:20px">
 		<img src="/images/cross.png">&nbsp;<span><font size="2" color="Red"><b>Achtung</b>&nbsp;</font>Backup &amp; Restore ist nur bei einem gleichen Image mit gleichem Stand sinnvoll.

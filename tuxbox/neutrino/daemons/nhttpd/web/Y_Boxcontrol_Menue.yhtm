@@ -2,6 +2,7 @@
 {=include-block:Y_Blocks.txt;head=}
 <script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript" src="/Y_yweb.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 var g_volumen = 100;
@@ -59,6 +60,21 @@ function set_mode(_mode)
 		loadSyncURL("/control/setmode?" + _mode);
 	parent.work.location.reload();
 }
+function init(){
+	volumen_set_audiobar(volumen_get());
+	set_mute_button();
+	var menu=ext.select_menu('boxcontrol');
+	menu.each(function(e){
+		var el=new Element('li').update(
+			new Element('a', {'target':'work',
+				'title': e.get('desc'),
+				'href': e.get('file')
+			}).update("-"+e.get('menuitem'))
+		);
+		$('secmenu').insert({'bottom':el}); 
+	});
+	
+}
 //]]>
 </script>
 </head>
@@ -69,7 +85,7 @@ function set_mode(_mode)
 	<div class="y_menu_sec_box_head"><h2>Boxcontrol</h2></div>
 	<div class="y_menu_sec_box_body">
 		<div class="y_menu_sec">
-			<ul>
+			<ul id="secmenu">
 				<li><a target="work" title="Switch channels" href="Y_Boxcontrol_Bouquets.yhtm">Bouquets</a></li>
 				<li><a target="work" title="control box functions (reboot, remote control, SPTS, ...)" href="Y_Tools_Boxcontrol.yhtm">Control</a></li>
 				<li><a target="work" title="send Messages to box" href="Y_Boxcontrol_Messages.yhtm">Messages</a></li>
@@ -113,8 +129,7 @@ function set_mode(_mode)
 </div>
 <script type="text/javascript">
 //<![CDATA[
-	volumen_set_audiobar(volumen_get());
-	set_mute_button();
+	init();
 //]]>
 </script>
 </body>

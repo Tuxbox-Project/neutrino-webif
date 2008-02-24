@@ -4,6 +4,7 @@
 <script type="text/javascript">
 //<![CDATA[
 /*0=normal, 1=record*/
+var isRecord=false;
 function setControls(state)
 {
 	switch(state)	{
@@ -56,7 +57,7 @@ function on_transon_change()
 function doRecord()
 {
 	var _live = parent.live;
-	if($F('record') == "Record")
+	if(!isRecord)
 	{
 		var transcode = "";
 		var stream = "";
@@ -82,6 +83,10 @@ function doRecord()
 
 				case "ipod":
 					transcode = "transcode{width=320,height=240,vcodec=mp4v,vb=768,acodec=mp4a,ab=128}:";
+					break;
+
+				case "divx3":
+					transcode = "transcode{vcodec=DIV3,vb=1024,scale=1,acodec=mp3,ab=192,channels=2}:";
 					break;
 
 				case "mp3":
@@ -111,6 +116,14 @@ function doRecord()
 				"}";
 				break;
 
+			case "divx3":
+				stream = "dst=std{"+
+				"access=file"+
+				",mux=asf"+
+				",url=\""+$F('record_filename')+"\""+
+				"}";
+				break;
+
 			default:
 				stream = "dst=std{"+
 				"access=file"+
@@ -123,78 +136,77 @@ function doRecord()
 			stream = stream+",dst=display";
 
 		var __vlc_cmd = ":sout=#"+transcode+"duplicate{"+stream+"}";
-		$('record').value = "Stop Record";
 		setControls(1);
 		_live.do_play_bystring(__vlc_cmd);
 	}
 	else
 	{
-		$('record').value = "Record";
 		setControls(0);
 		_live.do_play();
 	}
+	isRecord=!isRecord;
+	$('record').update( (isRecord)? "Stop Record": "Record");
 }
 //]]>
 </script>
 </head>
 <body>
-	<form id="v" action="" method="get">
-		<table class="y_live_table" cellspacing="0" width="100%">
-		<tr><td class="y_form_header" colspan="5">Record Mode</td></tr>
+	<form id="v" class="y_form" action="" method="get">
+		<table cellspacing="0" width="100%">
+		<tr><td class="y_form_header" colspan="4">Record Mode</td></tr>
 		<tr>
-			<td>&nbsp;</td>
 			<td>Filename:</td>
 			<td colspan="3"><input type="text" id="record_filename" value="{=ini-get:/var/tuxbox/config/Y-Web.conf;vlc_record_path=}"/></td>
 		</tr>
 		<tr>
-			<td>&nbsp;</td>
 			<td colspan="4">
 				<input type="checkbox" id="tdisplay" value="1" title="Display on while transcoding" checked="checked"/>Display on&nbsp;
 				<input type="checkbox" id="transon" value="1" title="use transcoding" onclick="on_transon_change()"/>Transcoding on
 			</td>
 		</tr>
 		<tr>
-			<td>&nbsp;</td>
 			<td colspan="4">
 			<br/>
-				<input class="y_live_button" type="button" value="Record" title="record stream to file" id="record" onclick="doRecord()"/>
+				<button class="y_live_button" type="button" value="Record" title="record stream to file" onclick="doRecord()">
+					<img src="/images/record.png">&nbsp;<span id="record">Record</span></button>
 			</td>
 		</tr>
-		<tr><td class="y_form_header" colspan="5"><br/>Record Transcode</td></tr>
+		<tr><td class="y_form_header" colspan="4"><br/>Record Transcode</td></tr>
 		<tr>
-			<td>&nbsp;</td>
 			<td>Profile:</td>
-			<td>
+			<td colspan="3">
 				<select id="profile" class="y_live_button" onchange="on_profile_change()">
 	{=if-equal:{=mode=}~tv~
 				<option value="ipod" selected>iPod Video</option>
+				<option value="divx3">DivX</option>
 	=}
 				<option value="custom">custom</option>
 				<option value="ipoda">iPod Audio</option>
 				<option value="mp3">mp3 Audio</option>
 				</select>
 			</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
 		</tr>
 	{=if-equal:{=mode=}~tv~
-		<tr><td class="y_form_section"><br/>Video</td><td class="y_form_section" colspan="4">&nbsp;</td></tr>
+		<tr><td class="y_form_section"><br/>Video</td><td class="y_form_section" colspan="3">&nbsp;</td></tr>
 		<tr>
-			<td>&nbsp;</td>
 			<td>Breite:</td>
-			<td><input type="text" id="twidth" size="4" value="384" class="y_live_button"/></td>
+			<td><input type="text" id="twidth" size="4" value="720" class="y_live_button"/></td>
 			<td>H&ouml;he:</td>
-			<td><input type="text" id="theight" size="4" value="288" class="y_live_button"/></td>
+			<td><input type="text" id="theight" size="4" value="576" class="y_live_button"/></td>
 		</tr>
 		<tr>
-			<td>&nbsp;</td>
 			<td>Codec:</td>
 			<td>
 				<select id="vcodec" class="y_live_button">
 				<option value="mp4v" selected>mp4v</option>
+				<option value="mp1v">mp1v</option>
 				<option value="mp2v">mp2v</option>
 				<option value="DIV3">DIV3</option>
 				<option value="h264">h264</option>
+				<option value="H263">h263</option>
+				<option value="h264">h264</option>
+				<option value="WMV1">WMV1</option>
+				<option value="WMV1">WMV2</option>
 				</select>
 			</td>
 			<td>Bitrate:</td>
@@ -212,7 +224,6 @@ function doRecord()
 			</td>
 		</tr>
 		<tr>
-			<td>&nbsp;</td>
 			<td>Scale:</td>
 			<td>
 				<select id="scale" class="y_live_button">
@@ -230,9 +241,8 @@ function doRecord()
 			<td>&nbsp;</td>
 		</tr>
 	=}
-		<tr><td class="y_form_section">Audio</td><td class="y_form_section" colspan="4">&nbsp;</td></tr>
+		<tr><td class="y_form_section">Audio</td><td class="y_form_section" colspan="3">&nbsp;</td></tr>
 		<tr>
-			<td>&nbsp;</td>
 			<td>Codec:</td>
 			<td>
 				<select id="acodec" class="y_live_button">
@@ -240,6 +250,9 @@ function doRecord()
 				<option value="mp3">mp3</option>
 				<option value="mp2a">mp2a</option>
 				<option value="a52">a52</option>
+				<option value="vorb">vorb</option>
+				<option value="flac">flac</option>
+				<option value="fl32">fl32</option>
 				</select>
 			</td>
 			<td>Bitrate:</td>
@@ -255,7 +268,6 @@ function doRecord()
 			</td>
 		</tr>
 		<tr>
-			<td>&nbsp;</td>
 			<td>Channels:</td>
 			<td>
 				<select id="channels" class="y_live_button">
@@ -267,9 +279,8 @@ function doRecord()
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 		</tr>
-		<tr><td class="y_form_section">Mux</td><td class="y_form_section" colspan="4">&nbsp;</td></tr>
+		<tr><td class="y_form_section">Mux</td><td class="y_form_section" colspan="3">&nbsp;</td></tr>
 		<tr>
-			<td>&nbsp;</td>
 			<td>Mux:</td>
 			<td>
 				<select id="tmux" class="y_live_button">
@@ -278,10 +289,14 @@ function doRecord()
 				<option value="ps">ps</option>
 				<option value="mp4">mp4</option>
 				<option value="mov">mov</option>
-				<option value="raw">raw</option>
+				<option value="ogg">ogg</option>
+				<option value="asf">asf</option>
+				<option value="mpeg1">mpeg1</option>
+				<option value="wav">wav</option>
 	~
 				<option value="raw" selected>raw</option>
 				<option value="mp4">mp4</option>
+				<option value="ogg">ogg</option>
 	=}
 				</select>
 			</td>

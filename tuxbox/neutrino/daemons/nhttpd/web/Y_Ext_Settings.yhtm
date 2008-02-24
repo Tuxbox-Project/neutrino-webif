@@ -1,6 +1,9 @@
 {=include-block:Y_Blocks.txt;management_check_top=}
 {=include-block:Y_Blocks.txt;head=}
+<script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript" src="/Y_yweb.js"></script>
+<script type="text/javascript" src="/Y_Ext_Update.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 function do_submit()
@@ -15,7 +18,7 @@ function do_submit()
 {=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Extensions#Settings=}{=var-set:menu=Extensions Settings=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Extensions-Settings=}{=var-set:menu=Extensions Settings=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" accept-charset="UTF-8" action="/y/cgi">
 		<table border="0" class="y_form_table" cellspacing="0" cellpadding="0">
@@ -27,7 +30,7 @@ function do_submit()
 		<br/>
 		<input type="hidden" name="tmpl" value="Y_Ext_Update_refresh.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_Blocks.txt;ext_save_settings;nix"/>
-		<input type="button" value="Speichern ..." title="submit and save values" onclick="do_submit()"/>
+		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
 	</form>
 	</div>
 </div>

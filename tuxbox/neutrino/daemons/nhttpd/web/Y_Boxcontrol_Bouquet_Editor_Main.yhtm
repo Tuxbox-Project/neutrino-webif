@@ -129,7 +129,7 @@ function do_rename()
 <body>
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:BoxControl#Bouquet-Editor=}{=var-set:menu=Bouquet-Editor=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-BoxControl-Bouquet-Editor=}{=var-set:menu=Bouquet-Editor=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<div id="add" class="fly_form">
 			<form name="add" accept-charset="UTF-8" action="">
@@ -137,8 +137,8 @@ function do_rename()
 				Name des neuen Bouquets:
 				<input type="text" size="30" name="bouquet_name" />
 				<br/>
-				<input type="button" value="speichern" onclick="do_add()" />
-				<input type="button" value="abbrechen" onclick="do_add_abort()" />
+				<button type="button" ytype="save" onclick="do_add()">speichern</button>
+				<button type="button" ytype="cancel" onclick="do_add_abort()">abbrechen</button>
 				</p>
 			</form>
 		</div>
@@ -150,8 +150,8 @@ function do_rename()
 				<input type="text" size="30" name="bouquet_name" />
 				<input type="hidden" name="bouquetnr" value="" />
 				<br/>
-				<input type="button" value="speichern" onclick="do_rename()" />
-				<input type="button" value="abbrechen" onclick="do_rename_abort()" />
+				<button type="button" ytype="save" onclick="do_rename()">speichern</button>
+				<button type="button" ytype="cancel" onclick="do_rename_abort()">abbrechen</button>
 				</p>
 			</form>
 		</div>
@@ -185,8 +185,8 @@ function do_rename()
 {=func:bouquet_editor_main {=var-get:row=}=}
 		</table>
 		<p>
-			<button type="button" onclick="javascript:do_add_start()"><img src="/images/new.png">&nbsp;Bouquet hinzuf&uuml;gen</button>
-			<button type="button" onclick="javascript:do_save()"><img src="/images/saveall.png">&nbsp;Alle &Auml;nderungen speichern</button>
+			<button type="button" ytype="add" onclick="javascript:do_add_start()">Bouquet hinzuf&uuml;gen</button>
+			<button type="button" ytype="saveall" onclick="javascript:do_save()">Alle &Auml;nderungen speichern</button>
 		</p>
 	</div>
 </div>

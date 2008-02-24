@@ -1,14 +1,15 @@
 {=include-block:Y_Blocks.txt;management_check_top=}
 {=include-block:Y_Blocks.txt;head=}
-<script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript" src="/prototype.js"></script>
+<script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript" src="/Y_yweb.js"></script>
 <script type="text/javascript" src="/Y_Ext_Update.js"></script>
 </head>
 <body>
 {=var-set:wait_text=Werte werden aktualisiert.=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Neutrino:yWeb:Extensions#Update=}{=var-set:menu=Extensions Updater/Installer=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Extensions-Update=}{=var-set:menu=Extensions Updater/Installer=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body" width="100%">
 		<div id="statusline"><img border="0" src="/images/wait.gif" width="20" height="20" alt="wait"/>
 			<span id="status">Suche Updates ...</span></div>
@@ -19,19 +20,22 @@
 		<div class="y_form_header_oline">update Preview List</div>
 		<table class="lt_table" cellspacing="0" cellpadding="2">
 		<thead align="left">
-		<tr>
+		<tr valign="bottom">
 			<th>&nbsp;</th>
-			<th>Site</th><th>Extension</th>
-			<th>Tag</th><th>your Version</th><th>Update Version</th>
+			<th>Site</th><th>Type</th><th>Extension</th>
+			<th>Tag</th><th>your<br/>Version</th><th>Update<br/>Version</th>
+			<th title="minimal yWeb version">yWeb</th><th>Size/k</th><th>Info</th>
 		</tr>
 		</thead>
 		<tbody id="update_list">
 		<tr><td></td></tr>
 		</tbody>
 		</table>
-		<input type="button" value="update/install" title="" name="set_updates" onclick="do_set_updates()"/>&nbsp;
+		<button type="button" ytype="go" title="" name="set_updates" onclick="do_set_updates()">update/install</button>&nbsp;
 	</form>
 	<br/>
+	<div id="free">?</div>
+	Frei:&nbsp;<span id="avaiable">?</span>k
 	<form method="post" name="log" action="">
 	<div class="y_form_header_oline">Log</div>
 		<table class="lt_table" cellspacing="0" cellpadding="4">
@@ -63,6 +67,7 @@
 <script type="text/javascript">
 //<![CDATA[
 	window.setTimeout("build_list();",500);
+	yversion_str="{=ini-get:Y_Version.txt;version=}";
 //]]>
 </script>
 </body>
