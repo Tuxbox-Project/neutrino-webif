@@ -1,6 +1,6 @@
 function wiki_url(_page)
 {
-	return "<a href=\"http://wiki.godofgta.de/"+_page+"\"' target=\"_blank\"><b>[Help]<\/b><\/a>"
+	return "<a href=\"http://wiki.dbox2-tuning.net/"+_page+"\"' target=\"_blank\"><b>[Help]<\/b><\/a>"
 }
 /*timer_list*/
 var timer_body;
