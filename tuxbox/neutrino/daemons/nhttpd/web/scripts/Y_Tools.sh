@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Tools (yjogol)
-# $Date: 2008/02/24 08:23:18 $
-# $Revision: 1.6 $
+# $Date: 2008/11/13 16:45:43 $
+# $Revision: 1.7 $
 # -----------------------------------------------------------
 . ./_Y_Globals.sh
 . ./_Y_Library.sh
@@ -236,7 +236,7 @@ do_mount()
 			cmd="mount -t nfs $ip:$dir $local_dir -o $options1"
 			;;
 		1)
-			cmd="mount -t cifs //$ip/$dir $local_dir -o username=$username,password=$password,unc=//$ip/$dir,$options1";
+			cmd="mount -t cifs $ip/$dir $local_dir -o username=$username,password=$password,unc=//$ip/$dir,$options1";
 			;;
 		2)
 			cmd="lufsd none $local_dir -o fs=ftpfs,username=$username,password=$password,host=$ip,root=/$dir,$options1";
@@ -249,8 +249,9 @@ do_mount()
 	then
 		cmd="$cmd,$options2"
 	fi
-
 	res=`$cmd`
+	echo "$cmd" >/tmp/mount.log
+	echo "$res" >>/tmp/mount.log
 	echo "$res"
 	echo "view mounts"
 	m=`mount`
@@ -568,6 +569,8 @@ case "$1" in
 		config_open $y_config_Y_Web
 		url=`config_get_value "klack_url"`
 		klack_url=`echo "$url"|sed -e 's/;/\&/g'`
+		securitycode=`config_get_value "klack_securitycode"`
+		klack_url=`echo "$klack_url&secCode=$securitycode"`
 		wget -O /tmp/klack.xml "$klack_url" 2>&1 ;;
 
 	restart_sectionsd)

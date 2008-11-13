@@ -41,7 +41,7 @@ function do_submit()
 			</tr>
 			<tr>
 				<td>Verzeichnis</td>
-				<td><input type="text" name="dir" size="30" value="{=ini-get:/var/tuxbox/config/neutrino.conf;network_nfs_dir_{=R1=}=}" title="remote directory"/></td>
+				<td><input type="text" name="dir" size="30" value="{=ini-get:/var/tuxbox/config/neutrino.conf;network_nfs_dir_{=R1=}=}" title="remote directory. For CIFS do not use a leading slash."/></td>
 			</tr>
 			<tr>
 				<td>Lokales Verzeichnis</td>

@@ -78,12 +78,12 @@ function processReqChange()
 				{
 					var recProg_Node = recProg_NodeList[i];
 
-					var sender		= recProg_Node.getElementsByTagName('sender')[0].firstChild.nodeValue;
-					var progName 		= recProg_Node.getElementsByTagName('progName')[0].firstChild.nodeValue;
-					var progStartDate 	= recProg_Node.getElementsByTagName('progStartDate')[0].firstChild.nodeValue;
-					var progStartTime 	= recProg_Node.getElementsByTagName('progStartTime')[0].firstChild.nodeValue;
-					var progEndDate 	= recProg_Node.getElementsByTagName('progEndDate')[0].firstChild.nodeValue;
-					var progEndTime 	= recProg_Node.getElementsByTagName('progEndTime')[0].firstChild.nodeValue;
+					var sender		= getXMLNodeItemValue(recProg_Node, 'sender');
+					var progName 		= getXMLNodeItemValue(recProg_Node, 'progName');
+					var progStartDate 	= getXMLNodeItemValue(recProg_Node, 'progStartDate');
+					var progStartTime 	= getXMLNodeItemValue(recProg_Node, 'progStartTime');
+					var progEndDate 	= getXMLNodeItemValue(recProg_Node, 'progEndDate');
+					var progEndTime 	= getXMLNodeItemValue(recProg_Node, 'progEndTime');
 
 					progName = decodeURI(progName);
 					/*convert startdate*/
@@ -123,19 +123,19 @@ function processReqChange()
 				{
 					var recProg_Node = recProg_NodeList[i];
 
-					var progName 		= recProg_Node.getElementsByTagName('title')[0].firstChild.nodeValue;
-					var description 	= recProg_Node.getElementsByTagName('description')[0].firstChild.nodeValue;
-					if(is_ie)
+					var progName 		= getXMLNodeItemValue(recProg_Node, 'title');
+					var description 	= getXMLNodeItemValue(recProg_Node, 'description');
+//FF3?Probs					if(is_ie)
 					{
-						var sDate	= recProg_Node.getElementsByTagName('dc:date')[0].firstChild.nodeValue;
-						var sender	= recProg_Node.getElementsByTagName('dc:subject')[0].firstChild.nodeValue;
+						var sDate	= getXMLNodeItemValue(recProg_Node, 'dc:date');
+						var sender	= getXMLNodeItemValue(recProg_Node, 'dc:subject');
 					}
-					else
+/*					else
 					{
-						var sDate	= recProg_Node.getElementsByTagName('date')[0].firstChild.nodeValue;
-						var sender	= recProg_Node.getElementsByTagName('subject')[0].firstChild.nodeValue;
+						var sDate = getXMLNodeItemValue(recProg_Node, 'date');
+						var sender	= getXMLNodeItemValue(recProg_Node, 'subject');
 					}
-
+*/
 					var tmp = progName.replace(/(.*):/,"");
 					progName = tmp;
 					var stDate ="";
@@ -203,7 +203,6 @@ function do_get_klack()
 	sLog_addRow(sLog_body, "ok", "Klack: Sync Timer", "started");
 	var _url = "/control/exec?Y_Tools&timer_get_klack";
 	var res = loadSyncURL(_url);
-alert(res);
 	if(res.search(/Connecting/)!=-1)
 		sLog_addRow(sLog_body, "green", "Klack: connecting: "+res, "ok");
 	else

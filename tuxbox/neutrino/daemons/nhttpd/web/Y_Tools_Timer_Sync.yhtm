@@ -1,5 +1,6 @@
 {=include-block:Y_Blocks.txt;head=}
 <script type="text/javascript" src="/Y_Baselib.js"></script>
+<script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript" src="/Y_Tools_Timer_Sync.js"></script>
 </head>
 <body>
