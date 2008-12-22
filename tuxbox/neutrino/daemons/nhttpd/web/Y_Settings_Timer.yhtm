@@ -33,12 +33,16 @@ function do_submit()
 				<td><input type="password" name="tvinfo_password" size="15" value="{=ini-get:/var/tuxbox/config/Y-Web.conf;tvinfo_password=}" title="password"/><br/><br/></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="y_form_header">klack.de</td>
+				<td colspan="2" class="y_form_header">klack.de (V2)</td>
 			</tr>
 			<tr>
 				<td>personal RSS TV-Planer URL</td>
 				<td><input type="text" name="klack_url" size="60" value="{=ini-get:/var/tuxbox/config/Y-Web.conf;klack_url=}" title="Klack.de RSS TV-Planer URL"/><br/>
 				(&#038; will be converted to &quot;;&quot; on save)</br></td>
+			</tr>
+			<tr>
+				<td>Security Code</td>
+				<td><input type="password" name="klack_securitycode" size="15" value="{=ini-get:/var/tuxbox/config/Y-Web.conf;klack_securitycode=}" title="your klack security code to get your data without login"/><br/><br/></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="y_form_header">Sendernamen</td>

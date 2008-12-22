@@ -127,6 +127,18 @@ function init(){
 		</center>
 	</div>
 </div>
+{=if-empty:{=ini-get:/var/tuxbox/config/Y-Web.conf;slavebox=}~~
+<div class="y_menu_sec_box">
+	<div class="y_menu_sec_box_head"><h2>Switch to</h2></div>
+	<div class="y_menu_sec_box_body">
+		<div class="y_menu_sec">
+			<ul>
+				<li><a target="_top" title="Webinterface der SlaveBox" href="http://{=ini-get:/var/tuxbox/config/Y-Web.conf;slavebox=}/">{=ini-get:/var/tuxbox/config/Y-Web.conf;slavebox=}</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+=}
 <script type="text/javascript">
 //<![CDATA[
 	init();

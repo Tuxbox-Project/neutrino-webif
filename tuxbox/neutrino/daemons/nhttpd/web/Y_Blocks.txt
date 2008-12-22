@@ -74,6 +74,7 @@ start-block~timer_save_settings
 {=ini-set:/var/tuxbox/config/Y-Web.conf;tvinfo_username;{=tvinfo_username=}=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;tvinfo_password;{=tvinfo_password=}=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;klack_url;{=klack_url=}=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;klack_securitycode;{=klack_securitycode=}=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;live_resolution_w;{=ini-get:/var/tuxbox/config/Y-Web.conf;live_resolution_w;384=}=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;live_resolution_h;{=ini-get:/var/tuxbox/config/Y-Web.conf;live_resolution_h;288=}=}
 {=file-action:/var/tuxbox/config/channels.txt;add;{=channels=}=}
