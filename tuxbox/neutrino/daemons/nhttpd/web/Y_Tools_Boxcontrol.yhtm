@@ -76,7 +76,7 @@ function goUrl(_url){
 			<input type="button" value="Unlock" onclick='live_unlock();'/>
 			</td>
 		</tr>
-		<tr><td class="y_form_header">Optischer Ausgang</td><td class="y_form_header">&nbsp;</td></tr>
+		<tr><td class="y_form_header">Optischer Ausgang</td><td class="y_form_header">Esound Soundserver</td></tr>
 		<tr>
 			<td>
 			<input type="button" value="An" onclick='goUrl("/control/system?setAViAExtIec=on");'/>
@@ -84,7 +84,8 @@ function goUrl(_url){
 			<input type="button" value="Status" onclick='goUrl("/control/system?getAViAExtIec");'/>
 			</td>
 			<td>
-			&nbsp;
+			<input type="button" value="An" onclick='goUrl("/control/esound?on");'/>
+			<input type="button" value="Aus" onclick='goUrl("/control/esound?off");'/>
 			</td>
 		</tr>
 		</table>
