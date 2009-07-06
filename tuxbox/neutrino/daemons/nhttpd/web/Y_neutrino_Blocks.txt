@@ -747,8 +747,8 @@ start-block~neutrino_form-data_bootoptions
 			<tr title="PMT Update: off/on">
 				<td>PMT Update verwenden</td>
 				<td>
-					<input type="radio" name="pmt_update" value="0"/>AUS&nbsp;
-					<input type="radio" name="pmt_update" value="1"/>AN
+					<input type="radio" name="no_pmt_update" value="0"/>AUS&nbsp;
+					<input type="radio" name="no_pmt_update" value="1"/>AN
 				</td>
 			</tr>
 		</table>
@@ -772,7 +772,7 @@ function form_init()
 	obj_set_radio_value('hwsections', "{=if-file-exists:/var/etc/.hw_sections~0~1=}");
 	obj_set_radio_value('no_watchdog', "{=if-file-exists:/var/etc/.no_watchdog~0~1=}");
 	obj_set_radio_value('no_enxwatchdog', "{=if-file-exists:/var/etc/.no_enxwatchdog~0~1=}");
-	obj_set_radio_value('pmt_update', "{=if-file-exists:/var/etc/.pmt_update~1~0=}");
+	obj_set_radio_value('no_pmt_update', "{=if-file-exists:/var/etc/.no_pmt_update~0~1=}");
 }
 
 function do_submit()
@@ -793,7 +793,7 @@ start-block~neutrino_bootoptions_save_settings
 {=file-action:/var/etc/.hw_sections;{=if-equal:{=hwsections=}~0~add~delete=}=}
 {=file-action:/var/etc/.no_watchdog;{=if-equal:{=no_watchdog=}~0~add~delete=}=}
 {=file-action:/var/etc/.no_enxwatchdog;{=if-equal:{=no_enxwatchdog=}~0~add~delete=}=}
-{=file-action:/var/etc/.pmt_update;{=if-equal:{=pmt_update=}~1~add~delete=}=}
+{=file-action:/var/etc/.no_pmt_update;{=if-equal:{=no_pmt_update=}~0~add~delete=}=}
 
 {=file-action:/var/etc/.test;add;moin\nduu=}
 end-block~neutrino_bootoptions_save_settings
