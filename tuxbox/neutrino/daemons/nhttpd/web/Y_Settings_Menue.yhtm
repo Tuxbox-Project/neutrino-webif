@@ -72,19 +72,20 @@ function init(){
 				<li class="disabled" title="Bouquet Editor (restricted by ManagementIP)">Bouquet Editor</a></li>
 				<li class="disabled" title="Parental settings (restricted by ManagementIP)">Jugendschutz</a></li>
 				<li class="disabled" title="Recording settings (restricted by ManagementIP)">Aufnahme</a></li>
-				<li class="disabled" title="Movieplayer settings (restricted by ManagementIP)">Movieplayer</a></li>
 				<li class="disabled" title="Audioplayer settings (restricted by ManagementIP)">Audioplayer</a></li>
+				<li class="disabled" title="Esound Soundserver settings (restricted by ManagementIP)">Esound Server</a></li>
+				<li class="disabled" title="Movieplayer settings (restricted by ManagementIP)">Movieplayer</a></li>
 				<li class="disabled" title="Pictureviewer settings (restricted by ManagementIP)">Bildbetrachter</a></li>
 				<li class="disabled" title="boot settings (restricted by ManagementIP)">Bootoptionen</a></li>
 				<li class="disabled" title="rest of settings (restricted by ManagementIP)">Diverse</a></li>
 			~
-
 				<li><a title="Bouquet Editor" target="work" href="Y_Boxcontrol_Bouquet_Editor_Main.yhtm">Bouquet Editor</a></li>
 				<li><a title="Parental settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_parental">Jugendschutz</a></li>
 				<li><a title="Recording settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_record">Aufnahme</a></li>
 				<li><a title="Direct Recording" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_direct_recording">Direktaufnahme</a></li>
-				<li><a title="Movieplayer settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_movieplayer">Movieplayer</a></li>
 				<li><a title="Audioplayer settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_audioplayer">Audioplayer</a></li>
+				<li><a title="Esound Soundserver settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_esound">Esound Server</a></li>
+				<li><a title="Movieplayer settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_movieplayer">Movieplayer</a></li>
 				<li><a title="Pictureviewer settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_pictureviewer">Bildbetrachter</a></li>
 				<li><a title="boot settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_bootoptions">Bootoptionen</a></li>
 				<li><a title="rest of settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_diverse">Diverse</a></li>
