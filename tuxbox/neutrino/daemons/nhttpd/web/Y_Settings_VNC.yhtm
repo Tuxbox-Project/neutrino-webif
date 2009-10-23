@@ -22,9 +22,9 @@ function do_submit()
 	{=var-set:help_url=Help-Settings-VNC=}{=var-set:menu=VNC=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" action="">
-		<table border="0">
+		<table cellspacing="0" border="0" cellpadding="2" width="100%">
 			<tr>
-				<td>Server</td>
+				<td width="35%">Server</td>
 				<td><input type="text" name="server" size="20" value="{=ini-get:/var/tuxbox/config/vnc.conf;server=}" title="enter IP (xxx.xxx.xxx.xxx)"/></td>
 			</tr>
 			<tr>

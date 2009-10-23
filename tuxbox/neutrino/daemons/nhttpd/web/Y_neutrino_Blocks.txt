@@ -1405,9 +1405,9 @@ start-block~neutrino_form-data_esound
 	{=var-set:help_url=Help-Settings-Esound_Soundserver=}{=var-set:menu=Esound Soundserver=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" action="/y/cgi">
-		<table cellspacing="0" border="0" cellpadding="2">
+		<table cellspacing="0" border="0" cellpadding="2" width="100%">
 			<tr>
-				<td>Esound Port</td>
+				<td width="35%">Esound Port</td>
 				<td><input type="text" name="esound_port" size="6" value="{=ini-get:/var/tuxbox/config/neutrino.conf;esound_port~open=}" title="esound port"/>&nbsp;default: 16001</td>
 			</tr>
 		</table>

@@ -334,7 +334,7 @@ tr {
 	margin: 0;
 	background: url(/images/body-trans-r.gif) no-repeat bottom right;
 	font-size: 100%;
-	position : absolute;
+	position : fixed;
 	left : 100px;
 	top : 100px;
 	visibility : hidden;
@@ -344,7 +344,7 @@ tr {
 	margin: 0;
 	background: url(/images/body-trans-r.gif) no-repeat bottom right;
 	font-size: 100%;
-	position : absolute;
+	position : fixed;
 	left : 100px;
 	top : 100px;
 	visibility : visible;
