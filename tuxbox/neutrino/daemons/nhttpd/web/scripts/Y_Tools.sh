@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Tools (yjogol)
-# $Date: 2008/11/13 16:45:43 $
-# $Revision: 1.7 $
+# $Date: 2009/10/29 19:43:42 $
+# $Revision: 1.8 $
 # -----------------------------------------------------------
 . ./_Y_Globals.sh
 . ./_Y_Library.sh
@@ -572,13 +572,6 @@ case "$1" in
 		securitycode=`config_get_value "klack_securitycode"`
 		klack_url=`echo "$klack_url&secCode=$securitycode"`
 		wget -O /tmp/klack.xml "$klack_url" 2>&1 ;;
-
-	restart_sectionsd)
-		killall sectionsd
-		sectionsd >/dev/null 2>&1
-		msg="sectionsd reboot. ok."
-		y_format_message_html
-		;;
 
 	get_synctimer_channels)
 		if [ -e "$y_path_config/channels.txt" ]
