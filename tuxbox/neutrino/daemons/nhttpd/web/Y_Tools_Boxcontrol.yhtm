@@ -37,7 +37,7 @@ function goUrl(_url){
 			<input type="button" value="Status" onclick='goUrl("/control/exec?Y_Tools&amp;standby_status");'/>
 			</td>
 		</tr>
-		<tr><td class="y_form_header">Playback</td><td class="y_form_header">Sectionsd</td></tr>
+		<tr><td class="y_form_header">Playback</td><td class="y_form_header">EPG (Sectionsd)</td></tr>
 		<tr>
 			<td>
 			<input type="button" value="An" onclick='goUrl("/control/zapto?startplayback");'/>
@@ -48,7 +48,8 @@ function goUrl(_url){
 			<input type="button" value="An" onclick='goUrl("/control/zapto?startsectionsd");'/>
 			<input type="button" value="Aus" onclick='goUrl("/control/zapto?stopsectionsd");'/>
 			<input type="button" value="Status" onclick='goUrl("/control/zapto?statussectionsd");'/>
-			<input type="button" value="Restart" onclick='goUrl("/control/exec?Y_Tools&amp;restart_sectionsd");'/>
+			<input type="button" value="Restart" onclick='goUrl("/control/zapto?restartsectionsd");'/>
+			<input type="button" value="FreeMem" onclick='goUrl("/control/zapto?freememsectionsd");'/>
 			</td>
 		</tr>
 		<tr><td class="y_form_header">Aufnahme-Modus</td><td class="y_form_header">SPTS</td></tr>

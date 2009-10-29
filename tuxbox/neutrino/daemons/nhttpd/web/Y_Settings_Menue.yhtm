@@ -70,6 +70,7 @@ function init(){
 			<ul id="secmenu_neutrino">
 			{=if-empty:{=var-get:management=}~
 				<li class="disabled" title="Bouquet Editor (restricted by ManagementIP)">Bouquet Editor</a></li>
+				<li class="disabled" title="Video / Audio settings (restricted by ManagementIP)">Video/Audio</a></li>
 				<li class="disabled" title="Parental settings (restricted by ManagementIP)">Jugendschutz</a></li>
 				<li class="disabled" title="Recording settings (restricted by ManagementIP)">Aufnahme</a></li>
 				<li class="disabled" title="Audioplayer settings (restricted by ManagementIP)">Audioplayer</a></li>
@@ -81,6 +82,7 @@ function init(){
 				<li class="disabled" title="personalize settings (restricted by ManagementIP)">Personalisierung</li>
 			~
 				<li><a title="Bouquet Editor" target="work" href="Y_Boxcontrol_Bouquet_Editor_Main.yhtm">Bouquet Editor</a></li>
+				<li><a title="Video / Audio settings" target="work" href="Y_Settings_video_audio.yhtm">Video / Audio</a></li>
 				<li><a title="Parental settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_parental">Jugendschutz</a></li>
 				<li><a title="Recording settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_record">Aufnahme</a></li>
 				<li><a title="Direct Recording" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_direct_recording">Direktaufnahme</a></li>
