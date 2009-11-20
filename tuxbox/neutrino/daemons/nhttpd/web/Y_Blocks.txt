@@ -78,6 +78,19 @@ start-block~video_audio_save_settings
 {=ini-set:/var/tuxbox/config/controld.conf;videooutput;{=h_videooutput=}~save=}
 end-block~video_audio_save_settings
 
+# ------- LCD save Settings
+start-block~lcd_save_settings
+{=ini-set:/var/tuxbox/config/neutrino.conf;lcd_power;{=lcd_power=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;lcd_inverse;{=lcd_inverse=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;lcd_dim_time;{=lcd_dim_time=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;lcd_dim_brightness;{=lcd_dim_brightness=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;lcd_epgmode;{=lcd_epgmode=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;lcd_show_volume;{=lcd_show_volume=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;lcd_contrast;{=lcd_contrast=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;lcd_brightness;{=lcd_brightness=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;lcd_standbybrightness;{=lcd_standbybrightness=}~save=}
+end-block~lcd_save_settings
+
 # ------- Personalize save Settings
 start-block~personalize_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_tvmode;{=p_tv=}~open=}
@@ -151,7 +164,7 @@ start-block~no_management
 {=include-block:Y_Blocks.txt;head=}
 </head>
 <body>
-<br/>
+<br />
 <div class="y_head">Error</div>
 <div class="y_work_box" title="This page could be used for management proposes only">
 	Der Aufruf dieser Seite ist nur fr Management Zwecke erlaubt.
@@ -181,9 +194,9 @@ start-block~snip_wait
 	<div class="y_wait_box_body">
 		<p align="center">
 		<span class="y_wait_box_Main">
-		{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</span><br/>
-		<img border="0" src="/images/wait.gif" width="20" height="20" alt="wait"/><br/><br/>
-		Bitte warten<br/>
+		{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</span><br />
+		<img border="0" src="/images/wait.gif" width="20" height="20" alt="wait" /><br /><br />
+		Bitte warten<br />
 		Please wait
 		</p>
 	</div>
@@ -197,9 +210,9 @@ start-block~snip_show_wait
 	<div class="y_wait_box_body">
 		<p align="center">
 		<span class="y_wait_box_Main">
-		{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</span><br/>
-		<img border="0" src="/images/wait.gif" width="20" height="20" alt="wait"/><br/><br/>
-		Bitte warten<br/>
+		{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</span><br />
+		<img border="0" src="/images/wait.gif" width="20" height="20" alt="wait" /><br /><br />
+		Bitte warten<br />
 		Please wait
 		</p>
 	</div>
@@ -207,7 +220,7 @@ start-block~snip_show_wait
 end-block~snip_show_wait
 
 # ------- Wiki Help display
-#<img src="/images/help.gif" align="bottom">
+#<img src="/images/help.gif" align="bottom" />
 start-block~wiki_help
 <a href="http://www.yjogol.com/{=var-get:help_url=}" target="_blank" title="get help from www.yjogol.com">?</a>
 end-block~wiki_help
@@ -222,56 +235,56 @@ end-block~work_menu
 # ------- Lay-HEAD
 start-block~head
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="cache-control" content="no-cache" />
 <meta http-equiv="expires" content="0" />
 <title>yWeb</title>
-<link rel="STYLESHEET" type="text/css" href="/Y_Main.css"/>
+<link rel="stylesheet" type="text/css" href="/Y_Main.css" />
 end-block~head
 
 # ------- Lay-HEAD
 start-block~headCache
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>yWeb</title>
-<link rel="STYLESHEET" type="text/css" href="/Y_Main.css"/>
+<link rel="stylesheet" type="text/css" href="/Y_Main.css" />
 end-block~headCache
 
 # ------- Lay-HEAD without charset
 start-block~head_no_charset
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>yWeb</title>
-<link rel="STYLESHEET" type="text/css" href="/Y_Main.css"/>
+<link rel="stylesheet" type="text/css" href="/Y_Main.css" />
 end-block~head_no_charset
 
 # ------- Lay-Frame HEAD
 start-block~frame_head
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-<html>
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="STYLESHEET" type="text/css" href="/Y_Main.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/Y_Main.css" />
 <title>yWeb</title>
 end-block~frame_head
 
 # ------- Lay-Frame HEAD
 start-block~frame_iso_head
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-<html>
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-<link rel="STYLESHEET" type="text/css" href="/Y_Main.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="/Y_Main.css" />
 <title>yWeb</title>
 end-block~frame_iso_head
 
@@ -281,8 +294,8 @@ start-block~frame_main
 <title>dbox yWeb</title>
 </head>
 <frameset rows="60,*" frameborder="0" framespacing="0">
-	<frame name="prim_menu" src="Y_Menue.yhtm" scrolling="no"  marginwidth="0" marginheight="0" frameborder="0" border="0" noresize="noresize" />
-	<frame name="base" src="Y_Dyn_Pages.yhtm?page=frame_boxcontrol"  marginwidth="0" marginheight="0" frameborder="0" border="0" style="height:100%"/>
+	<frame name="prim_menu" src="Y_Menue.yhtm" scrolling="no"  marginwidth="0" marginheight="0" frameborder="0" noresize="noresize" />
+	<frame name="base" src="Y_Dyn_Pages.yhtm?page=frame_boxcontrol"  marginwidth="0" marginheight="0" frameborder="0" style="height:100%"; />
 	<noframes>
 		<body>
 		<p>Your Browser does not support Frames.</p>
@@ -306,8 +319,8 @@ start-block~frame_secondary
 {=include-block:Y_Blocks.txt;frame_iso_head=}
 </head>
 <frameset cols="157,*" frameborder="0" framespacing="0">
-	<frame name="sec_menu" src="{=var-get:sec_menu=}" scrolling="no" noresize="noresize" frameborder="0"/>
-	<frame name="work" src="{=var-get:work=}" scrolling="auto" frameborder="0"/>
+	<frame name="sec_menu" src="{=var-get:sec_menu=}" scrolling="no" noresize="noresize" frameborder="0" />
+	<frame name="work" src="{=var-get:work=}" scrolling="auto" frameborder="0" />
 	<noframes>
 		<body>
 		<p>Your Browser does not support Frames.</p>
@@ -379,8 +392,8 @@ start-block~frame_live_epg
 {=include-block:Y_Blocks.txt;frame_head=}
 </head>
 <frameset rows="100,*" frameborder="0" framespacing="0">
-	<frame name="epg_info" src="Y_Live_EPG_Info.yhtm" scrolling="auto" frameborder="0"/>
-	<frame name="epg_list" src="Y_Live_EPG.yhtm?channel={=channel=}" scrolling="auto" frameborder="0" style="height:100%"/>
+	<frame name="epg_info" src="Y_Live_EPG_Info.yhtm" scrolling="auto" frameborder="0" />
+	<frame name="epg_list" src="Y_Live_EPG.yhtm?channel={=channel=}" scrolling="auto" frameborder="0" style="height:100%" />
 	<noframes>
 		<body>
 		<p>Your Browser does not support Frames.</p>
@@ -397,7 +410,7 @@ end-block~remote
 
 # ------- Remote
 start-block~remote_standard
-<img src="images/rc.jpg" usemap="#rc"/>
+<img src="images/rc.jpg" usemap="#rc" />
 <map name="rc">
   <area shape="rect" href="javascript:rcsim('KEY_SETUP')" coords="7,95,45,109" />
   <area shape="circle" href="javascript:rcsim('KEY_7')" coords="60,102,10" />
@@ -430,7 +443,7 @@ end-block~remote_standard
 
 # ------- Remote Sagem
 start-block~remote_sagem
-<img src="images/rc_sagem.jpg" usemap="#rc" alt="remote"/> 
+<img src="images/rc_sagem.jpg" usemap="#rc" alt="remote" /> 
 <map name="rc"> 
   <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="100,117,100,180,67,146,100,116" /> 
   <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="36,181,101,180,66,146" /> 
@@ -460,6 +473,3 @@ start-block~remote_sagem
   <area shape="circle" href="javascript:rcsim('KEY_1')" coords="37,284,12" /> 
 </map>
 end-block~remote_sagem
-
-
-
