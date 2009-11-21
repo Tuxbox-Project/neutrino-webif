@@ -1,5 +1,5 @@
-version=2.7.0.8
-date=29.10.2009
+version=2.7.0.9
+date=22.11.2009
 type=Release
 info=
 
