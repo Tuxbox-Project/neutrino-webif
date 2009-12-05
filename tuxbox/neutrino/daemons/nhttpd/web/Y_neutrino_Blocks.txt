@@ -6,8 +6,10 @@ start-block~neutrino_form
 {=include-block:Y_Blocks.txt;head=}
 <script type="text/javascript" src="/Y_Baselib.js"></script>
 <script type="text/javascript" src="/prototype.js"></script>
-<style>
+<style type="text/css">
+/*<![CDATA[*/
 .line {border-top: 1px solid #6D96A9;}
+/*]]>*/
 </style>
 </head>
 <body>
@@ -730,8 +732,8 @@ start-block~neutrino_form-data_diverse
 				<td>
 					<select name="infobar_show" title="infobar show type">
 					<option value="0" selected="selected">Aus</option>
-					<option value="1">einfach</option>
-					<option value="2">aufw&auml;ndig</option>
+					<option value="1">Popup</option>
+					<option value="2">Infobar einblenden</option>
 					</select>
 				</td>
 			</tr>
@@ -777,7 +779,6 @@ start-block~neutrino_form-data_diverse
 			<tr>
 				<td>Max. Events</td>
 				<td><input type="text" name="epg_max_events" size="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;epg_max_events~cache=}" title=""/></td>
-				</td>
 			</tr>
 			<tr>
 				<td>EPG Verzeichnis</td>
@@ -1028,7 +1029,13 @@ start-block~neutrino_form-data_bootoptions
 					<input type="radio" name="sptsfix" value="1"/>AN
 				</td>
 			</tr>
-			<tr>
+			<tr title="RTC: off/on">
+				<td>Realtime Clock (RTC) aktivieren</td>
+				<td>
+					<input type="radio" name="rtc" value="0"/>AUS&nbsp;
+					<input type="radio" name="rtc" value="1"/>AN
+				</td>
+			</tr>
 			<tr title="PMT Update: off/on">
 				<td>PMT Update verwenden</td>
 				<td>
@@ -1046,7 +1053,6 @@ start-block~neutrino_form-data_bootoptions
 					</select>
 				</td>
 			</tr>
-			<tr>
 			<tr title="Fullduplex: off/on">
 				<td>FullDuplex Mode</td>
 				<td>
@@ -1094,6 +1100,7 @@ function form_init()
 	obj_set_radio_value('no_enxwatchdog', "{=if-file-exists:/var/etc/.no_enxwatchdog~0~1=}");
 	obj_set_radio_value('philips_rc_patch', "{=if-file-exists:/var/etc/.philips_rc_patch~1~0=}");
 	obj_set_radio_value('sptsfix', "{=if-file-exists:/var/etc/.sptsfix~1~0=}");
+	obj_set_radio_value('rtc', "{=if-file-exists:/var/etc/.rtc~1~0=}");
 	obj_set_radio_value('no_pmt_update', "{=if-file-exists:/var/etc/.no_pmt_update~0~1=}");
 }
 
@@ -1117,6 +1124,7 @@ start-block~neutrino_bootoptions_save_settings
 {=file-action:/var/etc/.no_enxwatchdog;{=if-equal:{=no_enxwatchdog=}~0~add~delete=}=}
 {=file-action:/var/etc/.philips_rc_patch;{=if-equal:{=philips_rc_patch=}~1~add~delete=}=}
 {=file-action:/var/etc/.sptsfix;{=if-equal:{=sptsfix=}~1~add~delete=}=}
+{=file-action:/var/etc/.rtc;{=if-equal:{=rtc=}~1~add~delete=}=}
 {=file-action:/var/etc/.no_pmt_update;{=if-equal:{=no_pmt_update=}~0~add~delete=}=}
 {=ini-set:/var/tuxbox/boot/boot.conf;console;{=console=}=}
 {=ini-set:/var/tuxbox/boot/boot.conf;dbox_duplex;{=dbox_duplex=}=}
