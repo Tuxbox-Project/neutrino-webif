@@ -120,6 +120,15 @@ start-block~neutrino_form-data_record
 					<input type="hidden" name="h_vcr_no_scart"/>
 				</td>
 			</tr>
+			<tr title="SPTS mode: off/on">
+				<td>Im SPTS-Modus aufnehmen</td>
+				<td>
+					<input type="radio" id="spts0" name="in_spts_mode" value="false"/>AUS&nbsp;
+					<input type="radio" id="spts1" name="in_spts_mode" value="true"/>AN
+					<input type="hidden" name="h_in_spts_mode"/>
+				</td>
+			</tr>
+			<tr><td colspan="2" class="y_form_header">Timereinstellungen</td></tr>
 			<tr>
 				<td>Aufnahmestart-Korrektur (sec)</td>
 				<td><input type="text" name="EXTRA_TIME_START" size="3" maxlength="3" value="{=ini-get:/var/tuxbox/config/timerd.conf;EXTRA_TIME_START;0=}" title="start timer delay"/>&nbsp;Reboot n&ouml;tig</td>
@@ -131,14 +140,6 @@ start-block~neutrino_form-data_record
 			<tr>
 				<td>Umschaltstart-Korrektur (sec)</td>
 				<td><input type="text" name="ZAPTO_EXTRA_TIME_START" size="3" maxlength="3" value="{=ini-get:/var/tuxbox/config/timerd.conf;ZAPTO_EXTRA_TIME_START;0=}" title="zapto timer delay"/>&nbsp;Reboot n&ouml;tig</td>
-			</tr>
-			<tr title="SPTS mode: off/on">
-				<td>Im SPTS-Modus aufnehmen</td>
-				<td>
-					<input type="radio" id="spts0" name="in_spts_mode" value="false"/>AUS&nbsp;
-					<input type="radio" id="spts1" name="in_spts_mode" value="true"/>AN
-					<input type="hidden" name="h_in_spts_mode"/>
-				</td>
 			</tr>
 			<tr><td colspan="2" class="y_form_header">Tonspuren</td></tr>
 			<tr title="record standard audio channel: off/on">
@@ -1421,7 +1422,7 @@ start-block~neutrino_form-data_direct_recording
 			<tr>
 				<td>Aufnahmeverzeichnis 6</td>
 				<td><input type="text" name="recording_dir_6" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_6;~cache=}" title="recording directory"/></td>
-			</tr
+			</tr>
 			<tr>
 				<td>Aufnahmeverzeichnis 7</td>
 				<td><input type="text" name="recording_dir_7" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_7;~cache=}" title="recording directory"/></td>

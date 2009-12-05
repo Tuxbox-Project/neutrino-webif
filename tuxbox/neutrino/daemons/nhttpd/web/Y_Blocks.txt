@@ -91,6 +91,29 @@ start-block~lcd_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;lcd_standbybrightness;{=lcd_standbybrightness=}~save=}
 end-block~lcd_save_settings
 
+# ------- Buttons save Settings
+start-block~buttons_save_settings
+{=ini-set:/var/tuxbox/config/neutrino.conf;bouquetlist_mode;{=bouquetlist_mode=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_bouquet_down;{=key_bouquet_down=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_bouquet_up;{=key_bouquet_up=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_channelList_addrecord;{=key_channelList_addrecord=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_channelList_addremind;{=key_channelList_addremind=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_channelList_cancel;{=key_channelList_cancel=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_channelList_pagedown;{=key_channelList_pagedown=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_channelList_pageup;{=key_channelList_pageup=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_channelList_reload;{=key_channelList_reload=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_channelList_search;{=key_channelList_search=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_channelList_sort;{=key_channelList_sort=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_lastchannel;{=key_lastchannel=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_quickzap_down;{=key_quickzap_down=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_quickzap_up;{=key_quickzap_up=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_subchannel_down;{=key_subchannel_down=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_subchannel_toggle;{=key_subchannel_toggle=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_subchannel_up;{=key_subchannel_up=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_tvradio_mode;{=key_tvradio_mode=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_zaphistory;{=key_zaphistory=}~save=}
+end-block~buttons_save_settings
+
 # ------- Personalize save Settings
 start-block~personalize_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_tvmode;{=p_tv=}~open=}
@@ -410,8 +433,8 @@ end-block~remote
 
 # ------- Remote
 start-block~remote_standard
-<img src="images/rc.jpg" usemap="#rc" />
-<map name="rc">
+<img src="images/rc.jpg" usemap="#rc" alt="remote" />
+<map name="rc" id="rc">
   <area shape="rect" href="javascript:rcsim('KEY_SETUP')" coords="7,95,45,109" />
   <area shape="circle" href="javascript:rcsim('KEY_7')" coords="60,102,10" />
   <area shape="circle" href="javascript:rcsim('KEY_4')" coords="60,78,10" />
@@ -444,7 +467,7 @@ end-block~remote_standard
 # ------- Remote Sagem
 start-block~remote_sagem
 <img src="images/rc_sagem.jpg" usemap="#rc" alt="remote" /> 
-<map name="rc"> 
+<map name="rc" id="rc"> 
   <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="100,117,100,180,67,146,100,116" /> 
   <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="36,181,101,180,66,146" /> 
   <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="101,116,36,116,66,146" /> 

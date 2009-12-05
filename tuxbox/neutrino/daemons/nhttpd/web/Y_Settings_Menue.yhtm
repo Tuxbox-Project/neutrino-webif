@@ -78,6 +78,7 @@ function init(){
 				<li class="disabled" title="Movieplayer settings (restricted by ManagementIP)">Movieplayer</a></li>
 				<li class="disabled" title="Pictureviewer settings (restricted by ManagementIP)">Bildbetrachter</a></li>
 				<li class="disabled" title="LCD settings (restricted by ManagementIP)">LC-Display</a></li>
+				<li class="disabled" title="Button settings (restricted by ManagementIP)">Tastenbelegung</a></li>
 				<li class="disabled" title="boot settings (restricted by ManagementIP)">Bootoptionen</a></li>
 				<li class="disabled" title="rest of settings (restricted by ManagementIP)">Diverse</a></li>
 				<li class="disabled" title="personalize settings (restricted by ManagementIP)">Personalisierung</li>
@@ -92,6 +93,7 @@ function init(){
 				<li><a title="Movieplayer settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_movieplayer">Movieplayer</a></li>
 				<li><a title="Pictureviewer settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_pictureviewer">Bildbetrachter</a></li>
 				<li><a title="LCD settings" target="work" href="Y_Settings_lcd.yhtm">LC-Display</a></li>
+				<li><a title="Button settings" target="work" href="Y_Settings_buttons.yhtm">Tastenbelegung</a></li>				
 				<li><a title="boot settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_bootoptions">Bootoptionen</a></li>
 				<li><a title="rest of settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_diverse">Diverse</a></li>
 				<li><a title="Personalize settings" target="work" href="Y_Settings_personalize.yhtm">Personalisierung</a></li>
