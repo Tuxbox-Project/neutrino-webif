@@ -667,6 +667,24 @@ start-block~neutrino_form-data_diverse
 				<td>Komplett ausschalten nach</td>
 				<td><input type="text" name="shutdown_count" size="3" value="{=ini-get:/var/tuxbox/config/neutrino.conf;shutdown_count;0~open=}" title="shutdown after x sec"/>&nbsp;Min.</td>
 			</tr>
+			<tr title="shutdown delay: off/on">
+				<td>Verz&ouml;gerter Shutdown</td>
+				<td>
+					<input type="radio" name="shutdown_real_rcdelay" value="false"/>AUS&nbsp;
+					<input type="radio" name="shutdown_real_rcdelay" value="true"/>AN
+				</td>
+			</tr>
+			<tr>
+				<td>Standby aus mit</td>
+				<td>
+					<select name="standby_off_with" title="select button">
+					<option value="0" selected="selected">Power</option>
+					<option value="1">Power, OK</option>
+					<option value="2">Power, Home</option>
+					<option value="3">Power, Home, OK</option>
+					</select>
+				</td>
+			</tr>
 			<tr title="tuxtxt cache: off/on">
 				<td>Videotext zwischenspeichern</td>
 				<td>
@@ -703,7 +721,7 @@ start-block~neutrino_form-data_diverse
 				<td colspan="2" width="35%" class="y_form_header">Infobar</td>
 			</tr>
 			<tr title="infobar sat display: off/on">
-				<td>Infobar Satellitenanzeige</td>
+				<td>Satellitenanzeige</td>
 				<td>
 					<input type="radio" name="infobar_sat_display" value="false"/>AUS&nbsp;
 					<input type="radio" name="infobar_sat_display" value="true"/>AN
@@ -713,15 +731,16 @@ start-block~neutrino_form-data_diverse
 				<td>Unterkanalanzeige</td>
 				<td>
 					<select name="infobar_subchan_disp_pos" title="subchannel display position">
-					<option value="0" selected="selected">oben rechts / top right</option>
-					<option value="1">oben links / top left</option>
-					<option value="2">unten links / bottom left</option>
-					<option value="3">unten rechts / bottom right</option>
+					<option value="0" selected="selected">oben rechts</option>
+					<option value="1">oben links</option>
+					<option value="2">unten links</option>
+					<option value="3">unten rechts</option>
+					<option value="4">in Infobar</option>
 					</select>
 				</td>
 			</tr>
 			<tr title="virtual zap: off/on">
-				<td>Virtual zap bei Infobar</td>
+				<td>Virtual Zap</td>
 				<td>
 					<input type="radio" name="virtual_zap_mode" value="false"/>AUS&nbsp;
 					<input type="radio" name="virtual_zap_mode" value="true"/>AN
@@ -826,24 +845,6 @@ start-block~neutrino_form-data_diverse
 			<tr>
 				<td>Wiederholungsverz&ouml;gerung</td>
 				<td><input type="text" name="repeat_genericblocker" size="3" maxlength="3" value="{=ini-get:/var/tuxbox/config/neutrino.conf;repeat_genericblocker~cache=}" title="repeat delay"/></td>
-			</tr>
-			<tr title="shutdown delay: off/on">
-				<td>Verz&ouml;gerter Shutdown</td>
-				<td>
-					<input type="radio" name="shutdown_real_rcdelay" value="false"/>AUS&nbsp;
-					<input type="radio" name="shutdown_real_rcdelay" value="true"/>AN
-				</td>
-			</tr>
-			<tr>
-				<td>Standby aus mit</td>
-				<td>
-					<select name="standby_off_with" title="select button">
-					<option value="0" selected="selected">Power</option>
-					<option value="1">Power, OK</option>
-					<option value="2">Power, Home</option>
-					<option value="3">Power, Home, OK</option>
-					</select>
-				</td>
 			</tr>
 			<tr>
 				<td colspan="2" width="35%" class="y_form_header">Filebrowser</td>

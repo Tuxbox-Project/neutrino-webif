@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Tools (yjogol)
-# $Date: 2009/10/29 19:43:42 $
-# $Revision: 1.8 $
+# $Date: 2010/01/03 18:54:42 $
+# $Revision: 1.9 $
 # -----------------------------------------------------------
 . ./_Y_Globals.sh
 . ./_Y_Library.sh
@@ -441,6 +441,18 @@ wol()
 	y_format_message_html
 }
 # -----------------------------------------------------------
+# lcd shot
+# $1= optionen | leer
+# -----------------------------------------------------------
+do_lcshot()
+{
+	if [ -e "/var/bin/lcshot" ]; then
+		/var/bin/lcshot $*
+	else
+		/bin/lcshot $*
+	fi
+}
+# -----------------------------------------------------------
 # osd shot
 # $1= fb | dbox bzw. leer
 # -----------------------------------------------------------
@@ -544,6 +556,7 @@ case "$1" in
 	ext_installer)	shift 1; do_ext_installer $* 2>&1 ;;
 	proc)			shift 1; proc $* ;;
 	wol)			shift 1; wol $* ;;
+	lcshot)			shift 1; do_lcshot $* ;;
 	fbshot)			shift 1; do_fbshot $* ;;
 	fbshot_clear)		do_fbshot_clear ;;
 	get_update_version)	wget -O /tmp/version.txt "http://www.yjogol.com/download/Y_Version.txt" ;;

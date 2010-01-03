@@ -461,6 +461,9 @@ tr {
 .y_form td{
 	padding-left:20px;
 }
+.y_form #colorTable td{
+	padding-left:0px;
+}
 .y_form_section
 {
 	font-size : 10pt;
