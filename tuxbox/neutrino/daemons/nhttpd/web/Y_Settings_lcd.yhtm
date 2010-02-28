@@ -36,6 +36,9 @@ function do_init()
 	if(val=="15") sel=5;
 		document.f.lcd_epgmode.selectedIndex = sel;
 
+	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;lcd_epgalign;0~cache=}"
+		document.f.lcd_epgalign.value = val;
+
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;lcd_show_volume;0~cache=}"
 		document.f.lcd_show_volume.value = val;
 }
@@ -141,6 +144,14 @@ function do_submit()
 					<option value="7">Kanal / Trennl. / Sendung</option>
 					<option value="11">Kanal (kurz) / Sendung</option>
 					<option value="15">Kanal (kurz) / Trennl. / Sendung</option>
+					</select>
+				</td>			
+			</tr>
+			<tr><td>Ausrichtung der EPG-Anzeige</td>
+				<td>
+					<select name="lcd_epgalign" title="select visualisation of LCD">
+					<option value="0" selected="selected">links</option>
+					<option value="1">mittig</option>
 					</select>
 				</td>			
 			</tr>
