@@ -51,6 +51,7 @@ function do_init()
 	obj_set_radio_value('p_epgrestart', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_epgrestart;1~cache=}");
 	obj_set_radio_value('p_ucodecheck', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_ucodecheck;1~cache=}");
 	obj_set_radio_value('p_chan_epg_stat', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_chan_epg_stat;1~cache=}");
+	obj_set_radio_value('p_drive_setup_stat', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_drive_setup_stat;1~cache=}");
 	obj_set_radio_value('p_imageinfo', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_imageinfo;1~cache=}");
 	obj_set_radio_value('p_update', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_update;1~cache=}");
 	obj_set_radio_value('p_bluebutton', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_bluebutton;1~cache=}");
@@ -336,6 +337,13 @@ function do_init()
 					<input type="radio" name="p_chan_epg_stat" value="0"/>nicht sichtbar&nbsp;
 					<input type="radio" name="p_chan_epg_stat" value="1"/>sichtbar&nbsp;
 					<input type="radio" name="p_chan_epg_stat" value="2"/>PIN
+				</td>
+			</tr>
+			<tr><td>IDE-Interface HDD/MMC/SD</td>
+				<td>
+					<input type="radio" name="p_drive_setup_stat" value="0"/>nicht sichtbar&nbsp;
+					<input type="radio" name="p_drive_setup_stat" value="1"/>sichtbar&nbsp;
+					<input type="radio" name="p_drive_setup_stat" value="2"/>PIN
 				</td>
 			</tr>
 			<tr><td>Image Informationen</td>

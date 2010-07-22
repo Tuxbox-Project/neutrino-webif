@@ -153,6 +153,7 @@ start-block~personalize_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_epgrestart;{=p_epgrestart=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_ucodecheck;{=p_ucodecheck=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_chan_epg_stat;{=p_chan_epg_stat=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;personalize_drive_setup_stat;{=p_drive_setup_stat=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_imageinfo;{=p_imageinfo=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_update;{=p_update=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_bluebutton;{=p_bluebutton=}~cache=}
