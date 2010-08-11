@@ -103,7 +103,7 @@ function do_check()
 	~
 		sLog_addRow(sLog_body, "green", "Programs: dboxshot is installed at: {=var-get:dboxshot=}. Remote &amp; OSD is enabled.", "ok");
 	=}
-	{=var-set:fcp={=if-file-exists:/sbin/fcp~/sbin/fcp~{=if-file-exists:/var/bin/fcp~/var/bin/fcp~{=if-file-exists:/bin/fcp~/bin/fcp~false=}=}=}=}
+	{=var-set:fcp={=if-file-exists:/sbin/fcp~/sbin/fcp~{=if-file-exists:/var/bin/fcp~/var/bin/fcp~{=if-file-exists:/bin/fcp~/bin/fcp~{=if-file-exists:/sbin/flashcp~/sbin/flashcp~{=if-file-exists:/var/bin/flashcp~/var/bin/flashcp~{=if-file-exists:/bin/flashcp~/bin/flashcp~false}=}=}=}=}=}=}
 	{=if-equal:{=var-get:fcp=}~false~
 		sLog_addRow(sLog_body, "red", "Programs: fcp is not installed. Image flashing is disabled. "+y_url("Help-Tools-Image"), "failed");
 	~

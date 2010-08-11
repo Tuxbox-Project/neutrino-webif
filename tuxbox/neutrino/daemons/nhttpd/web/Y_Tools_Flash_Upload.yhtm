@@ -21,7 +21,7 @@ function do_image_upload_ready()
 </script>
 </head>
 <body>
-{=var-set:fcp={=if-file-exists:/sbin/fcp~true~{=if-file-exists:/var/bin/fcp~true~{=if-file-exists:/bin/fcp~true~false=}=}=}=}
+{=var-set:fcp={=if-file-exists:/sbin/fcp~true~{=if-file-exists:/var/bin/fcp~true~{=if-file-exists:/bin/fcp~true~{=if-file-exists:/sbin/flashcp~true~{=if-file-exists:/var/bin/flashcp~true~{=if-file-exists:/bin/flashcp~true~false=}=}=}=}=}=}=}
 {=var-set:wait_text=Image wird hochgeladen (upload image).=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div id="wait_flash" class="ydiagfree" style="left: 100px; position: absolute; top: 100px; display: none;">
 <div class="y_wait_box_visible">
