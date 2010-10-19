@@ -137,10 +137,10 @@ start-block~personalize_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_youth;{=p_youth=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_network;{=p_network=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_recording;{=p_recording=}~cache=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;personalize_language;{=p_language=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_colors;{=p_colors=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_lcd;{=p_lcd=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_keybinding;{=p_keybinding=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;personalize_drive_setup_stat;{=p_drive_setup_stat=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_mediaplayer;{=p_mediaplayer=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_driver;{=p_driver=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_misc;{=p_misc=}~cache=}
@@ -153,7 +153,6 @@ start-block~personalize_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_epgrestart;{=p_epgrestart=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_ucodecheck;{=p_ucodecheck=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_chan_epg_stat;{=p_chan_epg_stat=}~cache=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;personalize_drive_setup_stat;{=p_drive_setup_stat=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_imageinfo;{=p_imageinfo=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_update;{=p_update=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_bluebutton;{=p_bluebutton=}~cache=}

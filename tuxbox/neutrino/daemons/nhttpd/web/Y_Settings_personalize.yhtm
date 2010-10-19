@@ -35,10 +35,10 @@ function do_init()
 	obj_set_radio_value('p_youth', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_youth;1~cache=}");
 	obj_set_radio_value('p_network', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_network;1~cache=}");
 	obj_set_radio_value('p_recording', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_recording;1~cache=}");
-	obj_set_radio_value('p_language', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_language;1~cache=}");
 	obj_set_radio_value('p_colors', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_colors;1~cache=}");
 	obj_set_radio_value('p_lcd', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_lcd;1~cache=}");
 	obj_set_radio_value('p_keybinding', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_keybinding;1~cache=}");
+	obj_set_radio_value('p_drive_setup_stat', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_drive_setup_stat;1~cache=}");
 	obj_set_radio_value('p_mediaplayer', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_mediaplayer;1~cache=}");
 	obj_set_radio_value('p_driver', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_driver;1~cache=}");
 	obj_set_radio_value('p_misc', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_misc;1~cache=}");
@@ -51,7 +51,6 @@ function do_init()
 	obj_set_radio_value('p_epgrestart', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_epgrestart;1~cache=}");
 	obj_set_radio_value('p_ucodecheck', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_ucodecheck;1~cache=}");
 	obj_set_radio_value('p_chan_epg_stat', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_chan_epg_stat;1~cache=}");
-	obj_set_radio_value('p_drive_setup_stat', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_drive_setup_stat;1~cache=}");
 	obj_set_radio_value('p_imageinfo', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_imageinfo;1~cache=}");
 	obj_set_radio_value('p_update', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_update;1~cache=}");
 	obj_set_radio_value('p_bluebutton', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_bluebutton;1~cache=}");
@@ -164,6 +163,18 @@ function do_init()
 					<input type="radio" name="p_upnp" value="2"/>PIN
 				</td>
 			</tr>
+			<tr><td>Einstellungen-Men&uuml; mit PIN</td>
+				<td>
+					<input type="radio" name="p_settings" value="1"/>JA&nbsp;
+					<input type="radio" name="p_settings" value="0"/>NEIN
+				</td>
+			</tr>
+			<tr><td>Service-Men&uuml; mit PIN</td>
+				<td>
+					<input type="radio" name="p_service" value="1"/>JA&nbsp;
+					<input type="radio" name="p_service" value="0"/>NEIN
+				</td>
+			</tr>
 			<tr><td>SleepTimer</td>
 				<td>
 					<input type="radio" name="p_sleeptimer" value="0"/>nicht sichtbar&nbsp;
@@ -186,12 +197,6 @@ function do_init()
 				</td>
 			</tr>
 			<tr><td colspan="2" class="y_form_header">Einstellungen</td></tr>
-			<tr><td>Einstellungen-Men&uuml; mit PIN</td>
-				<td>
-					<input type="radio" name="p_settings" value="1"/>JA&nbsp;
-					<input type="radio" name="p_settings" value="0"/>NEIN
-				</td>
-			</tr>
 			<tr><td>Video</td>
 				<td>
 					<input type="radio" name="p_video" value="0"/>nicht sichtbar&nbsp;
@@ -227,32 +232,32 @@ function do_init()
 					<input type="radio" name="p_recording" value="2"/>PIN
 				</td>
 			</tr>
-			<tr><td>Sprache</td>
-				<td>
-					<input type="radio" name="p_language" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_language" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_language" value="2"/>PIN
-				</td>
-			</tr>
-			<tr><td>Farben / Themes / Schrift</td>
+			<tr><td>OSD</td>
 				<td>
 					<input type="radio" name="p_colors" value="0"/>nicht sichtbar&nbsp;
 					<input type="radio" name="p_colors" value="1"/>sichtbar&nbsp;
 					<input type="radio" name="p_colors" value="2"/>PIN
 				</td>
 			</tr>
-			<tr><td>LCD-Display</td>
+			<tr><td>LCD</td>
 				<td>
 					<input type="radio" name="p_lcd" value="0"/>nicht sichtbar&nbsp;
 					<input type="radio" name="p_lcd" value="1"/>sichtbar&nbsp;
 					<input type="radio" name="p_lcd" value="2"/>PIN
 				</td>
 			</tr>
-			<tr><td>Tasten Einstellungen</td>
+			<tr><td>Tasten</td>
 				<td>
 					<input type="radio" name="p_keybinding" value="0"/>nicht sichtbar&nbsp;
 					<input type="radio" name="p_keybinding" value="1"/>sichtbar&nbsp;
 					<input type="radio" name="p_keybinding" value="2"/>PIN
+				</td>
+			</tr>
+			<tr><td>IDE-Interface HDD/MMC/SD</td>
+				<td>
+					<input type="radio" name="p_drive_setup_stat" value="0"/>nicht sichtbar&nbsp;
+					<input type="radio" name="p_drive_setup_stat" value="1"/>sichtbar&nbsp;
+					<input type="radio" name="p_drive_setup_stat" value="2"/>PIN
 				</td>
 			</tr>
 			<tr><td>Medienwiedergabe</td>
@@ -269,7 +274,7 @@ function do_init()
 					<input type="radio" name="p_driver" value="2"/>PIN
 				</td>
 			</tr>
-			<tr><td>Diverse Einstellungen</td>
+			<tr><td>Erweiterte Einstellungen</td>
 				<td>
 					<input type="radio" name="p_misc" value="0"/>nicht sichtbar&nbsp;
 					<input type="radio" name="p_misc" value="1"/>sichtbar&nbsp;
@@ -277,12 +282,6 @@ function do_init()
 				</td>
 			</tr>
 			<tr><td colspan="2" class="y_form_header">Service</td></tr>
-			<tr><td>Service-Men&uuml; mit PIN</td>
-				<td>
-					<input type="radio" name="p_service" value="1"/>JA&nbsp;
-					<input type="radio" name="p_service" value="0"/>NEIN
-				</td>
-			</tr>
 			<tr><td>Bouquet-Verwaltung</td>
 				<td>
 					<input type="radio" name="p_bouqueteditor" value="0"/>nicht sichtbar&nbsp;
@@ -337,13 +336,6 @@ function do_init()
 					<input type="radio" name="p_chan_epg_stat" value="0"/>nicht sichtbar&nbsp;
 					<input type="radio" name="p_chan_epg_stat" value="1"/>sichtbar&nbsp;
 					<input type="radio" name="p_chan_epg_stat" value="2"/>PIN
-				</td>
-			</tr>
-			<tr><td>IDE-Interface HDD/MMC/SD</td>
-				<td>
-					<input type="radio" name="p_drive_setup_stat" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_drive_setup_stat" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_drive_setup_stat" value="2"/>PIN
 				</td>
 			</tr>
 			<tr><td>Image Informationen</td>
