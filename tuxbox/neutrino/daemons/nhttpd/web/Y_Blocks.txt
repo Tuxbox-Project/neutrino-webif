@@ -126,8 +126,10 @@ start-block~personalize_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_esound;{=p_esound=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_movieplayer;{=p_movieplayer=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_pictureviewer;{=p_picviewer=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;personalize_pinstatus;{=p_pinstatus=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_pincode;{=p_pincode=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_upnpbrowser;{=p_upnp=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;personalize_scripts;{=p_scripts=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_sleeptimer;{=p_sleeptimer=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_reboot;{=p_reboot=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;personalize_shutdown;{=p_shutdown=}~cache=}
