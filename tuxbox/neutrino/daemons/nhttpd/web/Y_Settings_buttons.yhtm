@@ -217,7 +217,7 @@ function do_submit()
 			<table cellspacing="0" border="0" cellpadding="2" width="100%">
 			<tr>
 				<td width="25%">&nbsp;</td>
-				<td colspan="2" class="y_form_header">Modus wechsel</td>
+				<td colspan="2" class="y_form_header">Modus wechseln</td>
 			</tr>
 			<tr>
 				<td rowspan="20">{=include-block:Y_Blocks.txt;remote=}</td>
