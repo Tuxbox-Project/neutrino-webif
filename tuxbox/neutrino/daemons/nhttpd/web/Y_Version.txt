@@ -1,5 +1,5 @@
-version=2.7.0.15
-date=20.10.2010
+version=2.7.0.16
+date=11.03.2011
 type=Release
 info=
 

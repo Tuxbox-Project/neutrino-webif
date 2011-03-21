@@ -1336,11 +1336,7 @@ start-block~neutrino_form-data_direct_recording
 				<td colspan="2" class="y_form_header">Aufnahmeeinstellungen</td>
 			</tr>
 			<tr>
-				<td width="35%">Max. Dateigr&ouml;&szlig;e (MB)</td>
-				<td><input type="text" name="recording_splitsize" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize;9999~open=}" title="Max filesize/splitsize"/></td>
-			</tr>
-			<tr>
-				<td>Gr&ouml;&szlig;e Ringpuffer</td>
+				<td width="35%">Gr&ouml;&szlig;e Ringpuffer</td>
 				<td>
 					<select name="ringbuffers" title="Max ringbuffers">
 					<option value="0" selected="selected">512 KB</option>
@@ -1379,6 +1375,13 @@ start-block~neutrino_form-data_direct_recording
 					<input type="radio" name="recordingmenu_stream_subtitle_pid" value="true"/>AN
 				</td>
 			</tr>
+			<tr title="Insert PSI in TS: off/on">
+				<td>PSI in TS einf&uuml;gen</td>
+				<td>
+					<input type="radio" name="recordingmenu_gen_psi" value="false"/>AUS&nbsp;
+					<input type="radio" name="recordingmenu_gen_psi" value="true"/>AN
+				</td>
+			</tr>
 			<tr title="Choose directory on record: off/on">
 				<td>Bei Sofortaufn. Verzeichnisauswahl</td>
 				<td>
@@ -1386,65 +1389,168 @@ start-block~neutrino_form-data_direct_recording
 					<input type="radio" name="recording_choose_direct_rec_dir" value="1"/>AN
 				</td>
 			</tr>
-			<tr title="EPG in filename: off/on">
-				<td>lange Dateinamen (mit EPG-Daten)</td>
-				<td>
-					<input type="radio" name="recording_epg_for_filename" value="false"/>AUS&nbsp;
-					<input type="radio" name="recording_epg_for_filename" value="true"/>AN
-				</td>
-			</tr>
 			<tr>
 				<td>Vorlage f&uuml;r Dateinamen</td>
-				<td><input type="text" name="recording_filename_template_0" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_0;%C_%I_%d_%t~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+				<td><input type="text" name="recording_filename_template_default" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_default;%C_%I_%d_%t~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_default" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_default;2048~open=}" title="Max filesize/splitsize"/></td>
 			</tr>
 			<tr>
 				<td>Verzeichnisrechte</td>
-				<td><input type="text" name="recording_dir_permissions_0" size="3" maxlength="3" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_permissions_0;755~cache=}" title="directory permissions (UNIX octals)"/></td>
+				<td><input type="text" name="recording_dir_permissions" size="3" maxlength="3" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_permissions;755~cache=}" title="directory permissions (UNIX octals)"/></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="y_form_header">Aufnahmeverzeichnisse</td>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnis 1</td>
 			</tr>
 			<tr>
-				<td>Aufnahmeverzeichnis 0</td>
+				<td>Verzeichnis</td>
 				<td><input type="text" name="recording_dir_0" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_0;~cache=}" title="recording directory"/></td>
 			</tr>
 			<tr>
-				<td>Aufnahmeverzeichnis 1</td>
+				<td>Vorlage f&uuml;r Dateinamen</td>
+				<td><input type="text" name="recording_filename_template_0" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_0;~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_0" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_0;~open=}" title="Max filesize/splitsize"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnis 2</td>
+			</tr>
+			<tr>
+				<td>Verzeichnis</td>
 				<td><input type="text" name="recording_dir_1" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_1;~cache=}" title="recording directory"/></td>
 			</tr>
 			<tr>
-				<td>Aufnahmeverzeichnis 2</td>
+				<td>Vorlage f&uuml;r Dateinamen</td>
+				<td><input type="text" name="recording_filename_template_1" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_1;~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_1" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_1;~open=}" title="Max filesize/splitsize"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnis 3</td>
+			</tr>
+			<tr>
+				<td>Verzeichnis</td>
 				<td><input type="text" name="recording_dir_2" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_2;~cache=}" title="recording directory"/></td>
 			</tr>
 			<tr>
-				<td>Aufnahmeverzeichnis 3</td>
+				<td>Vorlage f&uuml;r Dateinamen</td>
+				<td><input type="text" name="recording_filename_template_2" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_2;~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_2" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_2;~open=}" title="Max filesize/splitsize"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnis 4</td>
+			</tr>
+			<tr>
+				<td>Verzeichnis</td>
 				<td><input type="text" name="recording_dir_3" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_3;~cache=}" title="recording directory"/></td>
 			</tr>
 			<tr>
-				<td>Aufnahmeverzeichnis 4</td>
+				<td>Vorlage f&uuml;r Dateinamen</td>
+				<td><input type="text" name="recording_filename_template_3" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_3;~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_3" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_3;~open=}" title="Max filesize/splitsize"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnis 5</td>
+			</tr>
+			<tr>
+				<td>Verzeichnis</td>
 				<td><input type="text" name="recording_dir_4" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_4;~cache=}" title="recording directory"/></td>
 			</tr>
 			<tr>
-				<td>Aufnahmeverzeichnis 5</td>
+				<td>Vorlage f&uuml;r Dateinamen</td>
+				<td><input type="text" name="recording_filename_template_4" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_4;~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_4" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_4;~open=}" title="Max filesize/splitsize"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnis 6</td>
+			</tr>
+			<tr>
+				<td>Verzeichnis</td>
 				<td><input type="text" name="recording_dir_5" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_5;~cache=}" title="recording directory"/></td>
 			</tr>
 			<tr>
-				<td>Aufnahmeverzeichnis 6</td>
+				<td>Vorlage f&uuml;r Dateinamen</td>
+				<td><input type="text" name="recording_filename_template_5" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_5;~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_5" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_5;~open=}" title="Max filesize/splitsize"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnis 7</td>
+			</tr>
+			<tr>
+				<td>Verzeichnis</td>
 				<td><input type="text" name="recording_dir_6" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_6;~cache=}" title="recording directory"/></td>
 			</tr>
 			<tr>
-				<td>Aufnahmeverzeichnis 7</td>
+				<td>Vorlage f&uuml;r Dateinamen</td>
+				<td><input type="text" name="recording_filename_template_6" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_6;~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_6" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_6;~open=}" title="Max filesize/splitsize"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnis 8</td>
+			</tr>
+			<tr>
+				<td>Verzeichnis</td>
 				<td><input type="text" name="recording_dir_7" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_7;~cache=}" title="recording directory"/></td>
 			</tr>
 			<tr>
-				<td>Aufnahmeverzeichnis 8</td>
+				<td>Vorlage f&uuml;r Dateinamen</td>
+				<td><input type="text" name="recording_filename_template_7" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_7;~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_7" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_7;~open=}" title="Max filesize/splitsize"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnis 9</td>
+			</tr>
+			<tr>
+				<td>Verzeichnis</td>
 				<td><input type="text" name="recording_dir_8" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_8;~cache=}" title="recording directory"/></td>
 			</tr>
 			<tr>
-				<td>Aufnahmeverzeichnis 9</td>
+				<td>Vorlage f&uuml;r Dateinamen</td>
+				<td><input type="text" name="recording_filename_template_8" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_8;~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_8" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_8;~open=}" title="Max filesize/splitsize"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="y_form_header">Aufnahmeverzeichnis 10</td>
+			</tr>
+			<tr>
+				<td>Verzeichnis</td>
 				<td><input type="text" name="recording_dir_9" size="40" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_9;~cache=}" title="recording directory"/></td>
 			</tr>
-
+			<tr>
+				<td>Vorlage f&uuml;r Dateinamen</td>
+				<td><input type="text" name="recording_filename_template_9" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_9;~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
+			</tr>
+			<tr>
+				<td>Max. Dateigr&ouml;&szlig;e (MB)</td>
+				<td><input type="text" name="recording_splitsize_9" size="5" maxlength="5" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_splitsize_9;~open=}" title="Max filesize/splitsize"/></td>
+			</tr>
 		</table>
 		<br/>
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
@@ -1467,13 +1573,23 @@ function form_init()
 	obj_set_radio_value('recordingmenu_use_fdatasync', "{=ini-get:/var/tuxbox/config/neutrino.conf;recordingmenu.use_fdatasync;0~cache=}");
 	obj_set_radio_value('recordingmenu_stream_subtitle_pid', "{=ini-get:/var/tuxbox/config/neutrino.conf;recordingmenu.stream_subtitle_pid;0~cache=}");
 	obj_set_radio_value('recordingmenu_stream_vtxt_pid', "{=ini-get:/var/tuxbox/config/neutrino.conf;recordingmenu.stream_vtxt_pid;0~cache=}");
+	obj_set_radio_value('recordingmenu_gen_psi', "{=ini-get:/var/tuxbox/config/neutrino.conf;recordingmenu.gen_psi;0~cache=}");
 	obj_set_radio_value('recording_choose_direct_rec_dir', "{=ini-get:/var/tuxbox/config/neutrino.conf;recording_choose_direct_rec_dir;0~cache=}");
-	obj_set_radio_value('recording_epg_for_filename', "{=ini-get:/var/tuxbox/config/neutrino.conf;recording_epg_for_filename;0~cache=}");
 }
 
 function do_submit()
 {
+	document.f.recording_filename_template_default.value = encodeURI(document.f.recording_filename_template_default.value);
 	document.f.recording_filename_template_0.value = encodeURI(document.f.recording_filename_template_0.value);
+	document.f.recording_filename_template_1.value = encodeURI(document.f.recording_filename_template_1.value);
+	document.f.recording_filename_template_2.value = encodeURI(document.f.recording_filename_template_2.value);
+	document.f.recording_filename_template_3.value = encodeURI(document.f.recording_filename_template_3.value);
+	document.f.recording_filename_template_4.value = encodeURI(document.f.recording_filename_template_4.value);
+	document.f.recording_filename_template_5.value = encodeURI(document.f.recording_filename_template_5.value);
+	document.f.recording_filename_template_6.value = encodeURI(document.f.recording_filename_template_6.value);
+	document.f.recording_filename_template_7.value = encodeURI(document.f.recording_filename_template_7.value);
+	document.f.recording_filename_template_8.value = encodeURI(document.f.recording_filename_template_8.value);
+	document.f.recording_filename_template_9.value = encodeURI(document.f.recording_filename_template_9.value);
 	show_waitbox(true);
 	document.f.submit();
 }
@@ -1484,15 +1600,16 @@ end-block~neutrino_form-data_direct_recording
 
 # ------- direct recording save Settings
 start-block~neutrino_direct_recording_save_settings
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize;{=recording_splitsize=}~open=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.ringbuffers;{=recordingmenu_ringbuffers=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.use_o_sync;{=recordingmenu_use_o_sync=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.use_fdatasync;{=recordingmenu_use_fdatasync=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.stream_subtitle_pid;{=recordingmenu_stream_subtitle_pid=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.stream_vtxt_pid;{=recordingmenu_stream_vtxt_pid=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.gen_psi;{=recordingmenu_gen_psi=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_choose_direct_rec_dir;{=recording_choose_direct_rec_dir=}~cache=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_epg_for_filename;{=recording_epg_for_filename=}~cache=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_0;{=recording_filename_template_0=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_default;{=recording_filename_template_default=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_default;{=recording_splitsize_default=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_permissions;{=recording_dir_permissions=}~save=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_0;{=recording_dir_0=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_1;{=recording_dir_1=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_2;{=recording_dir_2=}~cache=}
@@ -1503,7 +1620,26 @@ start-block~neutrino_direct_recording_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_7;{=recording_dir_7=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_8;{=recording_dir_8=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_9;{=recording_dir_9=}~cache=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_permissions_0;{=recording_dir_permissions_0=}~save=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_0;{=recording_filename_template_0=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_1;{=recording_filename_template_1=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_2;{=recording_filename_template_2=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_3;{=recording_filename_template_3=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_4;{=recording_filename_template_4=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_5;{=recording_filename_template_5=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_6;{=recording_filename_template_6=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_7;{=recording_filename_template_7=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_8;{=recording_filename_template_8=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_9;{=recording_filename_template_9=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_0;{=recording_splitsize_0=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_1;{=recording_splitsize_1=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_2;{=recording_splitsize_2=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_3;{=recording_splitsize_3=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_4;{=recording_splitsize_4=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_5;{=recording_splitsize_5=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_6;{=recording_splitsize_6=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_7;{=recording_splitsize_7=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_8;{=recording_splitsize_8=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_9;{=recording_splitsize_9=}~open=}
 end-block~neutrino_direct_recording_save_settings
 
 # ------- Neutrino form-data: esound -------------------------------
