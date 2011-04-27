@@ -53,7 +53,7 @@ function do_init()
 	obj_set_radio_value('p_ucodecheck', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_ucodecheck;1~cache=}");
 	obj_set_radio_value('p_chan_epg_stat', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_chan_epg_stat;1~cache=}");
 	obj_set_radio_value('p_imageinfo', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_imageinfo;1~cache=}");
-	obj_set_radio_value('p_update', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_update;1~cache=}");
+	obj_set_radio_value('p_update', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_update;0~cache=}");
 	obj_set_radio_value('p_bluebutton', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_bluebutton;1~cache=}");
 	obj_set_radio_value('p_redbutton', "{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_redbutton;1~cache=}");
 }
@@ -69,31 +69,12 @@ function do_init()
 	<div class="work_box_body">
 	<form name="f" class="y_form" action="">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
-			<tr><td colspan="2" class="y_form_header">Zugang Personalisierung</td></tr>
-			<tr><td width="35%">PIN ben&ouml;tigt</td>
-				<td>
-					<input type="radio" name="p_pinstatus" value="1"/>JA&nbsp;
-					<input type="radio" name="p_pinstatus" value="0"/>NEIN
-				</td>
-			</tr>
+			<tr><td colspan="2" class="y_form_header">Menüeinstellungen</td></tr>
 			<tr>
-				<td>PIN Code</td>
+				<td width="35%">PIN Code</td>
 				<td>&nbsp;<input type="text" name="p_pincode" size="4" maxlength="4" value="{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_pincode~open=}" title="PIN code"/></td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Farbtasten</td></tr>
-			<tr><td>Taste Blau (Features)</td>
-				<td>
-					<input type="radio" name="p_bluebutton" value="1"/>AKTIVIERT&nbsp;
-					<input type="radio" name="p_bluebutton" value="0"/>DEAKTIVIERT
-				</td>
-			</tr>
-			<tr><td>Taste Rot (EPG/Info)</td>
-				<td>
-					<input type="radio" name="p_redbutton" value="1"/>AKTIVIERT&nbsp;
-					<input type="radio" name="p_redbutton" value="0"/>DEAKTIVIERT
-				</td>
-			</tr>
-			<tr><td colspan="2" class="y_form_header">Hauptmen&uuml;</td></tr>
+			<tr><td colspan="2" class="y_form_header">Zugangsoptionen: Hauptmen&uuml;</td></tr>
 			<tr><td>TV-Modus</td>
 				<td>
 					<input type="radio" name="p_tv" value="0"/>nicht sichtbar&nbsp;
@@ -171,13 +152,13 @@ function do_init()
 					<input type="radio" name="p_scripts" value="2"/>PIN
 				</td>
 			</tr>
-			<tr><td>Einstellungen-Men&uuml; mit PIN</td>
+			<tr><td>Einstellungen mit PIN</td>
 				<td>
 					<input type="radio" name="p_settings" value="1"/>JA&nbsp;
 					<input type="radio" name="p_settings" value="0"/>NEIN
 				</td>
 			</tr>
-			<tr><td>Service-Men&uuml; mit PIN</td>
+			<tr><td>Service mit PIN</td>
 				<td>
 					<input type="radio" name="p_service" value="1"/>JA&nbsp;
 					<input type="radio" name="p_service" value="0"/>NEIN
@@ -204,7 +185,7 @@ function do_init()
 					<input type="radio" name="p_shutdown" value="2"/>PIN
 				</td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Einstellungen</td></tr>
+			<tr><td colspan="2" class="y_form_header">Zugangsoptionen: Einstellungen</td></tr>
 			<tr><td>Video</td>
 				<td>
 					<input type="radio" name="p_video" value="0"/>nicht sichtbar&nbsp;
@@ -289,7 +270,13 @@ function do_init()
 					<input type="radio" name="p_misc" value="2"/>PIN
 				</td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Service</td></tr>
+			<tr><td>Personalisierung mit PIN</td>
+				<td>
+					<input type="radio" name="p_pinstatus" value="1"/>JA&nbsp;
+					<input type="radio" name="p_pinstatus" value="0"/>NEIN
+				</td>
+			</tr>
+			<tr><td colspan="2" class="y_form_header">Zugangsoptionen: Service</td></tr>
 			<tr><td>Bouquet-Verwaltung</td>
 				<td>
 					<input type="radio" name="p_bouqueteditor" value="0"/>nicht sichtbar&nbsp;
@@ -353,11 +340,23 @@ function do_init()
 					<input type="radio" name="p_imageinfo" value="2"/>PIN
 				</td>
 			</tr>
-			<tr><td>Software-Aktualisierung</td>
+			<tr><td>Software-Aktualisierung mit PIN</td>
 				<td>
-					<input type="radio" name="p_update" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_update" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_update" value="2"/>PIN
+					<input type="radio" name="p_update" value="1"/>JA&nbsp;
+					<input type="radio" name="p_update" value="0"/>NEIN
+				</td>
+			</tr>
+			<tr><td colspan="2" class="y_form_header">Farbtasten</td></tr>
+			<tr><td>Features (Taste Blau)</td>
+				<td>
+					<input type="radio" name="p_bluebutton" value="1"/>AKTIVIERT&nbsp;
+					<input type="radio" name="p_bluebutton" value="0"/>DEAKTIVIERT
+				</td>
+			</tr>
+			<tr><td>EPG/Info (Taste Rot)</td>
+				<td>
+					<input type="radio" name="p_redbutton" value="1"/>AKTIVIERT&nbsp;
+					<input type="radio" name="p_redbutton" value="0"/>DEAKTIVIERT
 				</td>
 			</tr>
 		</table>
