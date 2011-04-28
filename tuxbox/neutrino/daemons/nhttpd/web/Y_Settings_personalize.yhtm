@@ -69,7 +69,7 @@ function do_init()
 	<div class="work_box_body">
 	<form name="f" class="y_form" action="">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
-			<tr><td colspan="2" class="y_form_header">Menüeinstellungen</td></tr>
+			<tr><td colspan="2" class="y_form_header">Men&uuml;einstellungen</td></tr>
 			<tr>
 				<td width="35%">PIN Code</td>
 				<td>&nbsp;<input type="text" name="p_pincode" size="4" maxlength="4" value="{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_pincode~open=}" title="PIN code"/></td>
