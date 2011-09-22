@@ -1390,6 +1390,21 @@ start-block~neutrino_form-data_direct_recording
 				</td>
 			</tr>
 			<tr>
+				<td>Max. Aufnahmezeit Sofortaufn.</td>
+				<td>
+					<select name="max_rectime" title="Max recording time">
+					<option value="1" selected="selected">1 Std.</option>
+					<option value="2">2 Std.</option>
+					<option value="3">3 Std.</option>
+					<option value="4">4 Std.</option>
+					<option value="5">5 Std.</option>
+					<option value="6">6 Std.</option>
+					<option value="7">7 Std.</option>
+					<option value="8">8 Std.</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
 				<td>Vorlage f&uuml;r Dateinamen</td>
 				<td><input type="text" name="recording_filename_template_default" size="16" value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_filename_template_default;%C_%I_%d_%t~cache=}" title="filename template %C=channel %T=title %I=info %d=date %t=time"/></td>
 			</tr>
@@ -1569,6 +1584,9 @@ function form_init()
 	var val = "{=ini-get:/var/tuxbox/config/neutrino.conf;recordingmenu.ringbuffers;2~cache=}";
 	document.f.ringbuffers.selectedIndex = val;
 
+	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;recording_max_rectime;4~cache=}";
+	document.f.max_rectime.selectedIndex = val - 1;
+
 	obj_set_radio_value('recordingmenu_use_o_sync', "{=ini-get:/var/tuxbox/config/neutrino.conf;recordingmenu.use_o_sync;0~cache=}");
 	obj_set_radio_value('recordingmenu_use_fdatasync', "{=ini-get:/var/tuxbox/config/neutrino.conf;recordingmenu.use_fdatasync;0~cache=}");
 	obj_set_radio_value('recordingmenu_stream_subtitle_pid', "{=ini-get:/var/tuxbox/config/neutrino.conf;recordingmenu.stream_subtitle_pid;0~cache=}");
@@ -1600,13 +1618,14 @@ end-block~neutrino_form-data_direct_recording
 
 # ------- direct recording save Settings
 start-block~neutrino_direct_recording_save_settings
-{=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.ringbuffers;{=recordingmenu_ringbuffers=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.ringbuffers;{=ringbuffers=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.use_o_sync;{=recordingmenu_use_o_sync=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.use_fdatasync;{=recordingmenu_use_fdatasync=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.stream_subtitle_pid;{=recordingmenu_stream_subtitle_pid=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.stream_vtxt_pid;{=recordingmenu_stream_vtxt_pid=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recordingmenu.gen_psi;{=recordingmenu_gen_psi=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_choose_direct_rec_dir;{=recording_choose_direct_rec_dir=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_max_rectime;{=max_rectime=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_default;{=recording_filename_template_default=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_default;{=recording_splitsize_default=}~open=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_permissions;{=recording_dir_permissions=}~save=}

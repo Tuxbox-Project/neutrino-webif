@@ -51,6 +51,10 @@ function do_init()
 		document.f.key_quickzap_down.value = itoKey(val);
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;key_quickzap_up;103~cache=}";
 		document.f.key_quickzap_up.value = itoKey(val);
+	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;key_volume_down;114~cache=}";
+		document.f.key_volume_down.value = itoKey(val);
+	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;key_volume_up;115~cache=}";
+		document.f.key_volume_up.value = itoKey(val);
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;key_subchannel_down;105~cache=}";
 		document.f.key_subchannel_down.value = itoKey(val);
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;key_subchannel_toggle;11~cache=}";
@@ -189,6 +193,8 @@ function setDefault()
 	document.f.key_lastchannel.value = "KEY_0"; //11
 	document.f.key_quickzap_down.value = "KEY_DOWN"; //108
 	document.f.key_quickzap_up.value = "KEY_UP"; //103
+	document.f.key_volume_down.value = "KEY_VOLUMEDOWN"; //114
+	document.f.key_volume_up.value = "KEY_VOLUMEUP"; //115
 	document.f.key_subchannel_down.value = "KEY_LEFT"; //105
 	document.f.key_subchannel_toggle.value = "KEY_0"; //11
 	document.f.key_subchannel_up.value = "KEY_RIGHT"; //106
@@ -220,7 +226,7 @@ function do_submit()
 				<td colspan="2" class="y_form_header">Modus wechseln</td>
 			</tr>
 			<tr>
-				<td rowspan="20">{=include-block:Y_Blocks.txt;remote=}</td>
+				<td rowspan="22">{=include-block:Y_Blocks.txt;remote=}</td>
 				<td><input type="radio" name="but" onclick="setFocus()" />TV-/Radio-Modus</td>
 				<td><input type="text" name="key_tvradio_mode" id="id100" onclick="setradio(0)" readonly="readonly" />
 				&nbsp;<input type="button" class="butnokey" id="id200" value="Keine Taste" onclick="killkey()" /></td>
@@ -292,40 +298,50 @@ function do_submit()
 				&nbsp;<input type="button" class="butnokey" id="id210" onclick="killkey()" value="Keine Taste" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Bouquet weiter</td>
-				<td><input type="text" name="key_bouquet_down" id="id111" onclick="setradio(11)" readonly="readonly" />
+				<td><input type="radio" name="but" onclick="setFocus()" /> Lautst&auml;rke plus</td>
+				<td><input type="text" name="key_volume_up" id="id111" onclick="setradio(11)" readonly="readonly" />
 				&nbsp;<input type="button" class="butnokey" id="id211" onclick="killkey()" value="Keine Taste" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Bouquet zur&uuml;ck</td>
-				<td><input type="text" name="key_bouquet_up" id="id112" onclick="setradio(12)" readonly="readonly" />
+				<td><input type="radio" name="but" onclick="setFocus()" /> Lautst&auml;rke minus</td>
+				<td><input type="text" name="key_volume_down" id="id112" onclick="setradio(12)" readonly="readonly" />
 				&nbsp;<input type="button" class="butnokey" id="id212" onclick="killkey()" value="Keine Taste" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Unterkanal weiter</td>
-				<td><input type="text" name="key_subchannel_down" id="id113" onclick="setradio(13)" readonly="readonly" />
+				<td><input type="radio" name="but" onclick="setFocus()" /> Bouquet weiter</td>
+				<td><input type="text" name="key_bouquet_down" id="id113" onclick="setradio(13)" readonly="readonly" />
 				&nbsp;<input type="button" class="butnokey" id="id213" onclick="killkey()" value="Keine Taste" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Unterkanal zur&uuml;ck</td>
-				<td><input type="text" name="key_subchannel_up" id="id114" onclick="setradio(14)" readonly="readonly" />
+				<td><input type="radio" name="but" onclick="setFocus()" /> Bouquet zur&uuml;ck</td>
+				<td><input type="text" name="key_bouquet_up" id="id114" onclick="setradio(14)" readonly="readonly" />
 				&nbsp;<input type="button" class="butnokey" id="id214" onclick="killkey()" value="Keine Taste" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Unterkanal wechseln</td>
-				<td><input type="text" name="key_subchannel_toggle" id="id115" onclick="setradio(15)" readonly="readonly" />
+				<td><input type="radio" name="but" onclick="setFocus()" /> Unterkanal weiter</td>
+				<td><input type="text" name="key_subchannel_down" id="id115" onclick="setradio(15)" readonly="readonly" />
 				&nbsp;<input type="button" class="butnokey" id="id215" onclick="killkey()" value="Keine Taste" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Zapping-History Bouquet</td>
-				<td><input type="text" name="key_zaphistory" id="id116" onclick="setradio(16)" readonly="readonly" />
+				<td><input type="radio" name="but" onclick="setFocus()" /> Unterkanal zur&uuml;ck</td>
+				<td><input type="text" name="key_subchannel_up" id="id116" onclick="setradio(16)" readonly="readonly" />
 				&nbsp;<input type="button" class="butnokey" id="id216" onclick="killkey()" value="Keine Taste" /></td>
+			</tr>
+			<tr>
+				<td><input type="radio" name="but" onclick="setFocus()" /> Unterkanal wechseln</td>
+				<td><input type="text" name="key_subchannel_toggle" id="id117" onclick="setradio(17)" readonly="readonly" />
+				&nbsp;<input type="button" class="butnokey" id="id217" onclick="killkey()" value="Keine Taste" /></td>
+			</tr>
+			<tr>
+				<td><input type="radio" name="but" onclick="setFocus()" /> Zapping-History Bouquet</td>
+				<td><input type="text" name="key_zaphistory" id="id118" onclick="setradio(18)" readonly="readonly" />
+				&nbsp;<input type="button" class="butnokey" id="id218" onclick="killkey()" value="Keine Taste" /></td>
 			</tr>
 			<tr>
 				<td><a href="javascript:setDefault()" class="alink">Vorbelegung benutzen</a></td>
 				<td><input type="radio" name="but" onclick="setFocus()" /> Letzter Kanal</td>
-				<td><input type="text" name="key_lastchannel" id="id117" onclick="setradio(17)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id217" onclick="killkey()" value="Keine Taste" /></td>
+				<td><input type="text" name="key_lastchannel" id="id119" onclick="setradio(19)" readonly="readonly" />
+				&nbsp;<input type="button" class="butnokey" id="id219" onclick="killkey()" value="Keine Taste" /></td>
 			</tr>
 			</table>
 			<br />

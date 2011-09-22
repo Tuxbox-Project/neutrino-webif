@@ -108,6 +108,8 @@ start-block~buttons_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;key_lastchannel;{=key_lastchannel=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;key_quickzap_down;{=key_quickzap_down=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;key_quickzap_up;{=key_quickzap_up=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_volume_down;{=key_volume_down=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_volume_up;{=key_volume_up=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;key_subchannel_down;{=key_subchannel_down=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;key_subchannel_toggle;{=key_subchannel_toggle=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;key_subchannel_up;{=key_subchannel_up=}~cache=}
