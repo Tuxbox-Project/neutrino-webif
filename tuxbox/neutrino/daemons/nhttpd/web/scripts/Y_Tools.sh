@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Tools (yjogol)
-# $Date: 2010/08/11 20:27:47 $
-# $Revision: 1.10 $
+# $Date: 2011/09/22 19:53:53 $
+# $Revision: 1.11 $
 # -----------------------------------------------------------
 . ./_Y_Globals.sh
 . ./_Y_Library.sh
@@ -436,7 +436,11 @@ proc()
 # -----------------------------------------------------------
 wol()
 {
-	msg=`etherwake $1`
+	if [ -e /var/bin/ether-wake ]; then
+		msg=`/var/bin/ether-wake $1`
+	else
+		msg=`/bin/ether-wake $1`
+	fi
 	msg="<b>Wake on LAN $1</b><br><br>$msg"
 	y_format_message_html
 }
