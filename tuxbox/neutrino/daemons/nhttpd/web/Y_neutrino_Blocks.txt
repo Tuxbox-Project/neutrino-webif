@@ -364,8 +364,17 @@ start-block~neutrino_form-data_movieplayer
 					<option value="1">352 x 576</option>
 					<option value="2">480 x 576</option>
 					<option value="3">704 x 576</option>
+					<option value="4">704 x 288</option>
 					</select>
 					<input type="hidden" name="h_streaming_resolution"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Nutze VLC 1.x</td>
+				<td>
+					<input type="radio" name="streaming_vlc10" value="0"/>AUS&nbsp;
+					<input type="radio" name="streaming_vlc10" value="1"/>AN
+					<input type="hidden" name="h_streaming_vlc10"/>
 				</td>
 			</tr>
 			<tr>
@@ -459,6 +468,9 @@ function form_init()
 		document.f.streaming_transcode_video_codec.selectedIndex = val;
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_resolution;0~cache=}";
 		document.f.streaming_resolution.selectedIndex = val;
+
+	obj_set_radio_value('streaming_vlc10', "{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_vlc10;0~cache=}");
+
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;streaming_audiorate;192~cache=}";
 		document.f.streaming_audiorate.value = val;
 
@@ -491,6 +503,8 @@ function change_streaming_type()
 	document.f.streaming_force_transcode_video[1].disabled = vis;
 	document.f.streaming_transcode_video_codec.disabled = vis;
 	document.f.streaming_resolution.disabled = vis;
+	document.f.streaming_vlc10[0].disabled = vis;
+	document.f.streaming_vlc10[1].disabled = vis;
 	document.f.streaming_audiorate.disabled = vis;
 	document.f.streaming_transcode_audio[0].disabled = vis;
 	document.f.streaming_transcode_audio[1].disabled = vis;
@@ -507,6 +521,7 @@ function set_hidden_values()
 	document.f.h_streaming_force_transcode_video.value = obj_get_radio_value("streaming_force_transcode_video");
 	document.f.h_streaming_transcode_video_codec.value = document.f.streaming_transcode_video_codec.selectedIndex;
 	document.f.h_streaming_resolution.value = document.f.streaming_resolution.selectedIndex;
+	document.f.h_streaming_vlc10.value = obj_get_radio_value("streaming_vlc10");
 	document.f.h_streaming_audiorate.value = document.f.streaming_audiorate.value;
 	document.f.h_streaming_transcode_audio.value = obj_get_radio_value("streaming_transcode_audio");
 	document.f.h_streaming_force_avi_rawaudio.value = obj_get_radio_value("streaming_force_avi_rawaudio");
@@ -533,6 +548,7 @@ start-block~neutrino_movieplayer_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;streaming_force_transcode_video;{=h_streaming_force_transcode_video=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;streaming_transcode_video_codec;{=h_streaming_transcode_video_codec=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;streaming_resolution;{=h_streaming_resolution=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;streaming_vlc10;{=h_streaming_vlc10=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;streaming_audiorate;{=h_streaming_audiorate=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;streaming_transcode_audio;{=h_streaming_transcode_audio=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;streaming_force_avi_rawaudio;{=h_streaming_force_avi_rawaudio=}~cache=}
