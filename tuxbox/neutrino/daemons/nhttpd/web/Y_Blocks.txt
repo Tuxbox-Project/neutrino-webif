@@ -115,6 +115,8 @@ start-block~buttons_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;key_subchannel_up;{=key_subchannel_up=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;key_tvradio_mode;{=key_tvradio_mode=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;key_zaphistory;{=key_zaphistory=}~save=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_menu_pagedown;{=key_menu_pagedown=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;key_menu_pageup;{=key_menu_pageup=}~cache=}
 end-block~buttons_save_settings
 
 # ------- Personalize save Settings
