@@ -1112,7 +1112,7 @@ function form_init()
 	obj_set_radio_value('misc_spts', "{=ini-get:/var/tuxbox/config/neutrino.conf;misc_spts~open=}");
 	obj_set_radio_value('bootmenu', "{=if-file-exists:/var/etc/.neutrino~0~1=}");
 	obj_set_radio_value('bootinfo', "{=if-file-exists:/var/etc/.boot_info~1~0=}");
-	obj_set_radio_value('hwsections', "{=if-file-exists:/var/etc/.hw_sections~0~1=}");
+	obj_set_radio_value('hwsections', "{=if-file-exists:/var/etc/.hwsections~1~0=}");
 	obj_set_radio_value('no_watchdog', "{=if-file-exists:/var/etc/.no_watchdog~0~1=}");
 	obj_set_radio_value('no_enxwatchdog', "{=if-file-exists:/var/etc/.no_enxwatchdog~0~1=}");
 	obj_set_radio_value('philips_rc_patch', "{=if-file-exists:/var/etc/.philips_rc_patch~1~0=}");
@@ -1136,7 +1136,7 @@ start-block~neutrino_bootoptions_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;misc_spts;{=misc_spts=}=}
 {=file-action:/var/etc/.neutrino;{=if-equal:{=bootmenu=}~0~add~delete=}=}
 {=file-action:/var/etc/.boot_info;{=if-equal:{=bootinfo=}~1~add~delete=}=}
-{=file-action:/var/etc/.hw_sections;{=if-equal:{=hwsections=}~0~add~delete=}=}
+{=file-action:/var/etc/.hwsections;{=if-equal:{=hwsections=}~1~add~delete=}=}
 {=file-action:/var/etc/.no_watchdog;{=if-equal:{=no_watchdog=}~0~add~delete=}=}
 {=file-action:/var/etc/.no_enxwatchdog;{=if-equal:{=no_enxwatchdog=}~0~add~delete=}=}
 {=file-action:/var/etc/.philips_rc_patch;{=if-equal:{=philips_rc_patch=}~1~add~delete=}=}
