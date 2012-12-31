@@ -10,12 +10,12 @@
 		<table class="y_invisible_table" cellpadding="5" width="100%">
 		<tr><td class="y_form_header">Meldung auf dbox-Bildschirm</td></tr>
 		<tr><td>
-			<input name="nmsg" type="text" size="50" maxlength="255" title="enter message to send to TV screen"/>
+			<textarea name="nmsg" cols="50" rows="5" title="enter message to send to TV screen"></textarea><br/>
 			<button type="submit" name="message" ytype="go" title="send message">senden</button>
 		</td></tr>
 		<tr><td class="y_form_header">Popup auf dbox-Bildschirm</td></tr>
 		<tr><td>
-			<input name="popup" type="text" size="50" maxlength="255" title="enter message to send to TV screen"/>
+			<textarea name="popup" cols="50" rows="5" title="enter message to send to TV screen"></textarea><br/>
 			<button type="submit" name="pmessage" ytype="go" title="send message">senden</button>
 		</td></tr>
 		</table>
