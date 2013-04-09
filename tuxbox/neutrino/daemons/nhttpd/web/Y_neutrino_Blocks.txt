@@ -1398,8 +1398,8 @@ start-block~neutrino_form-data_direct_recording
 					<input type="radio" name="recordingmenu_gen_psi" value="true"/>AN
 				</td>
 			</tr>
-			<tr title="Choose directory on record: off/on">
-				<td>Bei Sofortaufn. Verzeichnisauswahl</td>
+			<tr title="Choose directory: off/on">
+				<td>Verzeichnisauswahl anzeigen</td>
 				<td>
 					<input type="radio" name="recording_choose_direct_rec_dir" value="0"/>AUS&nbsp;
 					<input type="radio" name="recording_choose_direct_rec_dir" value="1"/>AN
