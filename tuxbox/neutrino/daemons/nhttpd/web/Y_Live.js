@@ -4,17 +4,20 @@
 */
 /*globals*/
 var V2 = null;
-var IsUDP = false;
+var isUDP = false;
+var haveUDP = false;
 var IsTimeshift = true; //TEST
 var IsLocked = false;
 var IsMute = false;
+var isDeinterlace = true;
 var vlc_width = 384;
 var vlc_height = 288;
 var Window_delta_w = 0;
 var Window_delta_h = 0;
 var Mode = "tv";
 var AudioChannel = 0;
-var isSubs=false;
+var isSubs = false;
+var cachetime = 0;
 /*resize,init*/
 function do_onload()
 {
@@ -22,10 +25,15 @@ function do_onload()
 		Mode = "tv";
 	set_controls("disable");
 	if(isUDP && Mode == "tv")
-		id('udp').checked = true;
+		change_button_img('udp',"udp_switch_off");
 	else if(Mode == "tv")
-		id('udp').checked = false;
+		change_button_img('udp',"udp_switch_on");
 	window.setTimeout("do_init()",300);
+}
+function do_unload()
+{
+	if(isUDP)
+		loadXMLDoc("/control/exec?api&udp_stream&stop", dummy);
 }
 function do_onresize()
 {
@@ -139,7 +147,7 @@ function set_controls(state)
 		obj_enable('transcode', play && opt);
 	}
 	if(Mode == "tv"){
-		show_obj('have_udp',haveUDP);
+		show_obj('udp',haveUDP);
 		obj_enable('udp', go);
 		obj_enable('fullscreen', play);
 		show_obj('snapshot',(plugin != "moz3"));
@@ -156,12 +164,12 @@ function do_play()
 			options.push(":vout-filter=deinterlace");
 			options.push(":deinterlace-mode=bob");
 		}
-		if(id('udp').checked && Mode == "tv"){
+		if(isUDP && Mode == "tv"){
 			options.push(":access-filter=timeshift");
 		}
-		else
-			if(cachetime > 0)
+		else if(cachetime > 0){
 				options.push(":http-caching="+cachetime);
+		}
 		if(AudioChannel != 0)
 			options.push(":audio-track="+AudioChannel);
 	}
@@ -170,7 +178,7 @@ function do_play()
 function start_udp_server()
 {
 	var pids = loadSyncURL("/control/yweb?video_stream_pids=0&no_commas=true");
-	var args = ClientAddr+" 31330 0 "+pids;
+	var args = "-b /dev/null "+ClientAddr+" 31330 0 "+pids;
 	var _cmd = "udp_stream start "+args;
 	var __cmd = _cmd.replace(/ /g, "&");
 	loadXMLDoc("/control/exec?Y_Live&"+__cmd, dummy);
@@ -180,6 +188,8 @@ function do_stop()
 	V2.stop();
 	while(V2.is_playing())
 		;
+	if(isUDP)
+		loadXMLDoc("/control/exec?api&udp_stream&stop", dummy);
 	change_button_img('PlayOrPause',"play");
 	set_controls("stop");
 }
@@ -197,15 +207,22 @@ function do_play_state(_state, _options)
 	_options.push(":input-repeat=1");
 	V2.options = _options;
 	var mrl = "";
-	if(Mode == "tv" && id('udp').checked)
+	if(Mode == "tv" && isUDP)
 		mrl = "udp://@:31330";
-	else
+	else {
+		if(Mode == "tv") {
+			loadXMLDoc("/control/exec?Y_Live&udp_stream&stop", dummy);
+		}
 		mrl = loadSyncURL("/control/build_live_url");
+	}
 	V2.set_actual_mrl(mrl);
 	V2.play();
 	V2.next();
 	set_controls("play");
-	if(Mode == "tv" && id('udp').checked)
+	if(isDeinterlace && V2.plugin=="moz2"){
+		V2.vlc.video.deinterlace.enable("bob");
+	}
+	if(Mode == "tv" && isUDP)
 		window.setTimeout("start_udp_server()",1000);
 }
 function do_play_or_pause()
@@ -218,7 +235,7 @@ function do_play_or_pause()
 		change_button_img('PlayOrPause',"pause");
 		V2.play();
 		set_controls("play");
-		if(id('udp').checked)
+		if(isUDP)
 			window.setTimeout("start_udp_server()",1000);
 	}
 }
@@ -298,6 +315,7 @@ function build_subchannels()
 }
 function change_channel_play()
 {
+	insert_vlc_control();
 	do_play();
 	if (V2.have_options() && Mode == "tv") {
 		build_audio_pid_list();
@@ -328,6 +346,13 @@ function do_mute_toggle()
 	change_button_img('mute', (IsMute)?"volumemute":"volumeunmute");
 	IsMute = !IsMute;
 	V2.toggle_mute();
+}
+function do_udp_toggle()
+{
+	change_button_img('udp', (isUDP)?"udp_switch_on":"udp_switch_off");
+	isUDP = !isUDP;
+	do_stop();
+	do_play();
 }
 function view_streaminfo()
 {

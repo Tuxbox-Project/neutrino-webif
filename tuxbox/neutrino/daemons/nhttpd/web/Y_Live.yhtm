@@ -50,7 +50,7 @@ function view_transcode_mode()
 //]]>
 </script>
 </head>
-<body>
+<body onunload="do_unload()">
 {=var-set:wait_text=Streaming-Informationen<br/>werden ermittelt.=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div id="live_panel">
 <form name="x" action="" method="get">
@@ -118,7 +118,8 @@ function view_transcode_mode()
 			<img src="/images/livelock.png"></button>
 
 		{=if-equal:{=mode=}~tv~
-		<span id="have_udp" style="visibility:hidden"><input type="checkbox" id="udp" title="UDP Streaming"/>UDP</span>
+		<button class="y_live_button" type="button" value="set" title="UDP Streaming" id="udp" onclick="do_udp_toggle()" style="visibility:hidden">
+			<img src="/images/udp_switch_on.png"/></button>
 		<button class="y_live_button" type="button" value="set" title="LiveView settings" id="settings" onclick="view_settings_mode()">
 			<img src="/images/properties.png"></button>
 		<button class="y_live_button" type="button" value="S" title="create snapshot picture" id="snapshot" onclick="V2.snapshot()"  style="visibility:hidden">

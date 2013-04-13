@@ -95,15 +95,16 @@ case "$1" in
 			killall udpstreamts
 			if [ -e /var/bin/udpstreamts ]
 			then
-				/var/bin/udpstreamts $* &
+				/var/bin/udpstreamts $*
 			else
-				udpstreamts $* &
+				udpstreamts $*
 			fi
 			pidof udpstreamts >/tmp/udpstreamts.pid
 		fi
 		if [ "$2" = "stop" ]
 		then
 			killall udpstreamts
+			rm /tmp/udpstreamts.pid
 		fi
 		;;
 
