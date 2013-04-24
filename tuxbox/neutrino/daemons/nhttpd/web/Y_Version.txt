@@ -1,5 +1,5 @@
-version=2.7.0.24
-date=12.04.2013
+version=2.7.0.25
+date=24.04.2013
 type=Release
 info=
 
