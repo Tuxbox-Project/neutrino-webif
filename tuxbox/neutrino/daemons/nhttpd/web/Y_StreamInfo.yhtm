@@ -71,6 +71,16 @@
 <TD class="set"> <div align="left">{=tsfrequency=} ({=polarisation=})</div></TD>
 </TR>
 <TR> 
+<TD class="set"><B>pmtpid:</B></TD>
+<TD>&nbsp;</TD>
+<TD class="set"> <div align="left">{=pmtpid=}</div></TD>
+</TR>
+<TR>
+<TD class="set"><B>pcrpid:</B></TD>
+<TD>&nbsp;</TD>
+<TD class="set"> <div align="left">{=pcrpid=}</div></TD>
+</TR>
+<TR>
 <TD class="set"><B>vpid:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=vpid=}</div></TD>
