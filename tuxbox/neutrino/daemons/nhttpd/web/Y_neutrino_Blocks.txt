@@ -701,6 +701,10 @@ start-block~neutrino_form-data_diverse
 					</select>
 				</td>
 			</tr>
+			<tr title="sleeptimer default">
+				<td>Sleeptimer Vorgabe</td>
+				<td><input type="text" name="sleeptimer_min" size="3" maxlength="3" value="{=ini-get:/var/tuxbox/config/neutrino.conf;sleeptimer_min;0~cache=}" title="shutdown after x min"/>&nbsp;Min.</td>
+			</tr>
 			<tr title="tuxtxt cache: off/on">
 				<td>Videotext zwischenspeichern</td>
 				<td>
@@ -975,6 +979,7 @@ start-block~neutrino_diverse_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;shutdown_count;{=shutdown_count=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;shutdown_real;{=shutdown_real=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;shutdown_real_rcdelay;{=shutdown_real_rcdelay=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;sleeptimer_min;{=sleeptimer_min=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;standby_off_with;{=standby_off_with=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;standby_save_power;{=standby_save_power=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;startmode;{=startmode=}~cache=}
