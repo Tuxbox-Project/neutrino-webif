@@ -68,7 +68,7 @@ start-block~neutrino_form-data_record
 			<tr>
 				<td>Aufnahmeserver Port</td>
 				<td>
-					<input type="text" id="port" name="port" size="6" title="port"/>
+					<input type="text" id="port" name="port" size="6" maxlength="6" title="port"/>
 					<input type="hidden" name="h_port"/>
 				</td>
 			</tr>
@@ -83,7 +83,7 @@ start-block~neutrino_form-data_record
 			<tr>
 				<td>MAC Adresse</td>
 				<td>
-					<input type="text" id="mac" name="mac" size="20" title="MAC"/>
+					<input type="text" id="mac" name="mac" size="20" maxlength="20" title="MAC"/>
 					<input type="hidden" name="h_mac"/>
 				</td>
 			</tr>
@@ -319,14 +319,14 @@ start-block~neutrino_form-data_movieplayer
 			<tr>
 				<td>DVD Laufwerk</td>
 				<td>
-					<input type="text" name="streaming_server_cddrive" size="10" title="DVD drive on server"/>
+					<input type="text" name="streaming_server_cddrive" size="10" maxlength="20" title="DVD drive on server"/>
 					<input type="hidden" name="h_streaming_server_cddrive"/>
 				</td>
 			</tr>
 			<tr>
 				<td>Verzeichnis (VLC)</td>
 				<td>
-					<input type="text" name="streaming_server_startdir" size="40" title="VLC directory on server"/>
+					<input type="text" name="streaming_server_startdir" size="39" maxlength="39" title="VLC directory on server"/>
 					<input type="hidden" name="h_streaming_server_startdir"/>
 				</td>
 			</tr>
@@ -334,7 +334,7 @@ start-block~neutrino_form-data_movieplayer
 			<tr>
 				<td>Datenrate Video</td>
 				<td>
-					<input type="text" name="streaming_videorate" size="6" title="video data rate"/>
+					<input type="text" name="streaming_videorate" size="5" maxlength="5" title="video data rate"/>
 					<input type="hidden" name="h_streaming_videorate"/>
 				</td>
 			</tr>
@@ -380,7 +380,7 @@ start-block~neutrino_form-data_movieplayer
 			<tr>
 				<td>Datenrate Audio</td>
 				<td>
-					<input type="text" name="streaming_audiorate" size="6" title="audio data rate"/>
+					<input type="text" name="streaming_audiorate" size="5" maxlength="5" title="audio data rate"/>
 					<input type="hidden" name="h_streaming_audiorate"/>
 				</td>
 			</tr>
@@ -681,7 +681,7 @@ start-block~neutrino_form-data_diverse
 			</tr>
 			<tr>
 				<td>Komplett ausschalten nach</td>
-				<td><input type="text" name="shutdown_count" size="3" value="{=ini-get:/var/tuxbox/config/neutrino.conf;shutdown_count;0~open=}" title="shutdown after x sec"/>&nbsp;Min.</td>
+				<td><input type="text" name="shutdown_count" size="3" maxlength="3" value="{=ini-get:/var/tuxbox/config/neutrino.conf;shutdown_count;0~open=}" title="shutdown after x min"/>&nbsp;Min.</td>
 			</tr>
 			<tr title="shutdown delay: off/on">
 				<td>Verz&ouml;gerter Shutdown</td>
@@ -1178,7 +1178,7 @@ start-block~neutrino_form-data_pictureviewer
 			</tr>
 			<tr>
 				<td>Start-Verz.</td>
-				<td><input type="text" name="picviewer_picturedir" size="20" value="{=ini-get:/var/tuxbox/config/neutrino.conf;picviewer_picturedir~cache=}" title="directory to begin"/></td>
+				<td><input type="text" name="picviewer_picturedir" size="20" maxlength="99" value="{=ini-get:/var/tuxbox/config/neutrino.conf;picviewer_picturedir~cache=}" title="directory to begin"/></td>
 			</tr>
 			<tr>
 				<td>Decoding-Server IP</td>
@@ -1286,7 +1286,7 @@ start-block~neutrino_form-data_audioplayer
 			</tr>
 			<tr>
 				<td>Start-Verz.</td>
-				<td><input type="text" name="audioplayer_audioplayerdir" size="20" value="{=ini-get:/var/tuxbox/config/neutrino.conf;audioplayer_audioplayerdir~cache=}" title="directory to begin"/></td>
+				<td><input type="text" name="audioplayer_audioplayerdir" size="20" maxlength="99" value="{=ini-get:/var/tuxbox/config/neutrino.conf;audioplayer_audioplayerdir~cache=}" title="directory to begin"/></td>
 			</tr>
 			<tr title="parse Shoutcast Meta-Data: off/on">
 				<td>Shoutcast Meta-Daten</td>
