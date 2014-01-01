@@ -1411,9 +1411,9 @@ start-block~neutrino_form-data_direct_recording
 				</td>
 			</tr>
 			<tr>
-				<td>Max. Aufnahmezeit Sofortaufn.</td>
+				<td>Max. Sofortaufnahmezeit</td>
 				<td>
-					<select name="max_rectime" title="Max recording time">
+					<select name="max_rectime" title="Max. instant recording time">
 					<option value="1" selected="selected">1 Std.</option>
 					<option value="2">2 Std.</option>
 					<option value="3">3 Std.</option>
