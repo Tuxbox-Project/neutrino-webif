@@ -35,6 +35,8 @@ function do_init()
 		document.f.audio_avs_Control.selectedIndex = val;
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;audio_PCMOffset;0~cache=}"
 		document.f.audio_PCMOffset.value = val;
+	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;audio_initial_volume;0~cache=}"
+		document.f.audio_initial_volume.value = val;
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;audio_step;5~cache=}"
 		document.f.audio_step.value = val;
 }
@@ -52,6 +54,10 @@ function do_submit()
 	else{
 		set_hidden_values();
 		show_waitbox(true);
+		if(document.f.audio_initial_volume.value < 0)
+			document.f.audio_initial_volume.value = 0;
+		else if(document.f.audio_initial_volume.value > 100)
+			document.f.audio_initial_volume.value = 100;
 		document.f.submit();
 	}
 }
@@ -173,6 +179,11 @@ function do_submit()
 			<tr><td>Lautst&auml;rke Schrittweite</td>
 				<td>
 					<input type="text" name="audio_step" size="2" maxlength="2" title="audio step"/>
+				</td>
+			</tr>
+			<tr><td>Anfangslautst&auml;rke</td>
+				<td>
+					<input type="text" name="audio_initial_volume" size="3" maxlength="3" title="initial volume"/>
 				</td>
 			</tr>
 		</table>
