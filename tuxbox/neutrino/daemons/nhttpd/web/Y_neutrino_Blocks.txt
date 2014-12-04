@@ -715,6 +715,13 @@ start-block~neutrino_form-data_diverse
 			<tr>
 				<td colspan="2" width="35%" class="y_form_header">OSD-Extras</td>
 			</tr>
+			<tr title="shape of corners: angular/rounded">
+				<td>Eckendarstellung</td>
+				<td>
+					<input type="radio" name="rounded_corners" value="false"/>eckig&nbsp;
+					<input type="radio" name="rounded_corners" value="true"/>abgerundet
+				</td>
+			</tr>
 			<tr>
 				<td>Lautst&auml;rkeanzeige</td>
 				<td>
@@ -735,6 +742,13 @@ start-block~neutrino_form-data_diverse
 					<input type="radio" name="show_mute_icon" value="0"/>AUS&nbsp;
 					<input type="radio" name="show_mute_icon" value="1"/>AN&nbsp;
 					<input type="radio" name="show_mute_icon" value="2"/>nicht bei AC3
+				</td>
+			</tr>
+			<tr title="menu numbers as icons: off/on">
+				<td>Men&uuml;-Zahlen als Icons</td>
+				<td>
+					<input type="radio" name="menu_numbers_as_icons" value="false"/>AUS&nbsp;
+					<input type="radio" name="menu_numbers_as_icons" value="true"/>AN
 				</td>
 			</tr>
 			<tr>
@@ -914,9 +928,11 @@ function form_init()
 	obj_set_radio_value('shutdown_real_rcdelay', "{=ini-get:/var/tuxbox/config/neutrino.conf;shutdown_real_rcdelay;true~cache=}");
 	obj_set_radio_value('tuxtxt_cache', "{=ini-get:/var/tuxbox/config/neutrino.conf;tuxtxt_cache;false~cache=}");
 	
+	obj_set_radio_value('rounded_corners', "{=ini-get:/var/tuxbox/config/neutrino.conf;rounded_corners;true~cache=}");
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;volumebar_disp_pos;4=}";
 		document.f.volumebar_disp_pos.selectedIndex = val;
 	obj_set_radio_value('show_mute_icon', "{=ini-get:/var/tuxbox/config/neutrino.conf;show_mute_icon;1~cache=}");
+	obj_set_radio_value('menu_numbers_as_icons', "{=ini-get:/var/tuxbox/config/neutrino.conf;menu_numbers_as_icons;false~cache=}");
 
 	obj_set_radio_value('infobar_sat_display', "{=ini-get:/var/tuxbox/config/neutrino.conf;infobar_sat_display;true~cache=}");
 	val = "{=ini-get:/var/tuxbox/config/neutrino.conf;infobar_subchan_disp_pos;0=}";
@@ -972,9 +988,11 @@ start-block~neutrino_diverse_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;infobar_sat_display;{=infobar_sat_display=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;infobar_show;{=infobar_show=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;infobar_subchan_disp_pos;{=infobar_subchan_disp_pos=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;menu_numbers_as_icons;{=menu_numbers_as_icons=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;radiotext_enable;{=radiotext=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;repeat_blocker;{=repeat_blocker=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;repeat_genericblocker;{=repeat_genericblocker=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;rounded_corners;{=rounded_corners=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;show_mute_icon;{=show_mute_icon=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;shutdown_count;{=shutdown_count=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;shutdown_real;{=shutdown_real=}~cache=}
