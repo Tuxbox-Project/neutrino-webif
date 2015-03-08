@@ -17,7 +17,7 @@ function check_updates()
 	<div class="work_box_body">
 		<table border="0" cellpadding="2" cellspacing="4">
 		<tr>
-			<td valign="top">
+			<td valign="top" width="30%">
 				<b>Deine Version</b>
 				<p>
 				{=ini-get:Y_Version.txt;version=}<br/>
@@ -26,7 +26,7 @@ function check_updates()
 				{=ini-get:Y_Version.txt;info=}<br/>
 				</p>
 			</td>
-			<td valign="top">
+			<td valign="top" width="30%">
 				<b>Aktuelle Version</b>
 				<p>
 				{=ini-get:/tmp/version.txt;version=}<br/>

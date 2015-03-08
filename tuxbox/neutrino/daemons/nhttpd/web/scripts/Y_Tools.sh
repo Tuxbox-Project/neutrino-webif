@@ -1,8 +1,8 @@
 #!/bin/sh
 # -----------------------------------------------------------
 # Tools (yjogol)
-# $Date: 2011/09/22 19:53:53 $
-# $Revision: 1.11 $
+# $Date$
+# $Revision$
 # -----------------------------------------------------------
 . ./_Y_Globals.sh
 . ./_Y_Library.sh
@@ -563,7 +563,7 @@ case "$1" in
 	lcshot)			shift 1; do_lcshot $* ;;
 	fbshot)			shift 1; do_fbshot $* ;;
 	fbshot_clear)		do_fbshot_clear ;;
-	get_update_version)	wget -O /tmp/version.txt "http://www.yjogol.com/download/Y_Version.txt" ;;
+	get_update_version)	wget -O /tmp/version.txt "http://sourceforge.net/p/tuxbox-cvs/apps/ci/master/tree/tuxbox/neutrino/daemons/nhttpd/web/Y_Version.txt?format=raw" ;;
 	settings_backup_restore)	shift 1; do_settings_backup_restore $* ;;
 	exec_cmd)		shift 1; $* ;;
 	automount_list)		shift 1; do_automount_list $* ;;
