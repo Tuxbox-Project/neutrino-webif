@@ -62,7 +62,6 @@ function init(){
 				<li><a title="backup or restore settings" target="work" href="Y_Settings_Backup.yhtm">Backup &amp; Restore</a></li>
 				<li><a title="SyncTimer Settings" target="work" href="Y_Settings_Timer.yhtm">Timer Settings</a></li>
 			=}	
-				<!--<li><a title="change layout skin" target="work" href="Y_Settings_Skin.yhtm">Skins</a></li>-->
 			</ul>
 		</div>
 		<div class="y_menu_sec_section">Neutrino</div>

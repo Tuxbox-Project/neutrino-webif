@@ -30,6 +30,7 @@ start-block~yWeb_save_settings
 {=ini-set:/var/tuxbox/config/Y-Web.conf;wol_desc_2;{=wol_desc_2=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;wol_desc_3;{=wol_desc_3=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;fb;{=fb=}~cache=}
+{=ini-set:/var/tuxbox/config/Y-Web.conf;style;{=style=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;yweb_box_name;{=yweb_box_name=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;yweb_box_color;{=yweb_box_color=}~save=}
 end-block~yWeb_save_settings
@@ -276,6 +277,8 @@ start-block~head
 <meta http-equiv="expires" content="0" />
 <title>yWeb</title>
 <link rel="stylesheet" type="text/css" href="/Y_Main.css" />
+<link rel="stylesheet" type="text/css" href="/Y_Dist.css" />
+<link rel="stylesheet" type="text/css" href="/Y_User.css" />
 end-block~head
 
 # ------- Lay-HEAD
@@ -287,6 +290,8 @@ start-block~headCache
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>yWeb</title>
 <link rel="stylesheet" type="text/css" href="/Y_Main.css" />
+<link rel="stylesheet" type="text/css" href="/Y_Dist.css" />
+<link rel="stylesheet" type="text/css" href="/Y_User.css" />
 end-block~headCache
 
 # ------- Lay-HEAD without charset
@@ -297,6 +302,8 @@ start-block~head_no_charset
 <head>
 <title>yWeb</title>
 <link rel="stylesheet" type="text/css" href="/Y_Main.css" />
+<link rel="stylesheet" type="text/css" href="/Y_Dist.css" />
+<link rel="stylesheet" type="text/css" href="/Y_User.css" />
 end-block~head_no_charset
 
 # ------- Lay-Frame HEAD
@@ -307,6 +314,8 @@ start-block~frame_head
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="/Y_Main.css" />
+<link rel="stylesheet" type="text/css" href="/Y_Dist.css" />
+<link rel="stylesheet" type="text/css" href="/Y_User.css" />
 <title>yWeb</title>
 end-block~frame_head
 
@@ -318,6 +327,8 @@ start-block~frame_iso_head
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" type="text/css" href="/Y_Main.css" />
+<link rel="stylesheet" type="text/css" href="/Y_Dist.css" />
+<link rel="stylesheet" type="text/css" href="/Y_User.css" />
 <title>yWeb</title>
 end-block~frame_iso_head
 
@@ -342,7 +353,7 @@ end-block~frame_main
 start-block~page_frame_rest
 {=include-block:Y_Blocks.txt;head=}
 </head>
-<body style="background : white;">
+<body>
 </body>
 </html>
 end-block~page_frame_rest

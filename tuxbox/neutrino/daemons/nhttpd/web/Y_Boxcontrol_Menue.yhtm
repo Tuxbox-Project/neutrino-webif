@@ -1,4 +1,3 @@
-{=var-set:cancache=yPInstall=}
 {=include-block:Y_Blocks.txt;head=}
 <script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript" src="/Y_Baselib.js"></script>
@@ -117,7 +116,7 @@ function init(){
 			<table class="y_text_boxcontrol_table" cellspacing="0" cellpadding="0" title="volumen display">
 			<tr>
 			<td id="audiobar_left" width="100%"><img src="/images/blank.gif" height="1" width="0" alt="."/></td>
-			<td id="audiobar_right" width="0%" bgcolor="white"><img src="/images/blank.gif" height="1" width="0" alt="."/></td>
+			<td id="audiobar_right" width="0%"><img src="/images/blank.gif" height="1" width="0" alt="."/></td>
 			</tr>
 			</table>
 			<br/>
