@@ -64,6 +64,9 @@ function init(){
 	set_mute_button();
 	add_yExtensions('boxcontrol', 'secmenu_boxcontrol');
 }
+function get_data(){
+	volumen_set_audiobar(volumen_get());
+}
 //]]>
 </script>
 </head>
@@ -137,6 +140,7 @@ function init(){
 <script type="text/javascript">
 //<![CDATA[
 	init();
+	window.setInterval("get_data();",5000);
 //]]>
 </script>
 </body>
