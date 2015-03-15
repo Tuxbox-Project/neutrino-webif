@@ -35,7 +35,6 @@ function init(){
 				<li><a target="work" title="organize file mounts" href="Y_Settings_mount_liste.yhtm">Mounts</a></li>
 				<li><a target="work" title="Wake on LAN" href="Y_Settings_wol.yhtm">Wake on LAN</a></li>
 			=}
-				<li><a target="work" title="check Installation" href="Y_Tools_Check_Install.yhtm">Check Install</a></li>
 			</ul>
 		</div>
 		<div class="y_menu_sec_section">Expert</div>
@@ -45,11 +44,22 @@ function init(){
 				{=if-empty:{=var-get:management=}~
 				<li class="disabled" title="backup or flash image. (restricted by ManagementIP)">Image</li>
 				<li class="disabled" title="command shell (restricted by ManagementIP)">Command Shell</li>
-				<li class="disabled" title="yInstaller (for files, plugins, ...) (restricted by ManagementIP)">yInstaller</li>
 				~
 				<li><a target="work" title="backup or flash image" href="Y_Tools_Flash_Menue.yhtm">Image</a></li>
 				<li><a target="work" title="command shell" href="Y_Tools_Cmd.yhtm">Command Shell</a>&nbsp;
 				<a title="command shell (popup)" href="javascript:cmd_popup()"><img src="/images/popup.png"/></a></li>
+				=}
+			</ul>
+		</div>
+		<div class="y_menu_sec_section">yWeb</div>
+		<div class="y_menu_sec">
+			<ul id="secmenu_yweb">
+				<li>
+					<a target="work" href="Y_Tools_Check_Install.yhtm">Check Install</a>
+				</li>
+				{=if-empty:{=var-get:management=}~
+				<li class="disabled" title="yInstaller (for files, plugins, ...) (restricted by ManagementIP)">yInstaller</li>
+				~
 				<li><a target="work" title="yInstaller (for files, plugins, ...)" href="Y_Tools_Installer.yhtm">yInstaller</a></li>
 				=}
 			</ul>
