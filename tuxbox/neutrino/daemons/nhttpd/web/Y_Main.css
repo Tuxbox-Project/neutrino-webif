@@ -12,6 +12,9 @@ button,input,select,form,td {
 	font-family: Verdana, Geneva, Arial, 'Lucida Grande',Tahoma, Helvetica, sans-serif;
 	color:#555555;
 }
+input[type="radio"] {
+	vertical-align: baseline;
+}
 .left {
 	float: left;
 }
