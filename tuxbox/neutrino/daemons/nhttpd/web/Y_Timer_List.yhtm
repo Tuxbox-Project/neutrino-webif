@@ -18,6 +18,7 @@
 	<td>Beschreibung</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
+	<td>&nbsp;</td>
 </tr>
 {=var-set:row=
 <tr class="%ctimer">
@@ -27,6 +28,10 @@
 	<td>%s</td>
 	<td>%s</td>
 	<td>%s</td>
+	<td>
+		<a href="/fb/timer.dbox2?action=reschedule&amp;id=%d" style="visibility:%s;">
+		<img src="/images/time_down.png" alt="Timer aussetzen"/></a>
+	</td>
 	<td>
 		<a href="/fb/timer.dbox2?action=remove&amp;id=%d">
 		<img src="/images/remove.png" alt="Timer l&ouml;schen"/></a>
