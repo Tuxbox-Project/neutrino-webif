@@ -1,4 +1,4 @@
-SUBDIRS = images scripts styles
+SUBDIRS = images languages scripts styles
 
 install-data-local:
 	for f in ./*.js; do gzip $$f -c >$$f.gz; done

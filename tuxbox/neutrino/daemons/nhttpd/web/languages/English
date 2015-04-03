@@ -1,0 +1,1026 @@
+#	yWeb language file (English)
+#	language version: 1.0
+#
+#	desc: xxyy=string
+#	xx=group (00-99)
+#	yy=translation (00-99)
+
+#=========== GENERAL / GLOBAL
+0000=Your Browser does not support (I)Frames.
+0001=clear
+0002=Submit
+0003=Action
+0004=Username
+0005=Password
+0006=Language
+0007=General
+0008=Logos
+0009=refreshing ...
+0010=refresh
+0011=record
+0012=zap
+0013=lookup
+0014=submit and save values
+0015=Save values...
+0016=Settings
+0017=Default
+0020=send
+0021=save
+0022=save all changes
+0023=cancel
+0024=apply changes
+0025=reload neutrino configfile
+0026=Answer
+0027=reboot
+0028=shutdown
+0029=Status
+0030=restart
+0031=on
+0032=off
+0033=these settings are read-only
+0034=back
+0035=date
+0036=from
+0037=to
+0038=program
+0039=All channels
+0040=Others
+0041=description
+0042=Color
+0043=designation
+0044=empty
+0045=check
+0046=Help
+0047=Attention!
+0048=Directory
+0049=Filename
+0050=restricted by ManagementIP
+0051=automatically
+0052=show
+0053=hide
+0054=Error
+0055=This page could be used for management proposes only
+0056=Inquiry is worked on
+0057=Please wait ...
+0058=PIN must be 4 digits in length
+0059=Yes
+0060=No
+0061=Enabled
+0062=Disabled
+0063=Upload
+0064=Download
+0065=Please make a selection
+0066=upload selected file
+0067=Recording Directory
+0068=Wake up this MAC-Address
+0069=wake up
+0070=Note
+
+#========= Main Menue
+0100=Boxcontrol
+0101=Boxcontrol &amp; Bouquets
+0102=Live
+0103=LiveView, Timer Sync &amp; Settings
+0104=Tools
+0105=Mounts, WOL, Expert Tools
+0106=Settings
+0107=Settings of STB, Web, Plugins ...
+0108=Extensions
+0109=User Extensions ...
+0110=Info
+0111=Information about yWeb, Updates
+0112=LiveTV
+0113=LiveTV popup
+0114=Remote &amp; OSD
+0115=Stream to VLC Client
+0116=Version
+
+#========= Boxcontrol Menue
+0200=Switch channels
+0201=Bouquets
+0202=control box functions (reboot, remote control, SPTS, ...)
+0203=Control
+0204=send Messages to box
+0205=Messages
+0206=Web-based Remote Control
+0207=Remote
+0209=LCD Screenshot
+0210=do lcd screenshots
+0211=lcshot not installed at
+0212=OSD Screenshot
+0213=do screenshots from OSD
+0214=fbshot not installed at
+0215=decrease volumen
+0216=increase volumen
+0217=mute volumen
+0218=switch to TV
+0219=switch to Radio
+0220=Webinterface der SlaveBox
+0221=volumen display
+0222=dboxshot not installed at
+0223=Switch to
+
+#======== Boxcontrol - snapshot - fbshot
+0300=snapshot
+0301=dboxshot
+0302=delete snapshots
+0303=take snapshot
+0304=Options
+0305=Display color
+0306=Zoom modus
+0307=File output
+0308=compressed
+0309=Color output
+0310=Gray scale image
+0311=Output
+
+#========= Boxcontrol
+0400=FreeMem
+0401=lock
+0402=unlock
+0403=Standby mode
+0404=Recording mode
+0405=SPTS
+0406=dbox
+0407=Remote Control
+0408=Playback
+0409=EPG (Sectionsd)
+0410=Live lock
+0411=Really restart the Box?
+0412=reboot
+0413=Really shutdown the Box?
+0414=Shutdown
+0415=restart
+0416=unlock LCD
+0417=Optical output
+0418=Esound Soundserver
+
+#========= Boxcontrol - Message
+0500=enter message to send to TV screen
+0501=Message on screen
+0502=Message as popup
+0503=send message
+
+#====== EXtension
+0600=Installer/Updater
+0601=Extensions uninstaller
+0602=Search for Extensions ...
+0603=installed extensions
+0604=Type
+0605=Extension
+0606=Tag
+0607=Version
+0608=Size/k
+0609=Uninstall
+0610=Info
+0611=Free
+0612=New extension settings (preview)
+0613=Update Preview List
+0614=Your
+0615=Current
+0616=update/install
+0617=Site
+0618=Info
+0619=Log
+0620=extention list
+0621=Settings saved. Refreshing Menue now.
+0622=Extensions Settings saved
+0623=minimal yWeb version
+0624=Administration
+0625=Normal
+0626=Management
+0627=Uninstaller
+0628=Settings
+0629=Extentions Settings
+0630=Extentions updater/installer
+
+#====== Bouquet
+0700=Bouquet
+0701=All bouquets must be saved!
+0702=Bouquet-Editor
+0703=add bouquet
+0704=Name of bouquets
+0705=rename bouquet
+0706=move up
+0707=move down
+0708=remove
+0709=add
+0710=edit
+0711=delete
+0712=really delete?
+0713=rename
+0714=Bouquets saved
+0715=No Bouquet-Name entered
+
+#========EPG
+0800=getting EPG ...
+0801=EPG Plus
+0802=select bouquet - channels will be updated
+0803=move to program for more details
+0804=get or refresh EPG
+0805=past hours
+0806=next hours
+0807=Set timer for recording. Done.
+0808=Set switch to channel. Done.
+
+#========EPG Streaminfo
+0900=Streaminfo
+0901=Resolution
+0902=Aspect Ratio
+0903=Frames per second
+0904=Audio type
+0905=Frequency
+0906=Original Network ID
+0907=Service ID
+0908=Transponder Stream ID
+0909=Video PID
+0910=Program Map Table PID
+0911=Program Clock Reference PID
+0912=Audio PID
+0913=Teletext PID
+
+#======== Settings
+1000=reload Neutrino
+1001=reboot required
+1002=Synchronization with Neutrino
+1003=After changing settings via yWeb
+1004=Choose on TV "Main Menu->Service->Soft restart", to accept the changes within neutrino or...
+1005=After changing settings within Neutrino
+1006=Choose on TV "Main Menu->Settings->Save settings now", to accept these changes and reload this page.
+
+#======= Settings General & Menue
+1100=Webserver
+1101=EPG
+1102=Timer Settings
+1103=Zapit
+1104=Backup &amp; Restore
+1105=Bouquet-Editor
+1106=Video/Audio
+1107=Parental lock
+1108=Recording
+1109=Direct Recording
+1110=Audioplayer
+1111=Esound Soundserver
+1112=Movieplayer
+1113=Picture Viewer
+1114=LC-Display
+1115=Key Layout
+1116=Boot Options
+1117=Extended
+1118=Personalization
+1119=Plugins
+1120=Others
+1121=Boot Logo
+1122=settings for yWeb itselfs
+1123=settings for Web Server daemon
+1124=download or upload ucodes
+1125=download or upload Bouquetlist, Channellist, ...
+1126=backup or upload boot logos
+1127=backup or restore settings
+1128=SyncTimer Settings
+1129=configure VNC-Plugin
+1130=Video / Audio settings
+1131=Parental lock settings
+1132=Recording settings
+1133=Direct Recording
+1134=Audioplayer settings
+1135=Esound Soundserver settings
+1136=Movieplayer settings
+1137=Pictureviewer settings
+1138=LCD settings
+1139=Button settings
+1140=boot settings
+1141=rest of settings
+1142=Personalize settings
+
+#======== Neutrino Settings - Recording
+1200=Recoring destination
+1201=Recording device
+1202=record mode
+1203=Server
+1204=Video recorder
+1205=File
+1206=Recording Server IP
+1207=Aufnahmeserver IP (xxx.xxx.xxx.xxx)
+1208=Recording Server Port
+1209=Recording Server WOL
+1210=MAC Adress
+1211=MAC (aa:bb:cc:dd:ee:ff)
+1212=Recording behavior
+1213=Stop Playback
+1214=sectionsd: off/on/restart
+1215=EPG (Sectionsd)
+1216=dont stop
+1217=stop
+1218=restart
+1219=Zap on announcement
+1220=Prevent switching Scart
+1221=Record in SPTS-Mode
+1222=Timer settings
+1223=Record start delay (sec)
+1224=Record stop delay (sec)
+1225=Zap start delay (sec)
+1226=Audio channels
+1227=Record default audio channel
+1228=Record alternate audio channel
+1229=Record ac3 audio channel
+1230=Save in channeldir
+1231=Recording time in hours
+
+#========Neutrino Settings - Movieplayer
+1300=Sources
+1301=Streamingserver IP
+1302=Server IP (xxx.xxx.xxx.xxx)
+1303=Streamingserver Port
+1304=Streamingserver
+1305=DVD Device
+1306=DVD device at Server
+1307=Use VLC 1.x
+1308=Directory (VLC)
+1309=Directory (VLC) at Server
+1310=Transcoding
+1311=Data rate Video
+1312=Transcode
+1313=MPEG Video Codec
+1314=Resolution
+1315=Data rate Audio
+1316=Transcode Audio (dvd/vcd/mpg)
+1317=Force AC3 using avi
+1318=Player
+1319=Start directory
+1320=Only Movieplayer 1
+1321=Used Buffer (WabberQueue)
+1322=Number of buffer segs
+1323=TV Picture in Browser
+1324=EPG (Sectionsd)
+1325=sectionsd: on/off/restart
+1326=don't stop
+1327=stop
+1328=restart
+
+#========Neutrino Settings - Parental
+1400=Prompt for PIN
+1401=Never
+1402=Bouquet
+1403=Preset
+1404=lock type
+1405=Minimum Age
+1406=PIN
+
+#========Settings NHTTP
+1500=Webserver
+1501=Authentication
+1502=Client with no authentication check. Enter IP.
+1503=Client without Authentication
+1504=active after boot
+1505=Port
+1506=Threading
+1507=Alternate Web-Folder
+1508=Mounted directory
+1509=Root of hosted Web. Enter mount directory.
+1510=Allowed File Extensions / MIME
+1511=Allow all File Extensions
+1512=Enter URL or directory of Logos
+1513=URL or directory of Logos
+1514=Server
+1515=(e.g. JtG Server, separate with commas)
+1516=IPs with No keep-alive
+1517=Cache
+1518=Cache info
+1519=clear cache
+1520=Server Configuration
+1521=Password must have 4 letters at minimum
+1522=Port is required
+
+#=========Settings yWeb
+1600=enter IP (xxx.xxx.xxx.xxx)
+1601=enter MAC Adress (xx:xx:xx:xx:xx:xx)
+1602=Description
+1603=enter description
+1604=Management IPs
+1605=Wake on Lan
+1606=Box Name in Top-Menue.
+1607=Box Tag
+1608=Box Name color in Top-Menue. e.g. enter 2188e0 without #
+1609=Color
+1610=Start page
+1611=Remote
+1612=IP-Address
+1613=choose remote control
+
+#======== Settings Picture viewer
+1700=Pictureviewer
+1701=Scaling
+1702=none
+1703=simple
+1704=complex
+1705=Slideshow view time (min.)
+1706=Start-Directory
+1707=Decoding-Server IP
+1708=Decoding-Server Port
+
+#======== Settings Audioplayer
+1800=Audioplayer
+1801=Actor, Title
+1802=Title, Actor
+1803=Display
+1804=Select actual Track
+1805=Search by name
+1806=Activate repeat mode
+1807=Show playlists
+1808=Screen saver (min, 0=off)
+1809=High decoding priority
+1810=Start directory
+1811=Shoutcast Meta-Data
+
+#======== Settings Timer
+1900=Timer Settings
+1901=Username
+1902=Password
+1903=(&quot;&amp;&quot; will be converted to &quot;;&quot; on save)
+1904=Personal RSS TV-Planer URL
+1905=your klack security code to get your data without login
+1906=Security Code
+1907=Channel name replace list
+
+#========Settings Backup/Restore
+2000=Backup
+2001=Backup your settings
+2002=Restore
+2003=Upload and restore your settings. Your STB will reboot.
+2004=Backup &amp; Restore is only useful for the same image with the same level of development. 
+2005=Download of backup
+2006=Create backup
+2007=tar-File
+
+#============ Tools Info
+2100=dbox
+2101=Kernel Messages
+2102=Processes
+2103=Memory
+2104=Info
+2105=Version
+2106=Settings
+2107=dbox Time
+2108=CPU info
+2109=Memory info
+2110=Partitions
+2111=mtd
+2112=Statistics
+
+#============ Tools yInstaller
+2200=No file given!
+2201=Space total
+2202=used
+2203=free
+2204=percentage used
+2205=Can not determine free space. /var is not a partition. JFFS2 or YADD?
+2206=yInstaller
+2207=tar-File
+2208=upload and install
+
+#============ Tools
+2300=organize file automounts
+2301=AutoMounts
+2302=organize file mounts
+2303=Mounts
+2304=Wake on LAN
+2305=Check Install
+2306=Expert
+2307=Box Information
+2308=backup or flash image
+2309=Image
+2310=Command Shell
+2311=not installed
+2312=automatic output scrolling (only IE)
+2313=append output (only IE)
+2314=Path
+2315=actual path
+2316=Command
+2317=enter command to execute
+2318=execute shell command
+2319=clear output screen
+2320=Boot Logo
+2321=organize files and directorys
+2322=File manager
+2324=yInstaller (for files, plugins, ...)
+2325=collecting information
+
+#=========== LIVE Menue
+2400=Live/Timer
+2401=Live
+2402=LiveTV
+2403=LiveTV (popup)
+2404=TV
+2405=LiveRadio
+2406=LiveRadio (popup)
+2407=Radio
+2408=DoubleView
+2409=use LiveView with 2 boxes
+2410=Timer
+2411=organize timer
+2412=EPG
+2413=view EPG
+2414=EPG+ (popup)
+2415=EPG Plus
+2416=Timer Sync
+2417=timer synchronisation with web tv-planer
+
+#=========== LIVE tv/radio
+2500=Getting <br/>Streaming-Informationen.
+2501=getting bouquets ...
+2502=getting channels ...
+2503=select resolution
+2504=change channel
+2505=view epg for selected channel
+2506=reload bouquets and channels
+2507=getting subchannels ...
+2508=play or pause streaming
+2509=stop streaming
+2510=mute / unmute volume
+2511=lower volume
+2512=higher volume
+2513=switch to fullscreen-mode - or use double-click
+2514=lock / unlock TV (record mode, rc, lcd)
+2515=UDP Streaming on/off
+2516=LiveView settings
+2517=create snapshot picture
+2518=record mode
+2519=transcode mode
+2520=... build vlc control ...
+2521=select bouquet - channels will be updated
+2522=select channel - use go to zap
+
+#=========== LIVE Record
+2600=Record Mode
+2601=Filename
+2602=Display on
+2603=Transcoding on
+2604=Record
+2605=Stop Record
+2606=Record Transcode
+2607=Profile
+2608=Video
+2609=Width
+2610=Height
+2611=Codec
+2612=Bitrate
+2613=Scale
+2614=Audio
+2615=Channels
+2616=Transcode-Broadcast
+2617=Access
+2618=Type
+2619=IP:Port
+2620=Display on while transcoding
+2621=use transcoding
+2622=record stream to file
+2623=Stop transcode
+2624=Transcode
+2625=transcode stream
+
+#=========== LIVE Settings
+2700=VLC Settings (IE &amp; Mozilla >= 0.8.6.1)
+2701=Deinterlace
+2702=http caching
+2703=UDP as default
+2704=Slave Box IP (2. dbox)
+2705=enter IP (xxx.xxx.xxx.xxx) of slave-box
+2706=VLC Recording Directory
+2707=Refresh LiveView
+
+#=========== LIVE Timer Edit
+2800=Timer
+2801=Timer type
+2802=Times
+2803=Alarm time
+2804=Time
+2805=Stop time
+2806=Repeat
+2807=Repeat (0 = unlimited)
+2808=(Mo-Su, X=Timer)
+2809=Weekdays
+2810=Values
+2811=Channel
+2812=APIDs
+2813=Default
+2814=Standard
+2815=Alternate
+2816=AC3
+2817=Standby
+2818=Message
+2819=Plugin
+2820=Recording directory
+2821=Description
+2822=new Timer
+
+#=========== LIVE Timer Sync
+2900=Get timer
+2901=Timer Sync
+2902=Timer Source
+2903=Recording directory
+2904=Settings
+2905=Debugging
+2906=get selected
+2907=clear all
+2908=Timer Preview List
+2909=Start time
+2910=End time
+2911=Channel
+2912=Program
+2913=Source
+2914=set timer
+2915=clear log
+2916=Log
+2917=Action
+2918=Status
+
+#========== INFO
+3000=Help
+3001=About
+3002=Check for Updates
+3003=Your Version
+3004=Actual Version
+3005=Download
+
+#========= Live doubleView
+3100=Live - DoubleView
+3101=No IP entered for Slave Box!
+3102=Setting under Settings->yWeb.
+
+#========= LiveView Popup
+3200=LiveView PopUp
+3201=Under Live-View do not zap channels
+3202=direct by the web or by the box' RC.
+3203=SPTS for TV respectivly PES for Radio is activated.
+3204=unlock
+
+#========= Automounts
+3300=Mountname
+3301=Type
+3302=IP
+3303=Directory
+3304=Options
+3305=Username
+3306=Password
+3307=remote directory
+3308=mount options
+3309=Really delete mount?
+3310=deleted!
+3311=modify
+3312=add
+3313=delete
+3314=edit mount settings
+3315=add new mount
+3316=delete mount
+
+#========= Key settings
+3400=Mode change
+3401=TV-/Radio mode
+3402=no key
+3403=Channellist
+3404=OK-Button for...
+3405=Bouquet-Channels
+3406=Bouquetlist
+3407=Menu
+3408=page up
+3409=page down
+3410=close channellist
+3411=change sort order
+3412=EPG keyword search
+3413=add record timer
+3414=add zapto timer
+3415=refresh EPG
+3416=Quickzap
+3417=channel up
+3418=channel down
+3419=volume up
+3420=volume down
+3421=next bouquet
+3422=bouquet back
+3423=next subchannel
+3424=subchannel back
+3425=switch subchannel
+3426=Zapping History Bouquet
+3427=last channel
+3428=Load default settings
+
+#========= LCD settings
+3500=LCD Settings
+3501=LCD
+3502=Power
+3503=Invert
+3504=Dim Timeout
+3505=Brightness after Dim Timeout
+3506=Contrast / Brightness
+3507=Contrast
+3508=normal Brightness
+3509=Standby Brightness
+3510=Load default settings
+3511=Display mode
+3512=EPG-Display
+3513=default (Channel)
+3514=Title
+3515=Channel / Title
+3516=Channel / Sep.-Line / Title
+3517=Channel (short) / Title
+3518=Channel (short) / Sep.-Line / Title
+3519=EPG align
+3520=left
+3521=center
+3522=Status Line
+3523=Playtime
+3524=Volume
+3525=Volume / Playtime
+3526=Volume / Playtime / Audio
+3527=select visualisation of LCD
+
+#========= Mount
+3600=Mounts
+3601=Type
+3602=IP
+3603=Directory
+3604=Local Directory
+3605=MAC
+3606=Options 1
+3607=Options 2
+3608=Automount
+3609=Username
+3610=Password
+3611=remote directory. For CIFS do not use a leading slash.
+3612=local directory to by mounted
+3613=modify
+3614=unmount list
+3615=edit mount settings
+3616=mount selected directory
+3617=view unmount list
+3618=unmount
+3619=mount list
+3620=unmount selected directory
+3621=view mount list
+3622=mount
+
+#========= Personalize
+3700=Access Options
+3701=PIN Code
+3702=Main menu
+3703=TV-Modus
+3704=Radio-Modus
+3705=Scart-Input
+3706=Games
+3707=Audioplayer
+3708=Internetradio
+3709=Esound Soundserver
+3710=Movieplayer
+3711=Pictureviewer
+3712=UPNP Browser
+3713=Scripts
+3714=Settings requires PIN
+3715=Service requires PIN
+3716=SleepTimer
+3717=Reboot
+3718=Power off
+3719=Settings
+3720=Video
+3721=Audio
+3722=Parental lock
+3723=Network
+3724=Recording
+3725=OSD
+3726=LC-Display
+3727=Key Layout
+3728=IDE-Interace HDD/MMC/SD
+3729=Multimedia
+3730=Boot options
+3731=Extended settings
+3732=Personalize requires PIN
+3733=Service
+3734=Bouquet-Management
+3735=Service scan
+3736=Reload Channellist
+3737=Reload Plugins
+3738=Restart Neutrino
+3739=Restart EPG
+3740=Check Ucodes
+3741=Channel/EPG Statistic
+3742=Image Informationen
+3743=Software-Update requires PIN
+3744=Color Keys
+3745=Features (blue key)
+3746=EPG/Info (red key)
+3747=not visible
+3748=visible
+3749=Pin
+
+#========= Boot Logo
+3800=Bootlogo / LCD
+3801=The boot logo must already exist in the target format!
+3802=Boot Logo
+3803=Boot LCD Logo
+
+#========= Video/Audio
+3900=Video &amp; Audio Settings
+3901=Video
+3902=Video Signal
+3903=Sreen Size
+3904=select videoformat
+3905=Background-image-format
+3906=select background-image-format
+3907=RGB-Sync
+3908=set rgb-sync
+3909=VCR-Output Signal
+3910=select vcr_output
+3911=Scart-Input automatic
+3912=Audio
+3913=Analog mode
+3914=select audio analog mode
+3915=Stereo
+3916=Mono left
+3917=Mono right
+3918=in Audio menu selectable
+3919=Audio selectable with left/right
+3920=Dolby Digital default
+3921=Volume Control
+3922=select volume control
+3923=Volume decrease PCM
+3924=Volume Step Size
+3925=Initial Volume
+
+#========= direct recording
+4000=Record Settings
+4001=Ringbuffer Size
+4002=max. ringbuffers
+4003=Write Synchronous (O_SYNC)
+4004=Write Synchronous (fdatasync)
+4005=Record Video Text
+4006=Record Subtitle
+4007=Insert PSI in TS
+4008=Choose Directory
+4009=Max. instant recording time
+4010=choose max. instant recording time
+4011=hour(s)
+4012=Filename Template
+4013=Max. File Size
+4014=Directory Permissions
+4015=filename template %C=channel %T=title %I=info %d=date %t=time
+4016=Directory Permissions (UNIX octals)
+
+#========= driver & boot
+4100=Driver &amp; Boot Options
+4101=Use SPTS Mode
+4102=Show Boot Info
+4103=Use HW-Sections
+4104=Enable AVIA-Watchdog
+4105=Enable eNX-Watchdog
+4106=Philips/Sagem RC Workaround
+4107=Use SPTS mode fix AVIA500
+4108=Enable Realtime Clock (RTC)
+4109=Use PMT-Update
+4110=EXPERT! Boot-Console
+4111=select mode of expert boot-console
+4112=null
+4113=serial
+4114=framebuffer
+4115=FullDuplex Mode
+4116=Diverses
+4117=Show Boot Menu
+
+#========= Extended
+4200=Various Settings
+4201=General
+4202=Start Mode
+4203=Restore Last Mode
+4204=TV-Mode
+4205=Radio-Mode
+4206=Scart-Mode
+4207=Audioplayer
+4208=Internetradio
+4209=Esound Soundserver
+4210=Standby
+4211=Standby Mode
+4212=Standby Power Save (exp.)
+4213=Shutdown after
+4214=Delayed Shutdown
+4215=Standby OFF with
+4216=Power, OK
+4217=Power, Home
+4218=Power, Home, OK
+4219=Sleeptimer default
+4220=shutdown after x min
+4221=min.
+4222=Tuxtext Cache
+4223=Shape of Corners
+4224=Volumebar position
+4225=select volumebar position
+4226=top right
+4227=top left
+4228=bottum left
+4229=bottum right
+4230=bottum center
+4231=higher center
+4232=off
+4233=Mute-Icon on volume
+4234=not at AC3
+4235=Menu numbers as icons
+4236=Infobar
+4237=Satellite display
+4238=Subchannel display
+4239=Subchannel display position
+4240=in Infobar
+4241=Virtual Zap
+4242=EPG change notification
+4243=Off
+4244=Popup
+4245=Show Infobar
+4246=Radiotext
+4247=Channellist
+4248=Program text align
+4249=Extended Channel list
+4250=EPG-Settings
+4251=EPG-Cache (days)
+4252=EPG long description (hours)
+4253=EPG remove after (hours)
+4254=Max. Events
+4255=EPG Directory
+4256=Save last channel
+4257=TV start channel
+4258=Radio start channel
+4259=Save Audio-PIDs
+4260=Bouquet Other
+4261=Remote Control
+4262=Generic Delay
+4263=Repeat Delay
+4264=Filebrowser
+4265=File system
+4266=Show File Permissions
+4267=Absolute start directory
+4268=left
+4269=right
+4270=angular
+4271=rounded
+4272=before save do pzapit -kill
+
+#========= VNC
+4300=VNC
+4301=Server
+4302=enter IP (xxx.xxx.xxx.xxx)
+4303=Port
+4304=Password
+4305=Scaling
+4306=enter scale for screen
+
+#========= Image
+4400=Image is being created ...
+4401=Partition
+4402=Generate Image for download
+4403=Download
+4404=go to Upload Dialog
+4405=Flash ...
+4406=You should reboot the box before flashing.
+4407=Download your image
+4408=The image was created.
+4409=Download ready. Delete image in /tmp.
+4410=Image will be uploaded...
+4411=Flashing
+4412=Image will be flashed. Do not interrupt!
+4413=Erase Flash
+4414=Write Flash
+4415=Verifying
+4416=Flash Image
+4417=Partition
+4418=Switch on Demo-Modus. Flashing will be simulated.
+4419=Demo mode
+4420=upload and flash
+4421=fcp is not installed!
+
+#========= Esound
+4500=Esound Port
+4501=default
+
+#========= Remote control
+9900=Standby / Shutdown
+9901=Mute
+9902=Num-Button 1
+9903=Num-Button 2
+9904=Num-Button 3
+9905=Num-Button 4
+9906=Num-Button 5
+9907=Num-Button 6
+9908=Num-Button 7
+9909=Num-Button 8
+9910=Num-Button 9
+9911=Num-Button 0
+9912=increase Volume
+9913=decrease Volume
+9914=Help
+9915=Red
+9916=Green
+9917=Yellow
+9918=Blue
+9919=OK
+9920=Up
+9921=Down
+9922=Left
+9923=Right
+9924=Menu
+9925=Exit / Back
