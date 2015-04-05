@@ -151,7 +151,7 @@ function do_set_updates2(){
 	var extfile=ext.build_extension_file();
 	document.f.extentions.value=extfile;
 	show_waitbox(false);
-	alert("update fertig. Menue neuladen.");
+	alert("Update finished. Reload Menue");
 	do_submit();
 }
 var avaiable=0;
@@ -164,11 +164,11 @@ function show_free(){
 	avaiable = RegExp.$4;
 	var percentage = RegExp.$5;
 	if (total != "") {
-		str = "Platz in /var Gesamt: " + total + "k Benutzt: " + used + "k Frei: " + avaiable + "k Anteil benutzt: " + percentage;
+		str = "Space in /var Total: " + total + "kB; Used: " + used + "kB; Free: " + avaiable + "kB; Anteil benutzt: " + percentage;
 		$('avaiable').update(avaiable);
 	}
 	else 
-		str = "Kann freien Speicherplatz nicht ermitteln /var ist keine Partition! JFFS2 oder YADD?";
+		str = "Can not determine free space. /var is not a partition! JFFS2 or YADD?";
 	$("free").update(str);
 }
 /*uninstall*/
@@ -214,7 +214,7 @@ function do_uninstall2(tag){
 	var extfile=ext.build_extension_file();
 	document.f.extentions.value=extfile;
 	show_waitbox(false);
-	alert("update fertig. Menue neuladen.");
+	alert("Update finished. Menue reload.");
 	do_submit();
 }
 function uninstall_build_list(){

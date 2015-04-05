@@ -50,7 +50,7 @@ skin_set()
 	fi
 	config_set_value_direct $y_config_Y_Web 'skin' $1
 
-	msg="Skin geaendert - Jetzt Browser Refresh/Aktualisierung ausfuehren"
+	msg="Skin changed - Please refresh browser now"
 	y_format_message_html
 }
 
@@ -65,6 +65,6 @@ case "$1" in
 	skin_get)
 		skin_get ;;
 	*)
-		echo "Parameter falsch: $*" ;;
+		echo "Parameter wrong: $*" ;;
 esac
 

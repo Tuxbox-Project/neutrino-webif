@@ -109,7 +109,7 @@ case "$1" in
 		;;
 
 	*)
-		echo "Parameter falsch: $*" ;;
+		echo "Parameter wrong: $*" ;;
 esac
 
 

@@ -69,10 +69,10 @@ image_upload()
 {
 	if [ -s "$y_upload_file" ]
 	then
-		msg="<b>Image upload ok</b><br>"
+		msg="<b>Image upload ok</b><br />"
 		msg="$msg <script language='JavaScript' type='text/javascript'>window.setTimeout('parent.do_image_upload_ready()',1000)</script>"
 	else
-		msg="Upload-Problem.<br>Bitte nochmal hochladen."
+		msg="Upload-Problem.<br />Try again, please."
 		msg="$msg <script language='JavaScript' type='text/javascript'>window.setTimeout('parent.do_image_upload_ready_error()',1000)</script>"
 	fi
 	y_format_message_html
@@ -150,7 +150,7 @@ flash_mtd()
 			done
 		fi
 #		msg_nmsg "flashen%20fertig.%20Reboot..."
-		msg="geflasht ... bitte jetzt box neu starten ..."
+		msg="flashed ... please reboot your box ..."
 		msg="$msg <script language='JavaScript' type='text/javascript'>window.setTimeout('parent.do_image_flash_ready()',1000)</script>"
 		y_format_message_html
 
@@ -159,7 +159,7 @@ flash_mtd()
 			busybox reboot -d10
 		fi
 	else
-		msg="Upload-Problem.<br>Bitte nochmal hochladen."
+		msg="Upload-Problem.<br />Try again, please."
 		msg="$msg <script language='JavaScript' type='text/javascript'>window.setTimeout('parent.do_image_flash_ready()',1000)</script>"
 		y_format_message_html
 	fi
@@ -173,34 +173,34 @@ upload_copy()
 	then
 		cp "$y_upload_file" "$1"
 	else
-		msg="Upload-Problem.<br>Bitte nochmal hochladen."
+		msg="Upload-Problem.<br />Try again, please."
 	fi
 }
 # -----------------------------------------------------------
 bootlogo_upload()
 {
-	msg="Boot-Logo neu gesetzt"
+	msg="Set new Boot-Logo"
 	upload_copy "$y_boot_logo"
 	y_format_message_html
 }
 # -----------------------------------------------------------
 bootlogo_lcd_upload()
 {
-	msg="Boot-Logo-LCD neu gesetzt"
+	msg="Set new Boot-Logo-LCD"
 	upload_copy "$y_boot_logo_lcd"
 	y_format_message_html
 }
 # -----------------------------------------------------------
 ucodes_upload()
 {
-	msg="$1 hochgeladen<br><a href='/Y_Settings_ucodes.htm'><u>naechste Datei</u></a>"
+	msg="$1 uploaded<br /><a href='/Y_Settings_ucodes.htm'><u>next file</u></a>"
 	upload_copy "$y_path_ucodes/$1"
 	y_format_message_html
 }
 # -----------------------------------------------------------
 zapit_upload()
 {
-	msg="$1 hochgeladen<br><a href='/Y_Settings_zapit.htm'><u>naechste Datei</u></a>"
+	msg="$1 uploaded<br /><a href='/Y_Settings_zapit.htm'><u>next file</u></a>"
 	upload_copy "$y_path_zapit/$1"
 	y_format_message_html
 }
@@ -267,7 +267,7 @@ do_mount()
 	echo "$res"
 	echo "view mounts"
 	m=`mount`
-	msg="mount cmd:$cmd<br><br>res=$res<br>view Mounts;<br>$m"
+	msg="mount cmd:$cmd<br /><br />res=$res<br />view Mounts;<br />$m"
 	y_format_message_html
 }
 # -----------------------------------------------------------
@@ -386,7 +386,7 @@ do_installer()
 				echo '<link rel="stylesheet" type="text/css" href="/Y_User.css">'
 				echo "<meta http-equiv='refresh' content='0; $y_out_html'>"
 				echo '</head>'
-				echo "<body><a href='$y_out_html'>If automatic forwarding does not go.</a>"
+				echo "<body><a href='$y_out_html'>If automatic forwarding does not work.</a>"
 				echo '</body></html>'
 #				cat $y_out_html
 			else
@@ -404,7 +404,7 @@ do_installer()
 			y_format_message_html
 		fi
 	else
-		msg="Upload-Problem.<br>Try again, please."
+		msg="Upload-Problem.<br />Try again, please."
 		y_format_message_html
 	fi
 }
@@ -448,7 +448,7 @@ do_ext_uninstaller()
 proc()
 {
 	msg=`cat /proc/$1`
-	msg="<b>proc: $1</b><br><br>$msg"
+	msg="<b>proc: $1</b><br /><br />$msg"
 	y_format_message_html
 }
 # -----------------------------------------------------------
@@ -461,7 +461,7 @@ wol()
 	else
 		msg=`/bin/ether-wake $1`
 	fi
-	msg="<b>Wake on LAN $1</b><br><br>$msg"
+	msg="<b>Wake on LAN $1</b><br /><br />$msg"
 	y_format_message_html
 }
 # -----------------------------------------------------------
@@ -567,7 +567,7 @@ case "$1" in
 	zapit_upload)		zapit_upload $2 ;;
 	kernel-stack)		msg=`dmesg`; y_format_message_html ;;
 	ps)			msg=`ps aux`; y_format_message_html ;;
-	free)			f=`free`; p=`df -h`; msg="RAM Speichernutzung\n-------------------\n$f\n\nPartitionen\n-------------------\n$p"
+	free)			f=`free`; p=`df -h`; msg="RAM memory usage\n-------------------\n$f\n\npartitions\n-------------------\n$p"
 				y_format_message_html ;;
 	yreboot)		yreboot; echo "Reboot..." ;;
 	check_yWeb_conf) 	check_Y_Web_conf ;;
@@ -655,7 +655,7 @@ case "$1" in
 		df /tmp|grep /tmp
 		;;
 	*)
-		echo "[Y_Tools.sh] Parameter falsch: $*" ;;
+		echo "[Y_Tools.sh] Parameter wrong: $*" ;;
 esac
 
 
