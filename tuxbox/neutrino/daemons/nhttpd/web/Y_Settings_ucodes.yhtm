@@ -13,7 +13,7 @@ function do_submit()
 	} else if (document.f.R1[3].checked == true) {
 		_url="/control/exec?Y_Tools&ucodes_upload&ucode.bin";
 	} else {
-	alert("Bitte eine Auswahl treffen");
+	alert("{=L:0065=}");
 	}
 	document.f.action=_url;
 	document.f.submit();
@@ -27,7 +27,7 @@ function do_submit()
 	{=var-set:help_url=Help-Settings-ucodes=}{=var-set:menu=Ucodes=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<table border="0" cellpadding="5" width="100%">
-	<tr><td width="50%" class="y_form_header">Upload</td><td class="y_form_header">Download</td></tr>
+	<tr><td width="50%" class="y_form_header">{=L:0063=}</td><td class="y_form_header">{=L:0064=}</td></tr>
 	<tr>
 		<td>
 			<form name="f" method="post" enctype="multipart/form-data" action="/control/exec?Y_Tools&amp;test_upload">
@@ -38,7 +38,7 @@ function do_submit()
 				<input type="radio" name="R1" value="ucode.bin"/>ucode.bin<br/>
 			
 				<input type="file" name="F1" size="20"/><br/>
-				<button type="button" id="su" ytype="save" name="B1" title="upload selected file" onclick="do_submit()">Absenden</button>
+				<button type="button" id="su" ytype="save" name="B1" title="{=L:0066=}" onclick="do_submit()">{=L:0020=}</button>
 				</p>
 			</form>
 		</td>

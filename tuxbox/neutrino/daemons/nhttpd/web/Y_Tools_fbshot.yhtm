@@ -39,18 +39,18 @@ function do_clearshot2(){
 </script>
 </head>
 <body>
-{=var-set:wait_text=Schnappschuss wird erstellt (take snapshot)=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0303=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-BoxControl-OSD_Screenshot=}{=var-set:menu=OSD Screenshot=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-BoxControl-OSD_Screenshot=}{=var-set:menu={=L:0212=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-		<button name="snapshot" ytype="shot" onclick="do_snapshot()">Snapshot</button>
+		<button name="snapshot" ytype="shot" onclick="do_snapshot()">{=L:0300=}</button>
 		{=var-set:dboxshot={=if-file-exists:/bin/dboxshot~true~{=if-file-exists:/var/bin/dboxshot~true~false=}=}=}
 		{=if-equal:{=var-get:dboxshot=}~true~
-		<button name="dboxshot" ytype="shot" onclick="do_dboxshot()">dboxshot</button>
+		<button name="dboxshot" ytype="shot" onclick="do_dboxshot()">{=L:0301=}</button>
 		=}
-		<button name="clearshot" ytype="clearshot" onclick="do_clearshot()">Delete Screenshots</button>
-		&nbsp;Filename:<input type="text" value="a" id="file" size="16"/>
+		<button name="clearshot" ytype="clearshot" onclick="do_clearshot()">{=L:0302=}</button>
+		&nbsp;{=L:0049=}<input type="text" value="a" id="file" size="16" />.png
 		<br/>
 		<img id="shot" src="" style="visibility:hidden;"/>
 	</div>

@@ -1,3 +1,4 @@
+{=var-set:cancache=yPInstall=}
 {=include-block:Y_Blocks.txt;head=}
 <script type="text/javascript" src="/prototype.js"></script>
 <script type="text/javascript" src="/Y_Baselib.js"></script>
@@ -71,39 +72,39 @@ function get_data(){
 </script>
 </head>
 {=var-set:lcshot={=if-file-exists:/bin/lcshot~true~{=if-file-exists:/var/bin/lcshot~true~false=}=}=}
-{=var-set:fbshot={=if-file-exists:/bin/fbshot~true~{=if-file-exists:/var/bin/fbshot~true~{=if-file-exists:/bin/dboxshot~true~{=if-file-exists:/var/bin/dboxshot~true~false=}=}=}=}=}
+{=var-set:fbshot={=if-file-exists:/bin/fbshot~true~{=if-file-exists:/var/bin/fbshot~true~false=}=}=}
 {=var-set:dboxshot={=if-file-exists:/bin/dboxshot~true~{=if-file-exists:/var/bin/dboxshot~true~false=}=}=}
 <body>
 <div class="y_menu_sec_box">
-	<div class="y_menu_sec_box_head"><h2>Boxcontrol</h2></div>
+	<div class="y_menu_sec_box_head"><h2>{=L:0100=}</h2></div>
 	<div class="y_menu_sec_box_body">
 		<div class="y_menu_sec">
 			<ul id="secmenu">
-				<li><a target="work" title="Switch channels" href="Y_Boxcontrol_Bouquets.yhtm">Bouquets</a></li>
-				<li><a target="work" title="control box functions (reboot, remote control, SPTS, ...)" href="Y_Tools_Boxcontrol.yhtm">Control</a></li>
-				<li><a target="work" title="send Messages to box" href="Y_Boxcontrol_Messages.yhtm">Messages</a></li>
-				<li><a target="work" title="Web-based Remote Control" href="Y_Tools_Rcsim.yhtm">Remote</a></li>
+				<li><a target="work" title="{=L:0200=}" href="Y_Boxcontrol_Bouquets.yhtm">{=L:0201=}</a></li>
+				<li><a target="work" title="{=L:0202=}" href="Y_Tools_Boxcontrol.yhtm">{=L:0203=}</a></li>
+				<li><a target="work" title="{=L:0204=}" href="Y_Boxcontrol_Messages.yhtm">{=L:0205=}</a></li>
+				<li><a target="work" title="{=L:0206=}" href="Y_Tools_Rcsim.yhtm">{=L:0207=}</a></li>
 				{=if-equal:{=var-get:lcshot=}~true~
-				<li><a target="work" title="make lcd screenshot" href="Y_Tools_lcshot.yhtm">LCD Screenshot</a></li>
+				<li><a target="work" title="{=L:0210=}" href="Y_Tools_lcshot.yhtm">{=L:0209=}</a></li>
 				~
-				<li class="disabled" title="lcshot not installed at /bin or /var/bin">LCD Screenshot</li>
+				<li class="disabled" title="{=L:0211=} /bin oder /var/bin">{=L:0209=}</li>
 				=}
 				{=if-equal:{=var-get:fbshot=}~true~
-				<li><a target="work" title="make osd screenshot" href="Y_Tools_fbshot.yhtm">OSD Screenshot</a></li>
+				<li><a target="work" title="{=L:0213=}" href="Y_Tools_fbshot.yhtm">{=L:0212=}</a></li>
 				~
-				<li class="disabled" title="fbshot not installed at /bin or /var/bin">OSD Screenshot</li>
+				<li class="disabled" title="{=L:0214=} /bin oder /var/bin">{=L:0212=}</li>
 				=}
 				{=if-equal:{=var-get:dboxshot=}~true~
-				<li><a target="work" title="remote and osd" href="Y_Tools_remote_osd.yhtm">Remote &amp; OSD</a></li>
+				<li><a target="work" title="{=0114=}" href="Y_Tools_remote_osd.yhtm">{=L:0114=}</a></li>
 				~
-				<li class="disabled" title="dboxshot not installed at /bin or /var/bin">Remote &amp; OSD</li>
+				<li class="disabled" title="{=0222=} /bin oder /var/bin">{=L:0114=}</li>
 				=}
 			</ul>
 		</div>
 	</div>
 </div>
 <div class="y_menu_sec_box">
-	<div class="y_menu_sec_box_head"><h2>Control</h2></div>
+	<div class="y_menu_sec_box_head"><h2>{=L:0203=}</h2></div>
 	<div class="y_menu_sec_box_body">
 		<center>
 			<table class="y_text_boxcontrol_table" cellspacing="0" cellpadding="0" title="volumen display">
@@ -113,25 +114,25 @@ function get_data(){
 			</tr>
 			</table>
 			<br/>
-			<span title="decrease volumen">
+			<span title="{=L:0215=}">
 				<a href="javascript:volumen_set(g_volumen-10);"><img src="/images/volumedown.png">&nbsp;</a></span>
-			<span title="increase volumen">
+			<span title="{=L:0216=}">
 				<a href="javascript:volumen_set(g_volumen+10);"><img src="/images/volumeup.png"></a></span>
-			<span title="mute volumen">
+			<span title="{=L:0217=}">
 				<a id="btMute" href="javascript:toggle_mute();">&nbsp;<img src="/images/volumemute.png">&nbsp;</a></span>
 <!--			<br/><br/>-->
-			<span title="switch to TV"><a href="javascript:set_mode('tv');"><img src="/images/live.gif">&nbsp;</a></span>
-			<span title="switch to Radio"><a href="javascript:set_mode('radio');">&nbsp;<img src="/images/radio.png"></a></span>
+			<span title="{=L:0218=}"><a href="javascript:set_mode('tv');"><img src="/images/live.gif">&nbsp;</a></span>
+			<span title="{=L:0219=}"><a href="javascript:set_mode('radio');">&nbsp;<img src="/images/radio.png"></a></span>
 		</center>
 	</div>
 </div>
 {=if-empty:{=ini-get:/var/tuxbox/config/Y-Web.conf;slavebox=}~~
 <div class="y_menu_sec_box">
-	<div class="y_menu_sec_box_head"><h2>Switch to</h2></div>
+	<div class="y_menu_sec_box_head"><h2>{=L:0223=}</h2></div>
 	<div class="y_menu_sec_box_body">
 		<div class="y_menu_sec">
 			<ul>
-				<li><a target="_top" title="Webinterface der SlaveBox" href="http://{=ini-get:/var/tuxbox/config/Y-Web.conf;slavebox=}/">{=ini-get:/var/tuxbox/config/Y-Web.conf;slavebox=}</a></li>
+				<li><a target="_top" title="{=L:0220=}" href="http://{=ini-get:/var/tuxbox/config/Y-Web.conf;slavebox=}/">{=ini-get:/var/tuxbox/config/Y-Web.conf;slavebox=}</a></li>
 			</ul>
 		</div>
 	</div>

@@ -7,7 +7,7 @@
 function do_submit()
 {
 	if(document.f.p_pincode.value.length < 4)
-		alert("PIN Code muss 4-stellig sein");
+		alert("{=L:0058=}");
 	else{
 		show_waitbox(true);
 		document.f.submit();
@@ -62,309 +62,309 @@ function do_init()
 
 </head>
 <body onload="do_init()">
-{=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0015=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-Settings-Personalize=}{=var-set:menu=Personalisierung=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-Personalize=}{=var-set:menu={=L:1118=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" class="y_form" action="">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
-			<tr><td colspan="2" class="y_form_header">Men&uuml;einstellungen</td></tr>
+			<tr><td colspan="2" class="y_form_header">{=L:3700=}</td></tr>
 			<tr>
-				<td width="35%">PIN Code</td>
+				<td width="35%">{=L:3701=}</td>
 				<td>&nbsp;<input type="text" name="p_pincode" size="4" maxlength="4" value="{=ini-get:/var/tuxbox/config/neutrino.conf;personalize_pincode~open=}" title="PIN code"/></td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Zugangsoptionen: Hauptmen&uuml;</td></tr>
-			<tr><td>TV-Modus</td>
+			<tr><td colspan="2" class="y_form_header">{=L:3702=}</td></tr>
+			<tr><td>{=L:3703=}</td>
 				<td>
-					<input type="radio" name="p_tv" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_tv" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_tv" value="2"/>PIN
+					<input type="radio" name="p_tv" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_tv" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_tv" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Radio-Modus</td>
+			<tr><td>{=L:3704=}</td>
 				<td>
-					<input type="radio" name="p_radio" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_radio" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_radio" value="2"/>PIN
+					<input type="radio" name="p_radio" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_radio" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_radio" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Scart-Eingang</td>
+			<tr><td>{=L:3705=}</td>
 				<td>
-					<input type="radio" name="p_scart" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_scart" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_scart" value="2"/>PIN
+					<input type="radio" name="p_scart" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_scart" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_scart" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Spiele</td>
+			<tr><td>{=L:3706=}</td>
 				<td>
-					<input type="radio" name="p_games" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_games" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_games" value="2"/>PIN
+					<input type="radio" name="p_games" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_games" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_games" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Audioplayer</td>
+			<tr><td>{=L:3707=}</td>
 				<td>
-					<input type="radio" name="p_audioplayer" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_audioplayer" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_audioplayer" value="2"/>PIN
+					<input type="radio" name="p_audioplayer" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_audioplayer" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_audioplayer" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			</tr><td>Internetradio</td>
+			</tr><td>{=L:3708=}</td>
 				<td>
-					<input type="radio" name="p_inetradio" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_inetradio" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_inetradio" value="2"/>PIN
+					<input type="radio" name="p_inetradio" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_inetradio" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_inetradio" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Esound Soundserver</td>
+			<tr><td>{=L:3709=}</td>
 				<td>
-					<input type="radio" name="p_esound" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_esound" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_esound" value="2"/>PIN
+					<input type="radio" name="p_esound" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_esound" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_esound" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Movieplayer</td>
+			<tr><td>{=L:3710=}</td>
 				<td>
-					<input type="radio" name="p_movieplayer" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_movieplayer" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_movieplayer" value="2"/>PIN
+					<input type="radio" name="p_movieplayer" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_movieplayer" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_movieplayer" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Bildbetrachter</td>
+			<tr><td>{=L:3711=}</td>
 				<td>
-					<input type="radio" name="p_picviewer" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_picviewer" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_picviewer" value="2"/>PIN
+					<input type="radio" name="p_picviewer" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_picviewer" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_picviewer" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>UPNP Browser</td>
+			<tr><td>{=L:3712=}</td>
 				<td>
-					<input type="radio" name="p_upnp" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_upnp" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_upnp" value="2"/>PIN
+					<input type="radio" name="p_upnp" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_upnp" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_upnp" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Skripte</td>
+			<tr><td>{=L:3713=}</td>
 				<td>
-					<input type="radio" name="p_scripts" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_scripts" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_scripts" value="2"/>PIN
+					<input type="radio" name="p_scripts" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_scripts" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_scripts" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Einstellungen mit PIN</td>
+			<tr><td>{=L:3714=}</td>
 				<td>
-					<input type="radio" name="p_settings" value="1"/>JA&nbsp;
-					<input type="radio" name="p_settings" value="0"/>NEIN
+					<input type="radio" name="p_settings" value="1" />{=L:0059=}&nbsp;
+					<input type="radio" name="p_settings" value="0" />{=L:0060=}
 				</td>
 			</tr>
-			<tr><td>Service mit PIN</td>
+			<tr><td>{=L:3715=}</td>
 				<td>
-					<input type="radio" name="p_service" value="1"/>JA&nbsp;
-					<input type="radio" name="p_service" value="0"/>NEIN
+					<input type="radio" name="p_service" value="1" />{=L:0059=}&nbsp;
+					<input type="radio" name="p_service" value="0" />{=L:0060=}
 				</td>
 			</tr>
-			<tr><td>SleepTimer</td>
+			<tr><td>{=L:3716=}</td>
 				<td>
-					<input type="radio" name="p_sleeptimer" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_sleeptimer" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_sleeptimer" value="2"/>PIN
+					<input type="radio" name="p_sleeptimer" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_sleeptimer" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_sleeptimer" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Neu starten</td>
+			<tr><td>{=L:3717=}</td>
 				<td>
-					<input type="radio" name="p_reboot" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_reboot" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_reboot" value="2"/>PIN
+					<input type="radio" name="p_reboot" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_reboot" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_reboot" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Ausschalten</td>
+			<tr><td>{=L:3718=}</td>
 				<td>
-					<input type="radio" name="p_shutdown" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_shutdown" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_shutdown" value="2"/>PIN
+					<input type="radio" name="p_shutdown" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_shutdown" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_shutdown" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Zugangsoptionen: Einstellungen</td></tr>
-			<tr><td>Video</td>
+			<tr><td colspan="2" class="y_form_header">{=L:3719=}</td></tr>
+			<tr><td>{=L:3720=}</td>
 				<td>
-					<input type="radio" name="p_video" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_video" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_video" value="2"/>PIN
+					<input type="radio" name="p_video" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_video" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_video" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Audio</td>
+			<tr><td>{=L:3721=}</td>
 				<td>
-					<input type="radio" name="p_audio" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_audio" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_audio" value="2"/>PIN
+					<input type="radio" name="p_audio" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_audio" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_audio" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Jugendschutz</td>
+			<tr><td>{=L:3722=}</td>
 				<td>
-					<input type="radio" name="p_youth" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_youth" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_youth" value="2"/>PIN
+					<input type="radio" name="p_youth" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_youth" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_youth" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Netzwerk</td>
+			<tr><td>{=L:3723=}</td>
 				<td>
-					<input type="radio" name="p_network" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_network" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_network" value="2"/>PIN
+					<input type="radio" name="p_network" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_network" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_network" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Aufnahme</td>
+			<tr><td>{=L:3724=}</td>
 				<td>
-					<input type="radio" name="p_recording" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_recording" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_recording" value="2"/>PIN
+					<input type="radio" name="p_recording" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_recording" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_recording" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>OSD</td>
+			<tr><td>{=L:3725=}</td>
 				<td>
-					<input type="radio" name="p_colors" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_colors" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_colors" value="2"/>PIN
+					<input type="radio" name="p_colors" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_colors" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_colors" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>LCD</td>
+			<tr><td>{=L:3726=}</td>
 				<td>
-					<input type="radio" name="p_lcd" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_lcd" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_lcd" value="2"/>PIN
+					<input type="radio" name="p_lcd" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_lcd" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_lcd" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Tasten</td>
+			<tr><td>{=L:3727=}</td>
 				<td>
-					<input type="radio" name="p_keybinding" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_keybinding" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_keybinding" value="2"/>PIN
+					<input type="radio" name="p_keybinding" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_keybinding" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_keybinding" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>IDE-Interface HDD/MMC/SD</td>
+			<tr><td>{=L:3728=}</td>
 				<td>
-					<input type="radio" name="p_drive_setup_stat" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_drive_setup_stat" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_drive_setup_stat" value="2"/>PIN
+					<input type="radio" name="p_drive_setup_stat" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_drive_setup_stat" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_drive_setup_stat" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Medienwiedergabe</td>
+			<tr><td>{=L:3729=}</td>
 				<td>
-					<input type="radio" name="p_mediaplayer" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_mediaplayer" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_mediaplayer" value="2"/>PIN
+					<input type="radio" name="p_mediaplayer" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_mediaplayer" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_mediaplayer" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Treiber- und Bootoptionen</td>
+			<tr><td>{=L:3730=}</td>
 				<td>
-					<input type="radio" name="p_driver" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_driver" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_driver" value="2"/>PIN
+					<input type="radio" name="p_driver" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_driver" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_driver" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Erweiterte Einstellungen</td>
+			<tr><td>{=L:3731=}</td>
 				<td>
-					<input type="radio" name="p_misc" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_misc" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_misc" value="2"/>PIN
+					<input type="radio" name="p_misc" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_misc" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_misc" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Personalisierung mit PIN</td>
+			<tr><td>{=L:3732=}</td>
 				<td>
-					<input type="radio" name="p_pinstatus" value="1"/>JA&nbsp;
-					<input type="radio" name="p_pinstatus" value="0"/>NEIN
+					<input type="radio" name="p_pinstatus" value="1" />{=L:0059=}&nbsp;
+					<input type="radio" name="p_pinstatus" value="0" />{=L:0060=}
 				</td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Zugangsoptionen: Service</td></tr>
-			<tr><td>Bouquet-Verwaltung</td>
+			<tr><td colspan="2" class="y_form_header">{=L:3733=}</td></tr>
+			<tr><td>{=L:3734=}</td>
 				<td>
-					<input type="radio" name="p_bouqueteditor" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_bouqueteditor" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_bouqueteditor" value="2"/>PIN
+					<input type="radio" name="p_bouqueteditor" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_bouqueteditor" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_bouqueteditor" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Kanalsuche</td>
+			<tr><td>{=L:3735=}</td>
 				<td>
-					<input type="radio" name="p_scants" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_scants" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_scants" value="2"/>PIN
+					<input type="radio" name="p_scants" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_scants" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_scants" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Kanallisten neu laden</td>
+			<tr><td>{=L:3736=}</td>
 				<td>
-					<input type="radio" name="p_reload" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_reload" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_reload" value="2"/>PIN
+					<input type="radio" name="p_reload" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_reload" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_reload" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Plugins neu laden</td>
+			<tr><td>{=L:3737=}</td>
 				<td>
-					<input type="radio" name="p_getplugins" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_getplugins" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_getplugins" value="2"/>PIN
+					<input type="radio" name="p_getplugins" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_getplugins" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_getplugins" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Neutrino neu starten</td>
+			<tr><td>{=L:3738=}</td>
 				<td>
-					<input type="radio" name="p_restart" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_restart" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_restart" value="2"/>PIN
+					<input type="radio" name="p_restart" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_restart" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_restart" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>EPG neu starten</td>
+			<tr><td>{=L:3739=}</td>
 				<td>
-					<input type="radio" name="p_epgrestart" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_epgrestart" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_epgrestart" value="2"/>PIN
+					<input type="radio" name="p_epgrestart" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_epgrestart" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_epgrestart" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Ucodes &uuml;berpr&uuml;fen</td>
+			<tr><td>{=L:3740=}</td>
 				<td>
-					<input type="radio" name="p_ucodecheck" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_ucodecheck" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_ucodecheck" value="2"/>PIN
+					<input type="radio" name="p_ucodecheck" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_ucodecheck" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_ucodecheck" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Sender/EPG Statistik</td>
+			<tr><td>{=L:3741=}</td>
 				<td>
-					<input type="radio" name="p_chan_epg_stat" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_chan_epg_stat" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_chan_epg_stat" value="2"/>PIN
+					<input type="radio" name="p_chan_epg_stat" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_chan_epg_stat" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_chan_epg_stat" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Image Informationen</td>
+			<tr><td>{=L:3742=}</td>
 				<td>
-					<input type="radio" name="p_imageinfo" value="0"/>nicht sichtbar&nbsp;
-					<input type="radio" name="p_imageinfo" value="1"/>sichtbar&nbsp;
-					<input type="radio" name="p_imageinfo" value="2"/>PIN
+					<input type="radio" name="p_imageinfo" value="0" />{=L:3747=}&nbsp;
+					<input type="radio" name="p_imageinfo" value="1" />{=L:3748=}&nbsp;
+					<input type="radio" name="p_imageinfo" value="2" />{=L:3749=}
 				</td>
 			</tr>
-			<tr><td>Software-Aktualisierung mit PIN</td>
+			<tr><td>{=L:3743=}</td>
 				<td>
-					<input type="radio" name="p_update" value="1"/>JA&nbsp;
-					<input type="radio" name="p_update" value="0"/>NEIN
+					<input type="radio" name="p_update" value="1" />{=L:0059=}&nbsp;
+					<input type="radio" name="p_update" value="0" />{=L:0060=}
 				</td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Farbtasten</td></tr>
-			<tr><td>Features (Taste Blau)</td>
+			<tr><td colspan="2" class="y_form_header">{=L:3744=}</td></tr>
+			<tr><td>{=L:3745=}</td>
 				<td>
-					<input type="radio" name="p_bluebutton" value="1"/>AKTIVIERT&nbsp;
-					<input type="radio" name="p_bluebutton" value="0"/>DEAKTIVIERT
+					<input type="radio" name="p_bluebutton" value="1" />{=L:0061=}&nbsp;
+					<input type="radio" name="p_bluebutton" value="0" />{=L:0062=}
 				</td>
 			</tr>
-			<tr><td>EPG/Info (Taste Rot)</td>
+			<tr><td>{=L:3746=}</td>
 				<td>
-					<input type="radio" name="p_redbutton" value="1"/>AKTIVIERT&nbsp;
-					<input type="radio" name="p_redbutton" value="0"/>DEAKTIVIERT
+					<input type="radio" name="p_redbutton" value="1" />{=L:0061=}&nbsp;
+					<input type="radio" name="p_redbutton" value="0" />{=L:0062=}
 				</td>
 			</tr>
 		</table>
 		<br />
 		<input type="hidden" name="execute" value="include-block:Y_Blocks.txt;personalize_save_settings;nix"/>
-		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
-		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
-		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
+		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
+		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
+		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
 	</form>
 	</div>
 </div>

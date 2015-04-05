@@ -12,16 +12,18 @@ function init(){
 {=var-set:management={=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip;{=func:get_request_data client_addr=}=}~1~=}{=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip2=}~1~=}=}
 <body onload="init()">
 <div class="y_menu_sec_box">
-	<div class="y_menu_sec_box_head"><h2>Info</h2></div>
+	<div class="y_menu_sec_box_head"><h2>{=L:0110=}</h2></div>
 	<div class="y_menu_sec_box_body">
 		<div class="y_menu_sec">
 			<ul id="secmenu">
-				<li><a target="work" title="About yWeb" href="Y_About.yhtm">About</a></li>
-				<li><a target="work" title="Getting Help" href="Y_Info_Help.yhtm">Hilfe</a></li>
+				<li><a target="work" title="About yWeb" href="Y_About.yhtm">{=L:3001=}</a>
+				</li>
+				<li><a target="work" title="Getting Help" href="Y_Info_Help.yhtm">{=L:3000=}</a>
+				</li>
 			{=if-empty:{=var-get:management=}~
-				<li class="disabled" title="Check for Update of yWeb (restricted by ManagementIP)">Auf Updates pr&uuml;fen</li>
+				<li class="disabled" title="Check for Update of yWeb (restricted by ManagementIP)">{=L:3002=}</li>
 			~
-				<li><a target="work" title="Check for Updates of yWeb" href="Y_Info_Updates.yhtm">Auf Updates pr&uuml;fen</a></li>
+				<li><a target="work" title="Check for Updates of yWeb" href="Y_Info_Updates.yhtm">{=L:3002=}</a></li>
 			=}
 			</ul>
 		</div>

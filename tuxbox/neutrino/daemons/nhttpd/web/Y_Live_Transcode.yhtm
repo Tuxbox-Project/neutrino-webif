@@ -5,7 +5,7 @@
 function doTranscode()
 {
 	var _live = parent.live;
-	if(document.v.transcode.value == "Transcode")
+	if(document.v.transcode.value == "{=L:2624=}")
 	{
 		var transcode = "transcode{"+
 		"width="	+document.v.twidth.value+
@@ -28,12 +28,12 @@ function doTranscode()
 
 		var __vlc_cmd = ":sout=#"+transcode+"duplicate{"+stream+"}";
 		var options = new Array(__vlc_cmd,":input-repeat=1");
-		document.v.transcode.value = "Stop Transcode";
+		document.v.transcode.value = "{=L:2623=}";
 		_live.do_play_state(1, options);
 	}
 	else
 	{
-		document.v.transcode.value = "Transcode";
+		document.v.transcode.value = "{=L:2624=}";
 		_live.do_play();
 	}
 }
@@ -43,16 +43,16 @@ function doTranscode()
 <body>
 	<form class="y_form" name="v" action="" method="get">
 		<table cellspacing="0">
-		<tr><td class="y_form_header" colspan="5">Transcode-Broadcast</td></tr>
-		<tr><td class="y_form_section"><br/>Video</td><td class="y_form_section" colspan="3">&nbsp;</td></tr>
+		<tr><td class="y_form_header" colspan="5">{=L:2616=}</td></tr>
+		<tr><td class="y_form_section"><br />{=L:2608=}</td><td class="y_form_section" colspan="3">&nbsp;</td></tr>
 		<tr>
-			<td>Breite:</td>
+			<td>{=L:2609=}:</td>
 			<td><input type="text" name="twidth" size="4" value="384" class="y_live_button"/></td>
-			<td>H&ouml;he:</td>
+			<td>{=L:2610=}:</td>
 			<td><input type="text" name="theight" size="4" value="288" class="y_live_button"/></td>
 		</tr>
 		<tr>
-			<td>Codec:</td>
+			<td>{=L:2611=}:</td>
 			<td>
 				<select name="vcodec" class="y_live_button">
 				<option value="mp4v" selected>mp4v</option>
@@ -66,7 +66,7 @@ function doTranscode()
 				<option value="WMV1">WMV2</option>
 				</select>
 			</td>
-			<td>Bitrate:</td>
+			<td>{=L:2612=}:</td>
 			<td>
 				<select name="vb" class="y_live_button">
 				<option value="1024">1024</option>
@@ -81,7 +81,7 @@ function doTranscode()
 			</td>
 		</tr>
 		<tr>
-			<td>Scale:</td>
+			<td>{=L:2613=}:</td>
 			<td>
 				<select name="scale" class="y_live_button">
 				<option value="0.25">0.25</option>
@@ -97,9 +97,9 @@ function doTranscode()
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 		</tr>
-		<tr><td class="y_form_section"><br/>Audio</td><td class="y_form_section" colspan="3">&nbsp;</td></tr>
+		<tr><td class="y_form_section"><br />{=L:2614=}</td><td class="y_form_section" colspan="3">&nbsp;</td></tr>
 		<tr>
-			<td>Codec:</td>
+			<td>{=L:2611=}:</td>
 			<td>
 				<select name="acodec" class="y_live_button">
 				<option value="mp4a" selected>mp4a</option>
@@ -111,7 +111,7 @@ function doTranscode()
 				<option value="fl32">fl32</option>
 				</select>
 			</td>
-			<td>Bitrate:</td>
+			<td>{=L:2612=}:</td>
 			<td>
 				<select name="ab" class="y_live_button">
 				<option value="192">192</option>
@@ -124,7 +124,7 @@ function doTranscode()
 			</td>
 		</tr>
 		<tr>
-			<td>Channels:</td>
+			<td>{=L:2615=}:</td>
 			<td>
 				<select name="channels" class="y_live_button">
 				<option value="1">1</option>
@@ -135,9 +135,9 @@ function doTranscode()
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 		</tr>
-		<tr><td class="y_form_section"><br/>Access</td><td class="y_form_section" colspan="3">&nbsp;</td></tr>
+		<tr><td class="y_form_section"><br />{=L:2617=}</td><td class="y_form_section" colspan="3">&nbsp;</td></tr>
 		<tr>
-			<td>Type:</td>
+			<td>{=L:2618=}:</td>
 			<td>
 				<select name="access" class="y_live_button">
 				<option value="udp" selected>udp</option>
@@ -156,20 +156,20 @@ function doTranscode()
 				<option value="asf">asf</option>
 				<option value="mpeg1">mpeg1</option>
 				<option value="wav">wav</option>
-s				</select>
+				</select>
 			</td>
 		</tr>
 		<tr>
-			<td>IP:Port:</td>
+			<td>{=L:2619=}:</td>
 			<td colspan="3">
-				<input type="text" name="tip" size="18" value="localhost:1234" class="y_live_button">
+				<input type="text" name="tip" size="18" value="localhost:1234" class="y_live_button" />
 			</td>
 		</tr>
 		<tr>
 			<td colspan="3">
 			<br/>
-				<input type="checkbox" name="tdisplay" value="1" title="Display on while transcoding" checked="checked"/>Display on
-				&nbsp;<button class="y_live_button" type="button" value="transcode" title="transcode stream" name="transcode" onclick="doTranscode()"><img src="/images/transcode.png">&nbsp;Transcode</button>
+				<input type="checkbox" name="tdisplay" value="1" title="{=L:2620=}" checked="checked" />{=L:2602=}
+				&nbsp;<button class="y_live_button" type="button" value="{=L:2624=}" title="{=L:2625=}" name="transcode" onclick="doTranscode()"><img src="/images/transcode.png">&nbsp;{=L:2624=}</button>
 			</td>
 		</tr>
 		</table>

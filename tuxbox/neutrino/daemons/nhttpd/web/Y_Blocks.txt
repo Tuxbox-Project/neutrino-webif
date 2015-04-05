@@ -198,9 +198,9 @@ start-block~no_management
 </head>
 <body>
 <br />
-<div class="y_head">Error</div>
-<div class="y_work_box" title="This page could be used for management proposes only">
-	Der Aufruf dieser Seite ist nur fr Management Zwecke erlaubt.
+<div class="y_head">{=L:0054=}</div>
+<div class="y_work_box">
+	{=L:0055=}
 </div>
 </body>
 </html>
@@ -223,14 +223,13 @@ end-block~management_check_bottom
 # ------- Snip: Wait Message Layer-div hidden
 start-block~snip_wait
 <div class="y_wait_box" id="wait">
-	<div class="y_wait_box_head"><h2>{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</h2></div>
+	<div class="y_wait_box_head"><h2>{=if-empty:{=var-get:wait_text=}~{=L:0056=}~{=var-get:wait_text=}=}</h2></div>
 	<div class="y_wait_box_body">
 		<p align="center">
 		<span class="y_wait_box_Main">
-		{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</span><br />
+		{=if-empty:{=var-get:wait_text=}~{=L:0056=}~{=var-get:wait_text=}=}</span><br />
 		<img border="0" src="/images/wait.gif" width="20" height="20" alt="wait" /><br /><br />
-		Bitte warten<br />
-		Please wait
+		{=L:0057=}<br />
 		</p>
 	</div>
 </div>
@@ -239,14 +238,13 @@ end-block~snip_wait
 # ------- Snip: Wait Message Layer-div shown
 start-block~snip_show_wait
 <div class="y_wait_box_visible" id="wait">
-	<div class="y_wait_box_head"><h2>{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</h2></div>
+	<div class="y_wait_box_head"><h2>{=if-empty:{=var-get:wait_text=}~{=L:0056=}~{=var-get:wait_text=}=}</h2></div>
 	<div class="y_wait_box_body">
 		<p align="center">
 		<span class="y_wait_box_Main">
-		{=if-empty:{=var-get:wait_text=}~Anfrage wird bearbeitet~{=var-get:wait_text=}=}</span><br />
+		{=if-empty:{=var-get:wait_text=}~{=L:0056=}~{=var-get:wait_text=}=}</span><br />
 		<img border="0" src="/images/wait.gif" width="20" height="20" alt="wait" /><br /><br />
-		Bitte warten<br />
-		Please wait
+		{=L:0057=}<br />
 		</p>
 	</div>
 </div>
@@ -344,7 +342,7 @@ start-block~frame_main
 </frameset>
 <noframes>
 	<body>
-	<p>Your Browser does not support Frames.</p>
+	<p>{=L:0000=}</p>
 	</body>
 </noframes>
 </html>
@@ -369,7 +367,7 @@ start-block~frame_secondary
 </frameset>
 <noframes>
 	<body>
-	<p>Your Browser does not support Frames.</p>
+	<p>{=L:0000=}</p>
 	</body>
 </noframes>
 </html>
@@ -442,7 +440,7 @@ start-block~frame_live_epg
 </frameset>
 <noframes>
 	<body>
-	<p>Your Browser does not support Frames.</p>
+	<p>{=L:0000=}</p>
 	</body>
 </noframes>
 </html>
@@ -457,32 +455,32 @@ end-block~remote
 start-block~remote_standard
 <img src="images/rc.jpg" usemap="#rc" alt="remote" />
 <map name="rc" id="rc">
-  <area shape="rect" href="javascript:rcsim('KEY_SETUP')" coords="7,95,45,109" />
-  <area shape="circle" href="javascript:rcsim('KEY_7')" coords="60,102,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_4')" coords="60,78,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_9')" coords="102,92,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_8')" coords="82,95,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_6')" coords="102,71,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_5')" coords="80,73,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_3')" coords="102,49,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_2')" coords="82,51,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_1')" coords="60,55,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_0')" coords="59,126,11" />
-  <area shape="poly" href="javascript:rcsim('KEY_LEFT')" coords="35,264,51,252,45,238,50,222,39,210,27,239" />
-  <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="97,265,87,255,91,241,85,223,98,210,108,240" />
-  <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="83,216,95,206,69,195,41,206,53,220,69,214" />
-  <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="95,271,85,255,71,262,51,256,41,268,68,283" />
-  <area shape="rect" href="javascript:rcsim('KEY_HOME')" coords="7,72,45,86" />
-  <area shape="circle" href="javascript:rcsim('KEY_MUTE')" coords="61,321,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_OK')" coords="66,237,18" />
-  <area shape="circle" href="javascript:rcsim('KEY_BLUE')" coords="100,139,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_YELLOW')" coords="60,153,11" />
-  <area shape="circle" href="javascript:rcsim('KEY_GREEN')" coords="37,171,12" />
-  <area shape="circle" href="javascript:rcsim('KEY_RED')" coords="21,196,11" />
-  <area shape="circle" href="javascript:rcsim('KEY_HELP')" coords="101,333,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEUP')" coords="17,270,10" />
-  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEDOWN')" coords="30,293,9" />
-  <area shape="rect" href="javascript:rcsim('KEY_POWER')" coords="7,49,46,64" />
+  <area shape="rect" href="javascript:rcsim('KEY_SETUP')" coords="7,95,45,109" title="{=L:9924=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_9')" coords="102,92,10" title="{=L:9910=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_8')" coords="82,95,10" title="{=L:9909=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_7')" coords="60,102,10" title="{=L:9908=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_6')" coords="102,71,10" title="{=L:9907=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_5')" coords="80,73,10" title="{=L:9906=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_4')" coords="60,78,10" title="{=L:9905=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_3')" coords="102,49,10" title="{=L:9904=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_2')" coords="82,51,10" title="{=L:9903=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_1')" coords="60,55,10" title="{=L:9902=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_0')" coords="59,126,11" title="{=L:9911=}" />
+  <area shape="poly" href="javascript:rcsim('KEY_LEFT')" coords="35,264,51,252,45,238,50,222,39,210,27,239" title="{=L:9922=}" />
+  <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="97,265,87,255,91,241,85,223,98,210,108,240" title="{=L:9923=}" />
+  <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="83,216,95,206,69,195,41,206,53,220,69,214" title="{=L:9920=}" />
+  <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="95,271,85,255,71,262,51,256,41,268,68,283" title="{=L:9921=}" />
+  <area shape="rect" href="javascript:rcsim('KEY_HOME')" coords="7,72,45,86" title="{=L:9925=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_MUTE')" coords="61,321,10" title="{=L:9901=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_OK')" coords="66,237,18" title="{=L:9919=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_BLUE')" coords="100,139,12" title="{=L:9918=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_YELLOW')" coords="60,153,11" title="{=L:9917=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_GREEN')" coords="37,171,12" title="{=L:9916=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_RED')" coords="21,196,11" title="{=L:9915=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_HELP')" coords="101,333,10" title="{=L:9914=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEUP')" coords="17,270,10" title="{=L:9912=}" />
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEDOWN')" coords="30,293,9" title="{=L:9913=}" />
+  <area shape="rect" href="javascript:rcsim('KEY_POWER')" coords="7,49,46,64" title="{=L:9900=}" />
 </map>
 end-block~remote_standard
 
@@ -490,31 +488,31 @@ end-block~remote_standard
 start-block~remote_sagem
 <img src="images/rc_sagem.jpg" usemap="#rc" alt="remote" /> 
 <map name="rc" id="rc"> 
-  <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="100,117,100,180,67,146,100,116" /> 
-  <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="36,181,101,180,66,146" /> 
-  <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="101,116,36,116,66,146" /> 
-  <area shape="poly" href="javascript:rcsim('KEY_LEFT')" coords="66,147,36,117,35,182" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_SETUP')" coords="105,100,15" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_HELP')" coords="32,100,16" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_POWER')" coords="108,33,15" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_MUTE')" coords="69,255,13" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEUP')" coords="92,225,17" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEDOWN')" coords="47,225,17" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_OK')" coords="37,196,11" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_HOME')" coords="103,195,11" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_BLUE')" coords="108,72,11" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_RED')" coords="30,72,11" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_GREEN')" coords="54,57,11" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_YELLOW')" coords="85,57,11" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_0')" coords="69,363,12" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_9')" coords="102,336,12" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_8')" coords="69,337,12" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_7')" coords="37,336,12" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_6')" coords="102,310,12" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_5')" coords="69,310,12" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_4')" coords="37,310,12" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_3')" coords="102,284,12" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_2')" coords="69,284,12" /> 
-  <area shape="circle" href="javascript:rcsim('KEY_1')" coords="37,284,12" /> 
+  <area shape="poly" href="javascript:rcsim('KEY_RIGHT')" coords="100,117,100,180,67,146,100,116" title="{=L:9923=}" /> 
+  <area shape="poly" href="javascript:rcsim('KEY_DOWN')" coords="36,181,101,180,66,146" title="{=L:9921=}" /> 
+  <area shape="poly" href="javascript:rcsim('KEY_UP')" coords="101,116,36,116,66,146" title="{=L:9920=}" /> 
+  <area shape="poly" href="javascript:rcsim('KEY_LEFT')" coords="66,147,36,117,35,182" title="{=L:9922=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_SETUP')" coords="105,100,15" title="{=L:9924=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_HELP')" coords="32,100,16" title="{=L:9914=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_POWER')" coords="108,33,15" title="{=L:9900=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_MUTE')" coords="69,255,13" title="{=L:9902=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEUP')" coords="92,225,17" title="{=L:9912=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_VOLUMEDOWN')" coords="47,225,17" title="{=L:9913=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_OK')" coords="37,196,11" title="{=L:9919=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_HOME')" coords="103,195,11" title="{=L:9925=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_BLUE')" coords="108,72,11" title="{=L:9918=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_RED')" coords="30,72,11" title="{=L:9915=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_GREEN')" coords="54,57,11" title="{=L:9916=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_YELLOW')" coords="85,57,11" title="{=L:9917=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_0')" coords="69,363,12" title="{=L:9911=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_9')" coords="102,336,12" title="{=L:9910=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_8')" coords="69,337,12" title="{=L:9909=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_7')" coords="37,336,12" title="{=L:9908=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_6')" coords="102,310,12" title="{=L:9907=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_5')" coords="69,310,12" title="{=L:9906=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_4')" coords="37,310,12" title="{=L:9905=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_3')" coords="102,284,12" title="{=L:9904=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_2')" coords="69,284,12" title="{=L:9903=}" /> 
+  <area shape="circle" href="javascript:rcsim('KEY_1')" coords="37,284,12" title="{=L:9902=}" /> 
 </map>
 end-block~remote_sagem

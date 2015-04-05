@@ -27,16 +27,16 @@ function do_edit()
 {=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head">
-		<div class="work_box_head_h2">{=var-set:help_url=Help-Tools-Mounts=}{=var-set:menu=Mount=}{=include-block:Y_Blocks.txt;work_menu=}</div>
+		<div class="work_box_head_h2">{=var-set:help_url=Help-Tools-Mounts=}{=var-set:menu={=L:3600=}=}{=include-block:Y_Blocks.txt;work_menu=}</div>
 	</div>
 	<div class="work_box_body">
 	<form action="/y/cgi" name="f" id="f">
 		{=func:mount-get-list=}
 		<input type="hidden" name="tmpl" value="Y_Settings_mount.yhtm"/>
 		<input type="hidden" name="execute" value=""/>
-		<button type="button" ytype="edit" title="edit mount settings" onclick="do_edit()">&Auml;ndern</button>
-		<button type="button" ytype="no" title="mount selected directory" onclick="do_mount()">Mount</button>
-		<button type="button" ytype="no" title="view unmount list" onclick='window.document.location.href="/Y_Settings_umount_liste.yhtm"'>Unmount list</button>
+		<button type="button" ytype="edit" title="{=L:3615=}" onclick="do_edit()">{=L:3613=}</button>
+		<button type="button" ytype="no" title="{=L:3616=}" onclick="do_mount()">{=L:3622=}</button>
+		<button type="button" ytype="no" title="{=L:3617=}" onclick='window.document.location.href="/Y_Settings_umount_liste.yhtm"'>{=L:3614=}</button>
 	</form>
 	</div>
 </div>

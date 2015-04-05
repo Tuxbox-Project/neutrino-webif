@@ -130,7 +130,7 @@ function change_type()
 </script>
 </head>
 <body onLoad="form_init()">
-{=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0015=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head">
 		<div class="work_box_head_h2">{=var-set:help_url=Help-Tools-AutoMount=}{=var-set:menu=AutoMount=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
@@ -139,11 +139,11 @@ function change_type()
 		<input type="hidden" name="nr" value="{=R1=}"/>
 		<table border="0" class="y_form_table">
 			<tr>
-				<td>Mountname</td>
+				<td>{=L:3300=}</td>
 				<td><input type="text" name="mountname" size="20" value=""  {=if-equal:{=cmd=}~add~~disabled="disabled"=}/></td>
 			</tr>
 			<tr>
-				<td>Typ</td>
+				<td>{=L:3301=}</td>
 				<td>
 					<input type="radio" name="type" value="nfs" onclick="change_type()"/>NFS&nbsp;
 					<input type="radio" name="type" value="cifs" onclick="change_type()"/>CIFS&nbsp;
@@ -152,29 +152,29 @@ function change_type()
 			</tr>
 
 			<tr>
-				<td>IP</td>
+				<td>{=L:3302=}</td>
 				<td><input type="text" name="ip" size="20" value=""/></td>
 			</tr>
 			<tr>
-				<td>Verzeichnis</td>
-				<td><input type="text" name="dir" size="30" value="" title="remote directory"/></td>
+				<td>{=L:3303=}</td>
+				<td><input type="text" name="dir" size="30" value="" title="{=L:3307=}" /></td>
 			</tr>
 			<tr>
-				<td>Optionen</td>
-				<td><input type="text" name="opt1" size="30" value="" title="mount options 1"/></td>
+				<td>{=L:3304=}</td>
+				<td><input type="text" name="opt1" size="30" value="" title="{=L:3308=}" /></td>
 			</tr>
 			<tr id="vusername" style="visibility:hidden">
-				<td>Benutzername</td>
-				<td><input type="text" name="username" size="30" value="" title="username"/></td>
+				<td>{=L:3305=}</td>
+				<td><input type="text" name="username" size="30" value="" /></td>
 			</tr>
 			<tr id="vpassword" style="visibility:hidden">
-				<td>Passwort</td>
-				<td><input type="password" name="password" size="30" value="" title="password"/></td>
+				<td>{=L:3306=}</td>
+				<td><input type="password" name="password" size="30" value="" /></td>
 			</tr>
 		</table>
 		<br/>
-		<button type="button" ytype="save" title="submit and save values" onClick="do_save()">Speichern</button>
-		<button type="button" ytype="cancel" title="cancel" name="abort" onClick='window.document.location.href="/Y_Settings_automount_liste.yhtm"'>Abbrechen</button>
+		<button type="button" ytype="save" title="{=L:0014=}" onClick="do_save()">{=L:0021=}</button>
+		<button type="button" ytype="cancel" title="{=L:0023=}" name="abort" onClick='window.document.location.href="/Y_Settings_automount_liste.yhtm"'>{=L:0023=}</button>
 	</form>
 	</div>
 </div>

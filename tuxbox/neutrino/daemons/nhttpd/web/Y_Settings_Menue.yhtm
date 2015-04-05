@@ -14,26 +14,26 @@ function init(){
 <body onload="init()">
 {=var-set:management={=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip;{=func:get_request_data client_addr=}=}~1~=}{=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip2=}~1~=}=}
 <div class="y_menu_sec_box">
-	<div class="y_menu_sec_box_head"><h2>Settings</h2></div>
+	<div class="y_menu_sec_box_head"><h2>{=L:0106=}</h2></div>
 	<div class="y_menu_sec_box_body">
-		<div class="y_menu_sec_section">General</div>
+		<div class="y_menu_sec_section">{=L:0007=}</div>
 		<div class="y_menu_sec">
 			<ul id="secmenu_general">
 			{=if-empty:{=var-get:management=}~
-				<li class="disabled" title="settings for yWeb itselfs (restricted by ManagementIP)">yWeb</li>
-				<li class="disabled" title="settings for Web Server daemon (restricted by ManagementIP)">WebServer</li>
-				<li class="disabled" title="download or upload ucodes (restricted by ManagementIP)">Ucodes</li>
-				<li class="disabled" title="download or upload Bouquetlist, Channellist, ... (restricted by ManagementIP)">Zapit</li>
-				<li class="disabled" title="backup or upload boot logos (restricted by ManagementIP)">Boot Logo</li>
-				<li class="disabled" title="SyncTimer Settings (restricted by ManagementIP)">Timer Settings</a></li>
+				<li class="disabled" title="{=L:1122=} ({=L:0050=}">yWeb</li>
+				<li class="disabled" title="{=L:1123=} ({=L:0050=})">{=L:1100=}</li>
+				<li class="disabled" title="{=L:1124=} ({=L:0050=})">Ucodes</li>
+				<li class="disabled" title="{=L:1125=} ({=L:0050=})">{=L:1103=}</li>
+				<li class="disabled" title="{=L:1126=} ({=L:0050=})">{=L:1121=}</li>
+				<li class="disabled" title="{=L:1128=} ({=L:0050=})">{=L:1102=}</a></li>
 			~
-				<li><a title="settings for yWeb itselfs" target="work" href="Y_Settings_yWeb.yhtm">yWeb</a></li>
-				<li><a title="settings for Web Server daemon" target="work" href="Y_Settings_nhttpd.yhtm">WebServer</a></li>
-				<li><a title="download or upload ucodes" target="work" href="Y_Settings_ucodes.yhtm">Ucodes</a></li>
-				<li><a title="download or upload Bouquetlist, Channellist, ..." target="work" href="Y_Settings_zapit.yhtm">Zapit</a></li>
-				<li><a title="backup or upload boot logos" target="work" href="Y_Tools_Bootlogo.yhtm">Boot Logo</a></li>
-				<li><a title="backup or restore settings" target="work" href="Y_Settings_Backup.yhtm">Backup &amp; Restore</a></li>
-				<li><a title="SyncTimer Settings" target="work" href="Y_Settings_Timer.yhtm">Timer Settings</a></li>
+				<li><a title="{=L:1122=}" target="work" href="Y_Settings_yWeb.yhtm">yWeb</a></li>
+				<li><a title="{=L:1123=}" target="work" href="Y_Settings_nhttpd.yhtm">{=L:1100=}</a></li>
+				<li><a title="{=L:1124=}" target="work" href="Y_Settings_ucodes.yhtm">Ucodes</a></li>
+				<li><a title="{=L:1125=}" target="work" href="Y_Settings_zapit.yhtm">{=L:1103=}</a></li>
+				<li><a title="{=L:1126=}" target="work" href="Y_Tools_Bootlogo.yhtm">{=L:1121=}</a></li>
+				<li><a title="{=L:1127=}" target="work" href="Y_Settings_Backup.yhtm">{=L:1104=}</a></li>
+				<li><a title="{=L:1128=}" target="work" href="Y_Settings_Timer.yhtm">{=L:1102=}</a></li>
 			=}	
 			</ul>
 		</div>
@@ -41,44 +41,44 @@ function init(){
 		<div class="y_menu_sec">
 			<ul id="secmenu_neutrino">
 			{=if-empty:{=var-get:management=}~
-				<li class="disabled" title="Bouquet Editor (restricted by ManagementIP)">Bouquet Editor</a></li>
-				<li class="disabled" title="Video / Audio settings (restricted by ManagementIP)">Video/Audio</a></li>
-				<li class="disabled" title="Parental settings (restricted by ManagementIP)">Jugendschutz</a></li>
-				<li class="disabled" title="Recording settings (restricted by ManagementIP)">Aufnahme</a></li>
-				<li class="disabled" title="Audioplayer settings (restricted by ManagementIP)">Audioplayer</a></li>
-				<li class="disabled" title="Esound Soundserver settings (restricted by ManagementIP)">Esound Server</a></li>
-				<li class="disabled" title="Movieplayer settings (restricted by ManagementIP)">Movieplayer</a></li>
-				<li class="disabled" title="Pictureviewer settings (restricted by ManagementIP)">Bildbetrachter</a></li>
-				<li class="disabled" title="LCD settings (restricted by ManagementIP)">LC-Display</a></li>
-				<li class="disabled" title="Button settings (restricted by ManagementIP)">Tastenbelegung</a></li>
-				<li class="disabled" title="boot settings (restricted by ManagementIP)">Bootoptionen</a></li>
-				<li class="disabled" title="rest of settings (restricted by ManagementIP)">Erweitert</a></li>
-				<li class="disabled" title="personalize settings (restricted by ManagementIP)">Personalisierung</li>
+				<li class="disabled" title="{=L:1105=} ({=L:0050=})">{=L:1105=}</a></li>
+				<li class="disabled" title="{=L:1130=} ({=L:0050=})">{=L:1106=}</a></li>
+				<li class="disabled" title="{=L:1131=} ({=L:0050=})">{=L:1107=}</a></li>
+				<li class="disabled" title="{=L:1132=} ({=L:0050=})">{=L:1108=}</a></li>
+				<li class="disabled" title="{=L:1134=} ({=L:0050=})">{=L:1110=}</a></li>
+				<li class="disabled" title="{=L:1135=} ({=L:0050=})">{=L:1111=}</a></li>
+				<li class="disabled" title="{=L:1136=} ({=L:0050=})">{=L:1112=}</a></li>
+				<li class="disabled" title="{=L:1137=} ({=L:0050=})">{=L:1113=}</a></li>
+				<li class="disabled" title="{=L:1138=} ({=L:0050=})">{=L:1114=}</a></li>
+				<li class="disabled" title="{=L:1139=} ({=L:0050=})">{=L:1115=}</a></li>
+				<li class="disabled" title="{=L:1140=} ({=L:0050=})">{=L:1116=}</a></li>
+				<li class="disabled" title="{=L:1141=} ({=L:0050=})">{=L:1117=}</a></li>
+				<li class="disabled" title="{=L:1142=} ({=L:0050=})">{=L:1118=}</li>
 			~
-				<li><a title="Bouquet Editor" target="work" href="Y_Boxcontrol_Bouquet_Editor_Main.yhtm">Bouquet Editor</a></li>
-				<li><a title="Video / Audio settings" target="work" href="Y_Settings_video_audio.yhtm">Video / Audio</a></li>
-				<li><a title="Parental settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_parental">Jugendschutz</a></li>
-				<li><a title="Recording settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_record">Aufnahme</a></li>
-				<li><a title="Direct Recording" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_direct_recording">Direktaufnahme</a></li>
-				<li><a title="Audioplayer settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_audioplayer">Audioplayer</a></li>
-				<li><a title="Esound Soundserver settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_esound">Esound Server</a></li>
-				<li><a title="Movieplayer settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_movieplayer">Movieplayer</a></li>
-				<li><a title="Pictureviewer settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_pictureviewer">Bildbetrachter</a></li>
-				<li><a title="LCD settings" target="work" href="Y_Settings_lcd.yhtm">LC-Display</a></li>
-				<li><a title="Button settings" target="work" href="Y_Settings_buttons.yhtm">Tastenbelegung</a></li>				
-				<li><a title="boot settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_bootoptions">Bootoptionen</a></li>
-				<li><a title="rest of settings" target="work" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_diverse">Erweitert</a></li>
-				<li><a title="Personalize settings" target="work" href="Y_Settings_personalize.yhtm">Personalisierung</a></li>
+				<li><a target="work" title="{=L:1105=}" href="Y_Boxcontrol_Bouquet_Editor_Main.yhtm">{=L:1105=}</a></li>
+				<li><a target="work" title="{=L:1130=}" href="Y_Settings_video_audio.yhtm">{=L:1106=}</a></li>
+				<li><a target="work" title="{=L:1131=}" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_parental">{=L:1107=}</a></li>
+				<li><a target="work" title="{=L:1132=}" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_record">{=L:1108=}</a></li>
+				<li><a target="work" title="{=L:1133=}" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_direct_recording">{=L:1109=}</a></li>
+				<li><a target="work" title="{=L:1134=}" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_audioplayer">{=L:1110=}</a></li>
+				<li><a target="work" title="{=L:1135=}" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_esound">{=L:1111=}</a></li>
+				<li><a target="work" title="{=L:1136=}" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_movieplayer">{=L:1112=}</a></li>
+				<li><a target="work" title="{=L:1137=}" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_pictureviewer">{=L:1113=}</a></li>
+				<li><a target="work" title="{=L:1138=}" href="Y_Settings_lcd.yhtm">{=L:1114=}</a></li>
+				<li><a target="work" title="{=L:1139=}" href="Y_Settings_buttons.yhtm">{=L:1115=}</a></li>				
+				<li><a target="work" title="{=L:1140=}" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_bootoptions">{=L:1116=}</a></li>
+				<li><a target="work" title="{=L:1141=}" href="Y_Settings_neutrino_forms.yhtm?form=neutrino_form-data_diverse">{=L:1117=}</a></li>
+				<li><a target="work" title="{=L:1142=}" href="Y_Settings_personalize.yhtm">{=L:1118=}</a></li>
 			=}	
 			</ul>
 		</div>
-		<div class="y_menu_sec_section">Plugins</div>
+		<div class="y_menu_sec_section">{=L:1119=}</div>
 		<div class="y_menu_sec">
 			<ul id="secmenu_plugins">
 			{=if-empty:{=var-get:management=}~
-				<li class="disabled" title="configure VNC-Plugin (restricted by ManagementIP)">VNC</li>
+				<li class="disabled" title="{=L:1129=} ({=L:0050=})">VNC</li>
 			~
-				<li><a title="configure VNC-Plugin" target="work" href="Y_Settings_VNC.yhtm">VNC</a></li>
+				<li><a title="{=L:1129=}" target="work" href="Y_Settings_VNC.yhtm">VNC</a></li>
 			=}
 			</ul>
 		</div>

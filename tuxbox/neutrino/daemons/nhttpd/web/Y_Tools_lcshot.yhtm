@@ -45,22 +45,22 @@ function do_clearshot2(){
 </script>
 </head>
 <body onload="do_init()">
-{=var-set:wait_text=Schnappschuss wird erstellt (take snapshot)=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0303=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-BoxControl-LCD_Screenshot=}{=var-set:menu=LCD Screenshot=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-BoxControl-LCD_Screenshot=}{=var-set:menu={=L:0209=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-		<button name="lcshot" ytype="shot" onclick="do_lcshot()">LCD-Shot</button>
-		<button name="clearshot" ytype="clearshot" onclick="do_clearshot()">Delete Shot</button>
-	  	&nbsp;Filename:<input value="lcd" id="file" size="16" type="text" />.png
+		<button name="lcshot" ytype="shot" onclick="do_lcshot()">{=L:0300=}</button>
+		<button name="clearshot" ytype="clearshot" onclick="do_clearshot()">{=L:0302=}</button>
+	  	&nbsp;{=L:0049=}:<input value="lcd" id="file" size="16" type="text" />.png
 		<br />
 	<form name="f" class="y_form" action="">
     <table width="100%" border="0" cellpadding="2" cellspacing="0">
         <tr>
-          <td colspan="3" class="y_form_header">Optionen</td>
+          <td colspan="3" class="y_form_header">{=L:0304=}</td>
       </tr>
         <tr>
-          <td width="30%">Displayfarbe</td>
+          <td width="30%">{=L:0305=}</td>
           <td width="20%">
 				<input type="text" id="colorBox" size="7" readonly="readonly" />
 			</td>
@@ -94,8 +94,8 @@ document.write('</tr>\n');
           </div></td>
         </tr>
         <tr>
-          <td>Zoommodus</td>
-          <td><select name="zooming" title="zoomfactor">
+          <td>{=L:0306=}</td>
+          <td><select name="zooming">
             <option value="1">100%</option>
             <option value="2">200%</option>
             <option value="3">300%</option>
@@ -103,23 +103,23 @@ document.write('</tr>\n');
           </select></td>
         </tr>
         <tr>
-          <td>Dateiausgabe</td>
+          <td>{=L:0307=}</td>
           <td><input name="compress" type="checkbox" checked="checked" />
-            komprimiert</td>
+            {=L:0308=}</td>
         </tr>
         <tr>
-          <td>Farbausgabe</td>
+          <td>{=L:0309=}</td>
           <td><input name="grayscale" type="checkbox" />
-            Grauskalenbild</td>
+            {=L:0310=}</td>
         </tr>
 		<tr>
-          <td colspan="3" class="y_form_header">Ausgabe</td>
+          <td colspan="3" class="y_form_header">{=L:0311=}</td>
 		</tr>
 		<tr>
 		  <td colspan="3">&nbsp;</td>
 	    </tr>
 		<tr>
-		  <td colspan="3"><img src="" id="shot" style="visibility:hidden;" alt="" /></td>
+		  <td colspan="3"><img src="" id="shot" style="visibility:hidden;"/></td>
 	    </tr>
 		<tr>
 		  <td colspan="3">&nbsp;</td>

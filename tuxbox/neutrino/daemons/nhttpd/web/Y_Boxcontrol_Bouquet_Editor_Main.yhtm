@@ -30,7 +30,7 @@ function do_save()
 {
 	hide_forms();
 	loadSyncURL("/control/savebouquet");
-	alert("Bouquet-Liste gespeichert");
+	alert("{=L:0714=}");
 }
 function do_update()
 {
@@ -49,7 +49,7 @@ function do_move(bouquetnr, action)
 }
 function do_delete(bouquetnr, bouquet_name)
 {
-	if (confirm("Bouquet \""+bouquet_name+"\" wirklich loeschen?")==true){
+	if (confirm("{=L:0700=} \""+bouquet_name+"\" {=L:0712=}")==true){
 		loadSyncURL("/control/deletebouquet?selected="+bouquetnr);
 		gurl = "/Y_Boxcontrol_Bouquet_Editor_Main.yhtm?selected=" + bouquetnr+ "#akt";
 		window.setTimeout('do_reload()',50);
@@ -78,7 +78,7 @@ function do_add()
 		window.setTimeout('do_reload()',200);
 	}
 	else
-		alert("Es wurde kein Bouquet-Name angegeben!");
+		alert("{=L:0715=}!");
 }
 function do_rename_start(bouquetnr, bouquet_name)
 {
@@ -107,7 +107,7 @@ function do_rename()
 //		}
 	}
 	else
-		alert("Es wurde kein Bouquet-Name angegeben!");
+		alert("{=L:0715=}!");
 }
 //]]>
 </script>
@@ -129,29 +129,29 @@ function do_rename()
 <body>
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-BoxControl-Bouquet-Editor=}{=var-set:menu=Bouquet-Editor=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-BoxControl-Bouquet-Editor=}{=var-set:menu={=L:1105=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<div id="add" class="fly_form">
 			<form name="add" accept-charset="UTF-8" action="">
-				<p><b>Bouquet hinzuf&uuml;gen</b><br/>
-				Name des neuen Bouquets:
+				<p><b>{=L:0702=}</b><br />
+				{=L:0704=}:
 				<input type="text" size="30" name="bouquet_name" />
 				<br/>
-				<button type="button" ytype="save" onclick="do_add()">speichern</button>
-				<button type="button" ytype="cancel" onclick="do_add_abort()">abbrechen</button>
+				<button type="button" ytype="save" onclick="do_add()">{=L:0021=}</button>
+				<button type="button" ytype="cancel" onclick="do_add_abort()">{=L:0023=}</button>
 				</p>
 			</form>
 		</div>
 		<div id="rename" class="fly_form">
 			<form name="rename" accept-charset="UTF-8" action="">
 				<p>
-				<p><b>Bouquet umbenennen</b><br/>
-				Name des neuen Bouquets:
+				<p><b>{=L:0705=}</b><br />
+				{=L:0704=}:
 				<input type="text" size="30" name="bouquet_name" />
 				<input type="hidden" name="bouquetnr" value="" />
 				<br/>
-				<button type="button" ytype="save" onclick="do_rename()">speichern</button>
-				<button type="button" ytype="cancel" onclick="do_rename_abort()">abbrechen</button>
+				<button type="button" ytype="save" onclick="do_rename()">{=L:0021=}</button>
+				<button type="button" ytype="cancel" onclick="do_rename_abort()">{=L:0023=}</button>
 				</p>
 			</form>
 		</div>
@@ -172,21 +172,21 @@ function do_rename()
 <td><a href="/Y_Boxcontrol_Bouquet_Editor_Edit.yhtm?selected=%d&amp;name=%s">%s</a></td>
 <td width="100" style="white-space: nowrap; font-weight:normal;">
 	<a href="javascript:do_rename_start('%d','%s');">
-	<img src="/images/modify.png" alt="umbenennen" style="border: 0px" /></a>&nbsp;
+	<img src="/images/modify.png" alt="{=L:0713=}" style="border: 0px" /></a>&nbsp;
 	<a href="javascript:do_delete('%d','%s');">
-	<img src="/images/remove.png" alt="l&ouml;schen" style="border: 0px" /></a>&nbsp;
+	<img src="/images/remove.png" alt="{=L:0711=}" style="border: 0px" /></a>&nbsp;
 	<span  style="visibility:%s;"><a href="javascript:do_move('%d','down');">
-	<img src="/images/arrowdown.png" alt="nach unten" style="border: 0px" /></a>&nbsp;</span>
+	<img src="/images/arrowdown.png" alt="{=L:0707=}" style="border: 0px" /></a>&nbsp;</span>
 	<span  style="visibility:%s;"><a href="javascript:do_move('%d','up');">
-	<img src="/images/arrowup.png" alt="nach oben" style="border: 0px" /></a>&nbsp;</span>
+	<img src="/images/arrowup.png" alt="{=L:0706=}" style="border: 0px" /></a>&nbsp;</span>
 </td>
 </tr>
 =}
 {=func:bouquet_editor_main {=var-get:row=}=}
 		</table>
 		<p>
-			<button type="button" ytype="add" onclick="javascript:do_add_start()">Bouquet hinzuf&uuml;gen</button>
-			<button type="button" ytype="saveall" onclick="javascript:do_save()">Alle &Auml;nderungen speichern</button>
+			<button type="button" ytype="add" onclick="javascript:do_add_start()">{=L:0702=}</button>
+			<button type="button" ytype="saveall" onclick="javascript:do_save()">{=L:0022=}</button>
 		</p>
 	</div>
 </div>

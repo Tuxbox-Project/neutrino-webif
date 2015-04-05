@@ -12,13 +12,13 @@ function form_init()
 function do_submit()
 {
 	if(document.f.authpassword.value.length < 5)
-		alert("Passwort muss mind. 4 Zeichen haben");
+		alert("{=L:1521=}");
 	else
 	if(document.f.port.value == "")
-		alert("Port muss angegeben werden");
+		alert("{=L:1522=}");
 	else{
 		show_waitbox(true);
-		yhttpd_cache_clear("yPConf");
+		yhttpd_cache_clear("");
 		document.f.submit();
 	}
 }
@@ -26,84 +26,90 @@ function do_submit()
 </script>
 </head>
 <body onload="form_init()">
-{=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0015=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-Settings-WebServer=}{=var-set:menu=WebServer (nhttpd)=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-WebServer=}{=var-set:menu={=L:1500=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" class="y_form" action="/y/cgi">
 		<table border="0" width="100%">
-			<tr><td colspan="2" class="y_form_header">Authentifikation</td></tr>
+			<tr><td colspan="2" class="y_form_header">{=L:1501=}</td></tr>
 			<tr>
-				<td>Benutzer</td>
-				<td><input type="text" name="authuser" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.username;root~open=}" title="username"/></td>
+				<td>{=L:0004=}</td>
+				<td><input type="text" name="authuser" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.username;root~open=}" title="{=L:0004=}" /></td>
 			</tr>
 			<tr>
-				<td>Passwort</td>
-				<td><input type="password" name="authpassword" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.password;dbox2~cache=}" title="password"/></td>
+				<td>{=L:0005=}</td>
+				<td><input type="password" name="authpassword" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.password;dbox2~cache=}" title="{=L:0005=}" /></td>
 			</tr>
 			<tr>
-				<td>Client ohne Authentifikation</td>
-				<td><input type="text" name="noauthclient" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.no_auth_client~cache=}" title="Client with no authentication check. Enter IP."/></td>
+				<td>{=L:1503=}</td>
+				<td><input type="text" name="noauthclient" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_auth.no_auth_client~cache=}" title="{=L:1502=}" /></td>
 			</tr>
 			<tr>
-				<td>Authentifikation</td>
+				<td>{=L:1501=}</td>
 				<td>
-					<input type="radio" name="authenticate" value="false" title="authentication: off"/>AUS&nbsp;
-					<input type="radio" name="authenticate" value="true" title="authentication: on"/>AN
+					<input type="radio" name="authenticate" value="false" />{=L:0032=}&nbsp;
+					<input type="radio" name="authenticate" value="true" />{=L:0031=}
 				</td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Allgemeines</td></tr>
+			<tr><td colspan="2" class="y_form_header">{=L:0007=}</td></tr>
 			<tr>
-				<td>Port</td>
-				<td><input type="text" name="port" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.port;80~cache=}" title="port"/>&nbsp;Wirkt erst nach dem booten
+				<td>{=L:0006=}</td>
+				<td colspan="3">	<select name="language" title="{=L:0006=}">
+					{=func:get_languages_as_dropdown=}
+				</select></td>
+			</tr>
+			<tr>
+				<td>{=L:1505=}</td>
+				<td><input type="text" name="port" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.port;80~cache=}" />&nbsp;{=L:1504=}
 				</td>
 			</tr>
-				<td>Threading</td>
+				<td>{=L:1506=}</td>
 				<td>
-					<input type="radio" name="threading" value="false" title="threading: off"/>AUS&nbsp;
-					<input type="radio" name="threading" value="true" title="threading: on"/>AN
+					<input type="radio" name="threading" value="false" />{=L:0032=}&nbsp;
+					<input type="radio" name="threading" value="true" />{=L:0031=}
 				</td>
 			<tr>
-				<td>Alternatives Web-Verzeichnis</td>
-				<td><input type="text" name="override_directory" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.override_directory~cache=}" title="Alternate web directory."/>&nbsp;Wirkt erst nach dem booten
-					<input type="hidden" name="HostedDocRoot" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;Tuxbox.HostedDocumentRoot~cache=}" title="Root of hosted Web. Enter mount directory."/></td>
+				<td>{=L:1507=}</td>
+				<td><input type="text" name="override_directory" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.override_directory~cache=}" title="{=L:1507=}" />&nbsp;{=L:1504=}
+					<input type="hidden" name="HostedDocRoot" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.hosted_directory~cache=}" title="{=L:1509=}" /></td>
 			</tr>
 			<tr>
-				<td>Erlaubte Dateiendungen / MIME</td>
-				<td><input type="text" name="mod_sendfile_mime_types" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_sendfile.mime_types~cache=}" title="allowed file extensions"/></td>
+				<td>{=L:1510=}</td>
+				<td><input type="text" name="mod_sendfile_mime_types" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_sendfile.mime_types~cache=}" /></td>
 			</tr>
 			<tr>
-				<td>Alle Dateiendungen erlauben</td>
+				<td>{=L:1510=}</td>
 				<td>
-					<input type="radio" name="mod_sendfile_sendAll" value="false" title="allow all: off"/>AUS&nbsp;
-					<input type="radio" name="mod_sendfile_sendAll" value="true" title="allow all: on"/>AN
+					<input type="radio" name="mod_sendfile_sendAll" value="false" />{=L:0032=}&nbsp;
+					<input type="radio" name="mod_sendfile_sendAll" value="true" />{=L:0031=}
 				</td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Logos</td></tr>
+			<tr><td colspan="2" class="y_form_header">{=L:0008=}</td></tr>
 			<tr>
-				<td>URL</td>
-				<td><input type="text" name="Tuxbox_LogosURL" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;Tuxbox.LogosURL~cache=}" title="Enter URL of Logos"/></td>
+				<td>{=L:1513=}</td>
+				<td><input type="text" name="Tuxbox_LogosURL" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;Tuxbox.LogosURL~cache=}" title="{=L:1512=}" /></td>
 			</tr>
-			<tr><td colspan="2" class="y_form_header">Server</td></tr>
+			<tr><td colspan="2" class="y_form_header">{=L:1514=}</td></tr>
 			<tr>
-				<td>IPs mit No keep-alive<br/>(z.B. JtG Server, trennen mit Komma) </td>
-				<td><input type="text" name="no_keep_alive_ips" size="30" maxsize="254" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;server.no_keep-alive_ips;~cache=}" title="IPs not to HTTP1.1 keep alive like JtG. Comma seperated."/>
+				<td>{=L:1516=}<br />{=L:1515=} </td>
+				<td><input type="text" name="no_keep_alive_ips" size="30" maxsize="254" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;server.no_keep-alive_ips;~cache=}" title="{=L:1515=}" />
 				</td>
 			</tr>
 			<tr>
-				<td>Cache</td>
-				<td><a href="/y/cache-info" target="_blank"><u>Cache info</u>&nbsp;</a><button type="button" ytype="clear" name="clearcache" title="clear cache" onclick="javascript:yhttpd_cache_clear('');">clear cache</button></td>
+				<td>{=L:1517=}</td>
+				<td><a href="/y/cache-info" target="_blank"><u>{=L:1518=}</u>&nbsp;</a><button type="button" ytype="clear" name="clearcache" onclick="javascript:yhttpd_cache_clear('');">{=L:1519=}</button></td>
 			</tr>
 			<tr>
-				<td>Server Configuration</td>
-				<td><a href="/y/server-config" target="_blank"><u>Server Config</u></a></td>
+				<td>{=L:1520=}</td>
+				<td><a href="/y/server-config" target="_blank"><u>{=L:1520=}</u></a></td>
 			</tr>
 		</table>
 		<br/>
-		<input type="hidden" name="tmpl" value="Y_Settings_nhttpd.yhtm"/>
+		<input type="hidden" name="tmpl" value="Y_Refresh.yhtm" />
 		<input type="hidden" name="execute" value="include-block:Y_Blocks.txt;nhttpd_save_settings;nix"/>
-		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
+		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
 	</form>
 	</div>
 </div>

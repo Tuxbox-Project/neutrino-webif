@@ -5,40 +5,39 @@
 <script type="text/javascript" src="/Y_Flash.js"></script>
 </head>
 <body>
-{=var-set:wait_text=Image wird erstellt (create image).=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:4400=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head">
-		<div class="work_box_head_h2">{=var-set:help_url=Help-Tools-Image=}{=var-set:menu=Image=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+		<div class="work_box_head_h2">{=var-set:help_url=Help-Tools-Image=}{=var-set:menu={=L:2309=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
-		<b><font size="2">Partition</font></b><br/>
+		<b><font size="2">{=L:4401=}</font></b><br />
 		<form action="/y/cgi" name="f" id="f">
 			{=func:get_partition_list=}
 			<input type="hidden" name="tmpl" value="Y_Settings_mount.yhtm"/>
 			<input type="hidden" name="execute" value=""/>
 			<input type="hidden" name="mtd_text" value=""/>
 			<input type="hidden" name="mtd" value=""/>
-			<button type="button" ytype="download" name="download" title="Generate Image for download" onclick="do_image_download()">Download</button>
-			<button type="button" ytype="flash" name="upload" title="go to Upload Dialog" onclick="do_image_upload_dialog()">Flash ...</button>
+			<button type="button" ytype="download" name="download" title="{=L:4402=}" onclick="do_image_download()">{=L:4403=}</button>
+			<button type="button" ytype="flash" name="upload" title="{=L:4404=}" onclick="do_image_upload_dialog()">{=L:4405=}</button>
 		</form>
 	</div>
 </div>
 <div style="clear:both">&nbsp;</div>
 <div class="work_box">
-	<div class="work_box_head"><h2>Hinweis</h2></div>
-	<div class="work_box_body" title="You should reboot the box before flashing">
-
-	Es ist sinnvoll die Box vor dem flashen frisch zu booten.<br/>
-	<button type=button ytype="reboot" title="reboot" onclick='goConfirmUrl("dbox wirklich neu starten?","/control/reboot");'>Neu starten</button>
+	<div class="work_box_head"><h2>{=L:0070=}</h2></div>
+	<div class="work_box_body">
+	{=L:4406=}<br />
+	<button type=button ytype="reboot" onclick='goConfirmUrl("{=L:4272=}","/control/reboot");'>{=L:0415=}</button>
 	</div>
 </div>
 <div style="clear:both">&nbsp;</div>
 <div class="work_box" id="download_box" style="display: none;">
-	<div class="work_box_head"><h2>Download</h2></div>
-	<div class="work_box_body" title="Download your image">
-		<b>Das Image wurde erstellt.</b>
+	<div class="work_box_head"><h2>{=L:4403=}</h2></div>
+	<div class="work_box_body" title="{=L:4407=}">
+		<b>{=L:4408=}</b>
 		<p>
-			1) <a id="download_link" type="application/octet-stream" href=""><u>Download</u></a><br/><br/>
-			2) <a href='javascript:image_delete();'><u>Download fertig. Image in /tmp loeschen.</u></a>
+			1) <a id="download_link" type="application/octet-stream" href=""><u>{=L:4403=}</u></a><br /><br />
+			2) <a href='javascript:image_delete();'><u>{=L:4409=}</u></a>
 		</p>
 	</div>
 </div>

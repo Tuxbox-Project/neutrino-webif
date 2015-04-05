@@ -4,19 +4,19 @@
 <body>
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-BoxControl-Message=}{=var-set:menu=Message=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-BoxControl-Message=}{=var-set:menu={=L:0205=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" action="/control/message" method="get" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
 		<table class="y_invisible_table" cellpadding="5" width="100%">
-		<tr><td class="y_form_header">Meldung auf dbox-Bildschirm</td></tr>
+		<tr><td class="y_form_header">{=L:0501=}</td></tr>
 		<tr><td>
-			<textarea name="nmsg" cols="50" rows="5" title="enter message to send to TV screen"></textarea><br/>
-			<button type="submit" name="message" ytype="go" title="send message">senden</button>
+			<textarea name="nmsg" cols="50" rows="5" title="{=L:0500=}"></textarea><br />
+			<button type="submit" name="message" ytype="go" title="{=L:0503=}">{=L:0020=}</button>
 		</td></tr>
-		<tr><td class="y_form_header">Popup auf dbox-Bildschirm</td></tr>
+		<tr><td class="y_form_header">{=L:0502=}</td></tr>
 		<tr><td>
-			<textarea name="popup" cols="50" rows="5" title="enter message to send to TV screen"></textarea><br/>
-			<button type="submit" name="pmessage" ytype="go" title="send message">senden</button>
+			<textarea name="popup" cols="50" rows="5" title="{=L:0500=}"></textarea><br />
+			<button type="submit" name="pmessage" ytype="go" title="{=L:0503=}">{=L:0020=}</button>
 		</td></tr>
 		</table>
 		<br/>

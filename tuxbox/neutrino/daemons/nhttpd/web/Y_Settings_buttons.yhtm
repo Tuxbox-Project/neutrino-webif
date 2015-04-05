@@ -8,7 +8,6 @@
 input[type="text"],select {
 	font-weight: bold;
 	background-color: #FF9;
-	width: 145px;
 }
 .butnokey {
 	visibility: hidden;
@@ -224,154 +223,154 @@ function do_submit()
 </script>
 </head>
 <body onload="do_init()">
-{=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0015=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-Settings-Buttons=}{=var-set:menu=Tastenbelegung=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-Buttons=}{=var-set:menu={=L:1115=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<form name="f" class="y_form" action="">
 			<table cellspacing="0" border="0" cellpadding="2" width="100%">
 			<tr>
 				<td width="25%">&nbsp;</td>
-				<td colspan="2" class="y_form_header">Modus wechseln</td>
+				<td colspan="2" class="y_form_header">{=L:3400=}</td>
 			</tr>
 			<tr>
 				<td rowspan="25">{=include-block:Y_Blocks.txt;remote=}</td>
-				<td><input type="radio" name="but" onclick="setFocus()" />TV-/Radio-Modus</td>
+				<td><input type="radio" name="but" onclick="setFocus()" />{=L:3401=}</td>
 				<td><input type="text" name="key_tvradio_mode" id="id100" onclick="setradio(0)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id200" value="Keine Taste" onclick="killkey()" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id200" value="{=L:3402=}" onclick="killkey()" /></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="y_form_header">Kanalliste</td>
+				<td colspan="2" class="y_form_header">{=L:3403=}</td>
 			</tr>
 			<tr>
 				<td>&nbsp;OK-Taste f&uuml;r</td>
 				<td>
-					<select name="bouquetlist_mode" title="OK-Button for...">
-					<option value="0" selected="selected">Bouquet-Kan&auml;le</option>
-					<option value="1">Bouquetliste</option>
-					<option value="2">Kanalliste</option>
+					<select name="bouquetlist_mode" title="{=L:3404=}">
+					<option value="0" selected="selected">{=L:3405=}</option>
+					<option value="1">{=L:3406=}</option>
+					<option value="2">{=L:3403=}</option>
 					</select>
 				</td>				
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Seite hochbl&auml;ttern</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3408=}</td>
 				<td><input type="text" name="key_channelList_pageup" id="id101" onclick="setradio(1)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id201" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id201" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Seite runterbl&auml;ttern</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3409=}</td>
 				<td><input type="text" name="key_channelList_pagedown" id="id102" onclick="setradio(2)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id202" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id202" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Kanalliste schlie&szlig;en</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3410=}</td>
 				<td><input type="text" name="key_channelList_cancel" id="id103" onclick="setradio(3)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id203" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id203" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Sortierreihenfolge &auml;ndern</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3411=}</td>
 				<td><input type="text" name="key_channelList_sort" id="id104" onclick="setradio(4)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id204" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id204" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Stichwortsuche im EPG</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3412=}</td>
 				<td><input type="text" name="key_channelList_search" id="id105" onclick="setradio(5)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id205" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id205" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Aufnahme-Timer hinzuf&uuml;gen</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3413=}</td>
 				<td><input type="text" name="key_channelList_addrecord" id="id106" onclick="setradio(6)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id206" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id206" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Umschalt-Timer hinzuf&uuml;gen</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3414=}</td>
 				<td><input type="text" name="key_channelList_addremind" id="id107" onclick="setradio(7)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id207" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id207" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> EPG aktualisieren</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3415=}</td>
 				<td><input type="text" name="key_channelList_reload" id="id108" onclick="setradio(8)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id208" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id208" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="y_form_header">Schnellumschaltung</td>
+				<td colspan="2" class="y_form_header">{=L:3416=}</td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Kanal hoch</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3417=}</td>
 				<td><input type="text" name="key_quickzap_up" id="id109" onclick="setradio(9)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id209" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id209" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Kanal runter</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3418=}</td>
 				<td><input type="text" name="key_quickzap_down" id="id110" onclick="setradio(10)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id210" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id210" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Lautst&auml;rke plus</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3419=}</td>
 				<td><input type="text" name="key_volume_up" id="id111" onclick="setradio(11)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id211" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id211" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Lautst&auml;rke minus</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3420=}</td>
 				<td><input type="text" name="key_volume_down" id="id112" onclick="setradio(12)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id212" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id212" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Bouquet weiter</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3421=}</td>
 				<td><input type="text" name="key_bouquet_down" id="id113" onclick="setradio(13)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id213" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id213" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Bouquet zur&uuml;ck</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3422=}</td>
 				<td><input type="text" name="key_bouquet_up" id="id114" onclick="setradio(14)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id214" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id214" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Unterkanal weiter</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3423=}</td>
 				<td><input type="text" name="key_subchannel_down" id="id115" onclick="setradio(15)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id215" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id215" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Unterkanal zur&uuml;ck</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3424=}</td>
 				<td><input type="text" name="key_subchannel_up" id="id116" onclick="setradio(16)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id216" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id216" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Unterkanal wechseln</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3425=}</td>
 				<td><input type="text" name="key_subchannel_toggle" id="id117" onclick="setradio(17)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id217" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id217" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Zapping-History Bouquet</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3426=}</td>
 				<td><input type="text" name="key_zaphistory" id="id118" onclick="setradio(18)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id218" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id218" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Letzter Kanal</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3427=}</td>
 				<td><input type="text" name="key_lastchannel" id="id119" onclick="setradio(19)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id219" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id219" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="y_form_header">Men&uuml;</td>
+				<td colspan="2" class="y_form_header">{=L:3407=}</td>
 			</tr>
 			<tr>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Seite hochbl&auml;ttern</td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3408=}</td>
 				<td><input type="text" name="key_menu_pageup" id="id120" onclick="setradio(20)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id220" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id220" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			<tr>
-				<td><a href="javascript:setDefault()" class="alink">Vorbelegung benutzen</a></td>
-				<td><input type="radio" name="but" onclick="setFocus()" /> Seite runterbl&auml;ttern</td>
+				<td><a href="javascript:setDefault()" class="alink">{=L:3428=}</a></td>
+				<td><input type="radio" name="but" onclick="setFocus()" /> {=L:3409=}</td>
 				<td><input type="text" name="key_menu_pagedown" id="id121" onclick="setradio(21)" readonly="readonly" />
-				&nbsp;<input type="button" class="butnokey" id="id221" onclick="killkey()" value="Keine Taste" /></td>
+				&nbsp;<input type="button" class="butnokey" id="id221" onclick="killkey()" value="{=L:3402=}" /></td>
 			</tr>
 			</table>
 			<br />
 			<input type="hidden" name="execute" value="include-block:Y_Blocks.txt;buttons_save_settings;nix" />
-			<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
-			&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>
-			&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
+			<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
+			&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
+			&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
 		</form>
 	</div>
 </div>

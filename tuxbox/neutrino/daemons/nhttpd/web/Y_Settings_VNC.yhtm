@@ -16,29 +16,29 @@ function do_submit()
 </script>
 </head>
 <body onload="form_init()">
-{=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0015=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-Settings-VNC=}{=var-set:menu=VNC=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-VNC=}{=var-set:menu={=L:4300=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" action="">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
 			<tr>
-				<td width="35%">Server</td>
-				<td><input type="text" name="server" size="20" value="{=ini-get:/var/tuxbox/config/vnc.conf;server=}" title="enter IP (xxx.xxx.xxx.xxx)"/></td>
+				<td width="35%">{=L:4301=}</td>
+				<td><input type="text" name="server" size="20" value="{=ini-get:/var/tuxbox/config/vnc.conf;server=}" title="{=L:4302=}" /></td>
 			</tr>
 			<tr>
-				<td>Port</td>
+				<td>{=L:4303=}</td>
 				<td><input type="text" name="port" size="5" value="{=ini-get:/var/tuxbox/config/vnc.conf;port=}"/></td>
 			</tr>
 			<tr>
-				<td>Passwort</td>
+				<td>{=L:4304=}</td>
 				<td><input type="password" name="password" size="20" value="{=ini-get:/var/tuxbox/config/vnc.conf;passwd=}"/></td>
 			</tr>
 			<tr>
-				<td>Skalierung</td>
+				<td>{=L:4305=}</td>
 				<td>
-				<select name="scale" title="enter scale for Screen">
+				<select name="scale" title="{=L:4306=}">
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -50,7 +50,7 @@ function do_submit()
 		<br/>
 		<input type="hidden" name="tmpl" value="Y_Settings_nhttpd.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_Blocks.txt;vnc_save_settings;nix"/>
-		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>
+		<button type="button" ytype="save" title="s{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
 	</form>
 	</div>
 </div>

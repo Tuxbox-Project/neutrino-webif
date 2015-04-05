@@ -48,34 +48,34 @@ function doUpload()
 <body>
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-		{=var-set:help_url=Help-Tools-Command_Shell=}{=var-set:menu=Command Shell=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+		{=var-set:help_url=Help-Tools-Command_Shell=}{=var-set:menu={=L:2310=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="co" action="">
-		<textarea name="cmds" cols="80" rows="18"  title="shell output window" style="display: block;background : white; font : 'Courier New','medium  monospace'; color : #436976;"></textarea>
+		<textarea name="cmds" cols="80" rows="18" style="display: block;background : white; font : 'Courier New','medium  monospace'; color : #436976;"></textarea>
 	</form>
 
 	<form name="f" target="tmp" onsubmit="do_submit();return false;" action="">
 		<table>
 		<tr>
-			<td><input type="button" name="clear" value="clear" title="clear output screeb" onclick="do_clear()"/></td>
-			<td><input type="checkbox" name="appendx" value="1" title="append output (only IE)"/>&nbsp;fortlaufende Ausgabe (nur IE - wg. scrollen)
+			<td><input type="button" name="clear" value="{=L:0001=}" title="{=L:2319=}" onclick="do_clear()" /></td>
+			<td><input type="checkbox" name="appendx" value="1" title="{=L:2313=}" />&nbsp;{=L:2312=}
 			<!--<input type="button" value="Upload" title="upload a file to current directory" onClick="doUpload()">-->
 			</td>
 		</tr><tr>
-			<td>Path:&nbsp;</td>
-			<td><input name="pwd" type="text" size="60" maxlength="255" title="actual path" value="/"/></td>
+			<td>{=L:2314=}:&nbsp;</td>
+			<td><input name="pwd" type="text" size="60" maxlength="255" title="{=L:2315=}" value="/" /></td>
 		</tr><tr>
-			<td>Command:</td>
-			<td><input name="cmd" type="text" size="60" maxlength="255" title="enter command to execute"/>
-			<input type="submit" name="Submit" value="do it" title="execute shell command"/></td>
+			<td>{=L:2316=}:</td>
+			<td><input name="cmd" type="text" size="60" maxlength="255" title="{=L:2317=}" />
+			<input type="submit" name="Submit" value="{=L:0002=}" title="{=L:2318=}" /></td>
 		</tr>
 		</table>
 	</form>
 	</div>
 </div>
 
-<iframe height="0" width="0" scrolling="no" align="left" frameborder="0" name="out" id="out">Your Browser does not support IFrames.</iframe>
-<iframe height="0" width="0" scrolling="no" align="left" frameborder="0" name="tmp" id="tmp">Your Browser does not support IFrames.</iframe>
+<iframe height="0" width="0" scrolling="no" align="left" frameborder="0" name="out" id="out">{=L:0000=}</iframe>
+<iframe height="0" width="0" scrolling="no" align="left" frameborder="0" name="tmp" id="tmp">{=L:0000=}</iframe>
 
 <script language="JavaScript" type="text/javascript" >
 //<![CDATA[

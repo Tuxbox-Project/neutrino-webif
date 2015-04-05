@@ -17,7 +17,7 @@ function build_menu(){
 	var ext_normal=ext.select_type("m");
 	ext_normal.each(function(e){
 		{=if-empty:{=var-get:management=}~
-		var item="<span class=\"disabled\" title=\""+e.get('desc')+" (restricted by ManagementIP)\">"+e.get('menuitem')+"</span>";
+		var item="<span class=\"disabled\" title=\""+e.get('desc')+" ({=L:0050=})\">"+e.get('menuitem')+"</span>";
 		~
 		var item="<a target=\"work\" title=\""+e.get('desc')+"\" href=\""+e.get('file')+"\">"+e.get('menuitem')+"</a>";
 		=}
@@ -29,29 +29,29 @@ function build_menu(){
 </head>
 <body onload="build_menu()">
 <div class="y_menu_sec_box">
-	<div class="y_menu_sec_box_head"><h2>Extensions</h2></div>
+	<div class="y_menu_sec_box_head"><h2>{=L:0108=}</h2></div>
 	<div class="y_menu_sec_box_body">
-		<div class="y_menu_sec_section">Normal</div>
+		<div class="y_menu_sec_section">{=L:0625=}</div>
 		<div class="y_menu_sec">
 			<ul id="ext_normal">
 			<ul>
 		</div>
-		<div class="y_menu_sec_section">Management</div>
+		<div class="y_menu_sec_section">{=L:0626=}</div>
 		<div class="y_menu_sec" id="ext_management2">
 			<ul id="ext_management">
 			</ul>
 		</div>
-		<div class="y_menu_sec_section">Admin</div>
+		<div class="y_menu_sec_section">{=L:0624=}</div>
 		<div class="y_menu_sec">
 			<ul>
 				{=if-empty:{=var-get:management=}~
-				<li class="disabled" title="Extentions settings. (restricted by ManagementIP)">Einstellungen</li>
-				<li class="disabled" title="Extentions updater/installer (restricted by ManagementIP)">Installer/Updater</li>
-				<li class="disabled" title="Extentions settings. (restricted by ManagementIP)">Einstellungen</li>
+				<li class="disabled" title="{=L:0629=} ({=L:0050=})">{=L:0628=}</li>
+				<li class="disabled" title="{=L:0630=} ({=L:0050=})">{=L:0600=}</li>
+				<li class="disabled" title="{=L:0601=} ({=L:0050=})">{=L:0627=}</li>
 				~
-				<li><a target="work" title="Extentions settings" href="Y_Ext_Settings.yhtm">Einstellungen</a></li>
-				<li><a target="work" title="Extentions updater/installer" href="Y_Ext_Update.yhtm">Installer/Updater</a></li>
-				<li><a target="work" title="Extentions uninstaller" href="Y_Ext_Uninstall.yhtm">Uninstaller</a></li>
+				<li><a target="work" title="{=L:0629=}" href="Y_Ext_Settings.yhtm">{=L:0628=}</a></li>
+				<li><a target="work" title="{=L:0630=}" href="Y_Ext_Update.yhtm">{=L:0600=}</a></li>
+				<li><a target="work" title="{=L:0601=}" href="Y_Ext_Uninstall.yhtm">{=L:0627=}</a></li>
 				=}
 			</ul>
 		</div>

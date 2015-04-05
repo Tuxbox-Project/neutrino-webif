@@ -57,10 +57,10 @@ function poschannel(box, direction)
 </head>
 
 <body>
-{=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0015=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-BoxControl-Bouquet-Editor=}{=var-set:menu=Bouquet &quot;{=name=}&quot; bearbeiten=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-BoxControl-Bouquet-Editor=}{=var-set:menu={=L:0700=} &quot;{=name=}&quot; {=L:0710=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<form action="/control/changebouquet" method="post" id="channels" enctype="x-www-form-urlencoded">
 		<p><input type="hidden" name="selected" value="{=selected=}" /></p>
@@ -72,10 +72,10 @@ function poschannel(box, direction)
 				</select>
 			</td>
 			<td align="center">
-				<button type="button" title="move up" onclick="poschannel(document.getElementById('channels').bchannels, 0);">&nbsp;<img src="/images/arrowup.png">&nbsp;</button><br /><br />
-				<button type="button" title="move down" onclick="poschannel(document.getElementById('channels').bchannels, 1);">&nbsp;<img src="/images/arrowdown.png">&nbsp;</button><br /><br />
-				<button type="button" title="remove" onclick="movechannels(document.getElementById('channels').bchannels, document.getElementById('channels').achannels);">&nbsp;<img src="/images/arrowright.png">&nbsp;</button><br /><br />
-				<button type="button" title="add" onclick="movechannels(document.getElementById('channels').achannels, document.getElementById('channels').bchannels);">&nbsp;<img src="/images/arrowleft.png">&nbsp;</button><br /><br />
+				<button type="button" title="{=L:0706=}" onclick="poschannel(document.getElementById('channels').bchannels, 0);">&nbsp;<img src="/images/arrowup.png">&nbsp;</button><br /><br />
+				<button type="button" title="{=L:0707=}" onclick="poschannel(document.getElementById('channels').bchannels, 1);">&nbsp;<img src="/images/arrowdown.png">&nbsp;</button><br /><br />
+				<button type="button" title="{=L:0708=}" onclick="movechannels(document.getElementById('channels').bchannels, document.getElementById('channels').achannels);">&nbsp;<img src="/images/arrowright.png">&nbsp;</button><br /><br />
+				<button type="button" title="{=L:0709=}" onclick="movechannels(document.getElementById('channels').achannels, document.getElementById('channels').bchannels);">&nbsp;<img src="/images/arrowleft.png">&nbsp;</button><br /><br />
 			</td>
 			<td>
 				<select multiple="multiple" size="20" name="achannels">
@@ -85,9 +85,9 @@ function poschannel(box, direction)
 		</tr>
 		</table>
 		<input type="hidden" name="redirect" value="/Y_Boxcontrol_Bouquet_Editor_Main.yhtm"/>
-		<p><button type="button" ytype="save" onclick="do_submit();">&uuml;bernehmen</button>
-		<button type="button" ytype="cancel" onclick="do_abort();">abbrechen</button></p>
-		Alle &Auml;nderungen m&uuml;ssen noch gespeichert werden!
+		<p><button type="button" ytype="save" onclick="do_submit();">{=L:0021=}</button>
+		<button type="button" ytype="cancel" onclick="do_abort();">{=L:0023=}</button></p>
+		{=L:0701=}
 		</form>
 	</div>
 </div>

@@ -11,12 +11,12 @@ function show_info(_desc, _info1, _info2)
 //]]>
 </script>
 </head>
-<a href="javascript:window.history.back()"><u>Zur&uuml;ck</u></a>
+<a href="javascript:window.history.back()"><u>{=L:0034=}</u></a>
 <body class="iframe">
 	<div class="y_epg_info">
 		<div id="description">&nbsp;</div>
 		<div id="info1">&nbsp;</div>
-		<div id="info2">F&uuml;r Details: Maus &uuml;ber die entsprechende Sendung bewegen.</div>
+		<div id="info2">{=L:0803=}</div>
 	</div>
 </body>
 </html>

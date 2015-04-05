@@ -14,12 +14,12 @@ function do_onload()
 </script>
 </head>
 <body onload="do_onload()">
-{=var-set:wait_text=Werte werden aktualisiert.=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0009=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-Extensions-Update=}{=var-set:menu=Extensions Settings saved=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Extensions-Update=}{=var-set:menu={=L:0622=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body" width="100%s">
-		Einstellungen gespeichert. Menu wird aktualisiert.
+		{=L:0621=}
 	</div>
 </div>
 </body>

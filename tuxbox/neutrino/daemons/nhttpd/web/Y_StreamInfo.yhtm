@@ -20,18 +20,18 @@
 </style>
 </head>
 <body>
-<BR>
+<br />
 {=func:get_current_stream_info=}
-<div class="y_head">Streaminfo ({=ServiceName=})</div>
+<div class="y_head">{=L:0900=} ({=ServiceName=})</div>
 <div class="y_work_box">
 <TABLE cellspacing="2" cellpadding="3" class="tableborder" width="300px">
 <TR> 
-<TD class="set"><B>Aufl&ouml;sung:</B></TD>
+<TD class="set"><B>{=L:0901=}:</B></TD>
 <TD width="30">&nbsp;</TD>
 <TD class="set">{=VideoFormat=}</TD>
 </TR>
 <TR> 
-<TD class="set"><B>Verh&auml;ltnis:</B></TD>
+<TD class="set"><B>{=L:0902=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=AspectRatio=}</div></TD>
 </TR>
@@ -41,62 +41,61 @@
 <TD class="set"> <div align="left">{=BitRate=} bit/sec</div></TD>
 </TR>
 <TR> 
-<TD class="set"><B>Bildrate:</B></TD>
+<TD class="set"><B>{=L:0903=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=FPS=} fps</div></TD>
 </TR>
 <TR> 
-<TD class="set"><B>Audiotyp:</B></TD>
+<TD class="set"><B>{=L:0904=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=AudioType=}</div></TD>
 </TR>
 <TR> 
-<TD class="set"><B>onid:</B></TD>
+<TD class="set"><B>{=L:0906=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=onid=}</div></TD>
 </TR>
 <TR> 
-<TD class="set"><B>sid:</B></TD>
+<TD class="set"><B>{=L:0907=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=sid=}</div></TD>
 </TR>
 <TR> 
-<TD class="set"><B>tsid:</B></TD>
+<TD class="set"><B>{=L:0908=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=tsid=}</div></TD>
 </TR>
 <TR> 
-<TD class="set"><B>tsfrequency:</B></TD>
+<TD class="set"><B>{=L:0905=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=tsfrequency=} ({=polarisation=})</div></TD>
 </TR>
 <TR> 
-<TD class="set"><B>pmtpid:</B></TD>
+<TD class="set"><B>{=L:0910=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=pmtpid=}</div></TD>
 </TR>
 <TR>
-<TD class="set"><B>pcrpid:</B></TD>
+<TD class="set"><B>{=L:0911=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=pcrpid=}</div></TD>
 </TR>
 <TR>
-<TD class="set"><B>vpid:</B></TD>
+<TD class="set"><B>{=L:0909=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=vpid=}</div></TD>
 </TR>
 <TR> 
-<TD class="set"><B>apid:</B></TD>
+<TD class="set"><B>{=L:0912=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=apid=}</div></TD>
 </TR>
 <TR> 
-<TD class="set"><B>vtxtpid:</B></TD>
+<TD class="set"><B>{=L:0913=}:</B></TD>
 <TD>&nbsp;</TD>
 <TD class="set"> <div align="left">{=vtxtpid=}</div></TD>
 </TR>
 </TABLE>
-</CENTER>
 </div>
 </BODY>
 </HTML>

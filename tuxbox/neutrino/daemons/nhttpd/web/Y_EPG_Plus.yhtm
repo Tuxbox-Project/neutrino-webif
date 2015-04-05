@@ -11,20 +11,20 @@ function epg_imdb(){
 
 </head>
 <body>
-{=var-set:wait_text=EPG holen (get EPG).=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0800=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-Live_Timer-EPG_Plus=}{=var-set:menu=EPG Plus=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Live_Timer-EPG_Plus=}{=var-set:menu={=L:0801=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 		<form name="e">
-			<select size="1" class="y_live_bouquets" name="bouquets" title="select bouquet - channels will be updated">
+			<select size="1" class="y_live_bouquets" name="bouquets" title="{=L:0802=}">
 			{=func:get_bouquets_as_dropdown {=if-empty:{=bouquets=}~{=func:get_actual_bouquet_number=}~{=bouquets=}=}=}
 			</select>
 			<select id="epg_time" size="1" name="epg_time">
 			</select>
-			<button id="btGet" type="button" ytype="refresh" title="get or refresh EPG" onclick="build_epg_plus_main()">Aktualisieren</button>
-			<button id="btPast" type="button" ytype="timedown" title="past hours" onclick="build_epg_plus_delta(-2)">-2</button>
-			<button id="btNext" type="button" ytype="timeup"" title="next hours" onclick="build_epg_plus_delta(2)">+2</button>
+			<button id="btGet" type="button" ytype="refresh" title="{=L:0804=}" onclick="build_epg_plus_main()">{=L:0010=}</button>
+			<button id="btPast" type="button" ytype="timedown" title="{=L:0805=}" onclick="build_epg_plus_delta(-2)">-2</button>
+			<button id="btNext" type="button" ytype="timeup"" title="{=L:0806=}" onclick="build_epg_plus_delta(2)">+2</button>
 		</form>
 
 		<div id="epg_plus">&nbsp;</div>
@@ -52,9 +52,9 @@ function epg_imdb(){
 		</tr>
 		<tr>
 			<td colspan="3">
-				<button ytype="record" title="set timer for recording" onclick="epg_set_timer()">Aufnehmen</button>
-				<button ytype="zap" title="switch to channel" onclick="epg_zapto()">Umschalten</button>
-				Nachschlagen:
+				<button ytype="record" title="{=L:0807=}" onclick="epg_set_timer()">{=L:0011=}</button>
+				<button ytype="zap" title="{=L:0808=}" onclick="epg_zapto()">{=L:0012=}</button>
+				{=L:0013=}:
 				<span id="d_lookup"></span>
 			</td>
 		</tr>

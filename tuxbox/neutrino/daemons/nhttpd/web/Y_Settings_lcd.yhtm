@@ -71,106 +71,106 @@ function do_submit()
 </script>
 </head>
 <body onload="do_init()">
-{=var-set:wait_text=Werte werden &uuml;bernommen (Save).=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:0015=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-Settings-LCD=}{=var-set:menu=LCD Einstellungen=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Settings-LCD=}{=var-set:menu={=L:3500=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form name="f" class="y_form" action="">
 		<table cellspacing="0" border="0" cellpadding="2" width="100%">
 			<tr>
-				<td colspan="2" class="y_form_header">LCD</td>
+				<td colspan="2" class="y_form_header">{=L:3501=}</td>
 			</tr>
 			<tr>
-				<td title="lcd: off/on" width="35%">Power</td>
+				<td title="lcd: off/on" width="35%">{=L:3502=}</td>
 				<td>
-					<input type="radio" name="lcd_power" value="0" />AUS&nbsp;
-					<input type="radio" name="lcd_power" value="1" />EIN
+					<input type="radio" name="lcd_power" value="0" />{=L:0032=}&nbsp;
+					<input type="radio" name="lcd_power" value="1" />{=L:0031=}
 				</td>
 			</tr>
 			<tr>
-				<td title="inverse lcd: off/on">Invertieren</td>
+				<td title="inverse lcd: off/on">{=L:3503=}</td>
 				<td>
-					<input type="radio" name="lcd_inverse" value="0" />AUS&nbsp;
-					<input type="radio" name="lcd_inverse" value="1" />EIN
+					<input type="radio" name="lcd_inverse" value="0" />{=L:0032=}&nbsp;
+					<input type="radio" name="lcd_inverse" value="1" />{=L:0031=}
 				</td>
 			</tr>
 			<tr>
-				<td  title="dimm-timeout">Dimm-Timeout</td>
+				<td  title="dimm-timeout">{=L:3504=}</td>
 				<td>
 					<input type="text" name="lcd_dim_time" size="3" maxlength="3" />
 				</td>
 			</tr>
 			<tr>
-				<td title="brightness after dimm-timeout">Helligkeit nach dimm-Timeout</td>
+				<td title="brightness after dimm-timeout">{=L:3505=}</td>
 				<td>
 					<input type="text" name="lcd_dim_brightness" size="3" maxlength="3" />
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="y_form_header">Kontrast / Helligkeit</td>
+				<td colspan="2" class="y_form_header">{=L:3506=}</td>
 			</tr>
 			<tr>
-				<td title="lcd contrast 0-63">Kontrast</td>
+				<td title="lcd contrast 0-63">{=L:3507=}</td>
 				<td>
 					<input type="text" name="lcd_contrast" size="3" maxlength="3" />
 				</td>
 			</tr>
 			<tr>
-				<td title="lcd brightness normal 0-255">normale Helligkeit</td>
+				<td title="lcd brightness normal 0-255">{=L:3508=}</td>
 				<td>
 					<input type="text" name="lcd_brightness" size="3" maxlength="3" />
 				</td>
 			</tr>
 			<tr> 
-				<td title="lcd brightness standby 0-255">Standby Helligkeit</td>
+				<td title="lcd brightness standby 0-255">{=L:3509=}</td>
 				<td>
 					<input type="text" name="lcd_standbybrightness" size="3" maxlength="3" />
 				</td>
 			</tr>
 			<tr> 
 				<td>&nbsp;</td>
-				<td><a href="javascript:setDefault()" class="alink">Voreinstellung benutzen</a></td>
+				<td><a href="javascript:setDefault()" class="alink">{=L:3510=}</a></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="y_form_header">Anzeige-Modi</td>
+				<td colspan="2" class="y_form_header">{=L:3511=}</td>
 			</tr>
-			<tr><td>EPG-Anzeige</td>
+			<tr><td>{=L:3512=}</td>
 				<td>
-					<select name="lcd_epgmode" title="select visualisation of LCD">
-					<option value="1" selected="selected">Standard (Kanal)</option>
-					<option value="2">Sendung</option>
-					<option value="3">Kanal / Sendung</option>
-					<option value="7">Kanal / Trennl. / Sendung</option>
-					<option value="11">Kanal (kurz) / Sendung</option>
-					<option value="15">Kanal (kurz) / Trennl. / Sendung</option>
+					<select name="lcd_epgmode" title="{=L:3527=}">
+					<option value="1" selected="selected">{=L:3513=}</option>
+					<option value="2">{=L:3514=}</option>
+					<option value="3">{=L:3515=}</option>
+					<option value="7">{=L:3516=}</option>
+					<option value="11">{=L:3517=}</option>
+					<option value="15">{=L:3518=}</option>
 					</select>
 				</td>			
 			</tr>
-			<tr><td>Ausrichtung der EPG-Anzeige</td>
+			<tr><td>{=L:3519=}</td>
 				<td>
-					<select name="lcd_epgalign" title="select visualisation of LCD">
-					<option value="0" selected="selected">links</option>
-					<option value="1">mittig</option>
+					<select name="lcd_epgalign" title="{=L:3527=}">
+					<option value="0" selected="selected">{=L:3520=}</option>
+					<option value="1">{=L:3521=}</option>
 					</select>
 				</td>			
 			</tr>
-			<tr><td>Statuszeile</td>
+			<tr><td>{=L:3522=}</td>
 				<td>
-					<select name="lcd_show_volume" title="select visualisation of LCD">
-					<option value="0" selected="selected">Sendungsfortschritt</option>
-					<option value="1">Lautst&auml;rke</option>
-					<option value="2">Lautst&auml;rke / Fortschritt</option>
-					<option value="3">Laut. / Fort. / Audio</option>
+					<select name="lcd_show_volume" title="{=L:3527=}">
+					<option value="0" selected="selected">{=L:3523=}</option>
+					<option value="1">{=L:3524=}</option>
+					<option value="2">{=L:3525=}</option>
+					<option value="3">{=L:3526=}</option>
 					</select>
 				</td>			
 			</tr>
 		</table>
 		<br />
 		<input type="hidden" name="execute" value="include-block:Y_Blocks.txt;lcd_save_settings;nix" />
-		<button type="button" ytype="save" title="submit and save values" onclick="do_submit()">Speichern</button>&nbsp;
-		<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">reload Neutrino</button>&nbsp;
-		<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">Hilfe</a>
+		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>&nbsp;
+		<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>&nbsp;
+		<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
 	</form>
 	</div>
 </div>

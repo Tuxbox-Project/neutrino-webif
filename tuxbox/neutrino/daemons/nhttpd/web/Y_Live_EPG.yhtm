@@ -36,13 +36,13 @@ function set_timer(_channel_id, _start, _stop)
 {
 	var rec = "/control/timer?action=new&type=5&alarm="+_start+"&stop="+_stop+"&announce="+_start+"&channel_id="+_channel_id+"&rs=1";
 	var res = loadSyncURL(rec);
-	alert("Record gesetzt");
+	alert("{=L:0807=}");
 }
 function set_zapit(_channel_id, _start)
 {
 	var rec = "/control/timer?action=new&type=3&alarm="+_start+"&channel_id="+_channel_id;
 	var res = loadSyncURL(rec);
-	alert("Zapping gesetzt");
+	alert("{=L:0808=}");
 }
 function show_info(_index)
 {
@@ -90,8 +90,8 @@ function _show_epg()
 				var epg_obj= new Array(_desc, _info1, _info2, _start, _start_t, _stop.toString(), "{=channel=}");
 				epg_data.push(epg_obj);
 
-				var _rec 	= "<a title=\"record\" href=\"javascript:set_timer('{=channel=}',"+_start+","+_stop+");\"><img src=\"images/record.png\"/></a>";
-				var _zapit 	= "<a title=\"zapping\" href=\"javascript:set_zapit('{=channel=}',"+_start+");\"><img src=\"images/zap.png\"/></a>";
+				var _rec 	= "<a title=\"{=L:0011=}\" href=\"javascript:set_timer('{=channel=}',"+_start+","+_stop+");\"><img src=\"images/record.png\"/></a>";
+				var _zapit 	= "<a title=\"{=L:0012=}\" href=\"javascript:set_zapit('{=channel=}',"+_start+");\"><img src=\"images/zap.png\"/></a>";
 				var _tit 	= "<span onmouseover=\"show_info('"+epg_data_index+"')\">"+_desc+"</span>";
 				sLog_addRow(sLog_body, _date, _rec, _zapit, _start_t, _stop_t, _tit);
 				epg_data_index++;
@@ -103,13 +103,13 @@ function _show_epg()
 //]]>
 </script>
 </head>
-{=var-set:wait_text=EPG wird geladen.=}{=include-block:Y_Blocks.txt;snip_show_wait=}
 <body onload="show_epg()" class="iframe">
+{=var-set:wait_text={=L:0800=}=}{=include-block:Y_Blocks.txt;snip_show_wait=}
 	<table id="epglist" class="y_invisible_table" cellpadding="4" cellspacing="0" width="100%">
 	<thead align="left">
 	<tr>
 		<th colspan="2"><img id="logo" src="{=ini-get:/var/tuxbox/config/nhttpd.conf;Tuxbox.LogosURL=}/{=channel=}.gif" style="visibility:hidden">&nbsp;</th>
-		<th>Datum</th><th>Von</th><th>bis</th><th>Sendung</th>
+		<th>{=L:0035=}</th><th>{=L:0036=}</th><th>{=L:0037=}</th><th>{=L:0038=}</th>
 	</tr>
 	</thead>
 	<tbody id="slog_list">

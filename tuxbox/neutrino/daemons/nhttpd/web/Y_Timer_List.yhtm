@@ -6,16 +6,16 @@
 <body>
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-Live_Timer-Timer=}{=var-set:menu=Timer=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Live_Timer-Timer=}{=var-set:menu={=L:2800=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 <table class="timer">
 <tr class="timer_header">
-	<td>Alarm-Zeit</td>
-	<td>Stop-Zeit</td>
-	<td>Wiederholung</td>
-	<td>Wiederholungen</td>
-	<td>Typ</td>
-	<td>Beschreibung</td>
+	<td>{=L:2803=}</td>
+	<td>{=L:2805=}</td>
+	<td>{=L:2806=}</td>
+	<td>{=L:2807=}</td>
+	<td>{=L:2801=}</td>
+	<td>{=L:2821=}</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
@@ -48,11 +48,11 @@
 	<td colspan="6"><img src="/images/blank.gif" width="1" height="1"/></td>
 	<td>
 		<a href="/Y_Timer_Edit.yhtm?typ=new">
-		<img src="/images/new.png" alt="neuer Timer"/></a>
+		<img src="/images/new.png" alt="{=L:2822=}"/></a>
 	</td>
 	<td>
 		<a href="javascript:location.reload()">
-		<img src="/images/reload.gif" alt="Aktualisieren"/></a>
+		<img src="/images/reload.gif" alt="{=L:0010=}"/></a>
 	</td>
 </tr>
 </table>

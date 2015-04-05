@@ -4,13 +4,13 @@
 <script type="text/javascript" src="/Y_Tools_Timer_Sync.js"></script>
 </head>
 <body>
-{=var-set:wait_text=Timer holen (get timer).=}{=include-block:Y_Blocks.txt;snip_wait=}
+{=var-set:wait_text={=L:2900=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div class="work_box">
 	<div class="work_box_head"><div class="work_box_head_h2">
-	{=var-set:help_url=Help-Live_Timer-Timer_Sync=}{=var-set:menu=Timer Sync=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
+	{=var-set:help_url=Help-Live_Timer-Timer_Sync=}{=var-set:menu={=L:2901=}=}{=include-block:Y_Blocks.txt;work_menu=}</div></div>
 	<div class="work_box_body">
 	<form method="post" name="f" action="">
-		<div  class="y_form_header">Timer Source</div>
+		<div  class="y_form_header">{=L:2902=}</div>
 		<table border="0" cellspacing="0" cellpadding="4" width="100%">
 		<tr>
 		<td>
@@ -22,7 +22,7 @@
 		<!--
 			<input type="radio" name="planer" value="slave" disabled="disabled"/>Slave box<br/>
 			<input type="radio" name="planer" value="slave" disabled="disabled"/>Test<br/> -->
-			Aufnahmeverzeichnis:
+			{=L:2903=}:
 				<select name="rec_dir" class="y_live_button">
 				<option value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_0;/mnt/filme~open=}" selected="selected">{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_0;/mnt/filme~cache=}</option>
 				<option value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_1;/mnt/filme~cache=}">{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_1;/mnt/filme~cache=}</option>
@@ -36,22 +36,22 @@
 				<option value="{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_9;/mnt/filme~cache=}">{=ini-get:/var/tuxbox/config/neutrino.conf;recording_dir_9;/mnt/filme~cache=}</option>
 				</select>
 
-			<br/><a href="javascript:top.top_main.prim_menu.nav('settings', 'Y_Settings_Timer.yhtm');" class="inlink">Einstellungen</a>&nbsp;<input type="checkbox" name="debug" value="1"/>Debugging</td>
+			<br /><a href="javascript:top.top_main.prim_menu.nav('settings', 'Y_Settings_Timer.yhtm');" class="inlink">{=L:2904=}</a>&nbsp;<input type="checkbox" name="debug" value="1"/>Debugging</td>
 		</tr>
 		</table>
-		<button type="button" ytype="download" itle="get selected" name="get_selected" onclick="do_get_selected()">get selected</button>
+		<button type="button" ytype="download" itle="get selected" name="get_selected" onclick="do_get_selected()">{=L:2906=}</button>
 		&nbsp;
-		<button type="button" ytype="clear" title="clear all" name="clear_all" onclick="do_clear_all()">clear all</button>
+		<button type="button" ytype="clear" title="clear all" name="clear_all" onclick="do_clear_all()">{=L:2907=}</button>
 	</form>
 	<br/>
 	<form method="post" name="timer" action="">
-		<div class="y_form_header_oline">Timer Preview List</div>
+		<div class="y_form_header_oline">{=L:2908=}</div>
 		<table class="lt_table" border="0" cellspacing="0" cellpadding="4">
 		<thead align="left">
 		<tr>
 			<th><input type="checkbox" checked="checked" name="checkall" onclick="doToogleCheckboxes();" id="checkall"/></th>
-			<th colspan="2">Startzeit</th><th colspan="2">Endezeit</th>
-			<th>Sender</th><th>Sendung</th><th>Quelle</th>
+			<th colspan="2">{=L:2909=}</th><th colspan="2">{=L:2910=}</th>
+			<th>{=L:2911=}</th><th>{=L:2912=}</th><th>{=L:2913=}</th>
 		</tr>
 		</thead>
 		<tbody id="timer_list">
@@ -59,17 +59,17 @@
 		</tbody>
 		</table>
 		<div style="padding-top:2px">
-		<button type="button" ytype="timeadd" title="" name="set_timers" onclick="do_set_timer()">set timer</button>&nbsp;
-		<button type="button" ytype="clear" title="" name="clear_log" onclick="sLog_clear()">clear log</button>
+		<button type="button" ytype="timeadd" title="" name="set_timers" onclick="do_set_timer()">{=L:2914=}</button>&nbsp;
+		<button type="button" ytype="clear" title="" name="clear_log" onclick="sLog_clear()">{=L:2915=}</button>
 		</div>
 	</form>
 	<br/>
 	<form method="post" name="log" action="">
-		<div class="y_form_header_oline">Log</div>
+		<div class="y_form_header_oline">{=L:2916=}</div>
 		<table class="lt_table" border="0" cellspacing="0" cellpadding="4">
 		<thead align="left">
 		<tr>
-			<th>&nbsp;</th><th>Aktion</th><th>Status</th>
+			<th>&nbsp;</th><th>{=L:2917=}</th><th>{=L:2918=}</th>
 		</tr>
 		</thead>
 		<tbody id="slog_list">
