@@ -1637,17 +1637,6 @@ function form_init()
 
 function do_submit()
 {
-	document.f.recording_filename_template_default.value = encodeURI(document.f.recording_filename_template_default.value);
-	document.f.recording_filename_template_0.value = encodeURI(document.f.recording_filename_template_0.value);
-	document.f.recording_filename_template_1.value = encodeURI(document.f.recording_filename_template_1.value);
-	document.f.recording_filename_template_2.value = encodeURI(document.f.recording_filename_template_2.value);
-	document.f.recording_filename_template_3.value = encodeURI(document.f.recording_filename_template_3.value);
-	document.f.recording_filename_template_4.value = encodeURI(document.f.recording_filename_template_4.value);
-	document.f.recording_filename_template_5.value = encodeURI(document.f.recording_filename_template_5.value);
-	document.f.recording_filename_template_6.value = encodeURI(document.f.recording_filename_template_6.value);
-	document.f.recording_filename_template_7.value = encodeURI(document.f.recording_filename_template_7.value);
-	document.f.recording_filename_template_8.value = encodeURI(document.f.recording_filename_template_8.value);
-	document.f.recording_filename_template_9.value = encodeURI(document.f.recording_filename_template_9.value);
 	show_waitbox(true);
 	document.f.submit();
 }
@@ -1667,8 +1656,8 @@ start-block~neutrino_direct_recording_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_choose_direct_rec_dir;{=recording_choose_direct_rec_dir=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_max_rectime;{=max_rectime=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_default;{=recording_filename_template_default=}~cache=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_default;{=recording_splitsize_default=}~open=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_permissions;{=recording_dir_permissions=}~save=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_default;{=recording_splitsize_default=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_permissions;{=recording_dir_permissions=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_0;{=recording_dir_0=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_1;{=recording_dir_1=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_dir_2;{=recording_dir_2=}~cache=}
@@ -1689,16 +1678,16 @@ start-block~neutrino_direct_recording_save_settings
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_7;{=recording_filename_template_7=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_8;{=recording_filename_template_8=}~cache=}
 {=ini-set:/var/tuxbox/config/neutrino.conf;recording_filename_template_9;{=recording_filename_template_9=}~cache=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_0;{=recording_splitsize_0=}~open=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_1;{=recording_splitsize_1=}~open=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_2;{=recording_splitsize_2=}~open=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_3;{=recording_splitsize_3=}~open=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_4;{=recording_splitsize_4=}~open=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_5;{=recording_splitsize_5=}~open=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_6;{=recording_splitsize_6=}~open=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_7;{=recording_splitsize_7=}~open=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_8;{=recording_splitsize_8=}~open=}
-{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_9;{=recording_splitsize_9=}~open=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_0;{=recording_splitsize_0=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_1;{=recording_splitsize_1=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_2;{=recording_splitsize_2=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_3;{=recording_splitsize_3=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_4;{=recording_splitsize_4=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_5;{=recording_splitsize_5=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_6;{=recording_splitsize_6=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_7;{=recording_splitsize_7=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_8;{=recording_splitsize_8=}~cache=}
+{=ini-set:/var/tuxbox/config/neutrino.conf;recording_splitsize_9;{=recording_splitsize_9=}~save=}
 end-block~neutrino_direct_recording_save_settings
 
 # ------- Neutrino form-data: esound -------------------------------
