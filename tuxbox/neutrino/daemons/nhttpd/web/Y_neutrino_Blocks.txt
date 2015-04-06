@@ -40,6 +40,13 @@ start-block~neutrino_form_helpbox
 </div>
 end-block~neutrino_form_helpbox
 
+# ------- Neutrino form submit buttons
+start-block~neutrino_form_submit
+		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
+		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
+		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
+end-block~neutrino_form_submit
+
 # ------- Neutrino form-data: record -------------------------------
 start-block~neutrino_form-data_record
 <div class="work_box">
@@ -172,9 +179,7 @@ start-block~neutrino_form-data_record
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_record_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
-		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
-		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
+		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}
 	</form>
 	</div>
 </div>
@@ -439,9 +444,7 @@ start-block~neutrino_form-data_movieplayer
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_movieplayer_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
-		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
-		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
+		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}
 	</form>
 	</div>
 </div>
@@ -599,9 +602,7 @@ start-block~neutrino_form-data_parental
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_parental_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
-		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
-		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
+		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}
 	</form>
 	</div>
 </div>
@@ -910,9 +911,7 @@ start-block~neutrino_form-data_diverse
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_diverse_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
-		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
-		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
+		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}
 	</form>
 	</div>
 </div>
@@ -1116,9 +1115,7 @@ start-block~neutrino_form-data_bootoptions
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_bootoptions_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
-		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
-		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
+		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}
 	</form>
 	</div>
 </div>
@@ -1212,9 +1209,7 @@ start-block~neutrino_form-data_pictureviewer
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_pictureviewer_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
-		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
-		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
+		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}
 	</form>
 	</div>
 </div>
@@ -1319,9 +1314,7 @@ start-block~neutrino_form-data_audioplayer
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_audioplayer_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
-		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
-		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
+		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}
 	</form>
 	</div>
 </div>
@@ -1611,9 +1604,7 @@ start-block~neutrino_form-data_direct_recording
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_direct_recording_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
-		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
-		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
+		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}
 	</form>
 	</div>
 </div>
@@ -1707,9 +1698,7 @@ start-block~neutrino_form-data_esound
 		<input type="hidden" name="tmpl" value="Y_Settings_neutrino_forms.yhtm"/>
 		<input type="hidden" name="execute" value="include-block:Y_neutrino_Blocks.txt;neutrino_esound_save_settings;nix"/>
 		<input type="hidden" name="form" value="{=form=}"/>
-		<button type="button" ytype="save" title="{=L:0014=}" onclick="do_submit()">{=L:0021=}</button>
-		&nbsp;<button type="button" ytype="refresh" onclick="dbox_reload_neutrino()">{=L:1000=}</button>
-		&nbsp;<a href="javascript:top.top_main.prim_menu.nav('info', 'Y_Info_Help.yhtm');" class="inlink">{=L:0046=}</a>
+		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}
 	</form>
 	</div>
 </div>
