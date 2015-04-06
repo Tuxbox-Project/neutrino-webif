@@ -189,7 +189,7 @@ function do_submit()
 		</table>
 		<br/>
 		<input type="hidden" name="execute" value="include-block:Y_Blocks.txt;video_audio_save_settings;nix"/>
-		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}
+		{=include-block:Y_neutrino_Blocks.txt;neutrino_form_submit;nothing=}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*)&nbsp;{=L:0033=}
 	</form>
 	</div>
 </div>
