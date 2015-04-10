@@ -997,6 +997,15 @@
 4500=Esound Port
 4501=default
 
+#========= Tuxbox API
+9800=Program preview
+9801=Streaminfo
+9802=from
+9803=min
+9804=not available
+9805=Unknown TV-Channel
+9806=Unknown Radio-Channel
+
 #========= Remote control
 9900=Standby / Shutdown
 9901=Mute
