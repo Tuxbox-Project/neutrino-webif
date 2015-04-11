@@ -63,7 +63,6 @@ button:hover,input[type="button"]:hover,input[type="submit"]:hover,input[type="f
 }
 
 input {
-	height: 22px;
 	border: 1px solid #444444;
 	background-color: #303030;
 	border-radius: 3px;
