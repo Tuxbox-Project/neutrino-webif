@@ -52,7 +52,7 @@
 	</td>
 	<td>
 		<a href="javascript:location.reload()">
-		<img src="/images/reload.gif" alt="{=L:0010=}"/></a>
+		<img src="/images/reload.png" alt="{=L:0010=}"/></a>
 	</td>
 </tr>
 </table>
