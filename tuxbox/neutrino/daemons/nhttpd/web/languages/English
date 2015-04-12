@@ -119,6 +119,10 @@
 0221=volumen display
 0222=dboxshot not installed at
 0223=Switch to
+0224=Signal strength
+0225=Show signal strength level
+0226=Show signal to noise ratio
+0227=Show bit error ratio
 
 #======== Boxcontrol - snapshot - fbshot
 0300=snapshot

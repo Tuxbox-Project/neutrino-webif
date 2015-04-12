@@ -80,7 +80,7 @@ function do_submit()
 				<td><input type="text" name="mod_sendfile_mime_types" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;mod_sendfile.mime_types~cache=}" /></td>
 			</tr>
 			<tr>
-				<td>{=L:1510=}</td>
+				<td>{=L:1511=}</td>
 				<td>
 					<input type="radio" name="mod_sendfile_sendAll" value="false" />{=L:0032=}&nbsp;
 					<input type="radio" name="mod_sendfile_sendAll" value="true" />{=L:0031=}
