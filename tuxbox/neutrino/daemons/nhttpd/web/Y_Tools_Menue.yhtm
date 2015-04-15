@@ -13,7 +13,8 @@ function init(){
 }
 </script>
 </head>
-{=var-set:automount={=if-file-exists:/sbin/automount~true~{=if-file-exists:/var/bin/automount~true~false=}=}=}
+{=var-set:automount={=find-exec:automount=}=}
+{=var-set:ether-wake={=find-exec:ether-wake=}=}
 {=var-set:management={=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip;{=func:get_request_data client_addr=}=}~1~=}{=if-equal:{=func:get_request_data client_addr=}~{=ini-get:/var/tuxbox/config/Y-Web.conf;management_ip2=}~1~=}=}
 <body onload="init()">
 <div class="y_menu_sec_box">
@@ -33,7 +34,11 @@ function init(){
 					<li><a target="work" title="{=L:2300=}" href="Y_Settings_automount_liste.yhtm">{=L:2301=}</a></li>
 				=}
 				<li><a target="work" title="{=L:2302=}" href="Y_Settings_mount_liste.yhtm">{=L:2303=}</a></li>
-				<li><a target="work" title="{=L:2304=}" href="Y_Settings_wol.yhtm">{=L:2304=}</a></li>
+				{=if-empty:{=var-get:ether-wake=}~
+					<li class="disabled" title="{=L:2326=} {=L:2311=}">{=L:2304=}</li>
+				~
+					<li><a target="work" title="{=L:2304=}" href="Y_Settings_wol.yhtm">{=L:2304=}</a></li>
+				=}
 			=}
 			</ul>
 		</div>

@@ -495,7 +495,7 @@
 2308=backup or flash image
 2309=Image
 2310=Command Shell
-2311=not installed
+2311=is not installed
 2312=automatic output scrolling (only IE)
 2313=append output (only IE)
 2314=Path
@@ -509,6 +509,7 @@
 2322=File manager
 2324=yInstaller (for files, plugins, ...)
 2325=collecting information
+2326=ether-wake
 
 #=========== LIVE Menue
 2400=Live/Timer

@@ -495,7 +495,7 @@
 2308=Image sichern oder flashen
 2309=Image
 2310=Shell
-2311=nicht installiert
+2311=ist nicht installiert
 2312=fortlaufende Ausgabe (nur IE - wg. scrollen)
 2313=Ausgabe anh&auml;gen (nur IE)
 2314=Verzeichnis
@@ -509,6 +509,7 @@
 2322=Dateimanager
 2324=yInstaller (f&uuml;r, Dateien, Plugins, ...)
 2325=Sammeln von Informationen
+2326=ether-wake
 
 #=========== LIVE Menue
 2400=Live/Timer
