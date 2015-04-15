@@ -145,7 +145,7 @@ function view_transcode_mode()
 	ClientAddr = "{=func:get_request_data clientaddr=}";
 	insert_message_control("{=L:2520=}");
 	isDeinterlace = ("{=ini-get:/var/tuxbox/config/Y-Web.conf;deinterlace;true=}" == "true");
-	cachetime = {=ini-get:/var/tuxbox/config/Y-Web.conf;http_caching;0=};
+	cachetime = {=ini-get:/var/tuxbox/config/Y-Web.conf;http_caching;1000=};
 /*	{=if-equal:{=typ=}~popup~
 		always_on_top();
 	=}
