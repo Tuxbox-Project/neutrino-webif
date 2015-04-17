@@ -105,7 +105,7 @@ function do_check()
 	~
 		sLog_addRow(sLog_body, "green", "Programs: dboxshot is installed at: {=var-get:dboxshot=}. Remote &amp; OSD is enabled.", "ok");
 	=}
-	{=var-set:fcp={=find-exec:fcp=}=}{=var-set:fcp={=find-exec:flashcp=}=}
+	{=var-set:fcp={=if-empty:{=find-exec:fcp=}~{=if-empty:{=find-exec:flashcp=}~~{=find-exec:flashcp=}=}~{=find-exec:fcp=}=}=}
 	{=if-empty:{=var-get:fcp=}~
 		sLog_addRow(sLog_body, "red", "Programs: fcp is not installed. Image flashing is disabled. ", "failed");
 	~

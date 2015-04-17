@@ -21,8 +21,7 @@ function do_image_upload_ready()
 </script>
 </head>
 <body>
-{=var-set:fcp={=find-exec:fcp=}=}
-{=var-set:fcp={=find-exec:flashcp=}=}
+{=var-set:fcp={=if-empty:{=find-exec:fcp=}~{=if-empty:{=find-exec:flashcp=}~~{=find-exec:flashcp=}=}~{=find-exec:fcp=}=}=}
 {=var-set:wait_text={=L:4410=}=}{=include-block:Y_Blocks.txt;snip_wait=}
 <div id="wait_flash" class="ydiagfree" style="left: 100px; position: absolute; top: 100px; display: none;">
 <div class="y_wait_box_visible">
