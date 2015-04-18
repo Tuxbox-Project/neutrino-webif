@@ -73,7 +73,12 @@ function do_submit()
 			<tr>
 				<td>{=L:1507=}</td>
 				<td><input type="text" name="override_directory" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.override_directory~cache=}" title="{=L:1507=}" />&nbsp;{=L:1504=}
-					<input type="hidden" name="HostedDocRoot" size="60" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.hosted_directory~cache=}" title="{=L:1509=}" /></td>
+				</td>
+			</tr>
+			<tr>
+				<td>{=L:1508=}</td>
+				<td><input type="text" name="hosted_directory" size="20" value="{=ini-get:/var/tuxbox/config/nhttpd.conf;WebsiteMain.hosted_directory~cache=}" title="{=L:1509=}" />&nbsp;{=L:1504=}
+				</td>
 			</tr>
 			<tr>
 				<td>{=L:1510=}</td>
