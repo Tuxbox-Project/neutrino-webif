@@ -142,9 +142,9 @@ CyVLC.prototype = {
 	},
 	is_playing : function() {
 		switch(this.plugin) {
-			case "ie1":	return this.vlc.Playing;break;
-			case "moz2":	return this.vlc.playlist.isPlaying;break;
-			default:	return this.vlc.isplaying();break;
+			case "ie1":	return this.vlc.Playing;
+			case "moz2":	return this.vlc.playlist.isPlaying;
+			default:	return this.vlc.isplaying();
 		}
 	},
 	toggle_fullscreen : function() {
@@ -162,9 +162,9 @@ CyVLC.prototype = {
 	},
 	get_volume : function() {
 		switch(this.plugin) {
-			case "ie1":	return this.vlc.volume;break;
-			case "moz2":	return this.vlc.audio.volume;break;
-			default:	return this.vlc.get_volume();break;
+			case "ie1":	return this.vlc.volume;
+			case "moz2":	return this.vlc.audio.volume;
+			default:	return this.vlc.get_volume();
 		}
 	},
 	set_volume_delta : function(delta) {
@@ -209,14 +209,14 @@ CyVLC.prototype = {
 	set_resolution : function (w,h) {
 		this.vlc.width		= w;
 		this.vlc.height		= h;
-		this.vlc.style.width 	= w;
-		this.vlc.style.height 	= h;
+		this.vlc.style.width 	= w+"px";
+		this.vlc.style.height 	= h+"px";
 	},
 	have_options : function() {
 		switch(this.plugin) {
 			case "ie1":
-			case "moz2":	return true;break;
-			default:	return false;break;
+			case "moz2":	return true;
+			default:	return false;
 		}
 	},
 	insert_control : function()
@@ -224,31 +224,32 @@ CyVLC.prototype = {
 		var vlc_control_html = "";
 		if(isIE) {
 			vlc_control_html =
-				"<object classid=\"clsid:E23FE9C6-778E-49D4-B537-38FCDE4887D8\" " +
-/*				"<object classid=\"clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921\" " +*/
-				
-					"width=\""+this.c_width+"\" height=\""+this.c_height+"\" id=\""+this.id+"\" events=\"True\">" +
-					"<param name='ShowDisplay' value='"+this.c_show_display+"' />" +
-					"<param name='Loop' value='"+this.c_loop+"' />" +
-					"<param name='AutoPlay' value='"+this.c_auto_play+"' />" +
-/*					"<param name=\"Visible\" value=\"-1\"/>" + */
-					"<param name='ShowDisplay' value='True'/>" +
-					"The VideoLan Client ActiveX is not installed.<br/>"+
-					"You need <a href='http://www.videolan.org' target='_blank'>VideoLan Client</a> V0.8.5 or higher.<br/>" +
-					"Install with Option ActiveX." +
-				"</object>";
+				"<object classid=\"clsid:E23FE9C6-778E-49D4-B537-38FCDE4887D8\""
+//				"<object classid=\"clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921\""
+				+ "width=\""  + this.c_width  + "\""
+				+ "height=\"" + this.c_height + "\""
+				+ "id=\""     + this.id       + "\" events=\"True\">"
+				+ "<param name=\"ShowDisplay\" value=\"" + this.c_show_display + "\" />"
+				+ "<param name=\"Loop\" value=\""        + this.c_loop         + "\" />"
+				+ "<param name=\"AutoPlay\" value=\""    + this.c_auto_play    + "\" />"
+				+ "The VideoLan Client ActiveX is not installed.<br />"
+				+ "You need <a href=\"http://www.videolan.org\" target=\"_blank\">VideoLan Client</a> V0.8.6 or higher.<br />"
+				+ "Install with Option ActiveX."
+				+ "</object>";
 		}
 		else {
-			vlc_control_html = "<embed type='application/x-vlc-plugin'";
+			vlc_control_html = "<embed type=\"application/x-vlc-plugin\""
 			if(this.plugin == "moz2")
 				vlc_control_html += "version=\"VideoLAN.VLCPlugin.2\"";
 			vlc_control_html +=
-				"id='"+this.id+"'"+
-				"autoplay='"+this.c_auto_play+"' loop='"+this.c_loop+"' width='"+this.c_width+"' height='"+this.c_height+"'" +
-				"target='' >" +
-				"</embed>";
+				"version=\"VideoLAN.VLCPlugin.2\""
+				+ "id=\""       + this.id          + "\""
+				+ "autoplay=\"" + this.c_auto_play + "\""
+				+ "autoloop=\"" + this.c_loop      + "\""
+				+ "width=\""    + this.c_width     + "\""
+				+ "height=\""   + this.c_height    + "\" >"
+				+ "</embed>";
 		}
 		obj_update(this.c_masterid,vlc_control_html);
-		this.vlc = id(this.id);
 	}
 };
