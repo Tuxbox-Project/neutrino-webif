@@ -370,8 +370,9 @@ function build_audio_pid_list()
 {
 	var audio_pids_url = "/y/cgi?execute=func:get_audio_pids_as_dropdown";
 	var audio_pid_list = loadSyncURL(audio_pids_url);
-	audio_pid_list = "<select size=\"1\" class=\"y_live_audio_pids\" id=\"audiopid\" onChange=\"doChangeAudioPid()\">"
+	audio_pid_list = "<select size=\"1\" class=\"y_live_audio_pids\" id=\"audiopid\" onchange=\"doChangeAudioPid()\">"
 			+ audio_pid_list
 			+ "</select>";
 	obj_update('audio_pid_list', audio_pid_list);
+	id("audiopid").selectedIndex = AudioChannel;
 }
