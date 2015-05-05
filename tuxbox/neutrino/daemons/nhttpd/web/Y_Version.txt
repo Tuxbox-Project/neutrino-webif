@@ -1,4 +1,4 @@
-version=2.8.2.26
-date=04.05.2015
+version=2.8.2.27
+date=05.05.2015
 type=Release
 info=Tuxbox
