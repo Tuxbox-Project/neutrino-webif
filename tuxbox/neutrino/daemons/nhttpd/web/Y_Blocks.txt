@@ -14,11 +14,6 @@ start-block~timer
 </body>
 end-block~timer
 
-# ------- build live url
-start-block~build_live_url
-{=var-set:mrl={=if-equal:{=mode=}~tv~http://{=func:get_header_data Host=}:31339/0,{=func:get_video_pids {=if-empty:{=audiopid=}~00000~{=audiopid=}=}=}~http://{=func:get_header_data Host=}:31338/{=func:get_audio_pid=}=}=}
-end-block~build_live_url
-
 # ------- yWeb save Settings
 start-block~yWeb_save_settings
 {=ini-set:/var/tuxbox/config/Y-Web.conf;management_ip;{=managementIP=}~open=}
