@@ -213,7 +213,7 @@ function do_play_state(_state, _options)
 		if(Mode == "tv") {
 			loadXMLDoc("/control/exec?Y_Live&udp_stream&stop", dummy);
 		}
-		mrl = loadSyncURL("/control/build_live_url");
+		mrl = loadSyncURL("/control/build_live_url?audio_no="+AudioTrack);
 	}
 	V2.set_actual_mrl(mrl);
 	V2.play();
