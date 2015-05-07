@@ -160,18 +160,18 @@ function do_play()
 {
 	var options = new Array();
 	if(Mode == "tv"){
-		if(isDeinterlace){
-			options.push(":vout-filter=deinterlace");
-			options.push(":deinterlace-mode=bob");
-		}
+		if(AudioTrack != 0)
+			options.push(":audio-track="+AudioTrack);
 		if(isUDP && Mode == "tv"){
 			options.push(":access-filter=timeshift");
 		}
 		else if(cachetime > 0){
 				options.push(":http-caching="+cachetime);
 		}
-		if(AudioTrack != 0)
-			options.push(":audio-track="+AudioTrack);
+		if(isDeinterlace){
+			options.push(":vout-filter=deinterlace");
+			options.push(":deinterlace-mode=bob");
+		}
 	}
 	do_play_state(0, options);
 }
