@@ -15,7 +15,7 @@ var vlc_height = 288;
 var Window_delta_w = 0;
 var Window_delta_h = 0;
 var Mode = "tv";
-var AudioChannel = 0;
+var AudioTrack = 0;
 var isSubs = false;
 var cachetime = 0;
 /*resize,init*/
@@ -170,14 +170,14 @@ function do_play()
 		else if(cachetime > 0){
 				options.push(":http-caching="+cachetime);
 		}
-		if(AudioChannel != 0)
-			options.push(":audio-track="+AudioChannel);
+		if(AudioTrack != 0)
+			options.push(":audio-track="+AudioTrack);
 	}
 	do_play_state(0, options);
 }
 function start_udp_server()
 {
-	var pids = loadSyncURL("/control/yweb?video_stream_pids=0&no_commas=true");
+	var pids = loadSyncURL("/control/yweb?video_stream_pids="+AudioTrack+"&no_commas=true");
 	var args = "-b /dev/null "+ClientAddr+" 31330 0 "+pids;
 	var _cmd = "udp_stream start "+args;
 	var __cmd = _cmd.replace(/ /g, "&");
@@ -275,7 +275,7 @@ function change_channel()
 	if(sel != -1)
 		channel = dd[sel].value;
 	do_stop();
-	AudioChannel = 0;
+	AudioTrack = 0;
 	window.setTimeout("change_channel_zapto(\""+channel+"\")",500);
 }
 function change_sub_channel()
@@ -286,7 +286,7 @@ function change_sub_channel()
 	if(sel != -1)
 		channel = dd[sel].value;
 	do_stop();
-	AudioChannel = 0;
+	AudioTrack = 0;
 	window.setTimeout("change_channel_zapto(\""+channel+"\")",500);
 }
 function change_channel_zapto(channel)
@@ -361,14 +361,14 @@ function view_streaminfo()
 function doChangeAudioPid()
 {
 	var dd = id('audiopid');
-	AudioChannel = dd.selectedIndex;
+	AudioTrack = dd.selectedIndex;
 	do_stop();
 //	insert_message_control("... zapping ...");
 	window.setTimeout("change_channel_play()",1000);
 }
 function build_audio_pid_list()
 {
-	var audio_pids_url = "/y/cgi?execute=func:get_audio_pids_as_dropdown%20audio="+AudioChannel+":";
+	var audio_pids_url = "/y/cgi?execute=func:get_audio_pids_as_dropdown%20audio="+AudioTrack+":";
 	var audio_pid_list = loadSyncURL(audio_pids_url);
 	audio_pid_list = "<select size=\"1\" class=\"y_live_audio_pids\" id=\"audiopid\" onchange=\"doChangeAudioPid()\">"
 			+ audio_pid_list
