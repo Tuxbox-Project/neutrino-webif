@@ -35,7 +35,6 @@ start-block~Live_save_settings
 {=ini-set:/var/tuxbox/config/Y-Web.conf;slavebox;{=slavebox=}~open=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;vlc_record_path;{=vlc_record_path=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;deinterlace;{=deinterlace=}~cache=}
-{=ini-set:/var/tuxbox/config/Y-Web.conf;deinterlace_filter;{=v=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;udp;{=udp=}~cache=}
 {=ini-set:/var/tuxbox/config/Y-Web.conf;http_caching;{=http_caching=}~save=}
 end-block~Live_save_settings
