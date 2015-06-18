@@ -28,8 +28,8 @@ function goUrl(_url){
 		<tr><td class="y_form_header">{=L:0406=}</td><td class="y_form_header">{=L:0403=}</td></tr>
 		<tr>
 			<td>
-			<input type="button" value="{=L:0412=}" onclick='goConfirmUrl("{=bc.control.reboot.ask=}","/control/reboot");' />
-			<input type="button" value="{=L:0414=}" onclick='goConfirmUrl("{=bc.control.shutdown.ask=}","/control/shutdown");' />
+			<input type="button" value="{=L:0412=}" onclick='goConfirmUrl("{=L:0411=}","/control/reboot");' />
+			<input type="button" value="{=L:0414=}" onclick='goConfirmUrl("{=L:0413=}","/control/shutdown");' />
 			</td>
 			<td>
 			<input type="button" value="{=L:0031=}" onclick='goUrl("/control/standby?on");' />
