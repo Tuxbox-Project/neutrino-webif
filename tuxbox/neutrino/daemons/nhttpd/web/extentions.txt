@@ -1,1 +1,0 @@
-type:u,site:MySite,desc:Extensions updates,url:http://
